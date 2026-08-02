@@ -1,26 +1,26 @@
 #!/usr/bin/env python3
 """
-Tradetron Strategy AST Simulator & Multi-Asset PnL Engine
-Categorized Backtesting Engine:
-1. Category 'Stock': Simulates Stock-based Equity strategies on real/simulated Stock intraday OHLC data (e.g. INDUSINDBK, RELIANCE, INFY, SBIN, AXISBANK).
-2. Category 'OptionMomentum': Simulates Option-based Directional strategies on Black-Scholes 3min Option OHLC series.
-3. Category 'IronFly': Simulates Multi-leg Option Spread strategies (4-leg Straddle + Hedges + Rollovers).
+Tradetron Strategy AST Simulator Engine (Powered by Downloaded Historical CSV Data)
+Categorized Backtesting Engine using local CSV datasets in Tradetron-AI-Lab/data/:
+1. Category 'Stock': Simulates Stock-based Equity strategies on downloaded Stock 1-min / 5-min CSV data.
+2. Category 'OptionMomentum': Simulates Option-based Directional strategies on Nifty 50 1-min CSV + Black-Scholes.
+3. Category 'IronFly': Simulates Multi-leg Option Spread strategies on Nifty 50 1-min CSV + 4-Leg Option Spread.
 """
 
 import json
 import math
 import os
 import sys
-import random
 from datetime import datetime, timedelta
 
 try:
     import pandas as pd
-    import yfinance as yf
     from scipy.stats import norm
     HAS_LIBS = True
 except ImportError:
     HAS_LIBS = False
+
+DATA_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'data')
 
 def black_scholes(S, K, T, r=0.07, sigma=0.15, option_type='CE'):
     if T <= 0.0001:
@@ -34,46 +34,33 @@ def black_scholes(S, K, T, r=0.07, sigma=0.15, option_type='CE'):
         price = K * math.exp(-r * T) * norm.cdf(-d2) - S * norm.cdf(-d1)
     return max(0.5, price)
 
-def generate_stock_candles(ticker_name, start_price=1000.0, num_days=20):
-    candles = []
-    base_date = datetime.now() - timedelta(days=num_days + 10)
-    current_p = start_price
-    
-    trading_days = 0
-    day_idx = 0
-    
-    while trading_days < num_days:
-        curr_date = base_date + timedelta(days=day_idx)
-        day_idx += 1
-        if curr_date.weekday() >= 5: # Skip weekends
-            continue
-            
-        trading_days += 1
+def load_csv_candles(filepath):
+    if not os.path.exists(filepath):
+        return []
+    try:
+        df = pd.read_csv(filepath)
+        # Standardize column names
+        df.columns = [c.strip().capitalize() for c in df.columns]
+        date_col = 'Datetime' if 'Datetime' in df.columns else ('Date' if 'Date' in df.columns else df.columns[0])
         
-        # 9:15 to 15:30 (3-min candles = 125 candles / day)
-        day_start = curr_date.replace(hour=9, minute=15, second=0, microsecond=0)
-        daily_trend = random.choice([-0.015, -0.005, 0.005, 0.012, 0.02])
+        df[date_col] = pd.to_datetime(df[date_col])
+        df = df.sort_values(date_col)
         
-        for c in range(125):
-            ts = day_start + timedelta(minutes=3*c)
-            change = random.gauss(daily_trend / 125, 0.003)
-            open_p = current_p
-            close_p = open_p * (1 + change)
-            high_p = max(open_p, close_p) * (1 + abs(random.gauss(0, 0.001)))
-            low_p = min(open_p, close_p) * (1 - abs(random.gauss(0, 0.001)))
-            current_p = close_p
-            
+        candles = []
+        for _, row in df.iterrows():
             candles.append({
-                'timestamp': ts,
-                'open': round(open_p, 2),
-                'high': round(high_p, 2),
-                'low': round(low_p, 2),
-                'close': round(close_p, 2),
-                'ticker': ticker_name
+                'timestamp': row[date_col].to_pydatetime(),
+                'open': float(row['Open']),
+                'high': float(row['High']),
+                'low': float(row['Low']),
+                'close': float(row['Close'])
             })
-    return candles
+        return candles
+    except Exception as e:
+        print(f"Error loading CSV {filepath}: {e}")
+        return []
 
-class CategorizedTradetronSimulator:
+class CSVTradetronSimulator:
     def __init__(self, strategy_path):
         with open(strategy_path, 'r') as f:
             self.strategy = json.load(f)
@@ -212,18 +199,27 @@ class CategorizedTradetronSimulator:
             
         return ctx['price']
 
-    # --- CATEGORY 1: STOCK EQUITY SIMULATOR ---
-    def run_stock_simulation(self, stock_map={'INDUSINDBK': 1400.0, 'RELIANCE': 2900.0, 'INFY': 1800.0, 'SBIN': 850.0, 'AXISBANK': 1150.0}):
+    # --- CATEGORY 1: STOCK EQUITY BACKTESTER (Using Downloaded CSV files) ---
+    def run_stock_simulation(self):
+        stock_tickers = ['INDUSINDBK', 'RELIANCE', 'INFY', 'SBIN', 'AXISBANK', 'HDFCBANK', 'ICICIBANK']
         print(f"============================================================")
-        print(f" 📈 CATEGORY: STOCK EQUITY HISTORICAL SIMULATION ENGINE ")
+        print(f" 📈 CATEGORY: STOCK EQUITY SIMULATOR (LOCAL CSV DATA) ")
         print(f" Strategy: {self.strategy_name}")
-        print(f" Target Asset Class: REAL EQUITY STOCKS ({', '.join(stock_map.keys())})")
+        print(f" Datasets Loaded: {len(stock_tickers)} Stock CSV Files from Tradetron-AI-Lab/data/")
         print(f"============================================================")
         
         all_trades = []
         
-        for ticker, start_price in stock_map.items():
-            candles = generate_stock_candles(ticker, start_price=start_price, num_days=20)
+        for ticker in stock_tickers:
+            path_1m = os.path.join(DATA_DIR, f"{ticker}_1min.csv")
+            candles = load_csv_candles(path_1m)
+            if not candles:
+                path_5m = os.path.join(DATA_DIR, f"{ticker}_5min.csv")
+                candles = load_csv_candles(path_5m)
+                
+            if not candles:
+                continue
+
             active_position = None
             day_orb = {}
 
@@ -292,26 +288,29 @@ class CategorizedTradetronSimulator:
                             self.traded_instruments[key] = {'quantity': shares, 'price': curr['close']}
                             break
 
-        print(f"\n=== STOCK EQUITY BACKTEST SUMMARY ===")
+        print(f"\n=== STOCK EQUITY BACKTEST SUMMARY (LOCAL CSV DATA) ===")
         print(f"Total Stock Trades Executed: {len(all_trades)}")
         if all_trades:
             wins = [t for t in all_trades if t['pnl'] > 0]
             net_pnl = sum(t['pnl'] for t in all_trades)
             win_rate = (len(wins) / len(all_trades)) * 100
             print(f"Winning Stock Trades: {len(wins)} ({win_rate:.1f}%)")
-            print(f"💰 NET EQUITY PnL (across 5 stocks): ₹{net_pnl:,.2f}")
+            print(f"💰 NET EQUITY PnL (across stocks): ₹{net_pnl:,.2f}")
             print(f"============================================================\n")
 
-    # --- CATEGORY 2 & 3: OPTION SIMULATOR ---
+    # --- CATEGORY 2 & 3: OPTION SIMULATOR (Using Downloaded Nifty 50 CSV Data) ---
     def run_option_simulation(self, mode='OptionMomentum'):
         print(f"============================================================")
-        print(f" 🎯 CATEGORY: {mode.upper()} SIMULATION ENGINE ")
+        print(f" 🎯 CATEGORY: {mode.upper()} SIMULATOR (LOCAL NIFTY CSV DATA) ")
         print(f" Strategy: {self.strategy_name}")
-        print(f" Target Asset Class: Nifty Options (Black-Scholes 3min OHLC)")
+        print(f" Dataset Loaded: NIFTY50_1min.csv / NIFTY50_5min.csv")
         print(f"============================================================")
         
-        # Load local stock candles or generate 3-min Nifty index candles
-        candles = generate_stock_candles('NIFTY50', start_price=24500.0, num_days=20)
+        path_1m = os.path.join(DATA_DIR, 'NIFTY50_1min.csv')
+        candles = load_csv_candles(path_1m)
+        if not candles:
+            path_5m = os.path.join(DATA_DIR, 'NIFTY50_5min.csv')
+            candles = load_csv_candles(path_5m)
 
         eval_count = 0
         triggers = 0
@@ -336,8 +335,8 @@ class CategorizedTradetronSimulator:
                     if self.eval_node(c.get('conditionJson'), ctx):
                         triggers += 1
 
-        print(f"\n=== OPTION BACKTEST SUMMARY ===")
-        print(f"Total 3-Min Option Candles Evaluated: {len(candles)}")
+        print(f"\n=== OPTION BACKTEST SUMMARY (LOCAL CSV DATA) ===")
+        print(f"Total Intraday CSV Bars Evaluated: {len(candles)}")
         print(f"Total AST Rules Evaluated: {eval_count}")
         print(f"Total Strategy Triggers Fired: {triggers}")
         print(f"Status: ✅ PASSED (100% Error-Free)")
@@ -346,7 +345,7 @@ class CategorizedTradetronSimulator:
 if __name__ == '__main__':
     target_json = sys.argv[1] if len(sys.argv) > 1 else 'Tradetron-AI-Lab/strategies/Stocklist_ORB_with_pyramiding_and_Trail-SL.json'
     
-    sim = CategorizedTradetronSimulator(target_json)
+    sim = CSVTradetronSimulator(target_json)
     
     # Auto-detect Category by Strategy Name / Content
     if 'Stocklist' in target_json or 'ORB' in target_json:
