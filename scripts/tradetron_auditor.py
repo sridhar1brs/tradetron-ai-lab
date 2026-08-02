@@ -7,6 +7,8 @@ Performs chronological strategy execution auditing, schema validation, and rule 
 3. Math Operation Array Order Validator (Rule 13)
 4. Universal Exit Placement Validator (Rule 8)
 5. Condition Group AST 'children' Wrapper Validator (Rule 9)
+6. Unused Global Variable Detector
+7. Position Builder Leg Quantity Formula Syntax Check
 """
 
 import json
@@ -53,27 +55,34 @@ def validate_ui_schema(data):
     
     sets = data.get("sets", [])
     num_sets = len(sets)
+    raw_str_data = json.dumps(data)
 
-    # 1. Rule 8: Universal Exit Placement Check
+    # 1. Check Unused Global Variables (count <= 1 means only defined in variables array, never used)
+    variables = data.get("variables", [])
+    for v in variables:
+        v_name = v.get("variableName", "")
+        if v_name:
+            count = raw_str_data.count(v_name)
+            if count <= 1:
+                schema_warnings.append(f"[UNUSED VARIABLE WARNING] Variable '{v_name}' is declared in global variables but NEVER referenced in any condition or leg formula!")
+
+    # 2. Rule 8: Universal Exit Placement Check
     for s_idx, s in enumerate(sets):
         for c in s.get("conditions", []):
             if c.get("type") == "Universal Exit" and s_idx != num_sets - 1:
                 schema_errors.append(f"[RULE 8 VIOLATION] Universal Exit found in Set {s_idx + 1}. In multi-set strategies, Universal Exit MUST be in the last Set (Set {num_sets})!")
 
-    # Traverse all conditions across all sets
+    # Traverse all conditions and legs across all sets
     for s_idx, s in enumerate(sets):
         for c_idx, c in enumerate(s.get("conditions", [])):
             cjson = c.get("conditionJson")
-            if not cjson:
-                continue
+            if cjson:
+                try:
+                    ast = json.loads(cjson) if isinstance(cjson, str) else cjson
+                    _check_ast_nodes(ast, s_idx + 1, c_idx + 1, schema_errors, schema_warnings)
+                except Exception:
+                    pass
                 
-            try:
-                ast = json.loads(cjson) if isinstance(cjson, str) else cjson
-            except Exception:
-                continue
-                
-            _check_ast_nodes(ast, s_idx + 1, c_idx + 1, schema_errors, schema_warnings)
-            
             # Check Legs
             for l_idx, leg in enumerate(c.get("legs", [])):
                 st_json = leg.get("strikeJson")
@@ -81,13 +90,17 @@ def validate_ui_schema(data):
                 if st_json and st_type != "Fx":
                     schema_errors.append(f"[RULE 5 VIOLATION] Set {s_idx + 1} Cond {c_idx + 1} Leg {l_idx + 1} uses strikeJson formula but strikeType is '{st_type}'. Must be 'Fx'!")
 
+                # Leg Quantity Formula Syntax Check
+                qty_str = str(leg.get("qty", ""))
+                if "tt_value" in qty_str and "tt_get_runtime" in qty_str:
+                    schema_errors.append(f"[MACRO FORMULA ERROR] Set {s_idx + 1} Cond {c_idx + 1} Leg {l_idx + 1} uses invalid nested 'tt_get_runtime' inside 'tt_value()'! tt_value requires a literal numeric input.")
+
     return schema_errors, schema_warnings
 
 def _check_ast_nodes(node, set_num, cond_num, errors, warnings):
     if not isinstance(node, dict):
         return
         
-    # Rule 9: Condition Group 'children' Wrapper Check
     if node.get("type") == "group":
         if "children" not in node and "operator" in node:
             errors.append(f"[RULE 9 VIOLATION] ConditionGroup in Set {set_num} Cond {cond_num} is missing 'children' dictionary wrapper!")
@@ -102,21 +115,21 @@ def _check_ast_nodes(node, set_num, cond_num, errors, warnings):
                 el_name = el.get("name", "")
                 params = el.get("params", [])
                 
-                # Check 1: Macro Keyword Primitive Parameter Check (Leg TSL, Leg Exit, Leg SL Trail)
+                # Macro Keyword Primitive Parameter Check (Leg TSL, Leg Exit, Leg SL Trail)
                 if el_name in MACRO_KEYWORDS:
                     for p_idx, p in enumerate(params):
                         if isinstance(p, dict) and p.get("type") == "keyword":
                             kw_name = p.get("keyword", {}).get("name", "Unknown")
                             errors.append(f"[CRITICAL UI MODAL ERROR] '{el_name}' in Set {set_num} Cond {cond_num} contains nested keyword '{kw_name}' in parameter #{p_idx+1}! Tradetron UI modal requires literal primitives (e.g., '1', '0.5', '2').")
 
-                # Check 2: Spot Index Instrument String Check (Rule 17)
+                # Spot Index Instrument String Check (Rule 17)
                 if el_name == "Instrument Name":
                     for p in params:
                         val = p.get("value", "")
                         if "NIFTY 50" in val and "Current Month" in val:
                             errors.append(f"[RULE 17 VIOLATION] Spot Index Instrument Name in Set {set_num} Cond {cond_num} uses '{val}'. Spot index references must NOT include 'Current Month'!")
 
-                # Check 3: Math Operation Order Check (Rule 13)
+                # Math Operation Order Check (Rule 13)
                 if el_name == "Math Operation":
                     if len(params) == 3:
                         op_symbol = params[2].get("value", "")
