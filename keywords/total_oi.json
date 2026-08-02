@@ -1,0 +1,18 @@
+{
+    "name": "Total OI",
+    "description": "This keyword will return a numerical value of the total open interest of an option type at that instant. You can input the underlying instrument and expiry and the option type here. Your request will be processed and a numeric response will be fetched. At the moment it is only available for indices.",
+    "how_to_use_markdown": "This keyword will return a numerical value of the total open interest of an option type at that instant. You can input the underlying instrument and expiry and the option type here. Your request will be processed and a numeric response will be fetched. At the moment it is only available for indices.\n\n![Example](./images/img-1631872238.png)\n\nThe above image shows how to fetch the Total OI for Nifty bank, current month put options.",
+    "example_image_urls": [
+        "./images/img-1631872238.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "Total OI\nThis keyword will return a numerical value of the total open interest of an option type at that instant. You can input the underlying instrument and expiry and the option type here. Your request will be processed and a numeric response will be fetched. At the moment it is only available for indices.\nThe above image shows how to fetch the Total OI for Nifty bank, current month put options.",
+    "visual_logic_extracted": "Image [img-1631872238.png] Text:\nTotal Ol\nBANKNIFTY, current month, PE"
+}

@@ -1,0 +1,18 @@
+{
+    "name": "SMA",
+    "description": "This keyword returns the simple moving average of any period of any selected Instrument. This keyword is to be used under the position keyword",
+    "how_to_use_markdown": "This keyword returns the simple moving average of any period of any selected Instrument. This keyword is to be used under the position keyword\n\n![Example](./images/img-1632219280.png)\n\nYou can plot SMA on any series, like close in the above example, you can also plot SMA of RSI, OPEN etc\n\nA simple moving average is a technical indicator that can aid in determining if an asset price will continue or if it will reverse a bull or bear trend.\n\nRead more about SMA here -\u00a0 https://www.investopedia.com/terms/s/sma.asp",
+    "example_image_urls": [
+        "./images/img-1632219280.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "SMA\nThis keyword returns the simple moving average of any period of any selected Instrument. This keyword is to be used under the position keyword\nYou can plot SMA on any series, like close in the above example, you can also plot SMA of RSI, OPEN etc\nA simple moving average is a technical indicator that can aid in determining if an asset price will continue or if it will reverse a bull or bear trend.\nRead more about SMA here -\u00a0\nhttps://www.investopedia.com/terms/s/sma.asp",
+    "visual_logic_extracted": "Image [img-1632219280.png] Text:\n+\n\nPosition\nSMA ( CLOSE ( Symbol ( Instrument Name ( NFO,ABFRL,\n\n, day, All)), 20), -1"
+}

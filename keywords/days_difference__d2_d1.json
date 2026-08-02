@@ -1,0 +1,13 @@
+{
+    "name": "Days Difference (D2-D1)",
+    "description": "This keyword is used to calculate the difference between days and the output is an integer\nDays Difference has 2 inputs. Please note that keywords that return DD-MM-YYYY formats can only be used as inputs.\nIn this keyword, D1 is subtracted from D2, so always D2 should be the bigger one\u00a0\nIn the above condition, we are checking if the difference between the Current month expiry and today is greater than 15 days.\n\u00a0\nIt considers all calendar days including holidays and non-trading days. You can find more detail on this keyword in the video link shared below:\nhttps://www.youtube.com/watch?v=lF8aHcaGmCA",
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "This keyword is used to calculate the difference between days and the output is an integer\nDays Difference has 2 inputs. Please note that keywords that return DD-MM-YYYY formats can only be used as inputs.\nIn this keyword, D1 is subtracted from D2, so always D2 should be the bigger one\u00a0\nIn the above condition, we are checking if the difference between the Current month expiry and today is greater than 15 days.\n\u00a0\nIt considers all calendar days including holidays and non-trading days. You can find more detail on this keyword in the video link shared below:\nhttps://www.youtube.com/watch?v=lF8aHcaGmCA"
+}

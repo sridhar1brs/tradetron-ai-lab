@@ -1,0 +1,18 @@
+{
+    "name": "Gamma",
+    "description": "Gamma keyword returns you the gamma value of that particular option",
+    "how_to_use_markdown": "Gamma keyword returns you the gamma value of that particular option\n\n![Example](./images/img-1631791469.png)\n\nThe above example will return the gamma value of the instrument traded in 1st leg of Set 1 Entry",
+    "example_image_urls": [
+        "./images/img-1631791469.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "Gamma\nGamma keyword returns you the gamma value of that particular option\nThe above example will return the gamma value of the instrument traded in 1st leg of Set 1 Entry",
+    "visual_logic_extracted": "Image [img-1631791469.png] Text:\na\n\nGamma\nTraded Instrument Name ( Entry, instrument, NIFTY 50, 1, 1, 1)"
+}

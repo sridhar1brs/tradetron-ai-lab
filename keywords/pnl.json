@@ -1,0 +1,19 @@
+{
+    "name": "PNL",
+    "description": "This keyword will return profit/loss of the strategy for that counter",
+    "how_to_use_markdown": "This keyword will return profit/loss of the strategy for that counter\n\nGenerally used when the user wants to exit the strategy when the target/stop loss amount reached for that particular strategy as a whole if we keep the condition in the  universal exit.\n\nPNL is a strategy level keyword, generally kept in universal exit, even if kept in set exit, it will still return the overall profit/loss combining all the sets.\n\nThis keyword will reset only after universal exit.\n\nPlease click on this link for more and examples -  https://qna.tradetron.tech/t/how-to-use-pnl-keyword/635\n\n![Example](./images/img-1631711494.png)\n\nThe above code if put in universal exit, will exit the strategy if it makes 500 Rs + profit It is also advisable to use PNL keyword with multiplier to make sure that the targets/ stoploss is scaled up based on the multiplier selected.\n\n![Example](./images/img-1690204835.png)",
+    "example_image_urls": [
+        "./images/img-1631711494.png",
+        "./images/img-1690204835.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "PNL\nThis keyword will return profit/loss of the strategy for that counter\u00a0\nGenerally used when the user wants to exit the strategy when the target/stop loss amount reached for that particular strategy as a whole if we keep the condition in the \nuniversal exit.\nPNL is a strategy level keyword, generally kept in universal exit, even if kept in set exit, it will still return the overall profit/loss combining all the sets.\nThis keyword will reset only after universal exit.\nPlease click on this link for more and examples - \nhttps://qna.tradetron.tech/t/how-to-use-pnl-keyword/635\nThe above code if put in universal exit, will exit the strategy if it makes 500 Rs + profit\nIt is also advisable to use PNL keyword with multiplier to make sure that the targets/ stoploss is scaled up based on the multiplier selected.",
+    "visual_logic_extracted": "Image [img-1631711494.png] Text:\ntx]\nPNL >= Number\n500"
+}

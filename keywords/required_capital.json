@@ -1,0 +1,18 @@
+{
+    "name": "Required Capital",
+    "description": "This keyword has to be used with multiplier keyword.",
+    "how_to_use_markdown": "Required Capital keyword returns the amount set in \" Capital Required\"  field of advanced settings in the strategy.\n\nThis keyword has to be used with multiplier keyword.\n\n![Example](./images/img-1694402193.png)",
+    "example_image_urls": [
+        "./images/img-1694402193.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "Required Capital\nRequired Capital keyword returns the amount set in \"\nCapital Required\" \nfield of advanced settings in the strategy.\nThis keyword has to be used with multiplier keyword.",
+    "visual_logic_extracted": "Image [img-1694402193.png] Text:\n[ Choose\nPNL\n\n>\n\n|\n\nRequired Capital\n\n*\n\nMultiplier\n\n*\n\nNumber\n0.02\n\nPa"
+}

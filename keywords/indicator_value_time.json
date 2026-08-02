@@ -1,0 +1,19 @@
+{
+    "name": "Indicator Value (Time)",
+    "description": "This keyword will fetch the instantaneous value of any particular indicator in series at a particular time for an instrument. Since we are looking at instruments in series here, this keyword is used as a standalone keyword (not under position keyword).",
+    "how_to_use_markdown": "This keyword will fetch the instantaneous value of any particular indicator in series at a particular time for an instrument.  Since we are looking at instruments in series here, this keyword is used as a standalone keyword (not under position keyword).\n\n![Example](./images/img-1632390895.png)\n\nAccording to the example shared above, the Tradetron engine will check the value of the Upper Bollinger band at 10.00 AM for Nifty Bank 5 min candle. It is important to note that this keyword should only be processed after the time mentioned (has already passed). To ensure that one must use it in group with 'AND' condition as shown below:\n\n![Example](./images/img-1632391127.png)",
+    "example_image_urls": [
+        "./images/img-1632390895.png",
+        "./images/img-1632391127.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "Indicator Value (Time)\nThis keyword will fetch the instantaneous value of any particular indicator in series at a particular time for an instrument. \nSince we are looking at instruments in series here, this keyword is used as a standalone keyword (not under position keyword).\n\u00a0\nAccording to the example shared above, the Tradetron engine will check the value of the Upper Bollinger band at 10.00 AM for Nifty Bank 5 min candle. It is important to note that this keyword should only be processed after the time mentioned (has already passed). To ensure that one must use it in group with 'AND' condition as shown below:",
+    "visual_logic_extracted": "Image [img-1632390895.png] Text:\nIndicator Value (Time)\nUpper Bolinger ( CLOSE ( Symbol ( Instrument Name ( NFO,NIFTY BANK,,,,, ), 5m, All) ), 20, 2), 10:00\n\nImage [img-1632391127.png] Text:\n+ Condition \u00a9 Group *\n\nIndicator Value (Time) Paste *\n\nUpper Bolinger ( CLOSE ( Symbol ( Instrument Name ( NFO,NIFTY BANK,,.., ), 5m, All)), 20, 2), 10:00\n\nPaste %\n\nOR\nChoose aa"
+}

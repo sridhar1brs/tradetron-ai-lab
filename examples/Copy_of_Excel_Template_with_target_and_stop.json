@@ -1,0 +1,158 @@
+{
+  "_format": "tt-strategy/v2",
+  "_readme": {
+    "about": "Tradetron strategy export. Edit and re-import via the ASB Import button.",
+    "logic": "To change a condition's logic, edit its \"conditionJson\" (the AST). The \"conditionValue\"/\"conditionDisplay\" text is regenerated from it on import.",
+    "legs": "For a leg field that has a \"*Json\" (e.g. \"strikeJson\"), edit the JSON — its text form is regenerated on import. Fields with no \"*Json\" (e.g. \"qty\") are plain text: edit them directly.",
+    "structure": "Add/remove/duplicate legs, conditions or sets by editing the arrays.",
+    "do_not": "Do not add \"*_id\" foreign keys back. Lists referenced by id must be ones you own."
+  },
+  "name": "Copy of Excel Template with target and stop",
+  "description": "This is a demo strategy that you can duplicate and customize to create your own. Please note that it is meant for learning purposes and should not be used for live trading as is.",
+  "tags": [],
+  "variables": [],
+  "sets": [
+    {
+      "list": 545,
+      "name": null,
+      "conditions": [
+        {
+          "type": "Entry",
+          "conditionValue": "( get_runtime ( 'strategy_id', 'run_counter', '|cash_stocks_fo|_entry' ) == tt_Number ( '1' )  )  and ( tt_position_value ( 'strategy_id', 'run_counter', 'All', 'All', 'All', 'quantity', '|cash_stocks_fo|' ) == tt_Number ( '0' )  )",
+          "conditionJson": "{\"operator\":\"and\",\"operands\":[{\"type\":\"rule\",\"value\":\"builder-basic_rule_0\",\"elements\":[{\"name\":\"Get Runtime\",\"kid\":2970,\"params\":[{\"type\":\"value\",\"value\":\"|cash_stocks_fo|_entry\"}]},{\"name\":\"==\",\"params\":[]},{\"name\":\"Number\",\"kid\":4706,\"params\":[{\"type\":\"value\",\"value\":\"1\"}]}]},{\"type\":\"rule\",\"value\":\"builder-basic_rule_1\",\"elements\":[{\"name\":\"Positions Detail\",\"kid\":7264,\"params\":[{\"type\":\"value\",\"value\":\"All\"},{\"type\":\"value\",\"value\":\"All\"},{\"type\":\"value\",\"value\":\"All\"},{\"type\":\"value\",\"value\":\"quantity\"},{\"type\":\"value\",\"value\":\"|cash_stocks_fo|\"}]},{\"name\":\"==\",\"params\":[]},{\"name\":\"Number\",\"kid\":7513,\"params\":[{\"type\":\"value\",\"value\":\"0\"}]}]}]}",
+          "conditionDisplay": "( Get Runtime ( 'strategy_id', 'run_counter', '|cash_stocks_fo|_entry' ) == Number ( '1' )  )  and ( Positions Detail ( 'strategy_id', 'run_counter', 'All', 'All', 'All', 'quantity', '|cash_stocks_fo|' ) == Number ( '0' )  )",
+          "subType": "None",
+          "visible": 1,
+          "legs": [
+            {
+              "instrument": 0,
+              "list": 545,
+              "optionType": null,
+              "expiry": null,
+              "expiryType": "Current Week",
+              "expiryJson": null,
+              "expiryDisplay": null,
+              "strikeType": "ATM",
+              "strike": null,
+              "strikeJson": null,
+              "strikeDisplay": null,
+              "qty": "( get_runtime ( 'strategy_id', 'run_counter', 'INSTRUMENT_quantity' )  )",
+              "qtyType": "Qty",
+              "qtyDisplay": null,
+              "qtyJson": "{\"operator\":\"and\",\"operands\":[{\"type\":\"rule\",\"value\":\"builder-basic_rule_0\",\"elements\":[{\"name\":\"Get Runtime\",\"kid\":1441,\"params\":[{\"type\":\"value\",\"value\":\"|cash_stocks_fo|_quantity\"}]}]}]}",
+              "qtyExprDisplay": "( Get Runtime ( 'strategy_id', 'run_counter', '|cash_stocks_fo|_quantity' )  )",
+              "buySell": "B",
+              "totalValue": null,
+              "limitPrice": null,
+              "limitPriceJson": null,
+              "limitPriceDisplay": null,
+              "limitPriceExprDisplay": null,
+              "entryTrigger": null,
+              "entryLimit": null,
+              "sLTrigger": null,
+              "sLTriggerJson": null,
+              "sLTriggerDisplay": null,
+              "sLTriggerExprDisplay": null,
+              "sLLimit": null,
+              "targetTrigger": null,
+              "targetLimit": null,
+              "isOvernightProtectionLeg": "No",
+              "productType": "CNC",
+              "underlyingSymbol": null,
+              "tmp": 0,
+              "updatedAt": "2026-08-01 15:23:07",
+              "createdAt": "2026-08-01 15:23:07"
+            }
+          ],
+          "extra": {
+            "name": null,
+            "variables": []
+          }
+        },
+        {
+          "type": "Repair Once",
+          "conditionValue": null,
+          "conditionJson": null,
+          "conditionDisplay": null,
+          "subType": "Overnight Protection",
+          "visible": 0,
+          "legs": [],
+          "extra": {
+            "name": null,
+            "variables": []
+          }
+        },
+        {
+          "type": "Exit",
+          "conditionValue": "(  ( get_runtime ( 'strategy_id', 'run_counter', '|cash_stocks_fo|_exit' )  )  and ( get_runtime ( 'strategy_id', 'run_counter', '|cash_stocks_fo|_exit' ) == tt_Number ( '1' )  )  )  or (  ( get_runtime ( 'strategy_id', 'run_counter', '|cash_stocks_fo|_Target' )  )  and ( tt_get_var ( find_traded_instrument ( 'strategy_id', 'run_counter', 'Entry', 'instrument', '|cash_stocks_fo|', '1', '1', '1' ) , 'LTP' ) >= get_runtime ( 'strategy_id', 'run_counter', '|cash_stocks_fo|_Target' ) + find_traded_instrument ( 'strategy_id', 'run_counter', 'Entry', 'price', '|cash_stocks_fo|', '1', '1', '1' )  )  )  or (  ( get_runtime ( 'strategy_id', 'run_counter', '|cash_stocks_fo|_stoploss' )  )  and ( tt_get_var ( find_traded_instrument ( 'strategy_id', 'run_counter', 'Entry', 'instrument', '|cash_stocks_fo|', '1', '1', '1' ) , 'LTP' ) <= find_traded_instrument ( 'strategy_id', 'run_counter', 'Entry', 'price', '|cash_stocks_fo|', '1', '1', '1' ) - get_runtime ( 'strategy_id', 'run_counter', '|cash_stocks_fo|_stoploss' )  )  )",
+          "conditionJson": "{\"operator\":\"or\",\"operands\":[{\"type\":\"group\",\"value\":\"builder-basic_group_1\",\"children\":{\"operator\":\"and\",\"operands\":[{\"type\":\"rule\",\"value\":\"builder-basic_rule_1\",\"elements\":[{\"name\":\"Get Runtime\",\"kid\":2970,\"params\":[{\"type\":\"value\",\"value\":\"|cash_stocks_fo|_exit\"}]}]},{\"type\":\"rule\",\"value\":\"builder-basic_rule_2\",\"elements\":[{\"name\":\"Get Runtime\",\"kid\":2970,\"params\":[{\"type\":\"value\",\"value\":\"|cash_stocks_fo|_exit\"}]},{\"name\":\"==\",\"params\":[]},{\"name\":\"Number\",\"kid\":4706,\"params\":[{\"type\":\"value\",\"value\":\"1\"}]}]}]}},{\"type\":\"group\",\"value\":\"builder-basic_group_4\",\"children\":{\"operator\":\"and\",\"operands\":[{\"type\":\"rule\",\"value\":\"builder-basic_rule_4\",\"elements\":[{\"name\":\"Get Runtime\",\"kid\":2970,\"params\":[{\"type\":\"value\",\"value\":\"|cash_stocks_fo|_Target\"}]}]},{\"type\":\"rule\",\"value\":\"builder-basic_rule_5\",\"elements\":[{\"name\":\"LTP\",\"kid\":2475,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Traded Instrument Name\",\"kid\":5216,\"params\":[{\"type\":\"value\",\"value\":\"Entry\"},{\"type\":\"value\",\"value\":\"instrument\"},{\"type\":\"value\",\"value\":\"|cash_stocks_fo|\"},{\"type\":\"value\",\"value\":\"1\"},{\"type\":\"value\",\"value\":\"1\"},{\"type\":\"value\",\"value\":\"1\"}]}}]},{\"name\":\">=\",\"params\":[]},{\"name\":\"Get Runtime\",\"kid\":2970,\"params\":[{\"type\":\"value\",\"value\":\"|cash_stocks_fo|_Target\"}]},{\"name\":\"+\",\"params\":[]},{\"name\":\"Traded Instrument\",\"kid\":9079,\"params\":[{\"type\":\"value\",\"value\":\"Entry\"},{\"type\":\"value\",\"value\":\"price\"},{\"type\":\"value\",\"value\":\"|cash_stocks_fo|\"},{\"type\":\"value\",\"value\":\"1\"},{\"type\":\"value\",\"value\":\"1\"},{\"type\":\"value\",\"value\":\"1\"}]}]}]}},{\"type\":\"group\",\"value\":\"builder-basic_group_7\",\"children\":{\"operator\":\"and\",\"operands\":[{\"type\":\"rule\",\"value\":\"builder-basic_rule_7\",\"elements\":[{\"name\":\"Get Runtime\",\"kid\":2970,\"params\":[{\"type\":\"value\",\"value\":\"|cash_stocks_fo|_stoploss\"}]}]},{\"type\":\"rule\",\"value\":\"builder-basic_rule_8\",\"elements\":[{\"name\":\"LTP\",\"kid\":2475,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Traded Instrument Name\",\"kid\":8502,\"params\":[{\"type\":\"value\",\"value\":\"Entry\"},{\"type\":\"value\",\"value\":\"instrument\"},{\"type\":\"value\",\"value\":\"|cash_stocks_fo|\"},{\"type\":\"value\",\"value\":\"1\"},{\"type\":\"value\",\"value\":\"1\"},{\"type\":\"value\",\"value\":\"1\"}]}}]},{\"name\":\"<=\",\"params\":[]},{\"name\":\"Traded Instrument\",\"kid\":9079,\"params\":[{\"type\":\"value\",\"value\":\"Entry\"},{\"type\":\"value\",\"value\":\"price\"},{\"type\":\"value\",\"value\":\"|cash_stocks_fo|\"},{\"type\":\"value\",\"value\":\"1\"},{\"type\":\"value\",\"value\":\"1\"},{\"type\":\"value\",\"value\":\"1\"}]},{\"name\":\"-\",\"params\":[]},{\"name\":\"Get Runtime\",\"kid\":2970,\"params\":[{\"type\":\"value\",\"value\":\"|cash_stocks_fo|_stoploss\"}]}]}]}}]}",
+          "conditionDisplay": "(  ( get_runtime ( 'strategy_id', 'run_counter', '|cash_stocks_fo|_exit' )  )  and ( get_runtime ( 'strategy_id', 'run_counter', '|cash_stocks_fo|_exit' ) == tt_Number ( '1' )  )  )  or (  ( get_runtime ( 'strategy_id', 'run_counter', '|cash_stocks_fo|_Target' )  )  and ( tt_get_var ( find_traded_instrument ( 'strategy_id', 'run_counter', 'Entry', 'instrument', '|cash_stocks_fo|', '1', '1', '1' ) , 'LTP' ) >= get_runtime ( 'strategy_id', 'run_counter', '|cash_stocks_fo|_Target' ) + find_traded_instrument ( 'strategy_id', 'run_counter', 'Entry', 'price', '|cash_stocks_fo|', '1', '1', '1' )  )  )  or (  ( get_runtime ( 'strategy_id', 'run_counter', '|cash_stocks_fo|_stoploss' )  )  and ( tt_get_var ( find_traded_instrument ( 'strategy_id', 'run_counter', 'Entry', 'instrument', '|cash_stocks_fo|', '1', '1', '1' ) , 'LTP' ) <= find_traded_instrument ( 'strategy_id', 'run_counter', 'Entry', 'price', '|cash_stocks_fo|', '1', '1', '1' ) - get_runtime ( 'strategy_id', 'run_counter', '|cash_stocks_fo|_stoploss' )  )  )",
+          "subType": "None",
+          "visible": 1,
+          "legs": [],
+          "extra": {
+            "name": null,
+            "variables": []
+          }
+        },
+        {
+          "type": "Universal Exit",
+          "conditionValue": "( get_runtime ( 'strategy_id', 'run_counter', 'complete' ) == tt_Number ( '1' )  )",
+          "conditionJson": "{\"operator\":\"and\",\"operands\":[{\"type\":\"rule\",\"value\":\"builder-basic_rule_0\",\"elements\":[{\"name\":\"Get Runtime\",\"kid\":9143,\"params\":[{\"type\":\"value\",\"value\":\"complete\"}]},{\"name\":\"==\",\"params\":[]},{\"name\":\"Number\",\"kid\":5568,\"params\":[{\"type\":\"value\",\"value\":\"1\"}]}]}]}",
+          "conditionDisplay": "( Get Runtime ( 'strategy_id', 'run_counter', 'complete' ) == Number ( '1' )  )",
+          "subType": "None",
+          "visible": 1,
+          "legs": [],
+          "extra": {
+            "name": null,
+            "variables": []
+          }
+        }
+      ]
+    }
+  ],
+  "currency": "INR",
+  "priceExecution": "Market Price",
+  "tranchSize": 100,
+  "tslToCostAtProfit": 0,
+  "tslProfitIncrease": 0,
+  "tslSlIncrease": 0,
+  "runFrequency": "Only Once",
+  "firstTradeAfterOpen": 1,
+  "lastTradeBeforeClose": 60,
+  "rolloverExpiryPeriod": "Dont Rollover",
+  "capitalRequired": 100000,
+  "priceRevisionAttempts": 1,
+  "tranchWaitSecs": 10,
+  "exitShortsFirst": 0,
+  "priceRevisionTimeout": 0,
+  "reactivateEvery": 0,
+  "finalAction": "MARKET",
+  "exitAtMarket": 0,
+  "runEvery": 1,
+  "rolloverExpiryTime": "1500",
+  "priceTicksMultiple": "1",
+  "pythonCode": null,
+  "isPublic": 0,
+  "minMultiple": 1,
+  "maxMultiple": 100,
+  "freePeriod": null,
+  "fixedFee": "0.00",
+  "fixedFeePeriod": "1",
+  "variableFee": "0.00",
+  "hurdleRate": 0,
+  "recreatePositionsInNewFollowers": "No",
+  "allowDuplication": 1,
+  "confirmationPerSubscriber": 0,
+  "hideSubscribers": "No",
+  "strategyPublicLinkAccess": "Yes",
+  "strategyPublicLink": null,
+  "displayPositionsToNonSubscribers": 0,
+  "highWatermark": "Yes",
+  "showLiveAutoDeployment": 0,
+  "feeShare": null,
+  "isApproved": 0,
+  "feeFrequency": "Month",
+  "backtestLinkSubscribers": null,
+  "backtestLinkNonsubscribers": null
+}

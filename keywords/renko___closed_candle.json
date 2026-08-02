@@ -1,0 +1,13 @@
+{
+    "name": "Renko - closed candle",
+    "description": "Tradetron supports various different candle types and Renko is one such candle type. Thus you can use any indicator, instrument or keyword and convert the candle into a Renko candle. You can find more detail on the same candle in the link shared below:\nhttps://www.investopedia.com/terms/r/renkochart.asp#:~:text=A%20Renko%20chart%20is%20a,like%20a%20series%20of%20bricks.\nSince Renko is an independent candle type, it can be accessed by clicking on the name of the indicator (used under position keyword) and selecting the candle type as Renko. \n\u00a0Renko closed keyword skips ongoing candle for Renko OHLC formation thus the same can be used to avoid the repainting issue on Renko bricks.\u00a0\nIn the example share above, we will fetch the the current (0) \nRenko closed brick\n for Nifty 50 spot.\nThis keyword will allow the brick size to be maintained as a variable. In order to modify the same, click on 'Renko- Closed bricks' and select the number/ series which you need to keep as the brick size.",
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "Tradetron supports various different candle types and Renko is one such candle type. Thus you can use any indicator, instrument or keyword and convert the candle into a Renko candle. You can find more detail on the same candle in the link shared below:\nhttps://www.investopedia.com/terms/r/renkochart.asp#:~:text=A%20Renko%20chart%20is%20a,like%20a%20series%20of%20bricks.\nSince Renko is an independent candle type, it can be accessed by clicking on the name of the indicator (used under position keyword) and selecting the candle type as Renko. \n\u00a0Renko closed keyword skips ongoing candle for Renko OHLC formation thus the same can be used to avoid the repainting issue on Renko bricks.\u00a0\nIn the example share above, we will fetch the the current (0) \nRenko closed brick\n for Nifty 50 spot.\nThis keyword will allow the brick size to be maintained as a variable. In order to modify the same, click on 'Renko- Closed bricks' and select the number/ series which you need to keep as the brick size."
+}

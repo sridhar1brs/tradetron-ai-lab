@@ -1,0 +1,18 @@
+{
+    "name": "Days Difference (D2-D1)",
+    "description": "This keyword is used to calculate the difference between days and the output is an integer",
+    "how_to_use_markdown": "This keyword is used to calculate the difference between days and the output is an integer\n\nDays Difference has 2 inputs. Please note that keywords that return DD-MM-YYYY formats can only be used as inputs.\n\nIn this keyword, D1 is subtracted from D2, so always D2 should be the bigger one\n\n![Example](./images/img-1632310364.png)\n\nIn the above condition, we are checking if the difference between the Current month expiry and today is greater than 15 days.\n\nIt considers all calendar days including holidays and non-trading days. You can find more detail on this keyword in the video link shared below:\n\nhttps://www.youtube.com/watch?v=lF8aHcaGmCA",
+    "example_image_urls": [
+        "./images/img-1632310364.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "Days Difference (D2-D1)\nThis keyword is used to calculate the difference between days and the output is an integer\nDays Difference has 2 inputs. Please note that keywords that return DD-MM-YYYY formats can only be used as inputs.\nIn this keyword, D1 is subtracted from D2, so always D2 should be the bigger one\u00a0\nIn the above condition, we are checking if the difference between the Current month expiry and today is greater than 15 days.\n\u00a0\nIt considers all calendar days including holidays and non-trading days. You can find more detail on this keyword in the video link shared below:\nhttps://www.youtube.com/watch?v=lF8aHcaGmCA",
+    "visual_logic_extracted": "Image [img-1632310364.png] Text:\nDays Difference (D2-D1) >= Number\nToday ( NSE ) , Current Month Expiry ( NIFTY 50, 0 ) 15"
+}

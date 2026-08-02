@@ -1,0 +1,19 @@
+{
+    "name": "Current Month Expiry",
+    "description": "This keyword can be used in condition builder as well as in expiry FX of the position builder",
+    "how_to_use_markdown": "This keyword returns the current month expiry date of the instrument as a string in the format  YYYY-MM-DD\n\nThis keyword can be used in condition builder as well as in expiry FX of the position builder\n\n![Example](./images/img-1631877274.png)\n\nThe above example can be used in condition builder to check if the current day is the monthly expiry\n\n![Example](./images/img-1631877356.png)\n\nThe above condition can be used in the expiry FX of the position builder to trade next month expiry",
+    "example_image_urls": [
+        "./images/img-1631877274.png",
+        "./images/img-1631877356.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "Current Month Expiry\nThis keyword returns the current month expiry date of the instrument as a string in the format \nYYYY-MM-DD\n\u00a0\nThis keyword can be used in condition builder as well as in expiry FX of the position builder\nThe above example can be used in condition builder to check if the current day is the monthly expiry\u00a0\nThe above condition can be used in the expiry FX of the position builder to trade next month expiry",
+    "visual_logic_extracted": "Image [img-1631877274.png] Text:\nCurrent Month Expiry\nNIFTY 50, 0\n\nImage [img-1631877356.png] Text:\nCurrent Month Expiry\nNIFTY 50, 1"
+}

@@ -1,0 +1,19 @@
+{
+    "name": "Net Gamma",
+    "description": "This keyword will return\u00a0Net Gamma of open positions of the selected underlying for the strategy",
+    "how_to_use_markdown": "This keyword will return \u00a0Net Gamma of open positions of the selected underlying for the strategy\n\n![Example](./images/img-1631791123.png)\n\n![Example](./images/img-1631791146.png)",
+    "example_image_urls": [
+        "./images/img-1631791123.png",
+        "./images/img-1631791146.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "Net Gamma\nThis keyword will return\n\u00a0Net Gamma of open positions of the selected underlying for the strategy",
+    "visual_logic_extracted": "Image [img-1631791123.png] Text:\nNet Gamma\nNIFTY 50\n\nImage [img-1631791146.png] Text:\nNet Gamma = > zy, where z = Gamma and y = open quantity"
+}

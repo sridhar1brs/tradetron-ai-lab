@@ -1,0 +1,19 @@
+{
+    "name": "HARAMI",
+    "description": "https://www.ta-lib.org/function.html",
+    "how_to_use_markdown": "This keyword is used to check if a particular candle was a Harami. It is supposed to be used under the position keyword. This keyword has been used as a part of TA lib. You can find more details on the same from the link shared below:\n\nhttps://www.ta-lib.org/function.html\n\n![Example](./images/img-1632231116.png)\n\nThe above example will check if the previous (-1) 5 minute candle of Nifty 50 was a  Harami candle.\u00a0 The above example will check if the previous (-1) 15 minute candle of Nifty 50 futures was an inverted  Harami candle.\n\n![Example](./images/img-1689246792.png)",
+    "example_image_urls": [
+        "./images/img-1632231116.png",
+        "./images/img-1689246792.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "HARAMI\nThis keyword is used to check if a particular candle was a Harami. It is supposed to be used under the position keyword. This keyword has been used as a part of TA lib. You can find more details on the same from the link shared below:\nhttps://www.ta-lib.org/function.html\nThe above example will check if the previous (-1) 5 minute candle of Nifty 50 was a \nHarami candle.\u00a0\nThe above example will check if the previous (-1) 15 minute candle of Nifty 50 futures was an inverted \nHarami candle.",
+    "visual_logic_extracted": "Image [img-1632231116.png] Text:\nPosition == Number\nHARAMI ( Symbol ( Instrument Name ( NFO,NIFTY 50,,,,,), 5m, All) ),-1 1\n\nImage [img-1689246792.png] Text:\n*]\n\nPosition == Number\nHARAMI ( Symbol ( Futures (NIFTY 50), 15m, All) ), -4 4"
+}

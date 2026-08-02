@@ -1,0 +1,19 @@
+{
+    "name": "Get Runtime",
+    "description": "This keyword is used to fetch the value of a runtime variable generated using python or from Tradetron API. The inputs you use here will be case and space sensitive.",
+    "how_to_use_markdown": "This keyword is used to fetch the value of a runtime variable generated using python or from Tradetron API. The inputs you use here will be case and space sensitive.\n\n![Example](./images/img-1632392019.png)\n\nIn the example shared above, the keyword will look for the variable called 'tradetron' and find the number or string value associated with it.\n\nThis keyword can also be used within other keywords when the variable is fetching a particular string value. Thus if a user creates a variable called 'tradetron' and then associated an instrument name with the same, based on the example share below, the Tradetron engine will now be able to fetch the LTP of the instrument associated with the mentioned variable.\n\n![Example](./images/img-1632392212.png)",
+    "example_image_urls": [
+        "./images/img-1632392019.png",
+        "./images/img-1632392212.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "Get Runtime\nThis keyword is used to fetch the value of a runtime variable generated using python or from Tradetron API. The inputs you use here will be case and space sensitive.\u00a0\nIn the example shared above, the keyword will look for the variable called 'tradetron' and find the number or string value associated with it.\u00a0\nThis keyword can also be used within other keywords when the variable is fetching a particular string value. Thus if a user creates a variable called 'tradetron' and then associated an instrument name with the same, based on the example share below, the Tradetron engine will now be able to fetch the LTP of the instrument associated with the mentioned variable.",
+    "visual_logic_extracted": "Image [img-1632392019.png] Text:\nGet Runtime\ntradetron\n\nImage [img-1632392212.png] Text:\nLTP *\n\nGet Runtime ( tradetron )"
+}

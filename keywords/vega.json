@@ -1,0 +1,18 @@
+{
+    "name": "Vega",
+    "description": "Vega keyword returns you the vega value of that particular option.",
+    "how_to_use_markdown": "Vega keyword returns you the vega value of that particular option.\n\n![Example](./images/img-1631790872.png)\n\nThe above example will return the Vega value of the instrument traded in 1st leg of 2nd Repair once of Set 1",
+    "example_image_urls": [
+        "./images/img-1631790872.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "Vega\nVega keyword returns you the vega value of that particular option.\nThe above example will return the Vega value of the instrument traded in 1st leg of 2nd Repair once of Set 1",
+    "visual_logic_extracted": "Image [img-1631790872.png] Text:\n+\n\nVega\nTraded Instrument Name ( Repair Once, instrument, NIFTY 50, 1, 2, 1)"
+}

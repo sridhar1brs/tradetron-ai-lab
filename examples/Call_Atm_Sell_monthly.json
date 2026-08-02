@@ -1,0 +1,143 @@
+{
+  "_format": "tt-strategy/v2",
+  "_readme": {
+    "about": "Tradetron strategy export. Edit and re-import via the ASB Import button.",
+    "logic": "To change a condition's logic, edit its \"conditionJson\" (the AST). The \"conditionValue\"/\"conditionDisplay\" text is regenerated from it on import.",
+    "legs": "For a leg field that has a \"*Json\" (e.g. \"strikeJson\"), edit the JSON — its text form is regenerated on import. Fields with no \"*Json\" (e.g. \"qty\") are plain text: edit them directly.",
+    "structure": "Add/remove/duplicate legs, conditions or sets by editing the arrays.",
+    "do_not": "Do not add \"*_id\" foreign keys back. Lists referenced by id must be ones you own."
+  },
+  "name": "Call Atm Sell monthly",
+  "description": null,
+  "tags": [],
+  "variables": [],
+  "sets": [
+    {
+      "list": 0,
+      "name": null,
+      "conditions": [
+        {
+          "type": "Entry",
+          "conditionValue": "( tt_Time ( 'NSE' ) >= tt_Number ( '1500' )  )  and ( tt_Today ( 'NFO' ) == tt_curr_monthexpiry ( 'NIFTY 50', '0' )  )",
+          "conditionJson": "{\"operator\":\"and\",\"operands\":[{\"type\":\"rule\",\"value\":\"builder-basic_rule_1\",\"elements\":[{\"name\":\"Time\",\"kid\":2811,\"params\":[{\"type\":\"value\",\"value\":\"NSE\"}]},{\"name\":\">=\",\"params\":[]},{\"name\":\"Number\",\"kid\":9095,\"params\":[{\"type\":\"value\",\"value\":\"1500\"}]}]},{\"type\":\"rule\",\"value\":\"builder-basic_rule_0\",\"elements\":[{\"name\":\"Today\",\"kid\":3227,\"params\":[{\"type\":\"value\",\"value\":\"NFO\"}]},{\"name\":\"==\",\"params\":[]},{\"name\":\"Current Month Expiry\",\"kid\":8484,\"params\":[{\"type\":\"value\",\"value\":\"NIFTY 50\"},{\"type\":\"value\",\"value\":\"0\"}]}]}]}",
+          "conditionDisplay": "( Time ( 'NSE' ) >= Number ( '1500' )  )  and ( Today ( 'NFO' ) == Current Month Expiry ( 'NIFTY 50', '0' )  )",
+          "subType": "None",
+          "visible": 1,
+          "legs": [
+            {
+              "instrument": "1855",
+              "list": 0,
+              "optionType": "CE",
+              "expiryType": "Current Month",
+              "expiry": "tt_curr_monthexpiry('NIFTY 50')",
+              "expiryJson": null,
+              "expiryDisplay": null,
+              "strikeType": "ATM",
+              "strike": "tt_ATM('NIFTY 50')",
+              "strikeJson": null,
+              "strikeDisplay": null,
+              "qty": "tt_lots(1,'INSTRUMENT','CE')",
+              "qtyType": "Lots",
+              "qtyDisplay": "1",
+              "qtyJson": null,
+              "qtyExprDisplay": null,
+              "limitPrice": null,
+              "limitPriceDisplay": null,
+              "limitPriceJson": null,
+              "limitPriceExprDisplay": null,
+              "buySell": "S",
+              "entryLimit": null,
+              "entryTrigger": null,
+              "sLLimit": null,
+              "sLTrigger": null,
+              "sLTriggerDisplay": null,
+              "sLTriggerJson": null,
+              "sLTriggerExprDisplay": null,
+              "targetLimit": null,
+              "targetTrigger": null,
+              "productType": "NRML",
+              "underlyingSymbol": "NIFTY 50",
+              "isOvernightProtectionLeg": "No",
+              "updatedAt": "2026-05-28 16:05:13",
+              "createdAt": "2026-05-28 16:05:13"
+            }
+          ],
+          "extra": {
+            "name": null,
+            "variables": []
+          }
+        },
+        {
+          "type": "Repair Once",
+          "conditionValue": null,
+          "conditionJson": null,
+          "conditionDisplay": null,
+          "subType": "Overnight Protection",
+          "visible": 0,
+          "legs": [],
+          "extra": {
+            "name": null,
+            "variables": []
+          }
+        },
+        {
+          "type": "Universal Exit",
+          "conditionValue": "( tt_Today ( 'NSE' ) == tt_curr_monthexpiry ( 'NIFTY 50', '0' )  )  and ( tt_Time ( 'NSE' ) >= tt_Number ( '1500' )  )",
+          "conditionJson": "{\"operator\":\"and\",\"operands\":[{\"type\":\"rule\",\"value\":\"builder-basic_rule_0\",\"elements\":[{\"name\":\"Today\",\"kid\":1532,\"params\":[{\"type\":\"value\",\"value\":\"NSE\"}]},{\"name\":\"==\",\"params\":[]},{\"name\":\"Current Month Expiry\",\"kid\":1767,\"params\":[{\"type\":\"value\",\"value\":\"NIFTY 50\"},{\"type\":\"value\",\"value\":\"0\"}]}]},{\"type\":\"rule\",\"value\":\"builder-basic_rule_1\",\"elements\":[{\"name\":\"Time\",\"kid\":6238,\"params\":[{\"type\":\"value\",\"value\":\"NSE\"}]},{\"name\":\">=\",\"params\":[]},{\"name\":\"Number\",\"kid\":6487,\"params\":[{\"type\":\"value\",\"value\":\"1500\"}]}]}]}",
+          "conditionDisplay": "( Today ( 'NSE' ) == Current Month Expiry ( 'NIFTY 50', '0' )  )  and ( Time ( 'NSE' ) >= Number ( '1500' )  )",
+          "subType": "None",
+          "visible": 1,
+          "legs": [],
+          "extra": {
+            "name": null,
+            "variables": []
+          }
+        }
+      ]
+    }
+  ],
+  "currency": "INR",
+  "priceExecution": "Market Price",
+  "tranchSize": 100,
+  "tslToCostAtProfit": 0,
+  "tslProfitIncrease": 0,
+  "tslSlIncrease": 0,
+  "runFrequency": "Continuous",
+  "firstTradeAfterOpen": 1,
+  "lastTradeBeforeClose": 60,
+  "rolloverExpiryPeriod": "Dont Rollover",
+  "capitalRequired": 100000,
+  "priceRevisionAttempts": 1,
+  "tranchWaitSecs": 1,
+  "exitShortsFirst": 0,
+  "priceRevisionTimeout": 0,
+  "reactivateEvery": 360,
+  "finalAction": "MARKET",
+  "exitAtMarket": 0,
+  "runEvery": 1,
+  "rolloverExpiryTime": "1500",
+  "priceTicksMultiple": "1",
+  "pythonCode": null,
+  "isPublic": 0,
+  "minMultiple": 1,
+  "maxMultiple": 100,
+  "freePeriod": null,
+  "fixedFee": "0.00",
+  "fixedFeePeriod": "1",
+  "variableFee": "0.00",
+  "hurdleRate": 0,
+  "recreatePositionsInNewFollowers": "No",
+  "allowDuplication": 0,
+  "confirmationPerSubscriber": 0,
+  "hideSubscribers": "No",
+  "strategyPublicLinkAccess": "Yes",
+  "strategyPublicLink": null,
+  "displayPositionsToNonSubscribers": 0,
+  "highWatermark": "Yes",
+  "showLiveAutoDeployment": 0,
+  "feeShare": null,
+  "isApproved": 0,
+  "feeFrequency": "Month",
+  "backtestLinkSubscribers": null,
+  "backtestLinkNonsubscribers": null
+}

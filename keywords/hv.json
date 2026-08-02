@@ -1,0 +1,18 @@
+{
+    "name": "HV",
+    "description": "This keyword returns the Historical Volatility, the output ranges from 0 to 1.",
+    "how_to_use_markdown": "This keyword returns the Historical Volatility, the output ranges from 0 to 1.\n\nIf you want to compare with Implied volatility, make sure to multiply by 100 to get in percentage terms\n\n![Example](./images/img-1632135996.png)",
+    "example_image_urls": [
+        "./images/img-1632135996.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "HV\nThis keyword returns the Historical Volatility, the output ranges from 0 to 1.\nIf you want to compare with Implied volatility, make sure to multiply by 100 to get in percentage terms",
+    "visual_logic_extracted": "Image [img-1632135996.png] Text:\nrx)\n\nPosition >= Number\nHV ( CLOSE ( Symbol ( Instrument Name ( NFO,NIFTY 50,,,,,), day, All) ), 20), -1 0.30"
+}

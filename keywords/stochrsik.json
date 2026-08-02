@@ -1,0 +1,18 @@
+{
+    "name": "StochRsiK",
+    "description": "This keyword returns the Stochastic Oscillator value of the K line plotted on RSI. This keyword like all technical indicators are to be used under the Position keyword",
+    "how_to_use_markdown": "This keyword returns the Stochastic Oscillator value of the K line plotted on RSI. This keyword like all technical indicators are to be used under the Position keyword\n\n![Example](./images/img-1632145861.png)\n\nThe above condition is checking if Previous day(-1)  Stochastic Oscillator value of the D line is greater than Previous day(-1)  Stochastic Oscillator value of the K line both plotted on RSI.\n\nA stochastic oscillator is a popular technical indicator for generating overbought and oversold signals. These indicators are plotted on RSI. Read more about Stock K and D here - https://www.investopedia.com/terms/s/stochasticoscillator.asp",
+    "example_image_urls": [
+        "./images/img-1632145861.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "StochRsiK\nThis keyword returns the Stochastic Oscillator value of the K line plotted on RSI. This keyword like all technical indicators are to be used under the Position keyword\nThe above condition is checking if Previous day(-1) \nStochastic Oscillator value of the D line is greater than Previous day(-1) \nStochastic Oscillator value of the K line both plotted on RSI.\u00a0\nA stochastic oscillator is a popular technical indicator for generating overbought and oversold signals. These indicators are plotted on RSI.\nRead more about Stock K and D here -\nhttps://www.investopedia.com/terms/s/stochasticoscillator.asp",
+    "visual_logic_extracted": "Image [img-1632145861.png] Text:\n\u00a9\n\nPosition\n\u2018StochRsiD ( CLOSE ( Symbol (Instrument Name ( NFO.NIFTY 50,\n\nPosition\n\u2018StochRsit CLOSE ( Symbol (Instrument Name (NFONIFTY 50,\n\n69y All)),14,5,2) +1\n\nday. A)). 14.5.3)"
+}

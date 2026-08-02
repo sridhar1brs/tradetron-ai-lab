@@ -1,0 +1,235 @@
+{
+  "_format": "tt-strategy/v2",
+  "_readme": {
+    "about": "Tradetron strategy export. Edit and re-import via the ASB Import button.",
+    "logic": "To change a condition's logic, edit its \"conditionJson\" (the AST). The \"conditionValue\"/\"conditionDisplay\" text is regenerated from it on import.",
+    "legs": "For a leg field that has a \"*Json\" (e.g. \"strikeJson\"), edit the JSON — its text form is regenerated on import. Fields with no \"*Json\" (e.g. \"qty\") are plain text: edit them directly.",
+    "structure": "Add/remove/duplicate legs, conditions or sets by editing the arrays.",
+    "do_not": "Do not add \"*_id\" foreign keys back. Lists referenced by id must be ones you own."
+  },
+  "name": "Copy of Mean reversion Bollinger Bands",
+  "description": "<p>Intraday mean reversion strategy using Bollinger Bands indicator.</p><br><p>long trade initiates when close crosses above lower BB</p><p>Exit on target, SL or when close crosses above upper BB. whichever condition occurs first.</p><br><p>short trade initiated when close crosses below upper BB</p><p>Exit on target, SL or when close crosses below lower BB. whichever condition occurs first.</p><br><br><p>entry time - before 11 AM</p><p>SL - 1%</p><p>Target - 3%</p><p>exit time - 3 PM</p><br>",
+  "tags": [],
+  "variables": [],
+  "sets": [
+    {
+      "list": 45,
+      "name": null,
+      "conditions": [
+        {
+          "type": "Entry",
+          "conditionValue": "( tt_Time ( 'NSE' ) < tt_Number ( '1100' )  )  and ( tt_get_element ( tt_CLOSE ( tt_get_data ( tt_get_instrument ( 'NSE,|FnO|,,,,,' ) , '10m', '300' )  ) , '-1' ) > tt_get_element ( tt_LowerBolinger ( tt_CLOSE ( tt_get_data ( tt_get_instrument ( 'NSE,|FnO|,,,,,' ) , '10m', '300' )  ) , '20', '2.5' ) , '-1' )  )  and ( tt_get_element ( tt_CLOSE ( tt_get_data ( tt_get_instrument ( 'NSE,|FnO|,,,,,' ) , '10m', '300' )  ) , '-2' ) < tt_get_element ( tt_LowerBolinger ( tt_CLOSE ( tt_get_data ( tt_get_instrument ( 'NSE,|FnO|,,,,,' ) , '10m', '300' )  ) , '20', '2.5' ) , '-2' )  )  and ( tt_position_value ( 'strategy_id', 'run_counter', 'Entry', 'All', 'All', 'value', '|FnO|' ) == tt_Number ( '0' )  )",
+          "conditionJson": "{\"operator\":\"and\",\"operands\":[{\"type\":\"rule\",\"value\":\"builder-basic_rule_0\",\"elements\":[{\"name\":\"Time\",\"kid\":1147,\"params\":[{\"type\":\"value\",\"value\":\"NSE\"}]},{\"name\":\"<\",\"params\":[]},{\"name\":\"Number\",\"kid\":7078,\"params\":[{\"type\":\"value\",\"value\":\"1100\"}]}]},{\"type\":\"rule\",\"value\":\"builder-basic_rule_1\",\"elements\":[{\"name\":\"Position\",\"kid\":3959,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"CLOSE\",\"kid\":5191,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Symbol\",\"kid\":3148,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Instrument Name\",\"kid\":4982,\"params\":[{\"type\":\"value\",\"value\":\"NSE,|FnO|,,,,,\"}]}},{\"type\":\"value\",\"value\":\"10m\"},{\"type\":\"value\",\"value\":\"300\"}]}}]}},{\"type\":\"value\",\"value\":\"-1\"}]},{\"name\":\">\",\"params\":[]},{\"name\":\"Position\",\"kid\":9885,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Lower Bolinger\",\"kid\":7495,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"CLOSE\",\"kid\":2184,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Symbol\",\"kid\":1654,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Instrument Name\",\"kid\":2135,\"params\":[{\"type\":\"value\",\"value\":\"NSE,|FnO|,,,,,\"}]}},{\"type\":\"value\",\"value\":\"10m\"},{\"type\":\"value\",\"value\":\"300\"}]}}]}},{\"type\":\"value\",\"value\":\"20\"},{\"type\":\"value\",\"value\":\"2.5\"}]}},{\"type\":\"value\",\"value\":\"-1\"}]}]},{\"type\":\"rule\",\"value\":\"builder-basic_rule_2\",\"elements\":[{\"name\":\"Position\",\"kid\":3959,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"CLOSE\",\"kid\":5191,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Symbol\",\"kid\":3148,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Instrument Name\",\"kid\":4982,\"params\":[{\"type\":\"value\",\"value\":\"NSE,|FnO|,,,,,\"}]}},{\"type\":\"value\",\"value\":\"10m\"},{\"type\":\"value\",\"value\":\"300\"}]}}]}},{\"type\":\"value\",\"value\":\"-2\"}]},{\"name\":\"<\",\"params\":[]},{\"name\":\"Position\",\"kid\":9885,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Lower Bolinger\",\"kid\":7495,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"CLOSE\",\"kid\":2184,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Symbol\",\"kid\":1654,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Instrument Name\",\"kid\":2135,\"params\":[{\"type\":\"value\",\"value\":\"NSE,|FnO|,,,,,\"}]}},{\"type\":\"value\",\"value\":\"10m\"},{\"type\":\"value\",\"value\":\"300\"}]}}]}},{\"type\":\"value\",\"value\":\"20\"},{\"type\":\"value\",\"value\":\"2.5\"}]}},{\"type\":\"value\",\"value\":\"-2\"}]}]},{\"type\":\"rule\",\"value\":\"builder-basic_rule_3\",\"elements\":[{\"name\":\"Positions Detail\",\"kid\":9931,\"params\":[{\"type\":\"value\",\"value\":\"Entry\"},{\"type\":\"value\",\"value\":\"All\"},{\"type\":\"value\",\"value\":\"All\"},{\"type\":\"value\",\"value\":\"value\"},{\"type\":\"value\",\"value\":\"|FnO|\"}]},{\"name\":\"==\",\"params\":[]},{\"name\":\"Number\",\"kid\":6768,\"params\":[{\"type\":\"value\",\"value\":\"0\"}]}]}]}",
+          "conditionDisplay": "( Time ( 'NSE' ) < Number ( '1100' )  )  and ( Position ( CLOSE ( Symbol ( Instrument Name ( 'NSE,|FnO|,,,,,' ) , '10m', '300' )  ) , '-1' ) > Position ( Lower Bolinger ( CLOSE ( Symbol ( Instrument Name ( 'NSE,|FnO|,,,,,' ) , '10m', '300' )  ) , '20', '2.5' ) , '-1' )  )  and ( Position ( CLOSE ( Symbol ( Instrument Name ( 'NSE,|FnO|,,,,,' ) , '10m', '300' )  ) , '-2' ) < Position ( Lower Bolinger ( CLOSE ( Symbol ( Instrument Name ( 'NSE,|FnO|,,,,,' ) , '10m', '300' )  ) , '20', '2.5' ) , '-2' )  )  and ( Positions Detail ( 'strategy_id', 'run_counter', 'Entry', 'All', 'All', 'value', '|FnO|' ) == Number ( '0' )  )",
+          "subType": "None",
+          "visible": 1,
+          "legs": [
+            {
+              "instrument": 0,
+              "list": 45,
+              "optionType": null,
+              "expiry": "tt_curr_monthexpiry('INSTRUMENT')",
+              "expiryType": "Current Month",
+              "expiryJson": null,
+              "expiryDisplay": null,
+              "strikeType": "ATM",
+              "strike": null,
+              "strikeJson": null,
+              "strikeDisplay": null,
+              "qty": "tt_lots(1,'INSTRUMENT','F')",
+              "qtyType": "Lots",
+              "qtyDisplay": "1",
+              "qtyJson": null,
+              "qtyExprDisplay": null,
+              "buySell": "B",
+              "totalValue": null,
+              "limitPrice": null,
+              "limitPriceJson": null,
+              "limitPriceDisplay": null,
+              "limitPriceExprDisplay": null,
+              "entryTrigger": null,
+              "entryLimit": null,
+              "sLTrigger": null,
+              "sLTriggerJson": null,
+              "sLTriggerDisplay": null,
+              "sLTriggerExprDisplay": null,
+              "sLLimit": null,
+              "targetTrigger": null,
+              "targetLimit": null,
+              "isOvernightProtectionLeg": "No",
+              "productType": "MIS",
+              "underlyingSymbol": null,
+              "tmp": 0,
+              "updatedAt": "2026-08-01 14:17:17",
+              "createdAt": "2026-08-01 14:17:17"
+            }
+          ],
+          "extra": {
+            "name": null,
+            "variables": []
+          }
+        },
+        {
+          "type": "Exit",
+          "conditionValue": "( tt_get_var ( tt_get_future_instrument ( '|FnO|' ) , 'LTP' ) > tt_get_runtime ( 'strategy_id', '|FnO|', 'EntryPrice' ) * tt_Number ( '1.03' )  )  or ( tt_get_var ( tt_get_future_instrument ( '|FnO|' ) , 'LTP' ) < tt_get_runtime ( 'strategy_id', '|FnO|', 'EntryPrice' ) * tt_Number ( '0.99' )  )",
+          "conditionJson": "{\"operator\":\"or\",\"operands\":[{\"type\":\"rule\",\"value\":\"builder-basic_rule_0\",\"elements\":[{\"name\":\"LTP\",\"kid\":9701,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Futures\",\"kid\":7702,\"params\":[{\"type\":\"value\",\"value\":\"|FnO|\"}]}}]},{\"name\":\">\",\"params\":[]},{\"name\":\"EntryPrice\",\"kid\":7879,\"params\":[{\"type\":\"value\",\"value\":\"|FnO|\"}]},{\"name\":\"*\",\"params\":[]},{\"name\":\"Number\",\"kid\":4551,\"params\":[{\"type\":\"value\",\"value\":\"1.03\"}]}]},{\"type\":\"rule\",\"value\":\"builder-basic_rule_1\",\"elements\":[{\"name\":\"LTP\",\"kid\":9701,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Futures\",\"kid\":7702,\"params\":[{\"type\":\"value\",\"value\":\"|FnO|\"}]}}]},{\"name\":\"<\",\"params\":[]},{\"name\":\"EntryPrice\",\"kid\":7879,\"params\":[{\"type\":\"value\",\"value\":\"|FnO|\"}]},{\"name\":\"*\",\"params\":[]},{\"name\":\"Number\",\"kid\":4551,\"params\":[{\"type\":\"value\",\"value\":\"0.99\"}]}]}]}",
+          "conditionDisplay": "( LTP ( Futures ( '|FnO|' ) , 'LTP' ) > EntryPrice ( 'strategy_id', '|FnO|', 'EntryPrice' ) * Number ( '1.03' )  )  or ( LTP ( Futures ( '|FnO|' ) , 'LTP' ) < EntryPrice ( 'strategy_id', '|FnO|', 'EntryPrice' ) * Number ( '0.99' )  )",
+          "subType": "None",
+          "visible": 1,
+          "legs": [],
+          "extra": {
+            "name": null,
+            "variables": []
+          }
+        }
+      ]
+    },
+    {
+      "list": 45,
+      "name": null,
+      "conditions": [
+        {
+          "type": "Entry",
+          "conditionValue": "( tt_Time ( 'NSE' ) < tt_Number ( '1100' )  )  and ( tt_get_element ( tt_CLOSE ( tt_get_data ( tt_get_instrument ( 'NSE,|FnO|,,,,,' ) , '10m', '300' )  ) , '-1' ) < tt_get_element ( tt_UpperBolinger ( tt_CLOSE ( tt_get_data ( tt_get_instrument ( 'NSE,|FnO|,,,,,' ) , '10m', '300' )  ) , '20', '2.5' ) , '-1' )  )  and ( tt_get_element ( tt_CLOSE ( tt_get_data ( tt_get_instrument ( 'NSE,|FnO|,,,,,' ) , '10m', '300' )  ) , '-2' ) > tt_get_element ( tt_UpperBolinger ( tt_CLOSE ( tt_get_data ( tt_get_instrument ( 'NSE,|FnO|,,,,,' ) , '10m', '300' )  ) , '20', '2.5' ) , '-2' )  )  and ( tt_position_value ( 'strategy_id', 'run_counter', 'Entry', 'All', 'All', 'value', '|FnO|' ) == tt_Number ( '0' )  )",
+          "conditionJson": "{\"operator\":\"and\",\"operands\":[{\"type\":\"rule\",\"value\":\"builder-basic_rule_0\",\"elements\":[{\"name\":\"Time\",\"kid\":1147,\"params\":[{\"type\":\"value\",\"value\":\"NSE\"}]},{\"name\":\"<\",\"params\":[]},{\"name\":\"Number\",\"kid\":7078,\"params\":[{\"type\":\"value\",\"value\":\"1100\"}]}]},{\"type\":\"rule\",\"value\":\"builder-basic_rule_1\",\"elements\":[{\"name\":\"Position\",\"kid\":3959,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"CLOSE\",\"kid\":5191,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Symbol\",\"kid\":3148,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Instrument Name\",\"kid\":4982,\"params\":[{\"type\":\"value\",\"value\":\"NSE,|FnO|,,,,,\"}]}},{\"type\":\"value\",\"value\":\"10m\"},{\"type\":\"value\",\"value\":\"300\"}]}}]}},{\"type\":\"value\",\"value\":\"-1\"}]},{\"name\":\"<\",\"params\":[]},{\"name\":\"Position\",\"kid\":9885,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Upper Bolinger\",\"kid\":1856,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"CLOSE\",\"kid\":9319,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Symbol\",\"kid\":9939,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Instrument Name\",\"kid\":2146,\"params\":[{\"type\":\"value\",\"value\":\"NSE,|FnO|,,,,,\"}]}},{\"type\":\"value\",\"value\":\"10m\"},{\"type\":\"value\",\"value\":\"300\"}]}}]}},{\"type\":\"value\",\"value\":\"20\"},{\"type\":\"value\",\"value\":\"2.5\"}]}},{\"type\":\"value\",\"value\":\"-1\"}]}]},{\"type\":\"rule\",\"value\":\"builder-basic_rule_2\",\"elements\":[{\"name\":\"Position\",\"kid\":3959,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"CLOSE\",\"kid\":5191,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Symbol\",\"kid\":3148,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Instrument Name\",\"kid\":4982,\"params\":[{\"type\":\"value\",\"value\":\"NSE,|FnO|,,,,,\"}]}},{\"type\":\"value\",\"value\":\"10m\"},{\"type\":\"value\",\"value\":\"300\"}]}}]}},{\"type\":\"value\",\"value\":\"-2\"}]},{\"name\":\">\",\"params\":[]},{\"name\":\"Position\",\"kid\":9885,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Upper Bolinger\",\"kid\":1856,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"CLOSE\",\"kid\":9319,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Symbol\",\"kid\":9939,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Instrument Name\",\"kid\":2146,\"params\":[{\"type\":\"value\",\"value\":\"NSE,|FnO|,,,,,\"}]}},{\"type\":\"value\",\"value\":\"10m\"},{\"type\":\"value\",\"value\":\"300\"}]}}]}},{\"type\":\"value\",\"value\":\"20\"},{\"type\":\"value\",\"value\":\"2.5\"}]}},{\"type\":\"value\",\"value\":\"-2\"}]}]},{\"type\":\"rule\",\"value\":\"builder-basic_rule_3\",\"elements\":[{\"name\":\"Positions Detail\",\"kid\":4282,\"params\":[{\"type\":\"value\",\"value\":\"Entry\"},{\"type\":\"value\",\"value\":\"All\"},{\"type\":\"value\",\"value\":\"All\"},{\"type\":\"value\",\"value\":\"value\"},{\"type\":\"value\",\"value\":\"|FnO|\"}]},{\"name\":\"==\",\"params\":[]},{\"name\":\"Number\",\"kid\":2108,\"params\":[{\"type\":\"value\",\"value\":\"0\"}]}]}]}",
+          "conditionDisplay": "( Time ( 'NSE' ) < Number ( '1100' )  )  and ( Position ( CLOSE ( Symbol ( Instrument Name ( 'NSE,|FnO|,,,,,' ) , '10m', '300' )  ) , '-1' ) < Position ( Upper Bolinger ( CLOSE ( Symbol ( Instrument Name ( 'NSE,|FnO|,,,,,' ) , '10m', '300' )  ) , '20', '2.5' ) , '-1' )  )  and ( Position ( CLOSE ( Symbol ( Instrument Name ( 'NSE,|FnO|,,,,,' ) , '10m', '300' )  ) , '-2' ) > Position ( Upper Bolinger ( CLOSE ( Symbol ( Instrument Name ( 'NSE,|FnO|,,,,,' ) , '10m', '300' )  ) , '20', '2.5' ) , '-2' )  )  and ( Positions Detail ( 'strategy_id', 'run_counter', 'Entry', 'All', 'All', 'value', '|FnO|' ) == Number ( '0' )  )",
+          "subType": "None",
+          "visible": 1,
+          "legs": [
+            {
+              "instrument": 0,
+              "list": 45,
+              "optionType": null,
+              "expiry": "tt_curr_monthexpiry('INSTRUMENT')",
+              "expiryType": "Current Month",
+              "expiryJson": null,
+              "expiryDisplay": null,
+              "strikeType": "ATM",
+              "strike": null,
+              "strikeJson": null,
+              "strikeDisplay": null,
+              "qty": "tt_lots(1,'INSTRUMENT','F')",
+              "qtyType": "Lots",
+              "qtyDisplay": "1",
+              "qtyJson": null,
+              "qtyExprDisplay": null,
+              "buySell": "S",
+              "totalValue": null,
+              "limitPrice": null,
+              "limitPriceJson": null,
+              "limitPriceDisplay": null,
+              "limitPriceExprDisplay": null,
+              "entryTrigger": null,
+              "entryLimit": null,
+              "sLTrigger": null,
+              "sLTriggerJson": null,
+              "sLTriggerDisplay": null,
+              "sLTriggerExprDisplay": null,
+              "sLLimit": null,
+              "targetTrigger": null,
+              "targetLimit": null,
+              "isOvernightProtectionLeg": "No",
+              "productType": "MIS",
+              "underlyingSymbol": null,
+              "tmp": 0,
+              "updatedAt": "2026-08-01 14:17:17",
+              "createdAt": "2026-08-01 14:17:17"
+            }
+          ],
+          "extra": {
+            "name": null,
+            "variables": []
+          }
+        },
+        {
+          "type": "Exit",
+          "conditionValue": "( tt_get_var ( tt_get_future_instrument ( '|FnO|' ) , 'LTP' ) < tt_get_runtime ( 'strategy_id', '|FnO|', 'EntryPrice' ) * tt_Number ( '1.03' )  )  or ( tt_get_var ( tt_get_future_instrument ( '|FnO|' ) , 'LTP' ) > tt_get_runtime ( 'strategy_id', '|FnO|', 'EntryPrice' ) * tt_Number ( '0.99' )  )",
+          "conditionJson": "{\"operator\":\"or\",\"operands\":[{\"type\":\"rule\",\"value\":\"builder-basic_rule_0\",\"elements\":[{\"name\":\"LTP\",\"kid\":9701,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Futures\",\"kid\":7702,\"params\":[{\"type\":\"value\",\"value\":\"|FnO|\"}]}}]},{\"name\":\"<\",\"params\":[]},{\"name\":\"EntryPrice\",\"kid\":7879,\"params\":[{\"type\":\"value\",\"value\":\"|FnO|\"}]},{\"name\":\"*\",\"params\":[]},{\"name\":\"Number\",\"kid\":4551,\"params\":[{\"type\":\"value\",\"value\":\"1.03\"}]}]},{\"type\":\"rule\",\"value\":\"builder-basic_rule_1\",\"elements\":[{\"name\":\"LTP\",\"kid\":9701,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Futures\",\"kid\":7702,\"params\":[{\"type\":\"value\",\"value\":\"|FnO|\"}]}}]},{\"name\":\">\",\"params\":[]},{\"name\":\"EntryPrice\",\"kid\":7879,\"params\":[{\"type\":\"value\",\"value\":\"|FnO|\"}]},{\"name\":\"*\",\"params\":[]},{\"name\":\"Number\",\"kid\":4551,\"params\":[{\"type\":\"value\",\"value\":\"0.99\"}]}]}]}",
+          "conditionDisplay": "( LTP ( Futures ( '|FnO|' ) , 'LTP' ) < EntryPrice ( 'strategy_id', '|FnO|', 'EntryPrice' ) * Number ( '1.03' )  )  or ( LTP ( Futures ( '|FnO|' ) , 'LTP' ) > EntryPrice ( 'strategy_id', '|FnO|', 'EntryPrice' ) * Number ( '0.99' )  )",
+          "subType": "None",
+          "visible": 1,
+          "legs": [],
+          "extra": {
+            "name": null,
+            "variables": []
+          }
+        }
+      ]
+    },
+    {
+      "name": null,
+      "conditions": [
+        {
+          "type": "Repair Once",
+          "conditionValue": null,
+          "conditionJson": null,
+          "conditionDisplay": null,
+          "subType": "Overnight Protection",
+          "visible": 0,
+          "legs": [],
+          "extra": {
+            "name": null,
+            "variables": []
+          }
+        },
+        {
+          "type": "Universal Exit",
+          "conditionValue": "( tt_Time ( 'NSE' ) > tt_Number ( '1500' )  )",
+          "conditionJson": "{\"operator\":\"and\",\"operands\":[{\"type\":\"rule\",\"value\":\"builder-basic_rule_0\",\"elements\":[{\"name\":\"Time\",\"kid\":1108,\"params\":[{\"type\":\"value\",\"value\":\"NSE\"}]},{\"name\":\">\",\"params\":[]},{\"name\":\"Number\",\"kid\":6291,\"params\":[{\"type\":\"value\",\"value\":\"1500\"}]}]}]}",
+          "conditionDisplay": "( Time ( 'NSE' ) > Number ( '1500' )  )",
+          "subType": "None",
+          "visible": 1,
+          "legs": [],
+          "extra": {
+            "name": null,
+            "variables": []
+          }
+        }
+      ]
+    }
+  ],
+  "currency": "USD",
+  "priceExecution": "Market Price",
+  "tranchSize": 100,
+  "tslToCostAtProfit": 20000,
+  "tslProfitIncrease": 1,
+  "tslSlIncrease": 1,
+  "runFrequency": "Continuous",
+  "firstTradeAfterOpen": 300,
+  "lastTradeBeforeClose": 300,
+  "rolloverExpiryPeriod": "Dont Rollover",
+  "capitalRequired": 200000,
+  "priceRevisionAttempts": 4,
+  "tranchWaitSecs": 1,
+  "exitShortsFirst": 0,
+  "priceRevisionTimeout": 0,
+  "reactivateEvery": 360,
+  "finalAction": "MARKET",
+  "exitAtMarket": 0,
+  "runEvery": 60,
+  "rolloverExpiryTime": "1500",
+  "priceTicksMultiple": "2",
+  "pythonCode": null,
+  "isPublic": 0,
+  "minMultiple": 1,
+  "maxMultiple": 100,
+  "freePeriod": 1,
+  "fixedFee": "0.00",
+  "fixedFeePeriod": "1",
+  "variableFee": "0.00",
+  "hurdleRate": 6,
+  "recreatePositionsInNewFollowers": "No",
+  "allowDuplication": 1,
+  "confirmationPerSubscriber": 0,
+  "hideSubscribers": "No",
+  "strategyPublicLinkAccess": "Yes",
+  "strategyPublicLink": "a",
+  "displayPositionsToNonSubscribers": 1,
+  "highWatermark": "Yes",
+  "showLiveAutoDeployment": 0,
+  "feeShare": "1.00",
+  "isApproved": 1,
+  "feeFrequency": "Month",
+  "backtestLinkSubscribers": "None",
+  "backtestLinkNonsubscribers": "None"
+}

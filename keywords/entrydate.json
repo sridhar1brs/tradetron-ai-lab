@@ -1,0 +1,18 @@
+{
+    "name": "EntryDate",
+    "description": "This keyword will return the latest date on which the entry legs of the selected underlying executed",
+    "how_to_use_markdown": "This keyword will return the latest date on which the entry legs of the selected underlying executed\n\nThe output will be a string in the\u00a0format YYYY-MM-DD\n\n![Example](./images/img-1631883889.png)",
+    "example_image_urls": [
+        "./images/img-1631883889.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "EntryDate\nThis keyword will return the latest date on which the entry legs of the selected underlying executed\u00a0\nThe output will be a string in the\u00a0format YYYY-MM-DD",
+    "visual_logic_extracted": "Image [img-1631883889.png] Text:\nEntryDate\nNIFTY 50"
+}

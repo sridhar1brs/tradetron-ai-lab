@@ -1,0 +1,18 @@
+{
+    "name": "Harmonic Mean",
+    "description": "This keyword returns the Harmonic mean of any period of any series of the selected Instrument. This keyword is to be used under the position keyword",
+    "how_to_use_markdown": "This keyword returns the Harmonic mean of any period of any series of the selected Instrument. This keyword is to be used under the position keyword\n\n![Example](./images/img-1632397262.png)\n\nYou can fetch the Harmonic mean on any series, like close in the above example, you can also plot EMA of RSI, OPEN etc",
+    "example_image_urls": [
+        "./images/img-1632397262.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "Harmonic Mean\nThis keyword returns the Harmonic mean of any period of any series of the selected Instrument. This keyword is to be used under the position keyword\nYou can fetch the Harmonic mean on any series, like close in the above example, you can also plot EMA of RSI, OPEN etc",
+    "visual_logic_extracted": "Image [img-1632397262.png] Text:\nPosition\n\nHarmonic Mean ( CLOSE ( Symbol ( Instrument Name ( NFO,NIFTY 50...) day, All) ), 20), -1"
+}

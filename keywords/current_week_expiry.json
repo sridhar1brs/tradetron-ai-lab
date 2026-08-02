@@ -1,0 +1,19 @@
+{
+    "name": "Current Week Expiry",
+    "description": "This keyword returns the current weekly expiry date of the instrument as a string in the format\u00a0YYYY-MM-DD",
+    "how_to_use_markdown": "This keyword returns the current weekly expiry date of the instrument as a string in the format\u00a0 YYYY-MM-DD\n\nPlease make sure not to use stocks in this as they don\u2019t have weekly expiries.\n\nThis keyword can be used in condition builder as well as expiry FX in position builder\n\n![Example](./images/img-1631877104.png)\n\nThe above example can be used in condition builder to check if current day is weekly expiry\n\n![Example](./images/img-1631877170.png)\n\nThe above condition can be used in the expiry FX of the position builder to trade next week expiry",
+    "example_image_urls": [
+        "./images/img-1631877104.png",
+        "./images/img-1631877170.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "Current Week Expiry\nThis keyword returns the current weekly expiry date of the instrument as a string in the format\u00a0\nYYYY-MM-DD\n\u00a0\n\u00a0Please make sure not to use stocks in this as they don\u2019t have weekly expiries.\nThis keyword can be used in condition builder as well as expiry FX in position builder\nThe above example can be used in condition builder to check if current day is weekly expiry\u00a0\nThe above condition can be used in the expiry FX of the position builder to trade next week expiry",
+    "visual_logic_extracted": "Image [img-1631877104.png] Text:\n\u00a9\nToday == Current Week Expiry\nNSE NIFTY 50, 0\n\nImage [img-1631877170.png] Text:\nCurrent Week Expiry\nNIFTY 50, 1"
+}

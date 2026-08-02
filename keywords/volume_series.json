@@ -1,0 +1,18 @@
+{
+    "name": "Volume series",
+    "description": "This keyword returns the Volume of the selected Instrument for the selected timeframe. This keyword is to be used under the position keyword",
+    "how_to_use_markdown": "This keyword returns the Volume of the selected Instrument for the selected timeframe. This keyword is to be used under the position keyword\n\n![Example](./images/img-1632310002.png)\n\nThe above conditon will return the previous 15min candle Volume of NIFTY 50 current month futures chart.\n\nPlease note that, Volume series cannot be used on spot as spot indexes dont have volumes, need to select futures chart",
+    "example_image_urls": [
+        "./images/img-1632310002.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "Volume series\nThis keyword returns the Volume of the selected Instrument for the selected timeframe. This keyword is to be used under the position keyword\nThe above conditon will return the previous 15min candle Volume of NIFTY 50 current month futures chart.\nPlease note that, Volume series cannot be used on spot as spot indexes dont have volumes, need to select futures chart",
+    "visual_logic_extracted": "Image [img-1632310002.png] Text:\nPosition\nVolume series ( Instrument Name ( NFO,NIFTY 50,Current Month,,,, ), 15m, All) , -1"
+}

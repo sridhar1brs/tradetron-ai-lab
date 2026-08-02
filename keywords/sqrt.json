@@ -1,0 +1,19 @@
+{
+    "name": "Sqrt",
+    "description": "This keyword is used to take a square root of the entire series /array of the selected instrument. This keyword is to be used under the position keyword",
+    "how_to_use_markdown": "This keyword is used to take a square root of the entire series /array of the selected instrument. This keyword is to be used under the position keyword\n\n![Example](./images/img-1632225174.png)\n\n![Example](./images/img-1632225399.png)\n\nThe above example will take the square root of all the close values of the NIFTY 50 series and output the -1 value",
+    "example_image_urls": [
+        "./images/img-1632225174.png",
+        "./images/img-1632225399.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "Sqrt\nThis keyword is used to take a square root of the entire series /array of the selected instrument. This keyword is to be used under the position keyword\nThe above example will take the square root of all the close values of the NIFTY 50 series and output the -1 value",
+    "visual_logic_extracted": "Image [img-1632225174.png] Text:\na\nPosition\nSqrt ( CLOSE ( Symbol ( Instrument Name ( NFO,NIFTY 50,,,,, ), day, All) )), -1"
+}

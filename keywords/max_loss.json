@@ -1,0 +1,18 @@
+{
+    "name": "Max Loss",
+    "description": "",
+    "how_to_use_markdown": "### This keyword will fetch the maximum loss achieved by the strategy during one run counter of the same. Max loss is a strategy level keyword and will take into account the total realized and unrealized loss of all positions taken. Max loss should ideally be multiplied with the multiplier as shown in the image below in the Universal exit of a strategy.\n\n### In the example below it is checking that if max loss is greater than 1000 then condition will be true\n\n![Example](./images/img-1643611499.JPG)",
+    "example_image_urls": [
+        "./images/img-1643611499.JPG"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "Max Loss\nThis keyword will fetch the maximum loss achieved by the strategy during one run counter of the same. Max loss is a strategy level keyword and will take into account the total realized and unrealized loss of all positions taken. Max loss should ideally be multiplied with the multiplier as shown in the image below in the Universal exit of a strategy.\nIn the example below it is checking that if max loss is greater than 1000 then condition will be true",
+    "visual_logic_extracted": "Image [img-1643611499.JPG] Text:\nMax Loss <= Number * Multiplier\n-1000"
+}

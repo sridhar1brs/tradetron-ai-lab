@@ -1,0 +1,18 @@
+{
+    "name": "Min",
+    "description": "This keyword returns the minimum value of the two inputs.",
+    "how_to_use_markdown": "This keyword returns the minimum value of the two inputs.\n\n![Example](./images/img-1632310972.png)\n\nThe above condition will return the minimum value, in this case 50\n\nYou can also input different series like close, EMA and find the minimum of the two. Make sure to use position keyword while selecting series as input",
+    "example_image_urls": [
+        "./images/img-1632310972.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "Min\nThis keyword returns the minimum value of the two inputs.\nThe above condition will return the minimum value, in this case 50\nYou can also input different series like close, EMA and find the minimum of the two. Make sure to use position keyword while selecting series as input",
+    "visual_logic_extracted": "Image [img-1632310972.png] Text:\nMin\nNumber ( 500 ) , Number ( 50 )"
+}

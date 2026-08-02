@@ -1,0 +1,19 @@
+{
+    "name": "Net Theta",
+    "description": "This keyword returns the Net Theta of open positions in selected underlying for strategy.",
+    "how_to_use_markdown": "This keyword returns the Net Theta of open positions in selected underlying for strategy.\n\nEg. Net Theta('NIFTY 50') as float\n\n![Example](./images/img-1631791769.png)\n\n![Example](./images/img-1631791822.png)",
+    "example_image_urls": [
+        "./images/img-1631791769.png",
+        "./images/img-1631791822.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "Net Theta\nThis keyword returns the Net Theta of open positions in selected underlying for strategy.\u00a0\nEg. Net Theta('NIFTY 50') as float",
+    "visual_logic_extracted": "Image [img-1631791769.png] Text:\nNet Theta\nNIFTY 50\n\nImage [img-1631791822.png] Text:\nNet Theta = >) xy, where x = Theta and y = open quantity"
+}

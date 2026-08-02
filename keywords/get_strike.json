@@ -1,0 +1,18 @@
+{
+    "name": "Get Strike",
+    "description": "It is generally used in Strike FX of position builder.",
+    "how_to_use_markdown": "Get strike keyword returns the strike based on the value/condition set in it.\n\nIt is generally used in Strike FX of position builder.\n\n![Example](./images/img-1631880507.png)\n\nSuppose LTP of NIFTY 50 is 17330, then the above get strike function will return 17350 as it is the nearest strike.",
+    "example_image_urls": [
+        "./images/img-1631880507.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "Get Strike\nGet strike keyword returns the strike based on the value/condition set in it.\nIt is generally used in Strike FX of position builder.\nSuppose LTP of NIFTY 50 is 17330, then the above get strike function will return 17350 as it is the nearest strike.",
+    "visual_logic_extracted": "Image [img-1631880507.png] Text:\na\n\nGet Strike\nNIFTY 50, LTP ( Instrument Name ( NFO,NIFTY 50,,,,, ) )"
+}

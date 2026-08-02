@@ -1,0 +1,18 @@
+{
+    "name": "Round",
+    "description": "This keyword will round off the values to the base you select.",
+    "how_to_use_markdown": "This keyword will round off the values to the base you select.\n\n![Example](./images/img-1632140830.png)\n\nIn the above example, we have rounded off the spot value to Nifty 50 to the nearest 50 rupees.",
+    "example_image_urls": [
+        "./images/img-1632140830.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "Round\nThis keyword will round off the values to the base you select.\u00a0\nIn the above example, we have rounded off the spot value to Nifty 50 to the nearest 50 rupees.",
+    "visual_logic_extracted": "Image [img-1632140830.png] Text:\n6\n\nRound\nLTP ( Instrument Name ( NFO,NIFTY 50,,,,, )) , 50"
+}

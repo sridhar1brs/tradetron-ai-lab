@@ -1,0 +1,18 @@
+{
+    "name": "SAR",
+    "description": "This keyword returns the Parabolic SAR indicator value of the selected Instrument for the selected timeframe. This keyword is to be used under the position keyword",
+    "how_to_use_markdown": "This keyword returns the Parabolic SAR indicator value of the selected Instrument for the selected timeframe. This keyword is to be used under the position keyword\n\n![Example](./images/img-1632220295.png)\n\nThe above keyword will return the previous day SAR value of ABFRL\n\nThe parabolic SAR (stop and reverse) indicator is used by technical traders to spot trends and reversals.\n\nRead more about SAR here - https://www.investopedia.com/terms/p/parabolicindicator.asp",
+    "example_image_urls": [
+        "./images/img-1632220295.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "SAR\nThis keyword returns the Parabolic SAR indicator value of the selected Instrument for the selected timeframe. This keyword is to be used under the position keyword\nThe above keyword will return the previous day SAR value of ABFRL\nThe parabolic SAR (stop and reverse) indicator is used by technical traders to spot trends and reversals.\nRead more about SAR here -\nhttps://www.investopedia.com/terms/p/parabolicindicator.asp",
+    "visual_logic_extracted": "Image [img-1632220295.png] Text:\n+\n\nPosition\nSAR ( Symbol ( Instrument Name ( NFO,ABFRL,,,,, ) , day, All) , 0.02, 0.2), -1"
+}

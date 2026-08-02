@@ -1,0 +1,18 @@
+{
+    "name": "WMA",
+    "description": "This keyword returns the weighted moving average of any period of any series of the selected Instrument. This keyword is to be used under the position keyword",
+    "how_to_use_markdown": "This keyword returns the weighted moving average of any period of any series of the selected Instrument. This keyword is to be used under the position keyword\n\n![Example](./images/img-1632220032.png)\n\nYou can plot WMA on any series, like close in the above example, you can also plot WMA of RSI, OPEN etc\n\nWeighted moving averages assign a heavier weighting to more current data points since they are more relevant than data points in the distant past.\n\nRead more about WMA here -\u00a0 https://www.fidelity.com/learning-center/trading-investing/technical-analysis/technical-indicator-guide/wma",
+    "example_image_urls": [
+        "./images/img-1632220032.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "WMA\nThis keyword returns the weighted moving average of any period of any series of the selected Instrument. This keyword is to be used under the position keyword\nYou can plot WMA on any series, like close in the above example, you can also plot WMA of RSI, OPEN etc\nWeighted moving averages assign a heavier weighting to more current data points since they are more relevant than data points in the distant past.\nRead more about WMA here -\u00a0\nhttps://www.fidelity.com/learning-center/trading-investing/technical-analysis/technical-indicator-guide/wma",
+    "visual_logic_extracted": "Image [img-1632220032.png] Text:\n+\n\nPosition\nWMA ( CLOSE ( Symbol ( Instrument Name ( NSE,ABB,,,,, ), 15m, All) ), 20), -1"
+}

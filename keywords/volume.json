@@ -1,0 +1,18 @@
+{
+    "name": "Volume",
+    "description": "This keyword returns the Current Volume traded of\u00a0the selected Instrument\u00a0for that particular day till the time when the condition is checked. So at any point in time if this keyword is used then it will return total traded volume in that particular instrument up to that instance of time.",
+    "how_to_use_markdown": "This keyword returns the Current Volume traded of \u00a0the selected Instrument\u00a0 for that particular day till the time when the condition is checked. So at any point in time if this keyword is used then it will return total traded volume in that particular instrument up to that instance of time.\n\n![Example](./images/img-1631705028.png)\n\nLike in the above example you can check whether volume traded for nifty futures is > 1.5 Lakh for the current day. If suppose condition is checked at 2 pm, it will return the total volume traded from 9:15 am till 2:00 pm",
+    "example_image_urls": [
+        "./images/img-1631705028.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "Volume\nThis keyword returns the Current Volume traded of\n\u00a0the selected Instrument\u00a0\nfor that particular day till the time when the condition is checked. So at any point in time if this keyword is used then it will return total traded volume in that particular instrument up to that instance of time.\nLike in the above example you can check whether volume traded for nifty futures is > 1.5 Lakh for the current day. If suppose condition is checked at 2 pm, it will return the total volume traded from 9:15 am till 2:00 pm",
+    "visual_logic_extracted": "Image [img-1631705028.png] Text:\nVolume > Number\nFutures ( NIFTY 50 ) 150000"
+}

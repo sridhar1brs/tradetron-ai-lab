@@ -1,0 +1,18 @@
+{
+    "name": "Cross",
+    "description": "Cross keyword is used to find if there has been a crossover in the previous candles. Cross keyword is to be used under position keyword.",
+    "how_to_use_markdown": "Cross keyword is used to find if there has been a crossover in the previous candles. Cross keyword is to be used under position keyword.\n\nCross takes 2 input series\n\nIf a crossover is taken place it returns  True , if not, it returns  False\n\n![Example](./images/img-1632312909.png)\n\nIn the above example ,we are checking if close price has given a crossover above EMA 20 in previous daily candle. If it has crossover, keyword will return true and strategy will execute",
+    "example_image_urls": [
+        "./images/img-1632312909.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "Cross\nCross keyword is used to find if there has been a crossover in the previous candles. Cross keyword is to be used under position keyword.\nCross takes 2 input series\nIf a crossover is taken place it returns \nTrue\n, if not, it returns \nFalse\n\u00a0\nIn the above example ,we are checking if close price has given a crossover above EMA 20 in previous daily candle. If it has crossover, keyword will return true and strategy will execute",
+    "visual_logic_extracted": "Image [img-1632312909.png] Text:\n+\n\nPosition\nCross ( CLOSE ( Symbol ( Instrument Name ( NSE,ACC,,,,, ), day, All) ), EMA ( CLOSE ( Symbol ( Instrument Name ( NSE,ACC,,,,, ), day, All) ),20)),-1"
+}

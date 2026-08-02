@@ -1,0 +1,18 @@
+{
+    "name": "Theta",
+    "description": "Theta keyword returns you the Theta\u00a0value of that particular option",
+    "how_to_use_markdown": "Theta keyword returns you the Theta\u00a0value of that particular option\n\n![Example](./images/img-1632133801.png)\n\nThe above example will return the Theta value of the instrument traded in 1st leg of Set 1 Entry",
+    "example_image_urls": [
+        "./images/img-1632133801.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "Theta\nTheta keyword returns you the Theta\u00a0value of that particular option\nThe above example will return the Theta value of the instrument traded in 1st leg of Set 1 Entry",
+    "visual_logic_extracted": "Image [img-1632133801.png] Text:\na\nTheta\nTraded Instrument Name ( Entry, instrument, NIFTY 50, 1, 1, 1)"
+}

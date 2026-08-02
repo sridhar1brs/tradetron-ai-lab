@@ -1,0 +1,18 @@
+{
+    "name": "LSMA",
+    "description": "This keyword returns the Least Square Moving Average of any period of any series of the selected Instrument. This keyword is to be used under the position keyword",
+    "how_to_use_markdown": "This keyword returns the Least Square Moving Average of any period of any series of the selected Instrument. This keyword is to be used under the position keyword\n\n![Example](./images/img-1632222983.png)\n\nYou can plot LSMA on any series, like High in the above example, you can also plot LSMA of RSI, OPEN etc",
+    "example_image_urls": [
+        "./images/img-1632222983.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "LSMA\nThis keyword returns the Least Square Moving Average of any period of any series of the selected Instrument. This keyword is to be used under the position keyword\nYou can plot LSMA on any series, like High in the above example, you can also plot LSMA of RSI, OPEN etc",
+    "visual_logic_extracted": "Image [img-1632222983.png] Text:\n.*]\n\nPosition\nLSMA (HIGH ( Symbol ( Instrument Name (NFO,NIFTY 50,,,,, ) , day, All), 20), -4"
+}

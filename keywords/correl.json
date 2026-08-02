@@ -1,0 +1,18 @@
+{
+    "name": "correl",
+    "description": "This keyword will return the correlation coefficient of the two series selected. Users can input 2 series of their choice and the period i.e How many previous data to consider",
+    "how_to_use_markdown": "This keyword will return the correlation coefficient of the two series selected. Users can input 2 series of their choice and the period i.e How many previous data to consider\n\n![Example](./images/img-1631879651.png)\n\nThe above condition will give the correlation coefficient of NIFTY 50 and HDFC based on the past 20 days of data",
+    "example_image_urls": [
+        "./images/img-1631879651.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "correl\nThis keyword will return the correlation coefficient of the two series selected. Users can input 2 series of their choice and the period i.e How many previous data to consider\nThe above condition will give the correlation coefficient of NIFTY 50 and HDFC based on the past 20 days of data",
+    "visual_logic_extracted": "Image [img-1631879651.png] Text:\n+\n\ncorrel\nCLOSE ( Symbol ( Instrument Name ( NFO,NIFTY 50,,,,, ) , day, All) ), CLOSE ( Symbol ( Instrument Name ( NFO,HDFC,,,,, ) , day, All) ) , 20"
+}

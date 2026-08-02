@@ -1,0 +1,18 @@
+{
+    "name": "Week",
+    "description": "This keyword returns current week number of the year",
+    "how_to_use_markdown": "This keyword returns current week number of the year\n\n![Example](./images/img-1631798176.png)\n\nThe above condition will be satisfied if the current week is the 32nd week of the\u00a0current year",
+    "example_image_urls": [
+        "./images/img-1631798176.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "Week\nThis keyword returns current week number of the year\nThe above condition will be satisfied if the current week is the 32nd week of the\u00a0current year",
+    "visual_logic_extracted": "Image [img-1631798176.png] Text:\nNumber\n32"
+}

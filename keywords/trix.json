@@ -1,0 +1,18 @@
+{
+    "name": "TRIX",
+    "description": "This keyword returns the Triple Exponential Average Indicator value of the instrument. This keyword like all technical indicators are to be used under the Position keyword",
+    "how_to_use_markdown": "This keyword returns the Triple Exponential Average Indicator value of the instrument. This keyword like all technical indicators are to be used under the Position keyword\n\n![Example](./images/img-1632145050.png)\n\nThe above condition is checking if the Previous 15 minute (-1) TRIX value is greater than previous to previous 15 minute (-2) TRIX value of HDFC Bank (eq)\n\nThe triple exponential average (TRIX) indicator is an oscillator used to identify oversold and overbought markets, and it can also be used as a momentum indicator. Read more about  triple exponential average (TRIX) \u00a0 here -\u00a0 https://www.investopedia.com/articles/technical/02/092402.asp",
+    "example_image_urls": [
+        "./images/img-1632145050.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "TRIX\nThis keyword returns the Triple Exponential Average Indicator value of the instrument. This keyword like all technical indicators are to be used under the Position keyword\nThe above condition is checking if the Previous 15 minute (-1) TRIX value is greater than previous to previous 15 minute (-2) TRIX value of HDFC Bank (eq)\nThe triple exponential average (TRIX) indicator is an oscillator used to identify oversold and overbought markets, and it can also be used as a momentum indicator.\nRead more about \ntriple exponential average (TRIX)\n\u00a0 here -\u00a0\nhttps://www.investopedia.com/articles/technical/02/092402.asp",
+    "visual_logic_extracted": "Image [img-1632145050.png] Text:\n\u00a9\n\nPosition\n\u2018TRIX ( CLOSE ( Symbol (Instrument Name (NSEHDFCBANK...,). 18m,All)). 20)\n\nPosition\nTRIX ( CLOSE ( Symbol Instrument Name ( NSEHDFCBANK,\n\n15m, All)). 20),-2"
+}

@@ -1,0 +1,18 @@
+{
+    "name": "Chaikin Money Flow",
+    "description": "This keyword returns the Chaikin Money Flow of any period of the selected Instrument. This keyword is to be used under the position keyword.",
+    "how_to_use_markdown": "This keyword returns the Chaikin Money Flow of any period of the selected Instrument. This keyword is to be used under the position keyword.\n\n![Example](./images/img-1716369279.png)\n\nThe above keyword will return the Chaikin  Money Flow  of Nifty 50 spot on 5 mins candle with 15 period.",
+    "example_image_urls": [
+        "./images/img-1716369279.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "Chaikin Money Flow\nThis keyword returns the Chaikin Money Flow of any period of the selected Instrument. This keyword is to be used under the position keyword.\nThe above keyword will return the Chaikin \nMoney Flow\n of Nifty 50 spot on 5 mins candle with 15 period.",
+    "visual_logic_extracted": "Image [img-1716369279.png] Text:\nPosition\nChaikin Money Flow ( ohicv ( Instrument Name ( NFO,NIFTY 50,,,,,), 5m, All), 15), -1"
+}

@@ -1,0 +1,18 @@
+{
+    "name": "Bid Ask Diff",
+    "description": "It returns the difference between the Best Bid and the best Ask Price of the selected Instrument",
+    "how_to_use_markdown": "It returns the difference between the Best Bid and the best Ask Price of the selected Instrument\n\n![Example](./images/img-1631703870.png)\n\nNote - Bid/Ask Difference is returned only if there is a change in the bid and the ask in the last tick, else\u00a0 returns 0 .",
+    "example_image_urls": [
+        "./images/img-1631703870.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "Bid Ask Diff\nIt returns the difference between the Best Bid and the best Ask Price of the selected Instrument\nNote - Bid/Ask Difference is returned only if there is a change in the bid and the ask in the last tick, else\u00a0\nreturns 0\n.",
+    "visual_logic_extracted": "Image [img-1631703870.png] Text:\nBid Ask Diff\nInstrument Name ( NSE RELIANCE"
+}

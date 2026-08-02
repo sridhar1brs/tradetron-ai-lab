@@ -1,0 +1,18 @@
+{
+    "name": "Balance of Power",
+    "description": "This keyword will return the previous day's Balance of Power which compares the power of buyers to push prices to higher extremes with the power of sellers to move prices to lower extremes. When the indicator is in positive territory, the bulls are in charge; \u00a0and sellers dominate when the indicator is negative.",
+    "how_to_use_markdown": "This keyword will return the previous day's Balance of Power which compares the power of buyers to push prices to higher extremes with the power of sellers to move prices to lower extremes. When the indicator is in positive territory, the bulls are in charge; \u00a0and sellers dominate when the indicator is negative.\n\n![Example](./images/img-1643634197.png)\n\nThe above keyword will return the previous day Balance of Power value for NIFTY 50\n\nRead more about Balance of Power -\u00a0 https://school.stockcharts.com/doku.php?id=technical_indicators:balance_of_power",
+    "example_image_urls": [
+        "./images/img-1643634197.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "Balance of Power\nThis keyword will return the previous day's Balance of Power which compares the power of buyers to push prices to higher extremes with the power of sellers to move prices to lower extremes. When the indicator is in positive territory, the bulls are in charge; \u00a0and sellers dominate when the indicator is negative.\nThe above keyword will return the previous day Balance of Power value for NIFTY 50\nRead more about Balance of Power -\u00a0\nhttps://school.stockcharts.com/doku.php?id=technical_indicators:balance_of_power",
+    "visual_logic_extracted": "Image [img-1643634197.png] Text:\nPosition\nBalance of Power ( Symbol ( Instrument Name ( NFO,NIFTY 50,,,,, ), day, All) ) , -1"
+}

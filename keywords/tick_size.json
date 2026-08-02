@@ -1,0 +1,18 @@
+{
+    "name": "Tick Size",
+    "description": "This keyword will fetch the minimum tick size of an instrument and return a number for the same. Tick size can be used in combination with other keywords to make comprehensive formulae to achieve a specific mathematical operation. Its specially useful when using lists with multiple instruments.",
+    "how_to_use_markdown": "This keyword will fetch the minimum tick size of an instrument and return a number for the same. Tick size can be used in combination with other keywords to make comprehensive formulae to achieve a specific mathematical operation. Its specially useful when using lists with multiple instruments.\n\n![Example](./images/img-1631867087.png)\n\nThe keyword shared above will find the minimum tick size for all the instruments within the Nifty 50 stocks list as prescribed by the exchange.",
+    "example_image_urls": [
+        "./images/img-1631867087.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "Tick Size\nThis keyword will fetch the minimum tick size of an instrument and return a number for the same. Tick size can be used in combination with other keywords to make comprehensive formulae to achieve a specific mathematical operation. Its specially useful when using lists with multiple instruments.\nThe keyword shared above will find the minimum tick size for all the instruments within the Nifty 50 stocks list as prescribed by the exchange.",
+    "visual_logic_extracted": "Image [img-1631867087.png] Text:\nTick Size\nInstrument Name ( NSE,|NIFTY 50],,,,,"
+}

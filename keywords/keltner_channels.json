@@ -1,0 +1,19 @@
+{
+    "name": "Keltner Channels",
+    "description": "This keyword returns the Keltner Channel value. Since there are three different Keltner channels, this keyword gives you an option to select the channel you would like to fetch. This keyword like all technical indicators are to be used under the Position keyword",
+    "how_to_use_markdown": "This keyword returns the Keltner Channel value. Since there are three different Keltner channels, this keyword gives you an option to select the channel you would like to fetch. This keyword like all technical indicators are to be used under the Position keyword\n\n![Example](./images/img-1632222410.png)\n\nThe above condition is checking if the LTP of Nifty Bank is between the Previous day(-1) upper and middle Keltner Channels.\n\n![Example](./images/img-1632222592.png)\n\nThe above condition is checking if the LTP of Nifty Bank is between the Previous day(-1) middle and lower Keltner Channels.",
+    "example_image_urls": [
+        "./images/img-1632222410.png",
+        "./images/img-1632222592.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "Keltner Channels\nThis keyword returns the Keltner Channel value. Since there are three different Keltner channels, this keyword gives you an option to select the channel you would like to fetch. This keyword like all technical indicators are to be used under the Position keyword\nThe above condition is checking if the LTP of Nifty Bank is between the Previous day(-1) upper and middle Keltner Channels.\nThe above condition is checking if the LTP of Nifty Bank is between the Previous day(-1) middle and lower Keltner Channels.",
+    "visual_logic_extracted": "Image [img-1632222410.png] Text:\nOR \u2018+ Condition \u00a9 Group *\n\nPaste *\n\nPosition\nKeliner Channels ( Symbol (Instrument Name ( NFO,NIFTY BANK,.,..) , day, All) ,20, 10, 2, middle ), 1\n\n. LIP >\nInstrument Name (NFO.NIFTY BANK...)\n\nPaste *\n\nLIP\n\nInstrument Name (NFO.NIFTY BANK...)\n\nPosition\nKeliner Channels ( Symbol (Instrument Name (NFO,.NIFTY BANK...) , day, All) ,20, 10, 2, upper), 1\n\nPie\n\nImage [img-1632222592.png] Text:\n\u2018+ Condition \u00a9 Group *\n\nPaste *\n\nInstrument Name (NFO.NIFTY BANK...)\n\nPEP\n\nPosition\nKeliner Channels ( Symbol (Instrument Name ( NFO,NIFTY BANK,.,..) , day, All) ,20, 10, 2, middle ), 1\n\nPaste *\n\nLIP\n\nInstrument Name (NFO.NIFTY BANK...)\n\neens\n\nPosition\nKeliner Channels ( Symbol (Instrument Name (NFO,NIFTY BANK...) day, All) ,20, 10, 2, lower), -1"
+}

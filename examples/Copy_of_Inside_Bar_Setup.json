@@ -1,0 +1,288 @@
+{
+  "_format": "tt-strategy/v2",
+  "_readme": {
+    "about": "Tradetron strategy export. Edit and re-import via the ASB Import button.",
+    "logic": "To change a condition's logic, edit its \"conditionJson\" (the AST). The \"conditionValue\"/\"conditionDisplay\" text is regenerated from it on import.",
+    "legs": "For a leg field that has a \"*Json\" (e.g. \"strikeJson\"), edit the JSON — its text form is regenerated on import. Fields with no \"*Json\" (e.g. \"qty\") are plain text: edit them directly.",
+    "structure": "Add/remove/duplicate legs, conditions or sets by editing the arrays.",
+    "do_not": "Do not add \"*_id\" foreign keys back. Lists referenced by id must be ones you own."
+  },
+  "name": "Copy of Inside Bar Setup",
+  "description": null,
+  "tags": [],
+  "variables": [],
+  "sets": [
+    {
+      "list": 2,
+      "name": null,
+      "conditions": [
+        {
+          "type": "Entry",
+          "conditionValue": "( orb ( 'strategy_id', 'run_counter', tt_get_instrument ( 'NSE,|Banknifty|,,,,,' ) , 'High', '09:15', '09:29' ) > orb ( 'strategy_id', 'run_counter', tt_get_instrument ( 'NSE,|Banknifty|,,,,,' ) , 'High', '09:30', '09:44' )  )  and ( orb ( 'strategy_id', 'run_counter', tt_get_instrument ( 'NSE,|Banknifty|,,,,,' ) , 'Low', '09:15', '09:29' ) < orb ( 'strategy_id', 'run_counter', tt_get_instrument ( 'NSE,|Banknifty|,,,,,' ) , 'Low', '09:30', '09:44' )  )  and ( tt_get_var ( tt_get_instrument ( 'NSE,|Banknifty|,,,,,' ) , 'LTP' ) > orb ( 'strategy_id', 'run_counter', tt_get_instrument ( 'NSE,|Banknifty|,,,,,' ) , 'High', '09:15', '09:29' )  )  and ( tt_position_value ( 'strategy_id', 'run_counter', 'Entry', 'B', 'All', 'value', '|Banknifty|' ) == tt_Number ( '0' )  )",
+          "conditionJson": "{\"operator\":\"and\",\"operands\":[{\"type\":\"rule\",\"value\":\"builder-basic_rule_0\",\"elements\":[{\"name\":\"ORB\",\"kid\":8825,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Instrument Name\",\"kid\":4007,\"params\":[{\"type\":\"value\",\"value\":\"NSE,|Banknifty|,,,,,\"}]}},{\"type\":\"value\",\"value\":\"High\"},{\"type\":\"value\",\"value\":\"09:15\"},{\"type\":\"value\",\"value\":\"09:29\"}]},{\"name\":\">\",\"params\":[]},{\"name\":\"ORB\",\"kid\":6923,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Instrument Name\",\"kid\":5389,\"params\":[{\"type\":\"value\",\"value\":\"NSE,|Banknifty|,,,,,\"}]}},{\"type\":\"value\",\"value\":\"High\"},{\"type\":\"value\",\"value\":\"09:30\"},{\"type\":\"value\",\"value\":\"09:44\"}]}]},{\"type\":\"rule\",\"value\":\"builder-basic_rule_1\",\"elements\":[{\"name\":\"ORB\",\"kid\":8825,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Instrument Name\",\"kid\":4007,\"params\":[{\"type\":\"value\",\"value\":\"NSE,|Banknifty|,,,,,\"}]}},{\"type\":\"value\",\"value\":\"Low\"},{\"type\":\"value\",\"value\":\"09:15\"},{\"type\":\"value\",\"value\":\"09:29\"}]},{\"name\":\"<\",\"params\":[]},{\"name\":\"ORB\",\"kid\":6923,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Instrument Name\",\"kid\":5389,\"params\":[{\"type\":\"value\",\"value\":\"NSE,|Banknifty|,,,,,\"}]}},{\"type\":\"value\",\"value\":\"Low\"},{\"type\":\"value\",\"value\":\"09:30\"},{\"type\":\"value\",\"value\":\"09:44\"}]}]},{\"type\":\"rule\",\"value\":\"builder-basic_rule_2\",\"elements\":[{\"name\":\"LTP\",\"kid\":9753,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Instrument Name\",\"kid\":6982,\"params\":[{\"type\":\"value\",\"value\":\"NSE,|Banknifty|,,,,,\"}]}}]},{\"name\":\">\",\"params\":[]},{\"name\":\"ORB\",\"kid\":8825,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Instrument Name\",\"kid\":4007,\"params\":[{\"type\":\"value\",\"value\":\"NSE,|Banknifty|,,,,,\"}]}},{\"type\":\"value\",\"value\":\"High\"},{\"type\":\"value\",\"value\":\"09:15\"},{\"type\":\"value\",\"value\":\"09:29\"}]}]},{\"type\":\"rule\",\"value\":\"builder-basic_rule_3\",\"elements\":[{\"name\":\"Positions Detail\",\"kid\":9237,\"params\":[{\"type\":\"value\",\"value\":\"Entry\"},{\"type\":\"value\",\"value\":\"B\"},{\"type\":\"value\",\"value\":\"All\"},{\"type\":\"value\",\"value\":\"value\"},{\"type\":\"value\",\"value\":\"|Banknifty|\"}]},{\"name\":\"==\",\"params\":[]},{\"name\":\"Number\",\"kid\":4671,\"params\":[{\"type\":\"value\",\"value\":\"0\"}]}]}]}",
+          "conditionDisplay": "( ORB ( 'strategy_id', 'run_counter', Instrument Name ( 'NSE,|Banknifty|,,,,,' ) , 'High', '09:15', '09:29' ) > ORB ( 'strategy_id', 'run_counter', Instrument Name ( 'NSE,|Banknifty|,,,,,' ) , 'High', '09:30', '09:44' )  )  and ( ORB ( 'strategy_id', 'run_counter', Instrument Name ( 'NSE,|Banknifty|,,,,,' ) , 'Low', '09:15', '09:29' ) < ORB ( 'strategy_id', 'run_counter', Instrument Name ( 'NSE,|Banknifty|,,,,,' ) , 'Low', '09:30', '09:44' )  )  and ( LTP ( Instrument Name ( 'NSE,|Banknifty|,,,,,' ) , 'LTP' ) > ORB ( 'strategy_id', 'run_counter', Instrument Name ( 'NSE,|Banknifty|,,,,,' ) , 'High', '09:15', '09:29' )  )  and ( Positions Detail ( 'strategy_id', 'run_counter', 'Entry', 'B', 'All', 'value', '|Banknifty|' ) == Number ( '0' )  )",
+          "subType": "None",
+          "visible": 1,
+          "legs": [
+            {
+              "instrument": 0,
+              "list": 2,
+              "optionType": null,
+              "expiry": null,
+              "expiryType": "Current Week",
+              "expiryJson": null,
+              "expiryDisplay": null,
+              "strikeType": "ATM",
+              "strike": null,
+              "strikeJson": null,
+              "strikeDisplay": null,
+              "qty": "( tt_Number ( '2000' ) / ( orb ( 'strategy_id', 'run_counter', tt_get_instrument ( 'NSE,INSTRUMENT,,,,,' ) , 'High', '09:15', '09:29' ) - orb ( 'strategy_id', 'run_counter', tt_get_instrument ( 'NSE,INSTRUMENT,,,,,' ) , 'Low', '09:15', '09:29' ) )  )",
+              "qtyType": "Qty",
+              "qtyDisplay": null,
+              "qtyJson": "{\"operator\":\"and\",\"operands\":[{\"type\":\"rule\",\"value\":\"builder-basic_rule_0\",\"elements\":[{\"name\":\"Number\",\"kid\":9085,\"params\":[{\"type\":\"value\",\"value\":\"2000\"}]},{\"name\":\"/\",\"params\":[]},{\"name\":\"(\",\"params\":[]},{\"name\":\"ORB\",\"kid\":6228,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Instrument Name\",\"kid\":5495,\"params\":[{\"type\":\"value\",\"value\":\"NSE,|Banknifty|,,,,,\"}]}},{\"type\":\"value\",\"value\":\"High\"},{\"type\":\"value\",\"value\":\"09:15\"},{\"type\":\"value\",\"value\":\"09:29\"}]},{\"name\":\"-\",\"params\":[]},{\"name\":\"ORB\",\"kid\":5257,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Instrument Name\",\"kid\":6141,\"params\":[{\"type\":\"value\",\"value\":\"NSE,|Banknifty|,,,,,\"}]}},{\"type\":\"value\",\"value\":\"Low\"},{\"type\":\"value\",\"value\":\"09:15\"},{\"type\":\"value\",\"value\":\"09:29\"}]},{\"name\":\")\",\"params\":[]}]}]}",
+              "qtyExprDisplay": "( Number ( '2000' ) / ( ORB ( 'strategy_id', 'run_counter', Instrument Name ( 'NSE,|Banknifty|,,,,,' ) , 'High', '09:15', '09:29' ) - ORB ( 'strategy_id', 'run_counter', Instrument Name ( 'NSE,|Banknifty|,,,,,' ) , 'Low', '09:15', '09:29' ) )  )",
+              "buySell": "B",
+              "totalValue": null,
+              "limitPrice": null,
+              "limitPriceJson": null,
+              "limitPriceDisplay": null,
+              "limitPriceExprDisplay": null,
+              "entryTrigger": null,
+              "entryLimit": null,
+              "sLTrigger": null,
+              "sLTriggerJson": null,
+              "sLTriggerDisplay": null,
+              "sLTriggerExprDisplay": null,
+              "sLLimit": null,
+              "targetTrigger": null,
+              "targetLimit": null,
+              "isOvernightProtectionLeg": "No",
+              "productType": "MIS",
+              "underlyingSymbol": null,
+              "tmp": 0,
+              "updatedAt": "2026-08-01 14:15:15",
+              "createdAt": "2026-08-01 14:15:15"
+            }
+          ],
+          "extra": {
+            "name": null,
+            "variables": []
+          }
+        },
+        {
+          "type": "Repair Once",
+          "conditionValue": "( tt_get_var ( tt_get_instrument ( 'NSE,|Banknifty|,,,,,' ) , 'LTP' ) > find_traded_instrument ( 'strategy_id', 'run_counter', 'Entry', 'price', '|Banknifty|', '1', '1', '1' ) * tt_Number ( '1.01' )  )",
+          "conditionJson": "{\"operator\":\"or\",\"operands\":[{\"type\":\"rule\",\"value\":\"builder-basic_rule_2\",\"elements\":[{\"name\":\"LTP\",\"kid\":7869,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Instrument Name\",\"kid\":8674,\"params\":[{\"type\":\"value\",\"value\":\"NSE,|Banknifty|,,,,,\"}]}}]},{\"name\":\">\",\"params\":[]},{\"name\":\"Traded Instrument\",\"kid\":2507,\"params\":[{\"type\":\"value\",\"value\":\"Entry\"},{\"type\":\"value\",\"value\":\"price\"},{\"type\":\"value\",\"value\":\"|Banknifty|\"},{\"type\":\"value\",\"value\":\"1\"},{\"type\":\"value\",\"value\":\"1\"},{\"type\":\"value\",\"value\":\"1\"}]},{\"name\":\"*\",\"params\":[]},{\"name\":\"Number\",\"kid\":1520,\"params\":[{\"type\":\"value\",\"value\":\"1.01\"}]}]}]}",
+          "conditionDisplay": "( LTP ( Instrument Name ( 'NSE,|Banknifty|,,,,,' ) , 'LTP' ) > Traded Instrument ( 'strategy_id', 'run_counter', 'Entry', 'price', '|Banknifty|', '1', '1', '1' ) * Number ( '1.01' )  )",
+          "subType": "None",
+          "visible": 1,
+          "legs": [
+            {
+              "instrument": 0,
+              "list": 2,
+              "optionType": null,
+              "expiry": null,
+              "expiryType": "Current Week",
+              "expiryJson": null,
+              "expiryDisplay": null,
+              "strikeType": "ATM",
+              "strike": null,
+              "strikeJson": null,
+              "strikeDisplay": null,
+              "qty": "( tt_NetQty ( 'strategy_id', 'run_counter', tt_get_instrument ( 'NSE,INSTRUMENT,,,,,' )  ) / tt_Number ( '2' )  )",
+              "qtyType": "Qty",
+              "qtyDisplay": null,
+              "qtyJson": "{\"operator\":\"and\",\"operands\":[{\"type\":\"rule\",\"value\":\"builder-basic_rule_0\",\"elements\":[{\"name\":\"Net Quantity\",\"kid\":9824,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Instrument Name\",\"kid\":2382,\"params\":[{\"type\":\"value\",\"value\":\"NSE,|Banknifty|,,,,,\"}]}}]},{\"name\":\"/\",\"params\":[]},{\"name\":\"Number\",\"kid\":9888,\"params\":[{\"type\":\"value\",\"value\":\"2\"}]}]}]}",
+              "qtyExprDisplay": "( Net Quantity ( 'strategy_id', 'run_counter', Instrument Name ( 'NSE,|Banknifty|,,,,,' )  ) / Number ( '2' )  )",
+              "buySell": "S",
+              "totalValue": null,
+              "limitPrice": null,
+              "limitPriceJson": null,
+              "limitPriceDisplay": null,
+              "limitPriceExprDisplay": null,
+              "entryTrigger": null,
+              "entryLimit": null,
+              "sLTrigger": null,
+              "sLTriggerJson": null,
+              "sLTriggerDisplay": null,
+              "sLTriggerExprDisplay": null,
+              "sLLimit": null,
+              "targetTrigger": null,
+              "targetLimit": null,
+              "isOvernightProtectionLeg": "No",
+              "productType": "MIS",
+              "underlyingSymbol": null,
+              "tmp": 0,
+              "updatedAt": "2026-08-01 14:15:15",
+              "createdAt": "2026-08-01 14:15:15"
+            }
+          ],
+          "extra": {
+            "name": null,
+            "variables": []
+          }
+        },
+        {
+          "type": "Exit",
+          "conditionValue": "( tt_get_var ( tt_get_instrument ( 'NSE,|Banknifty|,,,,,' ) , 'LTP' ) < orb ( 'strategy_id', 'run_counter', tt_get_instrument ( 'NSE,|Banknifty|,,,,,' ) , 'Low', '09:15', '09:29' )  )  or ( tt_get_var ( tt_get_instrument ( 'NSE,|Banknifty|,,,,,' ) , 'LTP' ) > ( orb ( 'strategy_id', 'run_counter', tt_get_instrument ( 'NSE,|Banknifty|,,,,,' ) , 'High', '09:15', '09:29' ) - orb ( 'strategy_id', 'run_counter', tt_get_instrument ( 'NSE,|Banknifty|,,,,,' ) , 'Low', '09:15', '09:29' ) ) * tt_Number ( '2' ) + orb ( 'strategy_id', 'run_counter', tt_get_instrument ( 'NSE,|Banknifty|,,,,,' ) , 'High', '09:15', '09:29' )  )  or ( tt_get_var ( tt_get_instrument ( 'NSE,|Banknifty|,,,,,' ) , 'LTP' ) > find_traded_instrument ( 'strategy_id', 'run_counter', 'Entry', 'price', '|Banknifty|', '1', '1', '1' ) * tt_Number ( '1.02' )  )",
+          "conditionJson": "{\"operator\":\"or\",\"operands\":[{\"type\":\"rule\",\"value\":\"builder-basic_rule_0\",\"elements\":[{\"name\":\"LTP\",\"kid\":7869,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Instrument Name\",\"kid\":8674,\"params\":[{\"type\":\"value\",\"value\":\"NSE,|Banknifty|,,,,,\"}]}}]},{\"name\":\"<\",\"params\":[]},{\"name\":\"ORB\",\"kid\":7929,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Instrument Name\",\"kid\":7090,\"params\":[{\"type\":\"value\",\"value\":\"NSE,|Banknifty|,,,,,\"}]}},{\"type\":\"value\",\"value\":\"Low\"},{\"type\":\"value\",\"value\":\"09:15\"},{\"type\":\"value\",\"value\":\"09:29\"}]}]},{\"type\":\"rule\",\"value\":\"builder-basic_rule_1\",\"elements\":[{\"name\":\"LTP\",\"kid\":7869,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Instrument Name\",\"kid\":8674,\"params\":[{\"type\":\"value\",\"value\":\"NSE,|Banknifty|,,,,,\"}]}}]},{\"name\":\">\",\"params\":[]},{\"name\":\"(\",\"params\":[]},{\"name\":\"ORB\",\"kid\":7929,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Instrument Name\",\"kid\":7090,\"params\":[{\"type\":\"value\",\"value\":\"NSE,|Banknifty|,,,,,\"}]}},{\"type\":\"value\",\"value\":\"High\"},{\"type\":\"value\",\"value\":\"09:15\"},{\"type\":\"value\",\"value\":\"09:29\"}]},{\"name\":\"-\",\"params\":[]},{\"name\":\"ORB\",\"kid\":7929,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Instrument Name\",\"kid\":7090,\"params\":[{\"type\":\"value\",\"value\":\"NSE,|Banknifty|,,,,,\"}]}},{\"type\":\"value\",\"value\":\"Low\"},{\"type\":\"value\",\"value\":\"09:15\"},{\"type\":\"value\",\"value\":\"09:29\"}]},{\"name\":\")\",\"params\":[]},{\"name\":\"*\",\"params\":[]},{\"name\":\"Number\",\"kid\":1454,\"params\":[{\"type\":\"value\",\"value\":\"2\"}]},{\"name\":\"+\",\"params\":[]},{\"name\":\"ORB\",\"kid\":7929,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Instrument Name\",\"kid\":7090,\"params\":[{\"type\":\"value\",\"value\":\"NSE,|Banknifty|,,,,,\"}]}},{\"type\":\"value\",\"value\":\"High\"},{\"type\":\"value\",\"value\":\"09:15\"},{\"type\":\"value\",\"value\":\"09:29\"}]}]},{\"type\":\"rule\",\"value\":\"builder-basic_rule_2\",\"elements\":[{\"name\":\"LTP\",\"kid\":7869,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Instrument Name\",\"kid\":8674,\"params\":[{\"type\":\"value\",\"value\":\"NSE,|Banknifty|,,,,,\"}]}}]},{\"name\":\">\",\"params\":[]},{\"name\":\"Traded Instrument\",\"kid\":2507,\"params\":[{\"type\":\"value\",\"value\":\"Entry\"},{\"type\":\"value\",\"value\":\"price\"},{\"type\":\"value\",\"value\":\"|Banknifty|\"},{\"type\":\"value\",\"value\":\"1\"},{\"type\":\"value\",\"value\":\"1\"},{\"type\":\"value\",\"value\":\"1\"}]},{\"name\":\"*\",\"params\":[]},{\"name\":\"Number\",\"kid\":1520,\"params\":[{\"type\":\"value\",\"value\":\"1.02\"}]}]}]}",
+          "conditionDisplay": "( LTP ( Instrument Name ( 'NSE,|Banknifty|,,,,,' ) , 'LTP' ) < ORB ( 'strategy_id', 'run_counter', Instrument Name ( 'NSE,|Banknifty|,,,,,' ) , 'Low', '09:15', '09:29' )  )  or ( LTP ( Instrument Name ( 'NSE,|Banknifty|,,,,,' ) , 'LTP' ) > ( ORB ( 'strategy_id', 'run_counter', Instrument Name ( 'NSE,|Banknifty|,,,,,' ) , 'High', '09:15', '09:29' ) - ORB ( 'strategy_id', 'run_counter', Instrument Name ( 'NSE,|Banknifty|,,,,,' ) , 'Low', '09:15', '09:29' ) ) * Number ( '2' ) + ORB ( 'strategy_id', 'run_counter', Instrument Name ( 'NSE,|Banknifty|,,,,,' ) , 'High', '09:15', '09:29' )  )  or ( LTP ( Instrument Name ( 'NSE,|Banknifty|,,,,,' ) , 'LTP' ) > Traded Instrument ( 'strategy_id', 'run_counter', 'Entry', 'price', '|Banknifty|', '1', '1', '1' ) * Number ( '1.02' )  )",
+          "subType": "None",
+          "visible": 1,
+          "legs": [],
+          "extra": {
+            "name": null,
+            "variables": []
+          }
+        }
+      ]
+    },
+    {
+      "list": 2,
+      "name": null,
+      "conditions": [
+        {
+          "type": "Entry",
+          "conditionValue": "( orb ( 'strategy_id', 'run_counter', tt_get_instrument ( 'NSE,|Banknifty|,,,,,' ) , 'High', '09:15', '09:29' ) > orb ( 'strategy_id', 'run_counter', tt_get_instrument ( 'NSE,|Banknifty|,,,,,' ) , 'High', '09:30', '09:44' )  )  and ( orb ( 'strategy_id', 'run_counter', tt_get_instrument ( 'NSE,|Banknifty|,,,,,' ) , 'Low', '09:15', '09:29' ) < orb ( 'strategy_id', 'run_counter', tt_get_instrument ( 'NSE,|Banknifty|,,,,,' ) , 'Low', '09:30', '09:44' )  )  and ( tt_get_var ( tt_get_instrument ( 'NSE,|Banknifty|,,,,,' ) , 'LTP' ) < orb ( 'strategy_id', 'run_counter', tt_get_instrument ( 'NSE,|Banknifty|,,,,,' ) , 'Low', '09:15', '09:29' )  )  and ( tt_position_value ( 'strategy_id', 'run_counter', 'Entry', 'S', 'All', 'value', '|Banknifty|' ) == tt_Number ( '0' )  )",
+          "conditionJson": "{\"operator\":\"and\",\"operands\":[{\"type\":\"rule\",\"value\":\"builder-basic_rule_0\",\"elements\":[{\"name\":\"ORB\",\"kid\":8825,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Instrument Name\",\"kid\":4007,\"params\":[{\"type\":\"value\",\"value\":\"NSE,|Banknifty|,,,,,\"}]}},{\"type\":\"value\",\"value\":\"High\"},{\"type\":\"value\",\"value\":\"09:15\"},{\"type\":\"value\",\"value\":\"09:29\"}]},{\"name\":\">\",\"params\":[]},{\"name\":\"ORB\",\"kid\":6923,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Instrument Name\",\"kid\":5389,\"params\":[{\"type\":\"value\",\"value\":\"NSE,|Banknifty|,,,,,\"}]}},{\"type\":\"value\",\"value\":\"High\"},{\"type\":\"value\",\"value\":\"09:30\"},{\"type\":\"value\",\"value\":\"09:44\"}]}]},{\"type\":\"rule\",\"value\":\"builder-basic_rule_1\",\"elements\":[{\"name\":\"ORB\",\"kid\":8825,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Instrument Name\",\"kid\":4007,\"params\":[{\"type\":\"value\",\"value\":\"NSE,|Banknifty|,,,,,\"}]}},{\"type\":\"value\",\"value\":\"Low\"},{\"type\":\"value\",\"value\":\"09:15\"},{\"type\":\"value\",\"value\":\"09:29\"}]},{\"name\":\"<\",\"params\":[]},{\"name\":\"ORB\",\"kid\":6923,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Instrument Name\",\"kid\":5389,\"params\":[{\"type\":\"value\",\"value\":\"NSE,|Banknifty|,,,,,\"}]}},{\"type\":\"value\",\"value\":\"Low\"},{\"type\":\"value\",\"value\":\"09:30\"},{\"type\":\"value\",\"value\":\"09:44\"}]}]},{\"type\":\"rule\",\"value\":\"builder-basic_rule_2\",\"elements\":[{\"name\":\"LTP\",\"kid\":9753,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Instrument Name\",\"kid\":6982,\"params\":[{\"type\":\"value\",\"value\":\"NSE,|Banknifty|,,,,,\"}]}}]},{\"name\":\"<\",\"params\":[]},{\"name\":\"ORB\",\"kid\":8825,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Instrument Name\",\"kid\":4007,\"params\":[{\"type\":\"value\",\"value\":\"NSE,|Banknifty|,,,,,\"}]}},{\"type\":\"value\",\"value\":\"Low\"},{\"type\":\"value\",\"value\":\"09:15\"},{\"type\":\"value\",\"value\":\"09:29\"}]}]},{\"type\":\"rule\",\"value\":\"builder-basic_rule_3\",\"elements\":[{\"name\":\"Positions Detail\",\"kid\":9237,\"params\":[{\"type\":\"value\",\"value\":\"Entry\"},{\"type\":\"value\",\"value\":\"S\"},{\"type\":\"value\",\"value\":\"All\"},{\"type\":\"value\",\"value\":\"value\"},{\"type\":\"value\",\"value\":\"|Banknifty|\"}]},{\"name\":\"==\",\"params\":[]},{\"name\":\"Number\",\"kid\":4671,\"params\":[{\"type\":\"value\",\"value\":\"0\"}]}]}]}",
+          "conditionDisplay": "( ORB ( 'strategy_id', 'run_counter', Instrument Name ( 'NSE,|Banknifty|,,,,,' ) , 'High', '09:15', '09:29' ) > ORB ( 'strategy_id', 'run_counter', Instrument Name ( 'NSE,|Banknifty|,,,,,' ) , 'High', '09:30', '09:44' )  )  and ( ORB ( 'strategy_id', 'run_counter', Instrument Name ( 'NSE,|Banknifty|,,,,,' ) , 'Low', '09:15', '09:29' ) < ORB ( 'strategy_id', 'run_counter', Instrument Name ( 'NSE,|Banknifty|,,,,,' ) , 'Low', '09:30', '09:44' )  )  and ( LTP ( Instrument Name ( 'NSE,|Banknifty|,,,,,' ) , 'LTP' ) < ORB ( 'strategy_id', 'run_counter', Instrument Name ( 'NSE,|Banknifty|,,,,,' ) , 'Low', '09:15', '09:29' )  )  and ( Positions Detail ( 'strategy_id', 'run_counter', 'Entry', 'S', 'All', 'value', '|Banknifty|' ) == Number ( '0' )  )",
+          "subType": "None",
+          "visible": 1,
+          "legs": [
+            {
+              "instrument": 0,
+              "list": 2,
+              "optionType": null,
+              "expiry": null,
+              "expiryType": "Current Week",
+              "expiryJson": null,
+              "expiryDisplay": null,
+              "strikeType": "ATM",
+              "strike": null,
+              "strikeJson": null,
+              "strikeDisplay": null,
+              "qty": "( tt_Number ( '2000' ) / ( orb ( 'strategy_id', 'run_counter', tt_get_instrument ( 'NSE,INSTRUMENT,,,,,' ) , 'High', '09:15', '09:29' ) - orb ( 'strategy_id', 'run_counter', tt_get_instrument ( 'NSE,INSTRUMENT,,,,,' ) , 'Low', '09:15', '09:29' ) )  )",
+              "qtyType": "Qty",
+              "qtyDisplay": null,
+              "qtyJson": "{\"operator\":\"and\",\"operands\":[{\"type\":\"rule\",\"value\":\"builder-basic_rule_0\",\"elements\":[{\"name\":\"Number\",\"kid\":1968,\"params\":[{\"type\":\"value\",\"value\":\"2000\"}]},{\"name\":\"/\",\"params\":[]},{\"name\":\"(\",\"params\":[]},{\"name\":\"ORB\",\"kid\":9647,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Instrument Name\",\"kid\":9186,\"params\":[{\"type\":\"value\",\"value\":\"NSE,|Banknifty|,,,,,\"}]}},{\"type\":\"value\",\"value\":\"High\"},{\"type\":\"value\",\"value\":\"09:15\"},{\"type\":\"value\",\"value\":\"09:29\"}]},{\"name\":\"-\",\"params\":[]},{\"name\":\"ORB\",\"kid\":4658,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Instrument Name\",\"kid\":9378,\"params\":[{\"type\":\"value\",\"value\":\"NSE,|Banknifty|,,,,,\"}]}},{\"type\":\"value\",\"value\":\"Low\"},{\"type\":\"value\",\"value\":\"09:15\"},{\"type\":\"value\",\"value\":\"09:29\"}]},{\"name\":\")\",\"params\":[]}]}]}",
+              "qtyExprDisplay": "( Number ( '2000' ) / ( ORB ( 'strategy_id', 'run_counter', Instrument Name ( 'NSE,|Banknifty|,,,,,' ) , 'High', '09:15', '09:29' ) - ORB ( 'strategy_id', 'run_counter', Instrument Name ( 'NSE,|Banknifty|,,,,,' ) , 'Low', '09:15', '09:29' ) )  )",
+              "buySell": "B",
+              "totalValue": null,
+              "limitPrice": null,
+              "limitPriceJson": null,
+              "limitPriceDisplay": null,
+              "limitPriceExprDisplay": null,
+              "entryTrigger": null,
+              "entryLimit": null,
+              "sLTrigger": null,
+              "sLTriggerJson": null,
+              "sLTriggerDisplay": null,
+              "sLTriggerExprDisplay": null,
+              "sLLimit": null,
+              "targetTrigger": null,
+              "targetLimit": null,
+              "isOvernightProtectionLeg": "No",
+              "productType": "MIS",
+              "underlyingSymbol": null,
+              "tmp": 0,
+              "updatedAt": "2026-08-01 14:15:15",
+              "createdAt": "2026-08-01 14:15:15"
+            }
+          ],
+          "extra": {
+            "name": null,
+            "variables": []
+          }
+        },
+        {
+          "type": "Exit",
+          "conditionValue": "( tt_get_var ( tt_get_instrument ( 'NSE,|Banknifty|,,,,,' ) , 'LTP' ) > orb ( 'strategy_id', 'run_counter', tt_get_instrument ( 'NSE,|Banknifty|,,,,,' ) , 'High', '09:15', '09:29' )  )  or ( tt_get_var ( tt_get_instrument ( 'NSE,|Banknifty|,,,,,' ) , 'LTP' ) < orb ( 'strategy_id', 'run_counter', tt_get_instrument ( 'NSE,|Banknifty|,,,,,' ) , 'Low', '09:15', '09:29' ) - ( orb ( 'strategy_id', 'run_counter', tt_get_instrument ( 'NSE,|Banknifty|,,,,,' ) , 'High', '09:15', '09:29' ) - orb ( 'strategy_id', 'run_counter', tt_get_instrument ( 'NSE,|Banknifty|,,,,,' ) , 'Low', '09:15', '09:29' ) ) * tt_Number ( '2' )  )  or ( tt_get_var ( tt_get_instrument ( 'NSE,|Banknifty|,,,,,' ) , 'LTP' ) < find_traded_instrument ( 'strategy_id', 'run_counter', 'Entry', 'price', '|Banknifty|', '2', '1', '1' ) * tt_Number ( '0.98' )  )",
+          "conditionJson": "{\"operator\":\"or\",\"operands\":[{\"type\":\"rule\",\"value\":\"builder-basic_rule_0\",\"elements\":[{\"name\":\"LTP\",\"kid\":7869,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Instrument Name\",\"kid\":8674,\"params\":[{\"type\":\"value\",\"value\":\"NSE,|Banknifty|,,,,,\"}]}}]},{\"name\":\">\",\"params\":[]},{\"name\":\"ORB\",\"kid\":7929,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Instrument Name\",\"kid\":7090,\"params\":[{\"type\":\"value\",\"value\":\"NSE,|Banknifty|,,,,,\"}]}},{\"type\":\"value\",\"value\":\"High\"},{\"type\":\"value\",\"value\":\"09:15\"},{\"type\":\"value\",\"value\":\"09:29\"}]}]},{\"type\":\"rule\",\"value\":\"builder-basic_rule_1\",\"elements\":[{\"name\":\"LTP\",\"kid\":7869,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Instrument Name\",\"kid\":8674,\"params\":[{\"type\":\"value\",\"value\":\"NSE,|Banknifty|,,,,,\"}]}}]},{\"name\":\"<\",\"params\":[]},{\"name\":\"ORB\",\"kid\":7929,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Instrument Name\",\"kid\":7090,\"params\":[{\"type\":\"value\",\"value\":\"NSE,|Banknifty|,,,,,\"}]}},{\"type\":\"value\",\"value\":\"Low\"},{\"type\":\"value\",\"value\":\"09:15\"},{\"type\":\"value\",\"value\":\"09:29\"}]},{\"name\":\"-\",\"params\":[]},{\"name\":\"(\",\"params\":[]},{\"name\":\"ORB\",\"kid\":7929,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Instrument Name\",\"kid\":7090,\"params\":[{\"type\":\"value\",\"value\":\"NSE,|Banknifty|,,,,,\"}]}},{\"type\":\"value\",\"value\":\"High\"},{\"type\":\"value\",\"value\":\"09:15\"},{\"type\":\"value\",\"value\":\"09:29\"}]},{\"name\":\"-\",\"params\":[]},{\"name\":\"ORB\",\"kid\":7929,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Instrument Name\",\"kid\":7090,\"params\":[{\"type\":\"value\",\"value\":\"NSE,|Banknifty|,,,,,\"}]}},{\"type\":\"value\",\"value\":\"Low\"},{\"type\":\"value\",\"value\":\"09:15\"},{\"type\":\"value\",\"value\":\"09:29\"}]},{\"name\":\")\",\"params\":[]},{\"name\":\"*\",\"params\":[]},{\"name\":\"Number\",\"kid\":1454,\"params\":[{\"type\":\"value\",\"value\":\"2\"}]}]},{\"type\":\"rule\",\"value\":\"builder-basic_rule_2\",\"elements\":[{\"name\":\"LTP\",\"kid\":7869,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Instrument Name\",\"kid\":8674,\"params\":[{\"type\":\"value\",\"value\":\"NSE,|Banknifty|,,,,,\"}]}}]},{\"name\":\"<\",\"params\":[]},{\"name\":\"Traded Instrument\",\"kid\":2507,\"params\":[{\"type\":\"value\",\"value\":\"Entry\"},{\"type\":\"value\",\"value\":\"price\"},{\"type\":\"value\",\"value\":\"|Banknifty|\"},{\"type\":\"value\",\"value\":\"2\"},{\"type\":\"value\",\"value\":\"1\"},{\"type\":\"value\",\"value\":\"1\"}]},{\"name\":\"*\",\"params\":[]},{\"name\":\"Number\",\"kid\":1520,\"params\":[{\"type\":\"value\",\"value\":\"0.98\"}]}]}]}",
+          "conditionDisplay": "( LTP ( Instrument Name ( 'NSE,|Banknifty|,,,,,' ) , 'LTP' ) > ORB ( 'strategy_id', 'run_counter', Instrument Name ( 'NSE,|Banknifty|,,,,,' ) , 'High', '09:15', '09:29' )  )  or ( LTP ( Instrument Name ( 'NSE,|Banknifty|,,,,,' ) , 'LTP' ) < ORB ( 'strategy_id', 'run_counter', Instrument Name ( 'NSE,|Banknifty|,,,,,' ) , 'Low', '09:15', '09:29' ) - ( ORB ( 'strategy_id', 'run_counter', Instrument Name ( 'NSE,|Banknifty|,,,,,' ) , 'High', '09:15', '09:29' ) - ORB ( 'strategy_id', 'run_counter', Instrument Name ( 'NSE,|Banknifty|,,,,,' ) , 'Low', '09:15', '09:29' ) ) * Number ( '2' )  )  or ( LTP ( Instrument Name ( 'NSE,|Banknifty|,,,,,' ) , 'LTP' ) < Traded Instrument ( 'strategy_id', 'run_counter', 'Entry', 'price', '|Banknifty|', '2', '1', '1' ) * Number ( '0.98' )  )",
+          "subType": "None",
+          "visible": 1,
+          "legs": [],
+          "extra": {
+            "name": null,
+            "variables": []
+          }
+        }
+      ]
+    },
+    {
+      "name": null,
+      "conditions": [
+        {
+          "type": "Repair Once",
+          "conditionValue": null,
+          "conditionJson": null,
+          "conditionDisplay": null,
+          "subType": "Overnight Protection",
+          "visible": 0,
+          "legs": [],
+          "extra": {
+            "name": null,
+            "variables": []
+          }
+        },
+        {
+          "type": "Universal Exit",
+          "conditionValue": "( tt_Time ( 'NSE' ) > tt_Number ( '1510' )  )",
+          "conditionJson": "{\"operator\":\"and\",\"operands\":[{\"type\":\"rule\",\"value\":\"builder-basic_rule_0\",\"elements\":[{\"name\":\"Time\",\"kid\":9506,\"params\":[{\"type\":\"value\",\"value\":\"NSE\"}]},{\"name\":\">\",\"params\":[]},{\"name\":\"Number\",\"kid\":8601,\"params\":[{\"type\":\"value\",\"value\":\"1510\"}]}]}]}",
+          "conditionDisplay": "( Time ( 'NSE' ) > Number ( '1510' )  )",
+          "subType": "None",
+          "visible": 1,
+          "legs": [],
+          "extra": {
+            "name": null,
+            "variables": []
+          }
+        }
+      ]
+    }
+  ],
+  "currency": "USD",
+  "priceExecution": "Market Price",
+  "tranchSize": 100,
+  "tslToCostAtProfit": 0,
+  "tslProfitIncrease": 0,
+  "tslSlIncrease": 0,
+  "runFrequency": "Only Once",
+  "firstTradeAfterOpen": 600,
+  "lastTradeBeforeClose": 600,
+  "rolloverExpiryPeriod": "Dont Rollover",
+  "capitalRequired": 100000,
+  "priceRevisionAttempts": 1,
+  "tranchWaitSecs": 10,
+  "exitShortsFirst": 0,
+  "priceRevisionTimeout": 0,
+  "reactivateEvery": 0,
+  "finalAction": "MARKET",
+  "exitAtMarket": 0,
+  "runEvery": 60,
+  "rolloverExpiryTime": "1500",
+  "priceTicksMultiple": "1",
+  "pythonCode": null,
+  "isPublic": 0,
+  "minMultiple": 1,
+  "maxMultiple": 100,
+  "freePeriod": 1,
+  "fixedFee": "0.00",
+  "fixedFeePeriod": "1",
+  "variableFee": "0.00",
+  "hurdleRate": 6,
+  "recreatePositionsInNewFollowers": "No",
+  "allowDuplication": 1,
+  "confirmationPerSubscriber": 0,
+  "hideSubscribers": "No",
+  "strategyPublicLinkAccess": "Yes",
+  "strategyPublicLink": "a",
+  "displayPositionsToNonSubscribers": 0,
+  "highWatermark": "Yes",
+  "showLiveAutoDeployment": 0,
+  "feeShare": "1.00",
+  "isApproved": 1,
+  "feeFrequency": "Month",
+  "backtestLinkSubscribers": "None",
+  "backtestLinkNonsubscribers": "None"
+}

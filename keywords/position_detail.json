@@ -1,0 +1,47 @@
+{
+  "name": "Positions Detail",
+  "category": "Trade Management",
+  "description": "Retrieves specific details of a traded position. CRITICAL RULE: Can only be used in Repair or Exit conditions where a position already exists.",
+  "return_type": "Number",
+  "parameters": [
+    {
+      "name": "Detail Type",
+      "type": "Enum",
+      "options": ["Entry Price", "Quantity", "LTP", "PNL", "Entry Time"],
+      "description": "The specific detail to fetch from the open position."
+    },
+    {
+      "name": "Transaction Type",
+      "type": "Enum",
+      "options": ["All", "Buy", "Sell"],
+      "description": "Filter by Buy or Sell legs."
+    },
+    {
+      "name": "Instrument Type",
+      "type": "Enum",
+      "options": ["All", "EQ", "FUT", "CE", "PE"],
+      "description": "Filter by the type of instrument."
+    },
+    {
+      "name": "Underlying",
+      "type": "Instrument",
+      "description": "The underlying instrument of the position."
+    },
+    {
+      "name": "Set Number",
+      "type": "Integer",
+      "description": "The Set number (e.g., 1, 2) this position belongs to."
+    },
+    {
+      "name": "Condition Number",
+      "type": "Integer",
+      "description": "The Entry Condition number."
+    },
+    {
+      "name": "Leg Number",
+      "type": "Integer",
+      "description": "The specific leg number within the position builder."
+    }
+  ],
+  "usage_example": "Positions Detail(Detail Type: Entry Price, Transaction Type: All, Instrument Type: All, Underlying: Nifty 50, Set Number: 1, Condition Number: 1, Leg Number: 1)"
+}

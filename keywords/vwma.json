@@ -1,0 +1,18 @@
+{
+    "name": "VWMA",
+    "description": "This is a price action keyword on volume, meaning areas with higher volume will have a greater weight. On heavy volume days, the VWMA will more closely follow price, and on lower volume days the VWMA will act similarly to a simple moving average",
+    "how_to_use_markdown": "This is a price action keyword on volume, meaning areas with higher volume will have a greater weight. On heavy volume days, the VWMA will more closely follow price, and on lower volume days the VWMA will act similarly to a simple moving average\n\n![Example](./images/img-1766487570.png)\n\nYou can plot VWMA on the following series, like close in the above example, you can also plot VWMA of \u00a0OPEN, HIGH, LOW, CLOSE\n\nRead more about VWMA here \u00a0-  www.patternswizard.com/vwma-indicator/",
+    "example_image_urls": [
+        "./images/img-1766487570.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "VWMA\nThis is a price action keyword on volume, meaning areas with higher volume will have a greater weight. On heavy volume days, the VWMA will more closely follow price, and on lower volume days the VWMA will act similarly to a simple moving average\nYou can plot VWMA on the following series, like close in the above example, you can also plot VWMA of \u00a0OPEN, HIGH, LOW, CLOSE\nRead more about VWMA here\n\u00a0- \nwww.patternswizard.com/vwma-indicator/",
+    "visual_logic_extracted": "Image [img-1766487570.png] Text:\nPosition\nVWMA ( ohicv ( Instrument Name ( NFO,NIFTY 50,Current Month,,,, ), 1m, All) , Close, 20 ) , -1"
+}

@@ -1,0 +1,18 @@
+{
+    "name": "Log",
+    "description": "This keyword will return the log of the selected series of the particular instrument. Log keyword is generally used under the position keyword",
+    "how_to_use_markdown": "This keyword will return the log of the selected series of the particular instrument. Log keyword is generally used under the position keyword\n\n![Example](./images/img-1632228703.png)\n\nThe above condition will return log of previous day's NIFTY 50 close price\n\nLog keyword used in Tradetron is part of Numpy library - https://numpy.org/doc/stable/reference/generated/numpy.log.html",
+    "example_image_urls": [
+        "./images/img-1632228703.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "Log\nThis keyword will return the log of the selected series of the particular instrument. Log keyword is generally used under the position keyword\nThe above condition will return log of previous day's NIFTY 50 close price\nLog keyword used in Tradetron is part of Numpy library -\nhttps://numpy.org/doc/stable/reference/generated/numpy.log.html",
+    "visual_logic_extracted": "Image [img-1632228703.png] Text:\n+\nPosition\nLog ( CLOSE ( Symbol ( Instrument Name ( NFO,NIFTY 50,,,,, ), day, All) )), -1"
+}

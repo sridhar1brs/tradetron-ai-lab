@@ -1,0 +1,18 @@
+{
+    "name": "Atmiv",
+    "description": "This keyword will return the Implied Volatility of the ATM\u00a0option for the selected underlying instrument.",
+    "how_to_use_markdown": "This keyword will return the  Implied Volatility  of the ATM\u00a0option for the selected underlying instrument.\n\nPls note - ATM is selected based on futures chart and not Spot chart\n\n![Example](./images/img-1631795373.png)",
+    "example_image_urls": [
+        "./images/img-1631795373.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "Atmiv\nThis keyword will return the \nImplied Volatility\n of the ATM\u00a0option for the selected underlying instrument.\nPls note - ATM is selected based on futures chart and not Spot chart",
+    "visual_logic_extracted": "Image [img-1631795373.png] Text:\nAtmiv\nNIFTY 50"
+}

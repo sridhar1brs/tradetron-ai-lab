@@ -1,0 +1,19 @@
+{
+    "name": "Traded Instrument Name",
+    "description": "When used under LTP keyword it will return the LTP of the instrument traded in leg 1 of set 1",
+    "how_to_use_markdown": "This keyword as the name suggests returns the Traded instrument name. Traded Instrument name can be selected in many keywords like LTP, EMA, or any indicator to apply that keyword on the traded instrument.\n\n![Example](./images/img-1632399701.png)\n\nThe above are the parameters for Traded Instrument Name. \u00a0It wil return the name of the instrument traded in leg 1 of set 1  .\n\n![Example](./images/img-1632399799.png)\n\nWhen used under LTP keyword it will return the LTP of the instrument traded in leg 1 of set 1\n\nThe difference between Traded instrument and Traded instrument name is that Traded instrument Name is usually used under different keywords whereas Traded Instrument can be used as a standalone keyword.\n\nHow to reference legs ?\n\nSet no - Select the set no 1,2,3 etc where the instrument is traded\n\nCondition no - Select condition like 1,2,3 where the instrument is traded, if it is entry leg condition no will always be 1, suppose it is the first repair once then condition no. will be 1, if traded in second repair condition number will be 2 and so on, suppose it is first repair continuous, condition no will be 1 and so on\n\nLeg 1 - Select the leg no. based on the order of the position builder positions. If it is the first leg select 1, if want to reference the 5th leg select 5\n\nWatch this video for an example - https://youtu.be/Ul7q6Rn6ZqM\n\nWatch this video to learn referencing the legs \u00a0-- https://youtu.be/yHAbw3gGqyc",
+    "example_image_urls": [
+        "./images/img-1632399701.png",
+        "./images/img-1632399799.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "Traded Instrument Name\nThis keyword as the name suggests returns the Traded instrument name. Traded Instrument name can be selected in many keywords like LTP, EMA, or any indicator to apply that keyword on the traded instrument.\nThe above are the parameters for Traded Instrument Name.\n\u00a0It wil return the name of the instrument traded in leg 1 of set 1\n .\nWhen used under LTP keyword it will return the LTP of the instrument traded in leg 1 of set 1\nThe difference between Traded instrument and Traded instrument name is that Traded instrument Name is usually used under different keywords whereas Traded Instrument can be used as a standalone keyword.\nHow to reference legs ?\nSet no\n- Select the set no 1,2,3 etc where the instrument is traded\nCondition no\n- Select condition like 1,2,3 where the instrument is traded, if it is entry leg condition no will always be 1, suppose it is the first repair once then condition no. will be 1, if traded in second repair condition number will be 2 and so on, suppose it is first repair continuous, condition no will be 1 and so on\nLeg 1\n- Select the leg no. based on the order of the position builder positions. If it is the first leg select 1, if want to reference the 5th leg select 5\nWatch this video for an example -\nhttps://youtu.be/Ul7q6Rn6ZqM\nWatch this video to learn referencing the legs \u00a0--\nhttps://youtu.be/yHAbw3gGqyc",
+    "visual_logic_extracted": "Image [img-1632399701.png] Text:\nCondition Type\n\nEntry x\nField\n\ninstrument x *\nUnderlying\n\nNIFTY 50 x |\nSet Number\n\n1\n\u2014_ Number |\n1\nfe Number |\nc |\n\nImage [img-1632399799.png] Text:\n+\n\nLTP\n\nTraded Instrument Name ( Entry, instrument, NIFTY 50, 1, 1, 1)"
+}

@@ -1,0 +1,18 @@
+{
+    "name": "RSI",
+    "description": "This keyword returns the RSI of any period of the selected Instrument. This keyword is to be used under the position keyword.",
+    "how_to_use_markdown": "This keyword returns the RSI of any period of the selected Instrument. This keyword is to be used under the position keyword.\n\n![Example](./images/img-1632219453.png)\n\nThe above keyword will return the previous day RSI 14 value of ACC.\n\nRSI keyword needs at least 2 as an input in period, RSI with period 1 won't work.\n\nThe RSI provides technical traders with signals about bullish and bearish price momentum, and it is often plotted beneath the graph of an asset\u2019s price.\n\nRead more about RSI here - https://www.investopedia.com/terms/r/rsi.asp",
+    "example_image_urls": [
+        "./images/img-1632219453.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "RSI\nThis keyword returns the RSI of any period of the selected Instrument. This keyword is to be used under the position keyword.\nThe above keyword will return the previous day RSI 14 value of ACC.\nRSI keyword needs at least 2 as an input in period, RSI with period 1 won't work.\nThe RSI provides technical traders with signals about bullish and bearish price momentum, and it is often plotted beneath the graph of an asset\u2019s price.\nRead more about RSI here -\nhttps://www.investopedia.com/terms/r/rsi.asp",
+    "visual_logic_extracted": "Image [img-1632219453.png] Text:\n+\nPosition\nRSI ( Symbol ( Instrument Name ( NFO,ACC,,,,, ), day, All) , 14), -1"
+}

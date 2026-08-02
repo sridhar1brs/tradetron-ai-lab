@@ -1,0 +1,18 @@
+{
+    "name": "Delta",
+    "description": "Delta keyword returns the delta value of that particular option",
+    "how_to_use_markdown": "Delta keyword returns the delta value of that particular option\n\nUsually, Delta keyword is used to get the delta values of traded instruments\n\n![Example](./images/img-1631789565.png)\n\nThe above example will return the delta value of the instrument traded in entry set 1,leg 1",
+    "example_image_urls": [
+        "./images/img-1631789565.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "Delta\nDelta keyword returns the delta value of that particular option\nUsually, Delta keyword is used to get the delta values of traded instruments\nThe above example will return the delta value of the instrument traded in entry set 1,leg 1",
+    "visual_logic_extracted": "Image [img-1631789565.png] Text:\nrx)\n\nDelta\nTraded Instrument Name ( Entry, instrument, NIFTY 50, 1, 1, 1)"
+}

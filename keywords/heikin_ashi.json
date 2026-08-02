@@ -1,0 +1,18 @@
+{
+    "name": "Heikin Ashi",
+    "description": "Tradetron supports various different candle types and Heiken Ashi is one such candle type. Thus you can use any indicator, instrument or keyword and convert the candle into a Heiken Ashi candle. You can find more detail on the same candle in the lik shared below:",
+    "how_to_use_markdown": "Tradetron supports various different candle types and Heiken Ashi is one such candle type. Thus you can use any indicator, instrument or keyword and convert the candle into a Heiken Ashi candle. You can find more detail on the same candle in the lik shared below:\n\nhttps://www.investopedia.com/trading/heikin-ashi-better-candlestick/\n\nSince Heiken Ashi is an independent candle type, it can be accessed by clicking on the name of the indicator (used under position keyword) and selecting the candle type as Heiken Ashi.\n\n![Example](./images/img-1632391728.png)\n\nIn the example share above, we will fetch the High on the previous (-1) Heiken Ashi 15 mins  candle  for Nifty 50 spot.",
+    "example_image_urls": [
+        "./images/img-1632391728.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "Heikin Ashi\nTradetron supports various different candle types and Heiken Ashi is one such candle type. Thus you can use any indicator, instrument or keyword and convert the candle into a Heiken Ashi candle. You can find more detail on the same candle in the lik shared below:\nhttps://www.investopedia.com/trading/heikin-ashi-better-candlestick/\nSince Heiken Ashi is an independent candle type, it can be accessed by clicking on the name of the indicator (used under position keyword) and selecting the candle type as Heiken Ashi.\nIn the example share above, we will fetch the High on the previous (-1) Heiken Ashi 15 mins \ncandle\n for Nifty 50 spot.",
+    "visual_logic_extracted": "Image [img-1632391728.png] Text:\nPosition\nHIGH ( Heikin Ashi ( Symbol ( Instrument Name ( NFO,NIFTY 50,.,,,), 15m, All) )), -1"
+}

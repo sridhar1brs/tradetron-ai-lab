@@ -1,0 +1,18 @@
+{
+    "name": "Minute",
+    "description": "Please note, the range is 1 - 59",
+    "how_to_use_markdown": "T his keyword  Returns current minutes as an integer\n\n![Example](./images/img-1631796552.png)\n\nThe above example is checking whether the current minute is greater than 30, suppose time is 11:45, condition will be true\n\nPlease note, the range is 1 - 59",
+    "example_image_urls": [
+        "./images/img-1631796552.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "Minute\nT\nhis keyword \nReturns current minutes as an integer \u00a0\n\u00a0\nThe above example is checking whether the current minute is greater than 30, suppose time is 11:45, condition will be true\nPlease note, the range is 1 - 59",
+    "visual_logic_extracted": "Image [img-1631796552.png] Text:\nMinute >= Number\nNSE 30"
+}

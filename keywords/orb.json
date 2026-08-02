@@ -1,0 +1,18 @@
+{
+    "name": "ORB",
+    "description": "In the example share above, we are looking for the condition where the LTP of Nifty 50 spot is greater than the high between 915 AM and 930AM. We are also looking for the same to execute only if its 930AM.",
+    "how_to_use_markdown": "This keyword will help you fetch the Open, High, Low, Close or Volume of any particular timeframe. It is important to execute the ORB keyword only after the mentioned time has passed. Thus it is suggested to add a time condition along with the ORB condition as an AND.\n\n![Example](./images/img-1754459356.png)\n\nIn the example share above, we are looking for the condition where the LTP of Nifty 50 spot is greater than the high between 915 AM and 930AM. We are also looking for the same to execute only if its 930AM.\n\nYou can have a look at this video for more details.\n\nhttps://www.youtube.com/watch?v=-TVjzmh9NpQ",
+    "example_image_urls": [
+        "./images/img-1754459356.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "ORB\nThis keyword will help you fetch the Open, High, Low, Close or Volume of any particular timeframe. It is important to execute the ORB keyword only after the mentioned time has passed. Thus it is suggested to add a time condition along with the ORB condition as an AND.\u00a0\nIn the example share above, we are looking for the condition where the LTP of Nifty 50 spot is greater than the high between 915 AM and 930AM. We are also looking for the same to execute only if its 930AM.\u00a0\nYou can have a look at this video for more details.\u00a0\nhttps://www.youtube.com/watch?v=-TVjzmh9NpQ",
+    "visual_logic_extracted": "Image [img-1754459356.png] Text:\n\u2018Condition \u00a9 Group &"
+}

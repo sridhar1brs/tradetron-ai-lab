@@ -1,0 +1,112 @@
+{
+  "_format": "tt-strategy/v2",
+  "_readme": {
+    "about": "Tradetron strategy export. Edit and re-import via the ASB Import button.",
+    "logic": "To change a condition's logic, edit its \"conditionJson\" (the AST). The \"conditionValue\"/\"conditionDisplay\" text is regenerated from it on import.",
+    "legs": "For a leg field that has a \"*Json\" (e.g. \"strikeJson\"), edit the JSON \u2014 its text form is regenerated on import. Fields with no \"*Json\" (e.g. \"qty\") are plain text: edit them directly.",
+    "structure": "Add/remove/duplicate legs, conditions or sets by editing the arrays.",
+    "do_not": "Do not add \"*_id\" foreign keys back. Lists referenced by id must be ones you own."
+  },
+  "name": "AI Generated SMA Crossover Strategy",
+  "description": "<p>Rolling EMA</p><p>SL: EMA TGT: EMA</p><p>NoRe- NoReEntry</p>",
+  "tags": [
+    {
+      "label": "Pairs",
+      "value": 44
+    }
+  ],
+  "variables": [],
+  "sets": [
+    {
+      "list": 0,
+      "name": null,
+      "conditions": [
+        {
+          "type": "Entry",
+          "conditionValue": null,
+          "conditionJson": "{\"operator\": \"and\", \"operands\": [{\"type\": \"rule\", \"value\": \"builder-basic_rule_0\", \"elements\": [{\"name\": \"Time\", \"kid\": 3755, \"params\": [{\"type\": \"value\", \"value\": \"NSE\"}]}, {\"name\": \">=\", \"params\": []}, {\"name\": \"Number\", \"kid\": 8689, \"params\": [{\"type\": \"value\", \"value\": \"915\"}]}]}, {\"type\": \"rule\", \"value\": \"builder-basic_rule_1\", \"elements\": [{\"name\": \"LTP\", \"kid\": 7678, \"params\": [{\"type\": \"value\", \"value\": \"NIFTY 50\"}]}, {\"name\": \">\", \"params\": []}, {\"name\": \"SMA\", \"kid\": 3332, \"params\": [{\"type\": \"value\", \"value\": \"NIFTY 50\"}, {\"type\": \"value\", \"value\": \"20\"}, {\"type\": \"value\", \"value\": \"close\"}]}]}]}",
+          "conditionDisplay": null,
+          "subType": "",
+          "visible": 1,
+          "legs": [
+            {
+              "instrument": 1855,
+              "list": 0,
+              "optionType": "CE",
+              "expiryType": "Current Week",
+              "expiry": "tt_curr_weekexpiry('NIFTY 50')",
+              "expiryJson": null,
+              "expiryDisplay": null,
+              "strikeType": "Strike",
+              "strike": "ATM",
+              "strikeJson": null,
+              "strikeDisplay": null,
+              "qty": "tt_lots(1,'INSTRUMENT','CE')",
+              "qtyType": "Lots",
+              "qtyDisplay": "1",
+              "qtyJson": null,
+              "buySell": "B",
+              "productType": "NRML",
+              "underlyingSymbol": "NIFTY 50"
+            }
+          ],
+          "extra": []
+        },
+        {
+          "type": "Exit",
+          "conditionValue": null,
+          "conditionJson": "{\"operator\": \"and\", \"operands\": [{\"type\": \"rule\", \"value\": \"builder-basic_rule_0\", \"elements\": [{\"name\": \"Time\", \"kid\": 3755, \"params\": [{\"type\": \"value\", \"value\": \"NSE\"}]}, {\"name\": \">=\", \"params\": []}, {\"name\": \"Number\", \"kid\": 3263, \"params\": [{\"type\": \"value\", \"value\": \"1515\"}]}]}]}",
+          "conditionDisplay": null,
+          "subType": "",
+          "visible": 1,
+          "legs": [],
+          "extra": []
+        }
+      ]
+    }
+  ],
+  "currency": "INR",
+  "priceExecution": "Market Price",
+  "tranchSize": 100,
+  "tslToCostAtProfit": 0,
+  "tslProfitIncrease": 0,
+  "tslSlIncrease": 0,
+  "runFrequency": "Continuous",
+  "firstTradeAfterOpen": 1,
+  "lastTradeBeforeClose": 60,
+  "rolloverExpiryPeriod": "Dont Rollover",
+  "capitalRequired": 30000,
+  "priceRevisionAttempts": 3,
+  "tranchWaitSecs": 1,
+  "exitShortsFirst": 0,
+  "priceRevisionTimeout": 0,
+  "reactivateEvery": 360,
+  "finalAction": "MARKET",
+  "exitAtMarket": 0,
+  "runEvery": 1,
+  "rolloverExpiryTime": "1500",
+  "priceTicksMultiple": "10",
+  "pythonCode": null,
+  "isPublic": 0,
+  "minMultiple": 1,
+  "maxMultiple": 100,
+  "freePeriod": null,
+  "fixedFee": "0.00",
+  "fixedFeePeriod": "1",
+  "variableFee": "0.00",
+  "hurdleRate": 0,
+  "recreatePositionsInNewFollowers": "No",
+  "allowDuplication": 0,
+  "confirmationPerSubscriber": 0,
+  "hideSubscribers": "No",
+  "strategyPublicLinkAccess": "Yes",
+  "strategyPublicLink": null,
+  "displayPositionsToNonSubscribers": 0,
+  "highWatermark": "Yes",
+  "showLiveAutoDeployment": 0,
+  "feeShare": null,
+  "isApproved": 0,
+  "feeFrequency": "Month",
+  "backtestLinkSubscribers": null,
+  "backtestLinkNonsubscribers": null
+}

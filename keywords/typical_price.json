@@ -1,0 +1,18 @@
+{
+    "name": "Typical Price",
+    "description": "This keyword returns the value of the indicator called Typical Price. This keyword like all technical indicators are to be used under the Position keyword",
+    "how_to_use_markdown": "This keyword returns the value of the indicator called Typical Price. This keyword like all technical indicators are to be used under the Position keyword\n\n![Example](./images/img-1632141818.png)\n\nThe above condition is checking if the LTP of Nifty futures is greater than the previous Typical Price of the Nifty 50 futures  day  candle (-1)\n\nThe Typical Price Indicator (TPI) function measures the average of the high, low, and closing prices for the day using a simple, single-line plot.\n\nRead more about  Typical Price Indicator\u00a0  here - https://www.stockmaniacs.net/typical-price-indicator/",
+    "example_image_urls": [
+        "./images/img-1632141818.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "Typical Price\nThis keyword returns the value of the indicator called Typical Price. This keyword like all technical indicators are to be used under the Position keyword\nThe above condition is checking if the LTP of Nifty futures is greater than the previous Typical Price of the Nifty 50 futures \nday\n candle (-1)\u00a0\nThe Typical Price Indicator (TPI) function measures the average of the high, low, and closing prices for the day using a simple, single-line plot.\nRead more about \nTypical Price Indicator\u00a0\n here -\nhttps://www.stockmaniacs.net/typical-price-indicator/",
+    "visual_logic_extracted": "Image [img-1632141818.png] Text:\n\\* Bee * Lx]\n\nLTP > Position\nFutures ( NIFTY 50 ) Typical Price ( Symbol ( Futures ( NIFTY 50 ), day, All) ), -1"
+}

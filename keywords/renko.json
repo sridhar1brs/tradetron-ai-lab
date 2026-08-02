@@ -1,0 +1,19 @@
+{
+    "name": "Renko",
+    "description": "Tradetron supports various different candle types and Renko is one such candle type. Thus you can use any indicator, instrument or keyword and convert the candle into a Renko candle. You can find more detail on the same candle in the link shared below:",
+    "how_to_use_markdown": "Tradetron supports various different candle types and Renko is one such candle type. Thus you can use any indicator, instrument or keyword and convert the candle into a Renko candle. You can find more detail on the same candle in the link shared below:\n\nhttps://www.investopedia.com/terms/r/renkochart.asp#:~:text=A%20Renko%20chart%20is%20a,like%20a%20series%20of%20bricks.\n\nSince Renko is an independent candle type, it can be accessed by clicking on the name of the indicator (used under position keyword) and selecting the candle type as Renko. To fetch the latest Renko brick, it is suggested to use it with Position (0).\n\n![Example](./images/img-1632395234.png)\n\nIn the example share above, we will fetch the current (0)  Renko \u00a0brick for Nifty 50 spot.\n\nThis keyword will allow the brick size to be maintained as a fixed value. In order to modify the same value, click on 'Renko' and select the number which you need to keep a the brick size.\n\n![Example](./images/img-1632395482.png)",
+    "example_image_urls": [
+        "./images/img-1632395234.png",
+        "./images/img-1632395482.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "Renko\nTradetron supports various different candle types and Renko is one such candle type. Thus you can use any indicator, instrument or keyword and convert the candle into a Renko candle. You can find more detail on the same candle in the link shared below:\nhttps://www.investopedia.com/terms/r/renkochart.asp#:~:text=A%20Renko%20chart%20is%20a,like%20a%20series%20of%20bricks.\nSince Renko is an independent candle type, it can be accessed by clicking on the name of the indicator (used under position keyword) and selecting the candle type as Renko. To fetch the latest Renko brick, it is suggested to use it with Position (0).\u00a0\nIn the example share above, we will fetch the current (0) \nRenko\n\u00a0brick for Nifty 50 spot.\nThis keyword will allow the brick size to be maintained as a fixed value. In order to modify the same value, click on 'Renko' and select the number which you need to keep a the brick size.",
+    "visual_logic_extracted": "Image [img-1632395234.png] Text:\nix\n\nPosition\nCLOSE ( Renko ( Symbol ( Instrument Name (NFO,NIFTY 50,,,,,), 5m, All), 15)), 0\n\nImage [img-1632395482.png] Text:\nPosition\nCLOSE ( Renko ( Symbol (Instrument Name (NFO.NIFTY 50.,., ), 5m, All), 15)), 0\n\nKeyword Paramters x\n\nOhic\n\n| Symbol x\n\nBrick Size\n\nfs)\n\nOk Cancel"
+}

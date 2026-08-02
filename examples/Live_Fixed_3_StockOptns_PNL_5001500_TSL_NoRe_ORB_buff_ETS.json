@@ -1,0 +1,518 @@
+{
+  "_format": "tt-strategy/v2",
+  "_readme": {
+    "about": "Tradetron strategy export. Edit and re-import via the ASB Import button.",
+    "logic": "To change a condition's logic, edit its \"conditionJson\" (the AST). The \"conditionValue\"/\"conditionDisplay\" text is regenerated from it on import.",
+    "legs": "For a leg field that has a \"*Json\" (e.g. \"strikeJson\"), edit the JSON — its text form is regenerated on import. Fields with no \"*Json\" (e.g. \"qty\") are plain text: edit them directly.",
+    "structure": "Add/remove/duplicate legs, conditions or sets by editing the arrays.",
+    "do_not": "Do not add \"*_id\" foreign keys back. Lists referenced by id must be ones you own."
+  },
+  "name": "Live Fixed 3 StockOptns PNL 500:1500 TSL NoRe ORB buff ETS",
+  "description": "<p>9.30 AM, ATM-SPOT, Volume Check, Buffer ETS(Entry Target SL)</p><p>TGT:&nbsp; 1500</p><p>SL: 500</p>",
+  "tags": [],
+  "variables": [
+    {
+      "variableName": "StartTime",
+      "value": "( tt_Time ( 'NSE' )  )",
+      "display": "( Time ( 'NSE' )  )",
+      "json": "{\"operator\":\"and\",\"operands\":[{\"type\":\"rule\",\"value\":\"builder-basic_rule_0\",\"elements\":[{\"name\":\"Time\",\"kid\":8631,\"params\":[{\"type\":\"value\",\"value\":\"NSE\"}]}]}]}"
+    }
+  ],
+  "sets": [
+    {
+      "list": 0,
+      "name": null,
+      "conditions": [
+        {
+          "type": "Entry",
+          "conditionValue": "( tt_Time ( 'NSE' ) >= tt_Number ( '930' )  )  and ( tt_position_value ( 'strategy_id', 'run_counter', 'Entry', 'All', 'All', 'quantity', 'HINDUNILVR' ) == tt_Number ( '0' )  )  and ( tt_get_var ( tt_get_future_instrument ( 'HINDUNILVR' ) , 'LTP' ) > orb ( 'strategy_id', 'run_counter', tt_get_future_instrument ( 'HINDUNILVR' ) , 'High', '09:15', '09:29' ) + ( tt_get_var ( tt_get_future_instrument ( 'HINDUNILVR' ) , 'PrevClose' ) * tt_Number ( '0.001' ) )  )  and ( tt_get_var ( tt_get_instrument ( 'NFO,HINDUNILVR,Current Month,CE,ATM-SPOT,,' ) , 'LTP' ) >= tt_Number ( '1' )  )  and ( tt_math ( tt_get_var ( tt_get_instrument ( 'NFO,HINDUNILVR,Current Month,CE,ATM-SPOT,,' ) , 'Volume' ) , tt_lotsize ( tt_get_instrument ( 'NFO,HINDUNILVR,Current Month,CE,ATM-SPOT,,' )  ) , '/' ) > tt_Number ( '50' )  )  and ( tt_get_var ( tt_get_instrument ( 'NFO,HINDUNILVR,Current Month,CE,ATM-SPOT,,' ) , 'Volume' )  )  and ( tt_lotsize ( tt_get_instrument ( 'NFO,HINDUNILVR,Current Month,CE,ATM-SPOT,,' )  )  )",
+          "conditionJson": "{\"operator\":\"and\",\"operands\":[{\"type\":\"rule\",\"value\":\"builder-basic_rule_0\",\"elements\":[{\"name\":\"Time\",\"kid\":7658,\"params\":[{\"type\":\"value\",\"value\":\"NSE\"}]},{\"name\":\">=\",\"params\":[]},{\"name\":\"Number\",\"kid\":9644,\"params\":[{\"type\":\"value\",\"value\":\"930\"}]}]},{\"type\":\"rule\",\"value\":\"builder-basic_rule_1\",\"elements\":[{\"name\":\"Positions Detail\",\"kid\":4746,\"params\":[{\"type\":\"value\",\"value\":\"Entry\"},{\"type\":\"value\",\"value\":\"All\"},{\"type\":\"value\",\"value\":\"All\"},{\"type\":\"value\",\"value\":\"quantity\"},{\"type\":\"value\",\"value\":\"HINDUNILVR\"}]},{\"name\":\"==\",\"params\":[]},{\"name\":\"Number\",\"kid\":6091,\"params\":[{\"type\":\"value\",\"value\":\"0\"}]}]},{\"type\":\"rule\",\"value\":\"builder-basic_rule_2\",\"elements\":[{\"name\":\"LTP\",\"kid\":9472,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Futures\",\"kid\":5368,\"params\":[{\"type\":\"value\",\"value\":\"HINDUNILVR\"}]}}]},{\"name\":\">\",\"params\":[]},{\"name\":\"ORB\",\"kid\":3927,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Futures\",\"kid\":9856,\"params\":[{\"type\":\"value\",\"value\":\"HINDUNILVR\"}]}},{\"type\":\"value\",\"value\":\"High\"},{\"type\":\"value\",\"value\":\"09:15\"},{\"type\":\"value\",\"value\":\"09:29\"}]},{\"name\":\"+\",\"params\":[]},{\"name\":\"(\",\"params\":[]},{\"name\":\"Previous Close\",\"kid\":1492,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Futures\",\"kid\":1479,\"params\":[{\"type\":\"value\",\"value\":\"HINDUNILVR\"}]}}]},{\"name\":\"*\",\"params\":[]},{\"name\":\"Number\",\"kid\":6091,\"params\":[{\"type\":\"value\",\"value\":\"0.001\"}]},{\"name\":\")\",\"params\":[]}]},{\"type\":\"rule\",\"value\":\"builder-basic_rule_3\",\"elements\":[{\"name\":\"LTP\",\"kid\":3850,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Instrument Name\",\"kid\":9747,\"params\":[{\"type\":\"value\",\"value\":\"NFO,HINDUNILVR,Current Month,CE,ATM-SPOT,,\"}]}}]},{\"name\":\">=\",\"params\":[]},{\"name\":\"Number\",\"kid\":8144,\"params\":[{\"type\":\"value\",\"value\":\"1\"}]}]},{\"type\":\"rule\",\"value\":\"builder-basic_rule_4\",\"elements\":[{\"name\":\"Math Operation\",\"kid\":4067,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Volume\",\"kid\":6836,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Instrument Name\",\"kid\":8831,\"params\":[{\"type\":\"value\",\"value\":\"NFO,HINDUNILVR,Current Month,CE,ATM-SPOT,,\"}]}}]}},{\"type\":\"keyword\",\"keyword\":{\"name\":\"Lot Size\",\"kid\":6473,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Instrument Name\",\"kid\":5814,\"params\":[{\"type\":\"value\",\"value\":\"NFO,HINDUNILVR,Current Month,CE,ATM-SPOT,,\"}]}}]}},{\"type\":\"value\",\"value\":\"/\"}]},{\"name\":\">\",\"params\":[]},{\"name\":\"Number\",\"kid\":6091,\"params\":[{\"type\":\"value\",\"value\":\"50\"}]}]},{\"type\":\"rule\",\"value\":\"builder-basic_rule_5\",\"elements\":[{\"name\":\"Volume\",\"kid\":2347,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Instrument Name\",\"kid\":6790,\"params\":[{\"type\":\"value\",\"value\":\"NFO,HINDUNILVR,Current Month,CE,ATM-SPOT,,\"}]}}]}]},{\"type\":\"rule\",\"value\":\"builder-basic_rule_6\",\"elements\":[{\"name\":\"Lot Size\",\"kid\":8996,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Instrument Name\",\"kid\":4777,\"params\":[{\"type\":\"value\",\"value\":\"NFO,HINDUNILVR,Current Month,CE,ATM-SPOT,,\"}]}}]}]}]}",
+          "conditionDisplay": "( Time ( 'NSE' ) >= Number ( '930' )  )  and ( Positions Detail ( 'strategy_id', 'run_counter', 'Entry', 'All', 'All', 'quantity', 'HINDUNILVR' ) == Number ( '0' )  )  and ( LTP ( Futures ( 'HINDUNILVR' ) , 'LTP' ) > ORB ( 'strategy_id', 'run_counter', Futures ( 'HINDUNILVR' ) , 'High', '09:15', '09:29' ) + ( Previous Close ( Futures ( 'HINDUNILVR' ) , 'PrevClose' ) * Number ( '0.001' ) )  )  and ( LTP ( Instrument Name ( 'NFO,HINDUNILVR,Current Month,CE,ATM-SPOT,,' ) , 'LTP' ) >= Number ( '1' )  )  and ( Math Operation ( Volume ( Instrument Name ( 'NFO,HINDUNILVR,Current Month,CE,ATM-SPOT,,' ) , 'Volume' ) , Lot Size ( Instrument Name ( 'NFO,HINDUNILVR,Current Month,CE,ATM-SPOT,,' )  ) , '/' ) > Number ( '50' )  )  and ( Volume ( Instrument Name ( 'NFO,HINDUNILVR,Current Month,CE,ATM-SPOT,,' ) , 'Volume' )  )  and ( Lot Size ( Instrument Name ( 'NFO,HINDUNILVR,Current Month,CE,ATM-SPOT,,' )  )  )",
+          "subType": "None",
+          "visible": 1,
+          "legs": [
+            {
+              "instrument": 1986,
+              "list": 0,
+              "optionType": "CE",
+              "expiryType": "Current Month",
+              "expiry": "tt_curr_monthexpiry('HINDUNILVR')",
+              "expiryJson": null,
+              "expiryDisplay": null,
+              "strikeType": "Fx",
+              "strike": "( tt_ATM_SPOT ( 'HINDUNILVR', '0' )  )",
+              "strikeJson": "{\"operator\":\"and\",\"operands\":[{\"type\":\"rule\",\"value\":\"builder-basic_rule_0\",\"elements\":[{\"name\":\"ATM SPOT\",\"kid\":8428,\"params\":[{\"type\":\"value\",\"value\":\"HINDUNILVR\"},{\"type\":\"value\",\"value\":\"0\"}]}]}]}",
+              "strikeDisplay": "( ATM SPOT ( 'HINDUNILVR', '0' )  )",
+              "qty": "tt_lots(1,'INSTRUMENT','CE')",
+              "qtyType": "Lots",
+              "qtyDisplay": "1",
+              "qtyJson": null,
+              "qtyExprDisplay": null,
+              "limitPrice": null,
+              "limitPriceDisplay": null,
+              "limitPriceJson": null,
+              "limitPriceExprDisplay": null,
+              "buySell": "B",
+              "entryLimit": null,
+              "entryTrigger": null,
+              "sLLimit": null,
+              "sLTrigger": null,
+              "sLTriggerDisplay": null,
+              "sLTriggerJson": null,
+              "sLTriggerExprDisplay": null,
+              "targetLimit": null,
+              "targetTrigger": null,
+              "productType": "NRML",
+              "underlyingSymbol": "HINDUNILVR",
+              "isOvernightProtectionLeg": "No",
+              "updatedAt": "2025-02-16 17:54:21",
+              "createdAt": "2025-02-16 17:54:21"
+            }
+          ],
+          "extra": {
+            "name": null,
+            "variables": []
+          }
+        },
+        {
+          "type": "Exit",
+          "conditionValue": "( ins_exit ( 'strategy_id', 'run_counter', 'Entry', 'HINDUNILVR', '1', '1', '1', 'tsl-points', '5.35', '5', '0.2', '0.1' )  )  or ( ins_exit ( 'strategy_id', 'run_counter', 'Entry', 'HINDUNILVR', '1', '1', '1', 'Stoploss Points', '1.7' )  )",
+          "conditionJson": "{\"operator\":\"or\",\"operands\":[{\"type\":\"rule\",\"value\":\"builder-basic_rule_0\",\"elements\":[{\"name\":\"Leg TSL\",\"kid\":8992,\"params\":[{\"type\":\"value\",\"value\":\"Entry\"},{\"type\":\"value\",\"value\":\"HINDUNILVR\"},{\"type\":\"value\",\"value\":\"1\"},{\"type\":\"value\",\"value\":\"1\"},{\"type\":\"value\",\"value\":\"1\"},{\"type\":\"value\",\"value\":\"tsl-points\"},{\"type\":\"value\",\"value\":\"5.35\"},{\"type\":\"value\",\"value\":\"5\"},{\"type\":\"value\",\"value\":\"0.2\"},{\"type\":\"value\",\"value\":\"0.1\"}]}]},{\"type\":\"rule\",\"value\":\"builder-basic_rule_1\",\"elements\":[{\"name\":\"Leg Exit\",\"kid\":3324,\"params\":[{\"type\":\"value\",\"value\":\"Entry\"},{\"type\":\"value\",\"value\":\"HINDUNILVR\"},{\"type\":\"value\",\"value\":\"1\"},{\"type\":\"value\",\"value\":\"1\"},{\"type\":\"value\",\"value\":\"1\"},{\"type\":\"value\",\"value\":\"Stoploss Points\"},{\"type\":\"value\",\"value\":\"1.7\"}]}]}]}",
+          "conditionDisplay": "( Leg TSL ( 'strategy_id', 'run_counter', 'Entry', 'HINDUNILVR', '1', '1', '1', 'tsl-points', '5.35', '5', '0.2', '0.1' )  )  or ( Leg Exit ( 'strategy_id', 'run_counter', 'Entry', 'HINDUNILVR', '1', '1', '1', 'Stoploss Points', '1.7' )  )",
+          "subType": "None",
+          "visible": 1,
+          "legs": [],
+          "extra": {
+            "name": null,
+            "variables": []
+          }
+        }
+      ]
+    },
+    {
+      "list": 0,
+      "name": null,
+      "conditions": [
+        {
+          "type": "Entry",
+          "conditionValue": "( tt_Time ( 'NSE' ) >= tt_Number ( '930' )  )  and ( tt_position_value ( 'strategy_id', 'run_counter', 'Entry', 'All', 'All', 'quantity', 'HINDUNILVR' ) == tt_Number ( '0' )  )  and ( tt_get_var ( tt_get_future_instrument ( 'HINDUNILVR' ) , 'LTP' ) < orb ( 'strategy_id', 'run_counter', tt_get_future_instrument ( 'HINDUNILVR' ) , 'Low', '09:15', '09:29' ) - ( tt_get_var ( tt_get_future_instrument ( 'HINDUNILVR' ) , 'PrevClose' ) * tt_Number ( '0.001' ) )  )  and ( tt_get_var ( tt_get_instrument ( 'NFO,HINDUNILVR,Current Month,PE,ATM-SPOT,,' ) , 'LTP' ) >= tt_Number ( '1' )  )  and ( tt_math ( tt_get_var ( tt_get_instrument ( 'NFO,HINDUNILVR,Current Month,PE,ATM-SPOT,,' ) , 'Volume' ) , tt_lotsize ( tt_get_instrument ( 'NFO,HINDUNILVR,Current Month,PE,ATM-SPOT,,' )  ) , '/' ) > tt_Number ( '50' )  )  and ( tt_get_var ( tt_get_instrument ( 'NFO,HINDUNILVR,Current Month,PE,ATM-SPOT,,' ) , 'Volume' )  )  and ( tt_lotsize ( tt_get_instrument ( 'NFO,HINDUNILVR,Current Month,PE,ATM-SPOT,,' )  )  )",
+          "conditionJson": "{\"operator\":\"and\",\"operands\":[{\"type\":\"rule\",\"value\":\"builder-basic_rule_0\",\"elements\":[{\"name\":\"Time\",\"kid\":7658,\"params\":[{\"type\":\"value\",\"value\":\"NSE\"}]},{\"name\":\">=\",\"params\":[]},{\"name\":\"Number\",\"kid\":9644,\"params\":[{\"type\":\"value\",\"value\":\"930\"}]}]},{\"type\":\"rule\",\"value\":\"builder-basic_rule_1\",\"elements\":[{\"name\":\"Positions Detail\",\"kid\":4746,\"params\":[{\"type\":\"value\",\"value\":\"Entry\"},{\"type\":\"value\",\"value\":\"All\"},{\"type\":\"value\",\"value\":\"All\"},{\"type\":\"value\",\"value\":\"quantity\"},{\"type\":\"value\",\"value\":\"HINDUNILVR\"}]},{\"name\":\"==\",\"params\":[]},{\"name\":\"Number\",\"kid\":6091,\"params\":[{\"type\":\"value\",\"value\":\"0\"}]}]},{\"type\":\"rule\",\"value\":\"builder-basic_rule_2\",\"elements\":[{\"name\":\"LTP\",\"kid\":9472,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Futures\",\"kid\":5368,\"params\":[{\"type\":\"value\",\"value\":\"HINDUNILVR\"}]}}]},{\"name\":\"<\",\"params\":[]},{\"name\":\"ORB\",\"kid\":3927,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Futures\",\"kid\":9856,\"params\":[{\"type\":\"value\",\"value\":\"HINDUNILVR\"}]}},{\"type\":\"value\",\"value\":\"Low\"},{\"type\":\"value\",\"value\":\"09:15\"},{\"type\":\"value\",\"value\":\"09:29\"}]},{\"name\":\"-\",\"params\":[]},{\"name\":\"(\",\"params\":[]},{\"name\":\"Previous Close\",\"kid\":1492,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Futures\",\"kid\":1479,\"params\":[{\"type\":\"value\",\"value\":\"HINDUNILVR\"}]}}]},{\"name\":\"*\",\"params\":[]},{\"name\":\"Number\",\"kid\":6091,\"params\":[{\"type\":\"value\",\"value\":\"0.001\"}]},{\"name\":\")\",\"params\":[]}]},{\"type\":\"rule\",\"value\":\"builder-basic_rule_3\",\"elements\":[{\"name\":\"LTP\",\"kid\":3850,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Instrument Name\",\"kid\":9747,\"params\":[{\"type\":\"value\",\"value\":\"NFO,HINDUNILVR,Current Month,PE,ATM-SPOT,,\"}]}}]},{\"name\":\">=\",\"params\":[]},{\"name\":\"Number\",\"kid\":8144,\"params\":[{\"type\":\"value\",\"value\":\"1\"}]}]},{\"type\":\"rule\",\"value\":\"builder-basic_rule_4\",\"elements\":[{\"name\":\"Math Operation\",\"kid\":4067,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Volume\",\"kid\":6836,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Instrument Name\",\"kid\":8831,\"params\":[{\"type\":\"value\",\"value\":\"NFO,HINDUNILVR,Current Month,PE,ATM-SPOT,,\"}]}}]}},{\"type\":\"keyword\",\"keyword\":{\"name\":\"Lot Size\",\"kid\":6473,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Instrument Name\",\"kid\":5814,\"params\":[{\"type\":\"value\",\"value\":\"NFO,HINDUNILVR,Current Month,PE,ATM-SPOT,,\"}]}}]}},{\"type\":\"value\",\"value\":\"/\"}]},{\"name\":\">\",\"params\":[]},{\"name\":\"Number\",\"kid\":6091,\"params\":[{\"type\":\"value\",\"value\":\"50\"}]}]},{\"type\":\"rule\",\"value\":\"builder-basic_rule_5\",\"elements\":[{\"name\":\"Volume\",\"kid\":2347,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Instrument Name\",\"kid\":6790,\"params\":[{\"type\":\"value\",\"value\":\"NFO,HINDUNILVR,Current Month,PE,ATM-SPOT,,\"}]}}]}]},{\"type\":\"rule\",\"value\":\"builder-basic_rule_6\",\"elements\":[{\"name\":\"Lot Size\",\"kid\":8996,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Instrument Name\",\"kid\":4777,\"params\":[{\"type\":\"value\",\"value\":\"NFO,HINDUNILVR,Current Month,PE,ATM-SPOT,,\"}]}}]}]}]}",
+          "conditionDisplay": "( Time ( 'NSE' ) >= Number ( '930' )  )  and ( Positions Detail ( 'strategy_id', 'run_counter', 'Entry', 'All', 'All', 'quantity', 'HINDUNILVR' ) == Number ( '0' )  )  and ( LTP ( Futures ( 'HINDUNILVR' ) , 'LTP' ) < ORB ( 'strategy_id', 'run_counter', Futures ( 'HINDUNILVR' ) , 'Low', '09:15', '09:29' ) - ( Previous Close ( Futures ( 'HINDUNILVR' ) , 'PrevClose' ) * Number ( '0.001' ) )  )  and ( LTP ( Instrument Name ( 'NFO,HINDUNILVR,Current Month,PE,ATM-SPOT,,' ) , 'LTP' ) >= Number ( '1' )  )  and ( Math Operation ( Volume ( Instrument Name ( 'NFO,HINDUNILVR,Current Month,PE,ATM-SPOT,,' ) , 'Volume' ) , Lot Size ( Instrument Name ( 'NFO,HINDUNILVR,Current Month,PE,ATM-SPOT,,' )  ) , '/' ) > Number ( '50' )  )  and ( Volume ( Instrument Name ( 'NFO,HINDUNILVR,Current Month,PE,ATM-SPOT,,' ) , 'Volume' )  )  and ( Lot Size ( Instrument Name ( 'NFO,HINDUNILVR,Current Month,PE,ATM-SPOT,,' )  )  )",
+          "subType": "None",
+          "visible": 1,
+          "legs": [
+            {
+              "instrument": 1986,
+              "list": 0,
+              "optionType": "PE",
+              "expiryType": "Current Month",
+              "expiry": "tt_curr_monthexpiry('HINDUNILVR')",
+              "expiryJson": null,
+              "expiryDisplay": null,
+              "strikeType": "Fx",
+              "strike": "( tt_ATM_SPOT ( 'HINDUNILVR', '0' )  )",
+              "strikeJson": "{\"operator\":\"and\",\"operands\":[{\"type\":\"rule\",\"value\":\"builder-basic_rule_0\",\"elements\":[{\"name\":\"ATM SPOT\",\"kid\":6277,\"params\":[{\"type\":\"value\",\"value\":\"HINDUNILVR\"},{\"type\":\"value\",\"value\":\"0\"}]}]}]}",
+              "strikeDisplay": "( ATM SPOT ( 'HINDUNILVR', '0' )  )",
+              "qty": "tt_lots(1,'INSTRUMENT','PE')",
+              "qtyType": "Lots",
+              "qtyDisplay": "1",
+              "qtyJson": null,
+              "qtyExprDisplay": null,
+              "limitPrice": null,
+              "limitPriceDisplay": null,
+              "limitPriceJson": null,
+              "limitPriceExprDisplay": null,
+              "buySell": "B",
+              "entryLimit": null,
+              "entryTrigger": null,
+              "sLLimit": null,
+              "sLTrigger": null,
+              "sLTriggerDisplay": null,
+              "sLTriggerJson": null,
+              "sLTriggerExprDisplay": null,
+              "targetLimit": null,
+              "targetTrigger": null,
+              "productType": "NRML",
+              "underlyingSymbol": "HINDUNILVR",
+              "isOvernightProtectionLeg": "No",
+              "updatedAt": "2025-02-16 17:54:21",
+              "createdAt": "2025-02-16 17:54:21"
+            }
+          ],
+          "extra": {
+            "name": null,
+            "variables": []
+          }
+        },
+        {
+          "type": "Exit",
+          "conditionValue": "( ins_exit ( 'strategy_id', 'run_counter', 'Entry', 'HINDUNILVR', '2', '1', '1', 'tsl-points', '5.35', '5', '0.2', '0.1' )  )  or ( ins_exit ( 'strategy_id', 'run_counter', 'Entry', 'HINDUNILVR', '2', '1', '1', 'Stoploss Points', '1.7' )  )",
+          "conditionJson": "{\"operator\":\"or\",\"operands\":[{\"type\":\"rule\",\"value\":\"builder-basic_rule_0\",\"elements\":[{\"name\":\"Leg TSL\",\"kid\":8992,\"params\":[{\"type\":\"value\",\"value\":\"Entry\"},{\"type\":\"value\",\"value\":\"HINDUNILVR\"},{\"type\":\"value\",\"value\":\"2\"},{\"type\":\"value\",\"value\":\"1\"},{\"type\":\"value\",\"value\":\"1\"},{\"type\":\"value\",\"value\":\"tsl-points\"},{\"type\":\"value\",\"value\":\"5.35\"},{\"type\":\"value\",\"value\":\"5\"},{\"type\":\"value\",\"value\":\"0.2\"},{\"type\":\"value\",\"value\":\"0.1\"}]}]},{\"type\":\"rule\",\"value\":\"builder-basic_rule_1\",\"elements\":[{\"name\":\"Leg Exit\",\"kid\":3324,\"params\":[{\"type\":\"value\",\"value\":\"Entry\"},{\"type\":\"value\",\"value\":\"HINDUNILVR\"},{\"type\":\"value\",\"value\":\"2\"},{\"type\":\"value\",\"value\":\"1\"},{\"type\":\"value\",\"value\":\"1\"},{\"type\":\"value\",\"value\":\"Stoploss Points\"},{\"type\":\"value\",\"value\":\"1.7\"}]}]}]}",
+          "conditionDisplay": "( Leg TSL ( 'strategy_id', 'run_counter', 'Entry', 'HINDUNILVR', '2', '1', '1', 'tsl-points', '5.35', '5', '0.2', '0.1' )  )  or ( Leg Exit ( 'strategy_id', 'run_counter', 'Entry', 'HINDUNILVR', '2', '1', '1', 'Stoploss Points', '1.7' )  )",
+          "subType": "None",
+          "visible": 1,
+          "legs": [],
+          "extra": {
+            "name": null,
+            "variables": []
+          }
+        }
+      ]
+    },
+    {
+      "list": 0,
+      "name": null,
+      "conditions": [
+        {
+          "type": "Entry",
+          "conditionValue": "( tt_Time ( 'NSE' ) >= tt_Number ( '930' )  )  and ( tt_position_value ( 'strategy_id', 'run_counter', 'Entry', 'All', 'All', 'quantity', 'INDUSINDBK' ) == tt_Number ( '0' )  )  and ( tt_get_var ( tt_get_future_instrument ( 'INDUSINDBK' ) , 'LTP' ) > orb ( 'strategy_id', 'run_counter', tt_get_future_instrument ( 'INDUSINDBK' ) , 'High', '09:15', '09:29' ) + ( tt_get_var ( tt_get_future_instrument ( 'INDUSINDBK' ) , 'PrevClose' ) * tt_Number ( '0.001' ) )  )  and ( tt_get_var ( tt_get_instrument ( 'NFO,INDUSINDBK,Current Month,CE,ATM-SPOT,,' ) , 'LTP' ) >= tt_Number ( '1' )  )  and ( tt_math ( tt_get_var ( tt_get_instrument ( 'NFO,INDUSINDBK,Current Month,CE,ATM-SPOT,,' ) , 'Volume' ) , tt_lotsize ( tt_get_instrument ( 'NFO,INDUSINDBK,Current Month,CE,ATM-SPOT,,' )  ) , '/' ) > tt_Number ( '50' )  )  and ( tt_get_var ( tt_get_instrument ( 'NFO,INDUSINDBK,Current Month,CE,ATM-SPOT,,' ) , 'Volume' )  )  and ( tt_lotsize ( tt_get_instrument ( 'NFO,INDUSINDBK,Current Month,CE,ATM-SPOT,,' )  )  )",
+          "conditionJson": "{\"operator\":\"and\",\"operands\":[{\"type\":\"rule\",\"value\":\"builder-basic_rule_0\",\"elements\":[{\"name\":\"Time\",\"kid\":7658,\"params\":[{\"type\":\"value\",\"value\":\"NSE\"}]},{\"name\":\">=\",\"params\":[]},{\"name\":\"Number\",\"kid\":9644,\"params\":[{\"type\":\"value\",\"value\":\"930\"}]}]},{\"type\":\"rule\",\"value\":\"builder-basic_rule_1\",\"elements\":[{\"name\":\"Positions Detail\",\"kid\":4746,\"params\":[{\"type\":\"value\",\"value\":\"Entry\"},{\"type\":\"value\",\"value\":\"All\"},{\"type\":\"value\",\"value\":\"All\"},{\"type\":\"value\",\"value\":\"quantity\"},{\"type\":\"value\",\"value\":\"INDUSINDBK\"}]},{\"name\":\"==\",\"params\":[]},{\"name\":\"Number\",\"kid\":6091,\"params\":[{\"type\":\"value\",\"value\":\"0\"}]}]},{\"type\":\"rule\",\"value\":\"builder-basic_rule_2\",\"elements\":[{\"name\":\"LTP\",\"kid\":9472,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Futures\",\"kid\":5368,\"params\":[{\"type\":\"value\",\"value\":\"INDUSINDBK\"}]}}]},{\"name\":\">\",\"params\":[]},{\"name\":\"ORB\",\"kid\":3927,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Futures\",\"kid\":9856,\"params\":[{\"type\":\"value\",\"value\":\"INDUSINDBK\"}]}},{\"type\":\"value\",\"value\":\"High\"},{\"type\":\"value\",\"value\":\"09:15\"},{\"type\":\"value\",\"value\":\"09:29\"}]},{\"name\":\"+\",\"params\":[]},{\"name\":\"(\",\"params\":[]},{\"name\":\"Previous Close\",\"kid\":1492,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Futures\",\"kid\":1479,\"params\":[{\"type\":\"value\",\"value\":\"INDUSINDBK\"}]}}]},{\"name\":\"*\",\"params\":[]},{\"name\":\"Number\",\"kid\":6091,\"params\":[{\"type\":\"value\",\"value\":\"0.001\"}]},{\"name\":\")\",\"params\":[]}]},{\"type\":\"rule\",\"value\":\"builder-basic_rule_3\",\"elements\":[{\"name\":\"LTP\",\"kid\":3850,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Instrument Name\",\"kid\":9747,\"params\":[{\"type\":\"value\",\"value\":\"NFO,INDUSINDBK,Current Month,CE,ATM-SPOT,,\"}]}}]},{\"name\":\">=\",\"params\":[]},{\"name\":\"Number\",\"kid\":8144,\"params\":[{\"type\":\"value\",\"value\":\"1\"}]}]},{\"type\":\"rule\",\"value\":\"builder-basic_rule_4\",\"elements\":[{\"name\":\"Math Operation\",\"kid\":4067,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Volume\",\"kid\":6836,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Instrument Name\",\"kid\":8831,\"params\":[{\"type\":\"value\",\"value\":\"NFO,INDUSINDBK,Current Month,CE,ATM-SPOT,,\"}]}}]}},{\"type\":\"keyword\",\"keyword\":{\"name\":\"Lot Size\",\"kid\":6473,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Instrument Name\",\"kid\":5814,\"params\":[{\"type\":\"value\",\"value\":\"NFO,INDUSINDBK,Current Month,CE,ATM-SPOT,,\"}]}}]}},{\"type\":\"value\",\"value\":\"/\"}]},{\"name\":\">\",\"params\":[]},{\"name\":\"Number\",\"kid\":6091,\"params\":[{\"type\":\"value\",\"value\":\"50\"}]}]},{\"type\":\"rule\",\"value\":\"builder-basic_rule_5\",\"elements\":[{\"name\":\"Volume\",\"kid\":2347,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Instrument Name\",\"kid\":6790,\"params\":[{\"type\":\"value\",\"value\":\"NFO,INDUSINDBK,Current Month,CE,ATM-SPOT,,\"}]}}]}]},{\"type\":\"rule\",\"value\":\"builder-basic_rule_6\",\"elements\":[{\"name\":\"Lot Size\",\"kid\":8996,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Instrument Name\",\"kid\":4777,\"params\":[{\"type\":\"value\",\"value\":\"NFO,INDUSINDBK,Current Month,CE,ATM-SPOT,,\"}]}}]}]}]}",
+          "conditionDisplay": "( Time ( 'NSE' ) >= Number ( '930' )  )  and ( Positions Detail ( 'strategy_id', 'run_counter', 'Entry', 'All', 'All', 'quantity', 'INDUSINDBK' ) == Number ( '0' )  )  and ( LTP ( Futures ( 'INDUSINDBK' ) , 'LTP' ) > ORB ( 'strategy_id', 'run_counter', Futures ( 'INDUSINDBK' ) , 'High', '09:15', '09:29' ) + ( Previous Close ( Futures ( 'INDUSINDBK' ) , 'PrevClose' ) * Number ( '0.001' ) )  )  and ( LTP ( Instrument Name ( 'NFO,INDUSINDBK,Current Month,CE,ATM-SPOT,,' ) , 'LTP' ) >= Number ( '1' )  )  and ( Math Operation ( Volume ( Instrument Name ( 'NFO,INDUSINDBK,Current Month,CE,ATM-SPOT,,' ) , 'Volume' ) , Lot Size ( Instrument Name ( 'NFO,INDUSINDBK,Current Month,CE,ATM-SPOT,,' )  ) , '/' ) > Number ( '50' )  )  and ( Volume ( Instrument Name ( 'NFO,INDUSINDBK,Current Month,CE,ATM-SPOT,,' ) , 'Volume' )  )  and ( Lot Size ( Instrument Name ( 'NFO,INDUSINDBK,Current Month,CE,ATM-SPOT,,' )  )  )",
+          "subType": "None",
+          "visible": 1,
+          "legs": [
+            {
+              "instrument": 1903,
+              "list": 0,
+              "optionType": "CE",
+              "expiryType": "Current Month",
+              "expiry": "tt_curr_monthexpiry('INDUSINDBK')",
+              "expiryJson": null,
+              "expiryDisplay": null,
+              "strikeType": "Fx",
+              "strike": "( tt_ATM_SPOT ( 'INDUSINDBK', '0' )  )",
+              "strikeJson": "{\"operator\":\"and\",\"operands\":[{\"type\":\"rule\",\"value\":\"builder-basic_rule_0\",\"elements\":[{\"name\":\"ATM SPOT\",\"kid\":7447,\"params\":[{\"type\":\"value\",\"value\":\"INDUSINDBK\"},{\"type\":\"value\",\"value\":\"0\"}]}]}]}",
+              "strikeDisplay": "( ATM SPOT ( 'INDUSINDBK', '0' )  )",
+              "qty": "tt_lots(1,'INSTRUMENT','CE')",
+              "qtyType": "Lots",
+              "qtyDisplay": "1",
+              "qtyJson": null,
+              "qtyExprDisplay": null,
+              "limitPrice": null,
+              "limitPriceDisplay": null,
+              "limitPriceJson": null,
+              "limitPriceExprDisplay": null,
+              "buySell": "B",
+              "entryLimit": null,
+              "entryTrigger": null,
+              "sLLimit": null,
+              "sLTrigger": null,
+              "sLTriggerDisplay": null,
+              "sLTriggerJson": null,
+              "sLTriggerExprDisplay": null,
+              "targetLimit": null,
+              "targetTrigger": null,
+              "productType": "NRML",
+              "underlyingSymbol": "INDUSINDBK",
+              "isOvernightProtectionLeg": "No",
+              "updatedAt": "2025-02-16 17:54:21",
+              "createdAt": "2025-02-16 17:54:21"
+            }
+          ],
+          "extra": {
+            "name": null,
+            "variables": []
+          }
+        },
+        {
+          "type": "Exit",
+          "conditionValue": "( ins_exit ( 'strategy_id', 'run_counter', 'Entry', 'INDUSINDBK', '3', '1', '1', 'tsl-points', '3.2', '3', '0.2', '0.1' )  )  or ( ins_exit ( 'strategy_id', 'run_counter', 'Entry', 'INDUSINDBK', '3', '1', '1', 'Stoploss Points', '1' )  )",
+          "conditionJson": "{\"operator\":\"or\",\"operands\":[{\"type\":\"rule\",\"value\":\"builder-basic_rule_0\",\"elements\":[{\"name\":\"Leg TSL\",\"kid\":8992,\"params\":[{\"type\":\"value\",\"value\":\"Entry\"},{\"type\":\"value\",\"value\":\"INDUSINDBK\"},{\"type\":\"value\",\"value\":\"3\"},{\"type\":\"value\",\"value\":\"1\"},{\"type\":\"value\",\"value\":\"1\"},{\"type\":\"value\",\"value\":\"tsl-points\"},{\"type\":\"value\",\"value\":\"3.2\"},{\"type\":\"value\",\"value\":\"3\"},{\"type\":\"value\",\"value\":\"0.2\"},{\"type\":\"value\",\"value\":\"0.1\"}]}]},{\"type\":\"rule\",\"value\":\"builder-basic_rule_1\",\"elements\":[{\"name\":\"Leg Exit\",\"kid\":3324,\"params\":[{\"type\":\"value\",\"value\":\"Entry\"},{\"type\":\"value\",\"value\":\"INDUSINDBK\"},{\"type\":\"value\",\"value\":\"3\"},{\"type\":\"value\",\"value\":\"1\"},{\"type\":\"value\",\"value\":\"1\"},{\"type\":\"value\",\"value\":\"Stoploss Points\"},{\"type\":\"value\",\"value\":\"1\"}]}]}]}",
+          "conditionDisplay": "( Leg TSL ( 'strategy_id', 'run_counter', 'Entry', 'INDUSINDBK', '3', '1', '1', 'tsl-points', '3.2', '3', '0.2', '0.1' )  )  or ( Leg Exit ( 'strategy_id', 'run_counter', 'Entry', 'INDUSINDBK', '3', '1', '1', 'Stoploss Points', '1' )  )",
+          "subType": "None",
+          "visible": 1,
+          "legs": [],
+          "extra": {
+            "name": null,
+            "variables": []
+          }
+        }
+      ]
+    },
+    {
+      "list": 0,
+      "name": null,
+      "conditions": [
+        {
+          "type": "Entry",
+          "conditionValue": "( tt_Time ( 'NSE' ) >= tt_Number ( '930' )  )  and ( tt_position_value ( 'strategy_id', 'run_counter', 'Entry', 'All', 'All', 'quantity', 'INDUSINDBK' ) == tt_Number ( '0' )  )  and ( tt_get_var ( tt_get_future_instrument ( 'INDUSINDBK' ) , 'LTP' ) < orb ( 'strategy_id', 'run_counter', tt_get_future_instrument ( 'INDUSINDBK' ) , 'Low', '09:15', '09:29' ) - ( tt_get_var ( tt_get_future_instrument ( 'INDUSINDBK' ) , 'PrevClose' ) * tt_Number ( '0.001' ) )  )  and ( tt_get_var ( tt_get_instrument ( 'NFO,INDUSINDBK,Current Month,PE,ATM-SPOT,,' ) , 'LTP' ) >= tt_Number ( '1' )  )  and ( tt_math ( tt_get_var ( tt_get_instrument ( 'NFO,INDUSINDBK,Current Month,PE,ATM-SPOT,,' ) , 'Volume' ) , tt_lotsize ( tt_get_instrument ( 'NFO,INDUSINDBK,Current Month,PE,ATM-SPOT,,' )  ) , '/' ) > tt_Number ( '50' )  )  and ( tt_get_var ( tt_get_instrument ( 'NFO,INDUSINDBK,Current Month,PE,ATM-SPOT,,' ) , 'Volume' )  )  and ( tt_lotsize ( tt_get_instrument ( 'NFO,INDUSINDBK,Current Month,PE,ATM-SPOT,,' )  )  )",
+          "conditionJson": "{\"operator\":\"and\",\"operands\":[{\"type\":\"rule\",\"value\":\"builder-basic_rule_0\",\"elements\":[{\"name\":\"Time\",\"kid\":7658,\"params\":[{\"type\":\"value\",\"value\":\"NSE\"}]},{\"name\":\">=\",\"params\":[]},{\"name\":\"Number\",\"kid\":9644,\"params\":[{\"type\":\"value\",\"value\":\"930\"}]}]},{\"type\":\"rule\",\"value\":\"builder-basic_rule_1\",\"elements\":[{\"name\":\"Positions Detail\",\"kid\":4746,\"params\":[{\"type\":\"value\",\"value\":\"Entry\"},{\"type\":\"value\",\"value\":\"All\"},{\"type\":\"value\",\"value\":\"All\"},{\"type\":\"value\",\"value\":\"quantity\"},{\"type\":\"value\",\"value\":\"INDUSINDBK\"}]},{\"name\":\"==\",\"params\":[]},{\"name\":\"Number\",\"kid\":6091,\"params\":[{\"type\":\"value\",\"value\":\"0\"}]}]},{\"type\":\"rule\",\"value\":\"builder-basic_rule_2\",\"elements\":[{\"name\":\"LTP\",\"kid\":9472,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Futures\",\"kid\":5368,\"params\":[{\"type\":\"value\",\"value\":\"INDUSINDBK\"}]}}]},{\"name\":\"<\",\"params\":[]},{\"name\":\"ORB\",\"kid\":3927,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Futures\",\"kid\":9856,\"params\":[{\"type\":\"value\",\"value\":\"INDUSINDBK\"}]}},{\"type\":\"value\",\"value\":\"Low\"},{\"type\":\"value\",\"value\":\"09:15\"},{\"type\":\"value\",\"value\":\"09:29\"}]},{\"name\":\"-\",\"params\":[]},{\"name\":\"(\",\"params\":[]},{\"name\":\"Previous Close\",\"kid\":1492,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Futures\",\"kid\":1479,\"params\":[{\"type\":\"value\",\"value\":\"INDUSINDBK\"}]}}]},{\"name\":\"*\",\"params\":[]},{\"name\":\"Number\",\"kid\":6091,\"params\":[{\"type\":\"value\",\"value\":\"0.001\"}]},{\"name\":\")\",\"params\":[]}]},{\"type\":\"rule\",\"value\":\"builder-basic_rule_3\",\"elements\":[{\"name\":\"LTP\",\"kid\":3850,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Instrument Name\",\"kid\":9747,\"params\":[{\"type\":\"value\",\"value\":\"NFO,INDUSINDBK,Current Month,PE,ATM-SPOT,,\"}]}}]},{\"name\":\">=\",\"params\":[]},{\"name\":\"Number\",\"kid\":8144,\"params\":[{\"type\":\"value\",\"value\":\"1\"}]}]},{\"type\":\"rule\",\"value\":\"builder-basic_rule_4\",\"elements\":[{\"name\":\"Math Operation\",\"kid\":4067,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Volume\",\"kid\":6836,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Instrument Name\",\"kid\":8831,\"params\":[{\"type\":\"value\",\"value\":\"NFO,INDUSINDBK,Current Month,PE,ATM-SPOT,,\"}]}}]}},{\"type\":\"keyword\",\"keyword\":{\"name\":\"Lot Size\",\"kid\":6473,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Instrument Name\",\"kid\":5814,\"params\":[{\"type\":\"value\",\"value\":\"NFO,INDUSINDBK,Current Month,PE,ATM-SPOT,,\"}]}}]}},{\"type\":\"value\",\"value\":\"/\"}]},{\"name\":\">\",\"params\":[]},{\"name\":\"Number\",\"kid\":6091,\"params\":[{\"type\":\"value\",\"value\":\"50\"}]}]},{\"type\":\"rule\",\"value\":\"builder-basic_rule_5\",\"elements\":[{\"name\":\"Volume\",\"kid\":2347,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Instrument Name\",\"kid\":6790,\"params\":[{\"type\":\"value\",\"value\":\"NFO,INDUSINDBK,Current Month,PE,ATM-SPOT,,\"}]}}]}]},{\"type\":\"rule\",\"value\":\"builder-basic_rule_6\",\"elements\":[{\"name\":\"Lot Size\",\"kid\":8996,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Instrument Name\",\"kid\":4777,\"params\":[{\"type\":\"value\",\"value\":\"NFO,INDUSINDBK,Current Month,PE,ATM-SPOT,,\"}]}}]}]}]}",
+          "conditionDisplay": "( Time ( 'NSE' ) >= Number ( '930' )  )  and ( Positions Detail ( 'strategy_id', 'run_counter', 'Entry', 'All', 'All', 'quantity', 'INDUSINDBK' ) == Number ( '0' )  )  and ( LTP ( Futures ( 'INDUSINDBK' ) , 'LTP' ) < ORB ( 'strategy_id', 'run_counter', Futures ( 'INDUSINDBK' ) , 'Low', '09:15', '09:29' ) - ( Previous Close ( Futures ( 'INDUSINDBK' ) , 'PrevClose' ) * Number ( '0.001' ) )  )  and ( LTP ( Instrument Name ( 'NFO,INDUSINDBK,Current Month,PE,ATM-SPOT,,' ) , 'LTP' ) >= Number ( '1' )  )  and ( Math Operation ( Volume ( Instrument Name ( 'NFO,INDUSINDBK,Current Month,PE,ATM-SPOT,,' ) , 'Volume' ) , Lot Size ( Instrument Name ( 'NFO,INDUSINDBK,Current Month,PE,ATM-SPOT,,' )  ) , '/' ) > Number ( '50' )  )  and ( Volume ( Instrument Name ( 'NFO,INDUSINDBK,Current Month,PE,ATM-SPOT,,' ) , 'Volume' )  )  and ( Lot Size ( Instrument Name ( 'NFO,INDUSINDBK,Current Month,PE,ATM-SPOT,,' )  )  )",
+          "subType": "None",
+          "visible": 1,
+          "legs": [
+            {
+              "instrument": 1903,
+              "list": 0,
+              "optionType": "PE",
+              "expiryType": "Current Month",
+              "expiry": "tt_curr_monthexpiry('INDUSINDBK')",
+              "expiryJson": null,
+              "expiryDisplay": null,
+              "strikeType": "Fx",
+              "strike": "( tt_ATM_SPOT ( 'INDUSINDBK', '0' )  )",
+              "strikeJson": "{\"operator\":\"and\",\"operands\":[{\"type\":\"rule\",\"value\":\"builder-basic_rule_0\",\"elements\":[{\"name\":\"ATM SPOT\",\"kid\":3441,\"params\":[{\"type\":\"value\",\"value\":\"INDUSINDBK\"},{\"type\":\"value\",\"value\":\"0\"}]}]}]}",
+              "strikeDisplay": "( ATM SPOT ( 'INDUSINDBK', '0' )  )",
+              "qty": "tt_lots(1,'INSTRUMENT','PE')",
+              "qtyType": "Lots",
+              "qtyDisplay": "1",
+              "qtyJson": null,
+              "qtyExprDisplay": null,
+              "limitPrice": null,
+              "limitPriceDisplay": null,
+              "limitPriceJson": null,
+              "limitPriceExprDisplay": null,
+              "buySell": "B",
+              "entryLimit": null,
+              "entryTrigger": null,
+              "sLLimit": null,
+              "sLTrigger": null,
+              "sLTriggerDisplay": null,
+              "sLTriggerJson": null,
+              "sLTriggerExprDisplay": null,
+              "targetLimit": null,
+              "targetTrigger": null,
+              "productType": "NRML",
+              "underlyingSymbol": "INDUSINDBK",
+              "isOvernightProtectionLeg": "No",
+              "updatedAt": "2025-02-16 17:54:21",
+              "createdAt": "2025-02-16 17:54:21"
+            }
+          ],
+          "extra": {
+            "name": null,
+            "variables": []
+          }
+        },
+        {
+          "type": "Exit",
+          "conditionValue": "( ins_exit ( 'strategy_id', 'run_counter', 'Entry', 'INDUSINDBK', '4', '1', '1', 'tsl-points', '3.2', '3', '0.2', '0.1' )  )  or ( ins_exit ( 'strategy_id', 'run_counter', 'Entry', 'INDUSINDBK', '4', '1', '1', 'Stoploss Points', '1' )  )",
+          "conditionJson": "{\"operator\":\"or\",\"operands\":[{\"type\":\"rule\",\"value\":\"builder-basic_rule_0\",\"elements\":[{\"name\":\"Leg TSL\",\"kid\":8992,\"params\":[{\"type\":\"value\",\"value\":\"Entry\"},{\"type\":\"value\",\"value\":\"INDUSINDBK\"},{\"type\":\"value\",\"value\":\"4\"},{\"type\":\"value\",\"value\":\"1\"},{\"type\":\"value\",\"value\":\"1\"},{\"type\":\"value\",\"value\":\"tsl-points\"},{\"type\":\"value\",\"value\":\"3.2\"},{\"type\":\"value\",\"value\":\"3\"},{\"type\":\"value\",\"value\":\"0.2\"},{\"type\":\"value\",\"value\":\"0.1\"}]}]},{\"type\":\"rule\",\"value\":\"builder-basic_rule_1\",\"elements\":[{\"name\":\"Leg Exit\",\"kid\":3324,\"params\":[{\"type\":\"value\",\"value\":\"Entry\"},{\"type\":\"value\",\"value\":\"INDUSINDBK\"},{\"type\":\"value\",\"value\":\"4\"},{\"type\":\"value\",\"value\":\"1\"},{\"type\":\"value\",\"value\":\"1\"},{\"type\":\"value\",\"value\":\"Stoploss Points\"},{\"type\":\"value\",\"value\":\"1\"}]}]}]}",
+          "conditionDisplay": "( Leg TSL ( 'strategy_id', 'run_counter', 'Entry', 'INDUSINDBK', '4', '1', '1', 'tsl-points', '3.2', '3', '0.2', '0.1' )  )  or ( Leg Exit ( 'strategy_id', 'run_counter', 'Entry', 'INDUSINDBK', '4', '1', '1', 'Stoploss Points', '1' )  )",
+          "subType": "None",
+          "visible": 1,
+          "legs": [],
+          "extra": {
+            "name": null,
+            "variables": []
+          }
+        }
+      ]
+    },
+    {
+      "list": 0,
+      "name": null,
+      "conditions": [
+        {
+          "type": "Entry",
+          "conditionValue": "( tt_Time ( 'NSE' ) >= tt_Number ( '930' )  )  and ( tt_position_value ( 'strategy_id', 'run_counter', 'Entry', 'All', 'All', 'quantity', 'ASIANPAINT' ) == tt_Number ( '0' )  )  and ( tt_get_var ( tt_get_future_instrument ( 'ASIANPAINT' ) , 'LTP' ) > orb ( 'strategy_id', 'run_counter', tt_get_future_instrument ( 'ASIANPAINT' ) , 'High', '09:15', '09:29' ) + ( tt_get_var ( tt_get_future_instrument ( 'ASIANPAINT' ) , 'PrevClose' ) * tt_Number ( '0.001' ) )  )  and ( tt_get_var ( tt_get_instrument ( 'NFO,ASIANPAINT,Current Month,CE,ATM-SPOT,,' ) , 'LTP' ) >= tt_Number ( '1' )  )  and ( tt_math ( tt_get_var ( tt_get_instrument ( 'NFO,ASIANPAINT,Current Month,CE,ATM-SPOT,,' ) , 'Volume' ) , tt_lotsize ( tt_get_instrument ( 'NFO,ASIANPAINT,Current Month,CE,ATM-SPOT,,' )  ) , '/' ) > tt_Number ( '50' )  )  and ( tt_get_var ( tt_get_instrument ( 'NFO,ASIANPAINT,Current Month,CE,ATM-SPOT,,' ) , 'Volume' )  )  and ( tt_lotsize ( tt_get_instrument ( 'NFO,ASIANPAINT,Current Month,CE,ATM-SPOT,,' )  )  )",
+          "conditionJson": "{\"operator\":\"and\",\"operands\":[{\"type\":\"rule\",\"value\":\"builder-basic_rule_0\",\"elements\":[{\"name\":\"Time\",\"kid\":7658,\"params\":[{\"type\":\"value\",\"value\":\"NSE\"}]},{\"name\":\">=\",\"params\":[]},{\"name\":\"Number\",\"kid\":9644,\"params\":[{\"type\":\"value\",\"value\":\"930\"}]}]},{\"type\":\"rule\",\"value\":\"builder-basic_rule_1\",\"elements\":[{\"name\":\"Positions Detail\",\"kid\":4746,\"params\":[{\"type\":\"value\",\"value\":\"Entry\"},{\"type\":\"value\",\"value\":\"All\"},{\"type\":\"value\",\"value\":\"All\"},{\"type\":\"value\",\"value\":\"quantity\"},{\"type\":\"value\",\"value\":\"ASIANPAINT\"}]},{\"name\":\"==\",\"params\":[]},{\"name\":\"Number\",\"kid\":6091,\"params\":[{\"type\":\"value\",\"value\":\"0\"}]}]},{\"type\":\"rule\",\"value\":\"builder-basic_rule_2\",\"elements\":[{\"name\":\"LTP\",\"kid\":9472,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Futures\",\"kid\":5368,\"params\":[{\"type\":\"value\",\"value\":\"ASIANPAINT\"}]}}]},{\"name\":\">\",\"params\":[]},{\"name\":\"ORB\",\"kid\":3927,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Futures\",\"kid\":9856,\"params\":[{\"type\":\"value\",\"value\":\"ASIANPAINT\"}]}},{\"type\":\"value\",\"value\":\"High\"},{\"type\":\"value\",\"value\":\"09:15\"},{\"type\":\"value\",\"value\":\"09:29\"}]},{\"name\":\"+\",\"params\":[]},{\"name\":\"(\",\"params\":[]},{\"name\":\"Previous Close\",\"kid\":1492,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Futures\",\"kid\":1479,\"params\":[{\"type\":\"value\",\"value\":\"ASIANPAINT\"}]}}]},{\"name\":\"*\",\"params\":[]},{\"name\":\"Number\",\"kid\":6091,\"params\":[{\"type\":\"value\",\"value\":\"0.001\"}]},{\"name\":\")\",\"params\":[]}]},{\"type\":\"rule\",\"value\":\"builder-basic_rule_3\",\"elements\":[{\"name\":\"LTP\",\"kid\":3850,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Instrument Name\",\"kid\":9747,\"params\":[{\"type\":\"value\",\"value\":\"NFO,ASIANPAINT,Current Month,CE,ATM-SPOT,,\"}]}}]},{\"name\":\">=\",\"params\":[]},{\"name\":\"Number\",\"kid\":8144,\"params\":[{\"type\":\"value\",\"value\":\"1\"}]}]},{\"type\":\"rule\",\"value\":\"builder-basic_rule_4\",\"elements\":[{\"name\":\"Math Operation\",\"kid\":4067,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Volume\",\"kid\":6836,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Instrument Name\",\"kid\":8831,\"params\":[{\"type\":\"value\",\"value\":\"NFO,ASIANPAINT,Current Month,CE,ATM-SPOT,,\"}]}}]}},{\"type\":\"keyword\",\"keyword\":{\"name\":\"Lot Size\",\"kid\":6473,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Instrument Name\",\"kid\":5814,\"params\":[{\"type\":\"value\",\"value\":\"NFO,ASIANPAINT,Current Month,CE,ATM-SPOT,,\"}]}}]}},{\"type\":\"value\",\"value\":\"/\"}]},{\"name\":\">\",\"params\":[]},{\"name\":\"Number\",\"kid\":6091,\"params\":[{\"type\":\"value\",\"value\":\"50\"}]}]},{\"type\":\"rule\",\"value\":\"builder-basic_rule_5\",\"elements\":[{\"name\":\"Volume\",\"kid\":2347,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Instrument Name\",\"kid\":6790,\"params\":[{\"type\":\"value\",\"value\":\"NFO,ASIANPAINT,Current Month,CE,ATM-SPOT,,\"}]}}]}]},{\"type\":\"rule\",\"value\":\"builder-basic_rule_6\",\"elements\":[{\"name\":\"Lot Size\",\"kid\":8996,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Instrument Name\",\"kid\":4777,\"params\":[{\"type\":\"value\",\"value\":\"NFO,ASIANPAINT,Current Month,CE,ATM-SPOT,,\"}]}}]}]}]}",
+          "conditionDisplay": "( Time ( 'NSE' ) >= Number ( '930' )  )  and ( Positions Detail ( 'strategy_id', 'run_counter', 'Entry', 'All', 'All', 'quantity', 'ASIANPAINT' ) == Number ( '0' )  )  and ( LTP ( Futures ( 'ASIANPAINT' ) , 'LTP' ) > ORB ( 'strategy_id', 'run_counter', Futures ( 'ASIANPAINT' ) , 'High', '09:15', '09:29' ) + ( Previous Close ( Futures ( 'ASIANPAINT' ) , 'PrevClose' ) * Number ( '0.001' ) )  )  and ( LTP ( Instrument Name ( 'NFO,ASIANPAINT,Current Month,CE,ATM-SPOT,,' ) , 'LTP' ) >= Number ( '1' )  )  and ( Math Operation ( Volume ( Instrument Name ( 'NFO,ASIANPAINT,Current Month,CE,ATM-SPOT,,' ) , 'Volume' ) , Lot Size ( Instrument Name ( 'NFO,ASIANPAINT,Current Month,CE,ATM-SPOT,,' )  ) , '/' ) > Number ( '50' )  )  and ( Volume ( Instrument Name ( 'NFO,ASIANPAINT,Current Month,CE,ATM-SPOT,,' ) , 'Volume' )  )  and ( Lot Size ( Instrument Name ( 'NFO,ASIANPAINT,Current Month,CE,ATM-SPOT,,' )  )  )",
+          "subType": "None",
+          "visible": 1,
+          "legs": [
+            {
+              "instrument": 1863,
+              "list": 0,
+              "optionType": "CE",
+              "expiryType": "Current Month",
+              "expiry": "tt_curr_monthexpiry('ASIANPAINT')",
+              "expiryJson": null,
+              "expiryDisplay": null,
+              "strikeType": "Fx",
+              "strike": "( tt_ATM_SPOT ( 'ASIANPAINT', '0' )  )",
+              "strikeJson": "{\"operator\":\"and\",\"operands\":[{\"type\":\"rule\",\"value\":\"builder-basic_rule_0\",\"elements\":[{\"name\":\"ATM SPOT\",\"kid\":7447,\"params\":[{\"type\":\"value\",\"value\":\"ASIANPAINT\"},{\"type\":\"value\",\"value\":\"0\"}]}]}]}",
+              "strikeDisplay": "( ATM SPOT ( 'ASIANPAINT', '0' )  )",
+              "qty": "tt_lots(1,'INSTRUMENT','CE')",
+              "qtyType": "Lots",
+              "qtyDisplay": "1",
+              "qtyJson": null,
+              "qtyExprDisplay": null,
+              "limitPrice": null,
+              "limitPriceDisplay": null,
+              "limitPriceJson": null,
+              "limitPriceExprDisplay": null,
+              "buySell": "B",
+              "entryLimit": null,
+              "entryTrigger": null,
+              "sLLimit": null,
+              "sLTrigger": null,
+              "sLTriggerDisplay": null,
+              "sLTriggerJson": null,
+              "sLTriggerExprDisplay": null,
+              "targetLimit": null,
+              "targetTrigger": null,
+              "productType": "NRML",
+              "underlyingSymbol": "ASIANPAINT",
+              "isOvernightProtectionLeg": "No",
+              "updatedAt": "2025-02-16 17:54:21",
+              "createdAt": "2025-02-16 17:54:21"
+            }
+          ],
+          "extra": {
+            "name": null,
+            "variables": []
+          }
+        },
+        {
+          "type": "Exit",
+          "conditionValue": "( ins_exit ( 'strategy_id', 'run_counter', 'Entry', 'ASIANPAINT', '5', '1', '1', 'tsl-points', '8', '7.5', '0.2', '0.1' )  )  or ( ins_exit ( 'strategy_id', 'run_counter', 'Entry', 'ASIANPAINT', '5', '1', '1', 'Stoploss Points', '2.5' )  )",
+          "conditionJson": "{\"operator\":\"or\",\"operands\":[{\"type\":\"rule\",\"value\":\"builder-basic_rule_0\",\"elements\":[{\"name\":\"Leg TSL\",\"kid\":8992,\"params\":[{\"type\":\"value\",\"value\":\"Entry\"},{\"type\":\"value\",\"value\":\"ASIANPAINT\"},{\"type\":\"value\",\"value\":\"5\"},{\"type\":\"value\",\"value\":\"1\"},{\"type\":\"value\",\"value\":\"1\"},{\"type\":\"value\",\"value\":\"tsl-points\"},{\"type\":\"value\",\"value\":\"8\"},{\"type\":\"value\",\"value\":\"7.5\"},{\"type\":\"value\",\"value\":\"0.2\"},{\"type\":\"value\",\"value\":\"0.1\"}]}]},{\"type\":\"rule\",\"value\":\"builder-basic_rule_1\",\"elements\":[{\"name\":\"Leg Exit\",\"kid\":3324,\"params\":[{\"type\":\"value\",\"value\":\"Entry\"},{\"type\":\"value\",\"value\":\"ASIANPAINT\"},{\"type\":\"value\",\"value\":\"5\"},{\"type\":\"value\",\"value\":\"1\"},{\"type\":\"value\",\"value\":\"1\"},{\"type\":\"value\",\"value\":\"Stoploss Points\"},{\"type\":\"value\",\"value\":\"2.5\"}]}]}]}",
+          "conditionDisplay": "( Leg TSL ( 'strategy_id', 'run_counter', 'Entry', 'ASIANPAINT', '5', '1', '1', 'tsl-points', '8', '7.5', '0.2', '0.1' )  )  or ( Leg Exit ( 'strategy_id', 'run_counter', 'Entry', 'ASIANPAINT', '5', '1', '1', 'Stoploss Points', '2.5' )  )",
+          "subType": "None",
+          "visible": 1,
+          "legs": [],
+          "extra": {
+            "name": null,
+            "variables": []
+          }
+        }
+      ]
+    },
+    {
+      "list": 0,
+      "name": null,
+      "conditions": [
+        {
+          "type": "Entry",
+          "conditionValue": "( tt_Time ( 'NSE' ) >= tt_Number ( '930' )  )  and ( tt_position_value ( 'strategy_id', 'run_counter', 'Entry', 'All', 'All', 'quantity', 'ASIANPAINT' ) == tt_Number ( '0' )  )  and ( tt_get_var ( tt_get_future_instrument ( 'ASIANPAINT' ) , 'LTP' ) < orb ( 'strategy_id', 'run_counter', tt_get_future_instrument ( 'ASIANPAINT' ) , 'Low', '09:15', '09:29' ) - ( tt_get_var ( tt_get_future_instrument ( 'ASIANPAINT' ) , 'PrevClose' ) * tt_Number ( '0.001' ) )  )  and ( tt_get_var ( tt_get_instrument ( 'NFO,ASIANPAINT,Current Month,PE,ATM-SPOT,,' ) , 'LTP' ) >= tt_Number ( '1' )  )  and ( tt_math ( tt_get_var ( tt_get_instrument ( 'NFO,ASIANPAINT,Current Month,PE,ATM-SPOT,,' ) , 'Volume' ) , tt_lotsize ( tt_get_instrument ( 'NFO,ASIANPAINT,Current Month,PE,ATM-SPOT,,' )  ) , '/' ) > tt_Number ( '50' )  )  and ( tt_get_var ( tt_get_instrument ( 'NFO,ASIANPAINT,Current Month,PE,ATM-SPOT,,' ) , 'Volume' )  )  and ( tt_lotsize ( tt_get_instrument ( 'NFO,ASIANPAINT,Current Month,PE,ATM-SPOT,,' )  )  )",
+          "conditionJson": "{\"operator\":\"and\",\"operands\":[{\"type\":\"rule\",\"value\":\"builder-basic_rule_0\",\"elements\":[{\"name\":\"Time\",\"kid\":7658,\"params\":[{\"type\":\"value\",\"value\":\"NSE\"}]},{\"name\":\">=\",\"params\":[]},{\"name\":\"Number\",\"kid\":9644,\"params\":[{\"type\":\"value\",\"value\":\"930\"}]}]},{\"type\":\"rule\",\"value\":\"builder-basic_rule_1\",\"elements\":[{\"name\":\"Positions Detail\",\"kid\":4746,\"params\":[{\"type\":\"value\",\"value\":\"Entry\"},{\"type\":\"value\",\"value\":\"All\"},{\"type\":\"value\",\"value\":\"All\"},{\"type\":\"value\",\"value\":\"quantity\"},{\"type\":\"value\",\"value\":\"ASIANPAINT\"}]},{\"name\":\"==\",\"params\":[]},{\"name\":\"Number\",\"kid\":6091,\"params\":[{\"type\":\"value\",\"value\":\"0\"}]}]},{\"type\":\"rule\",\"value\":\"builder-basic_rule_2\",\"elements\":[{\"name\":\"LTP\",\"kid\":9472,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Futures\",\"kid\":5368,\"params\":[{\"type\":\"value\",\"value\":\"ASIANPAINT\"}]}}]},{\"name\":\"<\",\"params\":[]},{\"name\":\"ORB\",\"kid\":3927,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Futures\",\"kid\":9856,\"params\":[{\"type\":\"value\",\"value\":\"ASIANPAINT\"}]}},{\"type\":\"value\",\"value\":\"Low\"},{\"type\":\"value\",\"value\":\"09:15\"},{\"type\":\"value\",\"value\":\"09:29\"}]},{\"name\":\"-\",\"params\":[]},{\"name\":\"(\",\"params\":[]},{\"name\":\"Previous Close\",\"kid\":1492,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Futures\",\"kid\":1479,\"params\":[{\"type\":\"value\",\"value\":\"ASIANPAINT\"}]}}]},{\"name\":\"*\",\"params\":[]},{\"name\":\"Number\",\"kid\":6091,\"params\":[{\"type\":\"value\",\"value\":\"0.001\"}]},{\"name\":\")\",\"params\":[]}]},{\"type\":\"rule\",\"value\":\"builder-basic_rule_3\",\"elements\":[{\"name\":\"LTP\",\"kid\":3850,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Instrument Name\",\"kid\":9747,\"params\":[{\"type\":\"value\",\"value\":\"NFO,ASIANPAINT,Current Month,PE,ATM-SPOT,,\"}]}}]},{\"name\":\">=\",\"params\":[]},{\"name\":\"Number\",\"kid\":8144,\"params\":[{\"type\":\"value\",\"value\":\"1\"}]}]},{\"type\":\"rule\",\"value\":\"builder-basic_rule_4\",\"elements\":[{\"name\":\"Math Operation\",\"kid\":4067,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Volume\",\"kid\":6836,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Instrument Name\",\"kid\":8831,\"params\":[{\"type\":\"value\",\"value\":\"NFO,ASIANPAINT,Current Month,PE,ATM-SPOT,,\"}]}}]}},{\"type\":\"keyword\",\"keyword\":{\"name\":\"Lot Size\",\"kid\":6473,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Instrument Name\",\"kid\":5814,\"params\":[{\"type\":\"value\",\"value\":\"NFO,ASIANPAINT,Current Month,PE,ATM-SPOT,,\"}]}}]}},{\"type\":\"value\",\"value\":\"/\"}]},{\"name\":\">\",\"params\":[]},{\"name\":\"Number\",\"kid\":6091,\"params\":[{\"type\":\"value\",\"value\":\"50\"}]}]},{\"type\":\"rule\",\"value\":\"builder-basic_rule_5\",\"elements\":[{\"name\":\"Volume\",\"kid\":2347,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Instrument Name\",\"kid\":6790,\"params\":[{\"type\":\"value\",\"value\":\"NFO,ASIANPAINT,Current Month,PE,ATM-SPOT,,\"}]}}]}]},{\"type\":\"rule\",\"value\":\"builder-basic_rule_6\",\"elements\":[{\"name\":\"Lot Size\",\"kid\":8996,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Instrument Name\",\"kid\":4777,\"params\":[{\"type\":\"value\",\"value\":\"NFO,ASIANPAINT,Current Month,PE,ATM-SPOT,,\"}]}}]}]}]}",
+          "conditionDisplay": "( Time ( 'NSE' ) >= Number ( '930' )  )  and ( Positions Detail ( 'strategy_id', 'run_counter', 'Entry', 'All', 'All', 'quantity', 'ASIANPAINT' ) == Number ( '0' )  )  and ( LTP ( Futures ( 'ASIANPAINT' ) , 'LTP' ) < ORB ( 'strategy_id', 'run_counter', Futures ( 'ASIANPAINT' ) , 'Low', '09:15', '09:29' ) - ( Previous Close ( Futures ( 'ASIANPAINT' ) , 'PrevClose' ) * Number ( '0.001' ) )  )  and ( LTP ( Instrument Name ( 'NFO,ASIANPAINT,Current Month,PE,ATM-SPOT,,' ) , 'LTP' ) >= Number ( '1' )  )  and ( Math Operation ( Volume ( Instrument Name ( 'NFO,ASIANPAINT,Current Month,PE,ATM-SPOT,,' ) , 'Volume' ) , Lot Size ( Instrument Name ( 'NFO,ASIANPAINT,Current Month,PE,ATM-SPOT,,' )  ) , '/' ) > Number ( '50' )  )  and ( Volume ( Instrument Name ( 'NFO,ASIANPAINT,Current Month,PE,ATM-SPOT,,' ) , 'Volume' )  )  and ( Lot Size ( Instrument Name ( 'NFO,ASIANPAINT,Current Month,PE,ATM-SPOT,,' )  )  )",
+          "subType": "None",
+          "visible": 1,
+          "legs": [
+            {
+              "instrument": 1863,
+              "list": 0,
+              "optionType": "PE",
+              "expiryType": "Current Month",
+              "expiry": "tt_curr_monthexpiry('ASIANPAINT')",
+              "expiryJson": null,
+              "expiryDisplay": null,
+              "strikeType": "Fx",
+              "strike": "( tt_ATM_SPOT ( 'ASIANPAINT', '0' )  )",
+              "strikeJson": "{\"operator\":\"and\",\"operands\":[{\"type\":\"rule\",\"value\":\"builder-basic_rule_0\",\"elements\":[{\"name\":\"ATM SPOT\",\"kid\":3441,\"params\":[{\"type\":\"value\",\"value\":\"ASIANPAINT\"},{\"type\":\"value\",\"value\":\"0\"}]}]}]}",
+              "strikeDisplay": "( ATM SPOT ( 'ASIANPAINT', '0' )  )",
+              "qty": "tt_lots(1,'INSTRUMENT','PE')",
+              "qtyType": "Lots",
+              "qtyDisplay": "1",
+              "qtyJson": null,
+              "qtyExprDisplay": null,
+              "limitPrice": null,
+              "limitPriceDisplay": null,
+              "limitPriceJson": null,
+              "limitPriceExprDisplay": null,
+              "buySell": "B",
+              "entryLimit": null,
+              "entryTrigger": null,
+              "sLLimit": null,
+              "sLTrigger": null,
+              "sLTriggerDisplay": null,
+              "sLTriggerJson": null,
+              "sLTriggerExprDisplay": null,
+              "targetLimit": null,
+              "targetTrigger": null,
+              "productType": "NRML",
+              "underlyingSymbol": "ASIANPAINT",
+              "isOvernightProtectionLeg": "No",
+              "updatedAt": "2025-02-16 17:54:21",
+              "createdAt": "2025-02-16 17:54:21"
+            }
+          ],
+          "extra": {
+            "name": null,
+            "variables": []
+          }
+        },
+        {
+          "type": "Exit",
+          "conditionValue": "( ins_exit ( 'strategy_id', 'run_counter', 'Entry', 'ASIANPAINT', '6', '1', '1', 'tsl-points', '8', '7.5', '0.2', '0.1' )  )  or ( ins_exit ( 'strategy_id', 'run_counter', 'Entry', 'ASIANPAINT', '6', '1', '1', 'Stoploss Points', '2.5' )  )",
+          "conditionJson": "{\"operator\":\"or\",\"operands\":[{\"type\":\"rule\",\"value\":\"builder-basic_rule_0\",\"elements\":[{\"name\":\"Leg TSL\",\"kid\":8992,\"params\":[{\"type\":\"value\",\"value\":\"Entry\"},{\"type\":\"value\",\"value\":\"ASIANPAINT\"},{\"type\":\"value\",\"value\":\"6\"},{\"type\":\"value\",\"value\":\"1\"},{\"type\":\"value\",\"value\":\"1\"},{\"type\":\"value\",\"value\":\"tsl-points\"},{\"type\":\"value\",\"value\":\"8\"},{\"type\":\"value\",\"value\":\"7.5\"},{\"type\":\"value\",\"value\":\"0.2\"},{\"type\":\"value\",\"value\":\"0.1\"}]}]},{\"type\":\"rule\",\"value\":\"builder-basic_rule_1\",\"elements\":[{\"name\":\"Leg Exit\",\"kid\":3324,\"params\":[{\"type\":\"value\",\"value\":\"Entry\"},{\"type\":\"value\",\"value\":\"ASIANPAINT\"},{\"type\":\"value\",\"value\":\"6\"},{\"type\":\"value\",\"value\":\"1\"},{\"type\":\"value\",\"value\":\"1\"},{\"type\":\"value\",\"value\":\"Stoploss Points\"},{\"type\":\"value\",\"value\":\"2.5\"}]}]}]}",
+          "conditionDisplay": "( Leg TSL ( 'strategy_id', 'run_counter', 'Entry', 'ASIANPAINT', '6', '1', '1', 'tsl-points', '8', '7.5', '0.2', '0.1' )  )  or ( Leg Exit ( 'strategy_id', 'run_counter', 'Entry', 'ASIANPAINT', '6', '1', '1', 'Stoploss Points', '2.5' )  )",
+          "subType": "None",
+          "visible": 1,
+          "legs": [],
+          "extra": {
+            "name": null,
+            "variables": []
+          }
+        }
+      ]
+    },
+    {
+      "name": null,
+      "conditions": [
+        {
+          "type": "Repair Once",
+          "conditionValue": null,
+          "conditionJson": null,
+          "conditionDisplay": null,
+          "subType": "Overnight Protection",
+          "visible": 0,
+          "legs": [],
+          "extra": {
+            "name": null,
+            "variables": []
+          }
+        },
+        {
+          "type": "Universal Exit",
+          "conditionValue": "( tt_Time ( 'NSE' ) >= tt_Number ( '1515' )  )",
+          "conditionJson": "{\"operator\":\"and\",\"operands\":[{\"type\":\"rule\",\"value\":\"builder-basic_rule_0\",\"elements\":[{\"name\":\"Time\",\"kid\":5715,\"params\":[{\"type\":\"value\",\"value\":\"NSE\"}]},{\"name\":\">=\",\"params\":[]},{\"name\":\"Number\",\"kid\":5224,\"params\":[{\"type\":\"value\",\"value\":\"1515\"}]}]}]}",
+          "conditionDisplay": "( Time ( 'NSE' ) >= Number ( '1515' )  )",
+          "subType": "None",
+          "visible": 1,
+          "legs": [],
+          "extra": {
+            "name": null,
+            "variables": []
+          }
+        }
+      ]
+    }
+  ],
+  "currency": "INR",
+  "priceExecution": "Best price",
+  "tranchSize": 100,
+  "tslToCostAtProfit": 0,
+  "tslProfitIncrease": 0,
+  "tslSlIncrease": 0,
+  "runFrequency": "Continuous",
+  "firstTradeAfterOpen": 1,
+  "lastTradeBeforeClose": 60,
+  "rolloverExpiryPeriod": "Dont Rollover",
+  "capitalRequired": 150000,
+  "priceRevisionAttempts": 3,
+  "tranchWaitSecs": 1,
+  "exitShortsFirst": 0,
+  "priceRevisionTimeout": 5,
+  "reactivateEvery": 360,
+  "finalAction": "MARKET",
+  "exitAtMarket": 1,
+  "runEvery": 1,
+  "rolloverExpiryTime": "1500",
+  "priceTicksMultiple": "3",
+  "pythonCode": null,
+  "isPublic": 0,
+  "minMultiple": 1,
+  "maxMultiple": 100,
+  "freePeriod": null,
+  "fixedFee": "0.00",
+  "fixedFeePeriod": "1",
+  "variableFee": "0.00",
+  "hurdleRate": 0,
+  "recreatePositionsInNewFollowers": "No",
+  "allowDuplication": 0,
+  "confirmationPerSubscriber": 0,
+  "hideSubscribers": "No",
+  "strategyPublicLinkAccess": "Yes",
+  "strategyPublicLink": null,
+  "displayPositionsToNonSubscribers": 0,
+  "highWatermark": "Yes",
+  "showLiveAutoDeployment": 0,
+  "feeShare": null,
+  "isApproved": 0,
+  "feeFrequency": "Month",
+  "backtestLinkSubscribers": null,
+  "backtestLinkNonsubscribers": null
+}

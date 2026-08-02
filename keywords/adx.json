@@ -1,0 +1,18 @@
+{
+    "name": "ADX",
+    "description": "This keyword returns the Average Directional Index (ADX) indicator value of the selected Instrument for the selected timeframe. This keyword is to be used under the position keyword.",
+    "how_to_use_markdown": "This keyword returns the Average Directional Index (ADX) indicator value of the selected Instrument for the selected timeframe. This keyword is to be used under the position keyword.\n\n![Example](./images/img-1632223634.png)\n\nThe above keyword will return the previous day ADX value of ABFRL\n\nADX is used to quantify trend strength. ADX calculations are based on a moving average of price range expansion over a given period of time\n\nRead more about ADX here -  https://www.investopedia.com/articles/trading/07/adx-trend-indicator.asp",
+    "example_image_urls": [
+        "./images/img-1632223634.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "ADX\nThis keyword returns the Average Directional Index (ADX) indicator value of the selected Instrument for the selected timeframe. This keyword is to be used under the position keyword.\nThe above keyword will return the previous day ADX value of ABFRL\nADX is used to quantify trend strength. ADX calculations are based on a moving average of price range expansion over a given period of time\nRead more about ADX here - \nhttps://www.investopedia.com/articles/trading/07/adx-trend-indicator.asp",
+    "visual_logic_extracted": "Image [img-1632223634.png] Text:\n+\n\nPosition\nADX ( Symbol ( Instrument Name ( NFO,ABFRL,,,,, ), day, All), 15), -1"
+}

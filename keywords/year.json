@@ -1,0 +1,18 @@
+{
+    "name": "Year",
+    "description": "This keyword returns the current year",
+    "how_to_use_markdown": "This keyword returns the current year\n\n![Example](./images/img-1631711725.png)",
+    "example_image_urls": [
+        "./images/img-1631711725.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "Year\nThis keyword returns the current year",
+    "visual_logic_extracted": "Image [img-1631711725.png] Text:\nYear == Number\nNSE 2021"
+}

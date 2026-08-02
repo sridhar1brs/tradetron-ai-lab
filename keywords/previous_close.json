@@ -1,0 +1,18 @@
+{
+    "name": "Previous Close",
+    "description": "This will return the close price of the previous day of that selected instrument.",
+    "how_to_use_markdown": "This will return the close price of the previous day of that selected instrument.\n\n![Example](./images/img-1631709241.png)",
+    "example_image_urls": [
+        "./images/img-1631709241.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "Previous Close\nThis will return the close price of the previous day of that selected instrument.",
+    "visual_logic_extracted": "Image [img-1631709241.png] Text:\nPrevious Close\nInstrument Name ( NSE,IDEA,,,,, )"
+}

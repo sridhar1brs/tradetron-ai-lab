@@ -1,0 +1,18 @@
+{
+    "name": "Pivot Point",
+    "description": "The above keyword will return the Fibonacci pivot value of NIFTY 50 based on day before yesterdays daily candle, if you want to find pivot for current day, use position 0 and it will automatically create pivot based on previous day's data",
+    "how_to_use_markdown": "This keyword returns the Pivot Points value of the selected Instrument for the selected timeframe. This keyword is to be used under the position keyword\n\nIn this keyword, you can select from 3 types of pivot points\n\n- Standard\n- Fibonacci\n- Camarilla\n\n![Example](./images/img-1632311624.png)\n\nThe above keyword will return the Fibonacci pivot value of NIFTY 50 based on day before yesterdays daily candle, if you want to find pivot for current day, use position 0 and it will automatically create pivot based on previous day's data\n\nThe general rule of thumb is to calculate pivot points based on the previous day\u2019s daily timeframe for the current day. Always use the daily timeframe when calculating pivot points, and avoid using lower timeframes (e.g., 2-minute or 3-minute charts).\n\nA pivot point is a technical analysis indicator, or calculations, used to determine the overall trend of the market over different time frames.\n\nRead more about Pivot Points here -  https://www.investopedia.com/terms/p/pivotpoint.asp",
+    "example_image_urls": [
+        "./images/img-1632311624.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "Pivot Point\nThis keyword returns the Pivot Points value of the selected Instrument for the selected timeframe. This keyword is to be used under the position keyword\nIn this keyword, you can select from 3 types of pivot points\nStandard\nFibonacci\nCamarilla\u00a0\nThe above keyword will return the Fibonacci pivot value of NIFTY 50 based on day before yesterdays daily candle, if you want to find pivot for current day, use position 0 and it will automatically create pivot based on previous day's data\nThe general rule of thumb is to calculate pivot points based on the previous day\u2019s daily timeframe for the current day. Always use the daily timeframe when calculating pivot points, and avoid using lower timeframes (e.g., 2-minute or 3-minute charts).\nA pivot point is a technical analysis indicator, or calculations, used to determine the overall trend of the market over different time frames.\nRead more about Pivot Points here - \nhttps://www.investopedia.com/terms/p/pivotpoint.asp",
+    "visual_logic_extracted": "Image [img-1632311624.png] Text:\n+\nPosition\nPivot Point ( Symbol ( Instrument Name ( NFO,NIFTY 50,,,,, ) , day, All) , fibonacci, pivot ) , -1"
+}

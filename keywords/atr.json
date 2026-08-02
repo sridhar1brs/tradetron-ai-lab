@@ -1,0 +1,18 @@
+{
+    "name": "ATR",
+    "description": "This keyword gives the ATR value in series of the selected Instrument. This keyword is to be used in the Position keyword",
+    "how_to_use_markdown": "This keyword gives the ATR value in series of the selected Instrument. This keyword is to be used in the Position keyword\n\n![Example](./images/img-1632219122.png)\n\nThe above condition will output the ATR period 14 of NIFTY 50 futures in 15min timeframe\n\nAverage true range (ATR) is a volatility indicator that shows how much an asset moves, on average, during a given time frame.\n\nRead more about ATR here - https://www.investopedia.com/articles/technical/02/092402.asp",
+    "example_image_urls": [
+        "./images/img-1632219122.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "ATR\nThis keyword gives the ATR value in series of the selected Instrument. This keyword is to be used in the Position keyword\nThe above condition will output the ATR period 14 of NIFTY 50 futures in 15min timeframe\nAverage true range (ATR) is a volatility indicator that shows how much an asset moves, on average, during a given time frame.\nRead more about ATR here -\nhttps://www.investopedia.com/articles/technical/02/092402.asp",
+    "visual_logic_extracted": "Image [img-1632219122.png] Text:\n+\nPosition\nATR ( Symbol ( Instrument Name ( NFO,NIFTY 50,Current Month,,,, ), 15m, All), 14), -1"
+}

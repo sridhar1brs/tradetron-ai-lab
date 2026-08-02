@@ -1,0 +1,18 @@
+{
+    "name": "Init Var",
+    "description": "In the above example, upon deployment, the keyword will generate a runtime variable called \"india\" and assign a number to the same as \"1\"",
+    "how_to_use_markdown": "This keyword is used to generate a variable and assign a name and number to the same. Thus Init var is a keyword that runs only once. Thus \u00a0any change made to the value of Init Var after the deployment of the strategy will only take effect after the run counter of the strategy has changed.  Init var is very useful when you are using python or condition action based coding in Tradetron. Please note the values entered in Init var are case and space sensitive.\n\n![Example](./images/img-1631869273.png)\n\nIn the above example, upon deployment, the keyword will generate a runtime variable called \"india\" and assign a number to the same as \"1\"\n\nThe value can be retrieved using the  get runtime  keyword",
+    "example_image_urls": [
+        "./images/img-1631869273.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "Init Var\nThis keyword is used to generate a variable and assign a name and number to the same. Thus Init var is a keyword that runs only once. Thus\n\u00a0any change made to the value of Init Var after the deployment of the strategy will only take effect after the run counter of the strategy has changed.\n Init var is very useful when you are using python or condition action based coding in Tradetron. Please note the values entered in Init var are case and space sensitive.\u00a0\nIn the above example, upon deployment, the keyword will generate a runtime variable called \"india\" and assign a number to the same as \"1\"\nThe value can be retrieved using the \nget runtime\n keyword",
+    "visual_logic_extracted": "Image [img-1631869273.png] Text:\nInit Var\nindia, 1"
+}

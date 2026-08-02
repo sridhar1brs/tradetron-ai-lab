@@ -1,0 +1,18 @@
+{
+    "name": "Vortex VI+",
+    "description": "This keyword returns the value of the positive line Vortex Indicator of the of the selected Instrument. This keyword is to be used under the position keyword",
+    "how_to_use_markdown": "This keyword returns the value of the positive line Vortex Indicator of the of the selected Instrument. This keyword is to be used under the position keyword\n\n![Example](./images/img-1632225863.png)\n\nYou can fetch the Vortex Vi+ on any candle of an instrument, like in the above example, you can fetch the  Vortex Vi+ line\u00a0 of previous (-1) day candle of Nifty 50 spot",
+    "example_image_urls": [
+        "./images/img-1632225863.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "Vortex VI+\nThis keyword returns the value of the positive line Vortex Indicator of the of the selected Instrument. This keyword is to be used under the position keyword\nYou can fetch the Vortex Vi+ on any candle of an instrument, like in the above example, you can fetch the \nVortex Vi+ line\u00a0\nof previous (-1) day candle of Nifty 50 spot",
+    "visual_logic_extracted": "Image [img-1632225863.png] Text:\nPosition\nVortex Vi+ ( Symbol ( Instrument Name ( NFO.NIFTY 50,,.., ), day, All) , 20), -1"
+}

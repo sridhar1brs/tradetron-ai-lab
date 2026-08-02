@@ -1,0 +1,18 @@
+{
+    "name": "Bid Price",
+    "description": "It returns the Best Bid Price of the selected Instrument",
+    "how_to_use_markdown": "It returns the Best Bid Price of the selected Instrument\n\n![Example](./images/img-1631703722.png)\n\nNote -  Bid price is returned only if it is changed from\u00a0last tick, else it returns LTP only",
+    "example_image_urls": [
+        "./images/img-1631703722.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "Bid Price\nIt returns the Best Bid Price of the selected Instrument\nNote - \nBid price is returned only if it is changed from\u00a0last tick, else it returns LTP only",
+    "visual_logic_extracted": "Image [img-1631703722.png] Text:\nBid Price\n\nInstrument Name (NFO.NIFTY 50,....)"
+}

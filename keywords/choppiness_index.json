@@ -1,0 +1,18 @@
+{
+    "name": "Choppiness Index",
+    "description": "This keyword returns the value of the Choppiness Index of the selected Instrument. This keyword is to be used under the position keyword",
+    "how_to_use_markdown": "This keyword returns the value of the Choppiness Index of the selected Instrument. This keyword is to be used under the position keyword\n\n![Example](./images/img-1632221754.png)\n\nYou can fetch the Choppiness Index on any candle of an instrument, like in the above example, you can fetch the  Choppiness Index of previous (-1) 5 min candle of Nifty 50 spot",
+    "example_image_urls": [
+        "./images/img-1632221754.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "Choppiness Index\nThis keyword returns the value of the Choppiness Index of the selected Instrument. This keyword is to be used under the position keyword\nYou can fetch the Choppiness Index on any candle of an instrument, like in the above example, you can fetch the \nChoppiness Index of previous (-1) 5 min candle of Nifty 50 spot",
+    "visual_logic_extracted": "Image [img-1632221754.png] Text:\n8\n\nPosition\nChoppiness Index ( Symbol ( Instrument Name (NFO,NIFTY 50,,,,,), 5m, All), 15) ,-1"
+}

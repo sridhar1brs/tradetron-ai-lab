@@ -1,0 +1,19 @@
+{
+    "name": "Traded Value",
+    "description": "This keyword returns the total turnover of that instrument at the exchange.",
+    "how_to_use_markdown": "This keyword returns the total turnover of that instrument at the exchange.\n\n![Example](./images/img-1631707940.png)\n\n![Example](./images/img-1631791651.png)",
+    "example_image_urls": [
+        "./images/img-1631707940.png",
+        "./images/img-1631791651.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "Traded Value\nThis keyword returns the total turnover of that instrument at the exchange.",
+    "visual_logic_extracted": "Image [img-1631707940.png] Text:\nrx)\n\nTraded Value >= Number\nInstrument Name ( NFO,ACC,Current Month,,,, ) 150000\n\nImage [img-1631791651.png] Text:\nt\nTraded Value = Sor y, where \u00ab= ticks, y= Volume of those ticks and t= current time\n\n9:15"
+}

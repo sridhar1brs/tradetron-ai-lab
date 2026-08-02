@@ -1,0 +1,18 @@
+{
+    "name": "Tomorrow",
+    "description": "This keyword returns\u00a0the next date as a string in format YYYY-MM-DD.",
+    "how_to_use_markdown": "This keyword returns \u00a0the next date as a string in format YYYY-MM-DD.\n\nThis keyword should not be equated to a number. It should always be compared with keyword that returns a string in same format\n\n![Example](./images/img-1631875664.png)\n\nThe above condition will be true if tomorrow is the current week expiry",
+    "example_image_urls": [
+        "./images/img-1631875664.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "Tomorrow\nThis keyword returns\n\u00a0the next date as a string in format YYYY-MM-DD.\u00a0\nThis keyword should not be equated to a number. It should always be compared with keyword that returns a string in same format\nThe above condition will be true if tomorrow is the current week expiry",
+    "visual_logic_extracted": "Image [img-1631875664.png] Text:\nTomorrow == Current Week Expiry\nNSE NIFTY 50, 0"
+}

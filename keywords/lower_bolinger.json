@@ -1,0 +1,18 @@
+{
+    "name": "Lower Bolinger",
+    "description": "This keyword returns the Lower Bollinger value of any period of any series of the selected Instrument. This keyword is to be used under the position keyword",
+    "how_to_use_markdown": "This keyword returns the Lower Bollinger value of any period of any series of the selected Instrument. This keyword is to be used under the position keyword\n\n![Example](./images/img-1632222441.png)\n\nYou can plot Lower Bollinger on any series, like close in the above example, you can also plot Lower Bollinger of RSI, OPEN etc\n\nBollinger Bands are envelopes plotted at a standard deviation level above and below a simple moving average of the price.\n\nRead more about Bollinger Bands here -  https://www.fidelity.com/learning-center/trading-investing/technical-analysis/technical-indicator-guide/bollinger-bands",
+    "example_image_urls": [
+        "./images/img-1632222441.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "Lower Bolinger\nThis keyword returns the Lower Bollinger value of any period of any series of the selected Instrument. This keyword is to be used under the position keyword\nYou can plot Lower Bollinger on any series, like close in the above example, you can also plot Lower Bollinger of RSI, OPEN etc\nBollinger Bands are envelopes plotted at a standard deviation level above and below a simple moving average of the price.\nRead more about Bollinger Bands here - \nhttps://www.fidelity.com/learning-center/trading-investing/technical-analysis/technical-indicator-guide/bollinger-bands",
+    "visual_logic_extracted": "Image [img-1632222441.png] Text:\nPosition\nLower Bolinger ( CLOSE ( Symbol ( Instrument Name ( NSE,ACE,,,,, ), day, All) ), 20,2), -1"
+}

@@ -1,0 +1,18 @@
+{
+    "name": "Hull MA",
+    "description": "This keyword returns the Hull Moving average of any period of any series of the selected Instrument. This keyword is to be used under the position keyword",
+    "how_to_use_markdown": "This keyword returns the Hull Moving average of any period of any series of the selected Instrument. This keyword is to be used under the position keyword\n\n![Example](./images/img-1632226630.png)\n\nYou can plot Hull Moving average on any series, like close in the above example, you can also plot EMA of RSI, OPEN etc",
+    "example_image_urls": [
+        "./images/img-1632226630.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "Hull MA\nThis keyword returns the Hull Moving average of any period of any series of the selected Instrument. This keyword is to be used under the position keyword\nYou can plot Hull Moving average on any series, like close in the above example, you can also plot EMA of RSI, OPEN etc",
+    "visual_logic_extracted": "Image [img-1632226630.png] Text:\nPosition\nHull MA ( CLOSE ( Symbol ( Instrument Name ( NFO,NIFTY 50,,,.,), 5m, All) ), 20), -1"
+}

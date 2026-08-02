@@ -1,0 +1,20 @@
+{
+    "name": "Time",
+    "description": "The above condition can be used in the entry block if you don't want to take new positions after 3:00 PM.",
+    "how_to_use_markdown": "This keyword will return the current time as HHMM, do not use any special characters\n\n![Example](./images/img-1631798543.png)\n\nThe above condition will be true if the time is 09:20 AM. Time keyword is widely used to control the entry and exits\n\n![Example](./images/img-1631798646.png)\n\nThe above condition can be used in the entry block if you don't want to take new positions after 3:00 PM.\n\n![Example](./images/img-1631798737.png)\n\nThe above condition can be used in universal exit to exit the strategy at 15:15\n\nPlease note- Use only integers and not any special characters",
+    "example_image_urls": [
+        "./images/img-1631798543.png",
+        "./images/img-1631798646.png",
+        "./images/img-1631798737.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "Time\nThis keyword will return the current time as HHMM, do not use any special characters\u00a0\nThe above condition will be true if the time is 09:20 AM. Time keyword is widely used to control the entry and exits\u00a0\nThe above condition can be used in the entry block if you don't want to take new positions after 3:00 PM.\u00a0\nThe above condition can be used in universal exit to exit the strategy at 15:15\nPlease note- Use only integers and not any special characters",
+    "visual_logic_extracted": "Image [img-1631798543.png] Text:\nTime >= Number\nNSE 0920\n\nImage [img-1631798646.png] Text:\nTime <= Number\nNSE 1500\n\nImage [img-1631798737.png] Text:\nNumber\n1515"
+}

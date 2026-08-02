@@ -1,0 +1,18 @@
+{
+    "name": "EntryUnderlyingPrice",
+    "description": "This keyword will return the latest Underlying spot price at the time of entry.",
+    "how_to_use_markdown": "This keyword will return the latest Underlying spot price at the time of entry.\n\nGenerally used if the user wants to place stop loss based on Index movement rather than option prices\n\n![Example](./images/img-1631883469.png)\n\nSuppose NIFTY 17500 CE option entered at 9:20 AM, EntryUnderlyingPrice will give the spot price at the time of this option entry, let's assume spot price was 17354 at 9:20, so in this case,  EntryUnderlyingPrice  will return 17354\n\nNote - For NSE equity trades, EntryUnderlyingPrice and ENTRY PRICE keywords will return the same",
+    "example_image_urls": [
+        "./images/img-1631883469.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "EntryUnderlyingPrice\nThis keyword will return the latest Underlying spot price at the time of entry.\nGenerally used if the user wants to place stop loss based on Index movement rather than option prices\nSuppose NIFTY 17500 CE option entered at 9:20 AM, EntryUnderlyingPrice will give the spot price at the time of this option entry, let's assume spot price was 17354 at 9:20, so in this case, \nEntryUnderlyingPrice\n will return 17354\nNote - For NSE equity trades, EntryUnderlyingPrice and ENTRY PRICE keywords will return the same",
+    "visual_logic_extracted": "Image [img-1631883469.png] Text:\nEntryUnderlyingPrice\nNIFTY 50"
+}

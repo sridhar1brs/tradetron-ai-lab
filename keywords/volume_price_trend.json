@@ -1,0 +1,18 @@
+{
+    "name": "Volume Price Trend",
+    "description": "This keyword returns the value of the Volume Price Trend of the selected Instrument. This keyword is to be used under the position keyword.",
+    "how_to_use_markdown": "This keyword returns the value of the Volume Price Trend of the selected Instrument. This keyword is to be used under the position keyword.\n\n![Example](./images/img-1632223885.png)\n\nYou can plot  Volume Price Trend  on any candle of an instrument, like in the above example, you can also plot  Volume Price Trend \u00a0of previous (-1) day candle of Nifty Financial Services futures.",
+    "example_image_urls": [
+        "./images/img-1632223885.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "Volume Price Trend\nThis keyword returns the value of the Volume Price Trend of the selected Instrument. This keyword is to be used under the position keyword.\nYou can plot \nVolume Price Trend\n on any candle of an instrument, like in the above example, you can also plot \nVolume Price Trend\n\u00a0of previous (-1) day candle of Nifty Financial Services futures.",
+    "visual_logic_extracted": "Image [img-1632223885.png] Text:\n\u00b0\n\nPosition\nVolume Price Trend ( ohicv ( Instrument Name ( NFO,NIFTY FIN SERVICE,Current Month,,,,), day, All) ), -1"
+}

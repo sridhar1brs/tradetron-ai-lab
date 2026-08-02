@@ -1,0 +1,20 @@
+{
+    "name": "VWAP",
+    "description": "This is a price action keyword which will calculate the instantaneous VWAP of the instrument under consideration. VWAP needs to be used for an instrument which has volume data. As an example, VWAP for Nifty 50 spot does not exist as the same does not have volume. VWAP need not be used under position keyword.",
+    "how_to_use_markdown": "This is a price action keyword which will calculate the instantaneous VWAP of the instrument under consideration. VWAP needs to be used for an instrument which has volume data. As an example, VWAP for Nifty 50 spot does not exist as the same does not have volume. VWAP need not be used under position keyword.\n\n![Example](./images/img-1631865084.png)\n\nThe keyword shared above will return the VWAP for the current tick of NIFTY futures.\n\n![Example](./images/img-1632483799.png)\n\nIn the example share above, one can check the if the LTP of Nifty 50 futures is greater than the VWAP of the same\n\n![Example](./images/img-1632484044.png)\n\nIn the example share above, one can check the if the LTP of Nifty 50 current week ATM CE is greater than the VWAP  of Nifty 50 current week ATM CE\n\nThe volume-weighted average price (VWAP) is a trading benchmark used by traders that gives the average price a security has traded at throughout the day, based on both volume and price.\n\nRead about VWAP here -  https://www.investopedia.com/terms/v/vwap.asp",
+    "example_image_urls": [
+        "./images/img-1631865084.png",
+        "./images/img-1632483799.png",
+        "./images/img-1632484044.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "VWAP\nThis is a price action keyword which will calculate the instantaneous VWAP of the instrument under consideration. VWAP needs to be used for an instrument which has volume data. As an example, VWAP for Nifty 50 spot does not exist as the same does not have volume. VWAP need not be used under position keyword.\u00a0\nThe keyword shared above will return the VWAP for the current tick of NIFTY futures.\u00a0\nIn the example share above, one can check the if the LTP of Nifty 50 futures is greater than the VWAP of the same\nIn the example share above, one can check the if the LTP of Nifty 50 current week ATM CE is greater than the VWAP \nof Nifty 50 current week ATM CE\nThe volume-weighted average price (VWAP) is a trading benchmark used by traders that gives the average price a security has traded at throughout the day, based on both volume and price.\nRead about VWAP here - \nhttps://www.investopedia.com/terms/v/vwap.asp",
+    "visual_logic_extracted": "Image [img-1631865084.png] Text:\n@\n\nVWAP\nFutures ( NIFTY 50 )\n\nImage [img-1632483799.png] Text:\nLTP \u00a9 > 9 VWAP. \u00a9\n\nFutures ( NIFTY 50 ) Futures ( NIFTY 50 )\n\nImage [img-1632484044.png] Text:\nima) i)\n\nLTP > VWAP\nInstrument Name ( NFO,NIFTY 50,Current Week,CE,ATM,0,0 ) Instrument Name ( NFO,NIFTY 50,Current Week,CE.ATM,0,0 )"
+}

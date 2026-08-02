@@ -1,0 +1,18 @@
+{
+    "name": "Kaufman Adaptive MA",
+    "description": "This keyword returns the Kaufman Adaptive Moving Average of any period of any series of the selected Instrument. This keyword is to be used under the position keyword",
+    "how_to_use_markdown": "This keyword returns the Kaufman Adaptive Moving Average of any period of any series of the selected Instrument. This keyword is to be used under the position keyword\n\n![Example](./images/img-1632223714.png)\n\nYou can plot the  Kaufman Adaptive Moving Average\u00a0 on any series, like open in the above example, you can also plot EMA of RSI, High etc",
+    "example_image_urls": [
+        "./images/img-1632223714.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "Kaufman Adaptive MA\nThis keyword returns the Kaufman Adaptive Moving Average of any period of any series of the selected Instrument. This keyword is to be used under the position keyword\nYou can plot the \nKaufman Adaptive Moving Average\u00a0\non any series, like open in the above example, you can also plot EMA of RSI, High etc",
+    "visual_logic_extracted": "Image [img-1632223714.png] Text:\nix)\n\nPosition\nKaufman Adaptive MA ( OPEN ( Symbol ( Instrument Name ( NFO,NIFTY 50,,,,, ), day, All) ), 10, 12, 26,9), -4"
+}

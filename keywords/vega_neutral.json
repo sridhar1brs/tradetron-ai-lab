@@ -1,0 +1,18 @@
+{
+    "name": "Vega Neutral",
+    "description": "This keyword returns the quantity of selected instrument required to make net vega of all positions in the strategy of selected underlying to zero. Returns quantity in multiple of the lot size of Instrument as float",
+    "how_to_use_markdown": "This keyword returns the quantity of selected instrument required to make net vega of all positions in the strategy of selected underlying to zero. Returns quantity in multiple of the lot size of Instrument as float\n\nThis keyword is usually used in QTY FX in position builder\n\n![Example](./images/img-1631790658.png)",
+    "example_image_urls": [
+        "./images/img-1631790658.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "Vega Neutral\nThis keyword returns the quantity of selected instrument required to make net vega of all positions in the strategy of selected underlying to zero. Returns quantity in multiple of the lot size of Instrument as float\nThis keyword is usually used in QTY FX in position builder",
+    "visual_logic_extracted": "Image [img-1631790658.png] Text:\nVega Neutral\nNIFTY 50, Futures ( NIFTY 50 )"
+}

@@ -1,0 +1,18 @@
+{
+    "name": "Kaufman Efficiency indicator",
+    "description": "This keyword returns the Kaufman's Efficiency indicator of any period of any series of the selected Instrument. This keyword is to be used under the position keyword",
+    "how_to_use_markdown": "This keyword returns the Kaufman's Efficiency indicator of any period of any series of the selected Instrument. This keyword is to be used under the position keyword\n\n![Example](./images/img-1632224733.png)\n\nYou can plot  Kaufman's Efficiency indicator  on any series, like close in the above example, you can also plot EMA of RSI, OPEN etc",
+    "example_image_urls": [
+        "./images/img-1632224733.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "Kaufman Efficiency indicator\nThis keyword returns the Kaufman's Efficiency indicator of any period of any series of the selected Instrument. This keyword is to be used under the position keyword\nYou can plot \nKaufman's Efficiency indicator\n on any series, like close in the above example, you can also plot EMA of RSI, OPEN etc",
+    "visual_logic_extracted": "Image [img-1632224733.png] Text:\nPosition\nKaufman Efficiency indicator (CLOSE ( Symbol ( Futures ( NIFTY 50), 5m, All)) , 20), -1"
+}

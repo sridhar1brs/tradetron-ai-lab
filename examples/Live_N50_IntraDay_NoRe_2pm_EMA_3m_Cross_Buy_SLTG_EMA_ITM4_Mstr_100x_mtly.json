@@ -1,0 +1,349 @@
+{
+  "_format": "tt-strategy/v2",
+  "_readme": {
+    "about": "Tradetron strategy export. Edit and re-import via the ASB Import button.",
+    "logic": "To change a condition's logic, edit its \"conditionJson\" (the AST). The \"conditionValue\"/\"conditionDisplay\" text is regenerated from it on import.",
+    "legs": "For a leg field that has a \"*Json\" (e.g. \"strikeJson\"), edit the JSON — its text form is regenerated on import. Fields with no \"*Json\" (e.g. \"qty\") are plain text: edit them directly.",
+    "structure": "Add/remove/duplicate legs, conditions or sets by editing the arrays.",
+    "do_not": "Do not add \"*_id\" foreign keys back. Lists referenced by id must be ones you own."
+  },
+  "name": "Live N50 IntraDay NoRe 2pm EMA 3m Cross Buy SL,TG: EMA ITM:4 Mstr 100x mtly",
+  "description": "<p>Rolling EMA</p><p>SL: EMA TGT: EMA</p><p>NoRe- NoReEntry</p>",
+  "tags": [
+    {
+      "label": "Pairs",
+      "value": 44
+    }
+  ],
+  "variables": [
+    {
+      "variableName": "FinBullEntry",
+      "value": "( tt_Number ( '0' )  )",
+      "display": "( Number ( '0' )  )",
+      "json": "{\"operator\":\"and\",\"operands\":[{\"type\":\"rule\",\"value\":\"builder-basic_rule_0\",\"elements\":[{\"name\":\"Number\",\"kid\":3621,\"params\":[{\"type\":\"value\",\"value\":\"0\"}]}]}]}"
+    },
+    {
+      "variableName": "FinBearEntry",
+      "value": "( tt_Number ( '0' )  )",
+      "display": "( Number ( '0' )  )",
+      "json": "{\"operator\":\"and\",\"operands\":[{\"type\":\"rule\",\"value\":\"builder-basic_rule_0\",\"elements\":[{\"name\":\"Number\",\"kid\":3621,\"params\":[{\"type\":\"value\",\"value\":\"0\"}]}]}]}"
+    },
+    {
+      "variableName": "MidBullEntry",
+      "value": "( tt_Number ( '0' )  )",
+      "display": "( Number ( '0' )  )",
+      "json": "{\"operator\":\"and\",\"operands\":[{\"type\":\"rule\",\"value\":\"builder-basic_rule_0\",\"elements\":[{\"name\":\"Number\",\"kid\":3621,\"params\":[{\"type\":\"value\",\"value\":\"0\"}]}]}]}"
+    },
+    {
+      "variableName": "MidBearEntry",
+      "value": "( tt_Number ( '0' )  )",
+      "display": "( Number ( '0' )  )",
+      "json": "{\"operator\":\"and\",\"operands\":[{\"type\":\"rule\",\"value\":\"builder-basic_rule_0\",\"elements\":[{\"name\":\"Number\",\"kid\":3621,\"params\":[{\"type\":\"value\",\"value\":\"0\"}]}]}]}"
+    },
+    {
+      "variableName": "BnBullEntry",
+      "value": "( tt_Number ( '0' )  )",
+      "display": "( Number ( '0' )  )",
+      "json": "{\"operator\":\"and\",\"operands\":[{\"type\":\"rule\",\"value\":\"builder-basic_rule_0\",\"elements\":[{\"name\":\"Number\",\"kid\":3621,\"params\":[{\"type\":\"value\",\"value\":\"0\"}]}]}]}"
+    },
+    {
+      "variableName": "BnBearEntry",
+      "value": "( tt_Number ( '0' )  )",
+      "display": "( Number ( '0' )  )",
+      "json": "{\"operator\":\"and\",\"operands\":[{\"type\":\"rule\",\"value\":\"builder-basic_rule_0\",\"elements\":[{\"name\":\"Number\",\"kid\":3621,\"params\":[{\"type\":\"value\",\"value\":\"0\"}]}]}]}"
+    },
+    {
+      "variableName": "N50BullEntry",
+      "value": "( tt_Number ( '0' )  )",
+      "display": "( Number ( '0' )  )",
+      "json": "{\"operator\":\"and\",\"operands\":[{\"type\":\"rule\",\"value\":\"builder-basic_rule_0\",\"elements\":[{\"name\":\"Number\",\"kid\":3621,\"params\":[{\"type\":\"value\",\"value\":\"0\"}]}]}]}"
+    },
+    {
+      "variableName": "N50BearEntry",
+      "value": "( tt_Number ( '0' )  )",
+      "display": "( Number ( '0' )  )",
+      "json": "{\"operator\":\"and\",\"operands\":[{\"type\":\"rule\",\"value\":\"builder-basic_rule_0\",\"elements\":[{\"name\":\"Number\",\"kid\":3621,\"params\":[{\"type\":\"value\",\"value\":\"0\"}]}]}]}"
+    },
+    {
+      "variableName": "N50ReEntry",
+      "value": "( tt_Number ( '0' )  )",
+      "display": "( Number ( '0' )  )",
+      "json": "{\"operator\":\"and\",\"operands\":[{\"type\":\"rule\",\"value\":\"builder-basic_rule_0\",\"elements\":[{\"name\":\"Number\",\"kid\":2699,\"params\":[{\"type\":\"value\",\"value\":\"0\"}]}]}]}"
+    },
+    {
+      "variableName": "BnReEntry",
+      "value": "( tt_Number ( '0' )  )",
+      "display": "( Number ( '0' )  )",
+      "json": "{\"operator\":\"and\",\"operands\":[{\"type\":\"rule\",\"value\":\"builder-basic_rule_0\",\"elements\":[{\"name\":\"Number\",\"kid\":2699,\"params\":[{\"type\":\"value\",\"value\":\"0\"}]}]}]}"
+    },
+    {
+      "variableName": "FinReEntry",
+      "value": "( tt_Number ( '0' )  )",
+      "display": "( Number ( '0' )  )",
+      "json": "{\"operator\":\"and\",\"operands\":[{\"type\":\"rule\",\"value\":\"builder-basic_rule_0\",\"elements\":[{\"name\":\"Number\",\"kid\":2699,\"params\":[{\"type\":\"value\",\"value\":\"0\"}]}]}]}"
+    },
+    {
+      "variableName": "MidReEntry",
+      "value": "( tt_Number ( '0' )  )",
+      "display": "( Number ( '0' )  )",
+      "json": "{\"operator\":\"and\",\"operands\":[{\"type\":\"rule\",\"value\":\"builder-basic_rule_0\",\"elements\":[{\"name\":\"Number\",\"kid\":2699,\"params\":[{\"type\":\"value\",\"value\":\"0\"}]}]}]}"
+    }
+  ],
+  "sets": [
+    {
+      "list": 0,
+      "name": null,
+      "conditions": [
+        {
+          "type": "Entry",
+          "conditionValue": "( tt_Time ( 'NSE' ) >= tt_Number ( '1400' )  )  and ( tt_position_value ( 'strategy_id', 'run_counter', 'All', 'All', 'PE', 'quantity', 'NIFTY 50' ) == tt_Number ( '0' )  )  and ( get_runtime ( 'strategy_id', 'run_counter', 'N50ReEntry' ) == tt_Number ( '0' )  )  and ( tt_get_element ( tt_cross ( tt_EMA ( tt_CLOSE ( tt_get_data ( tt_get_instrument ( 'NFO,NIFTY 50,Current Month,,,,' ) , '3m', 'All' )  ) , '21' ) , tt_EMA ( tt_CLOSE ( tt_get_data ( tt_get_instrument ( 'NFO,NIFTY 50,Current Month,,,,' ) , '3m', 'All' )  ) , '7' )  ) , '-1' )  )",
+          "conditionJson": "{\"operator\":\"and\",\"operands\":[{\"type\":\"rule\",\"value\":\"builder-basic_rule_0\",\"elements\":[{\"name\":\"Time\",\"kid\":2546,\"params\":[{\"type\":\"value\",\"value\":\"NSE\"}]},{\"name\":\">=\",\"params\":[]},{\"name\":\"Number\",\"kid\":5059,\"params\":[{\"type\":\"value\",\"value\":\"1400\"}]}]},{\"type\":\"rule\",\"value\":\"builder-basic_rule_1\",\"elements\":[{\"name\":\"Positions Detail\",\"kid\":7133,\"params\":[{\"type\":\"value\",\"value\":\"All\"},{\"type\":\"value\",\"value\":\"All\"},{\"type\":\"value\",\"value\":\"PE\"},{\"type\":\"value\",\"value\":\"quantity\"},{\"type\":\"value\",\"value\":\"NIFTY 50\"}]},{\"name\":\"==\",\"params\":[]},{\"name\":\"Number\",\"kid\":8557,\"params\":[{\"type\":\"value\",\"value\":\"0\"}]}]},{\"type\":\"rule\",\"value\":\"builder-basic_rule_3\",\"elements\":[{\"name\":\"Get Runtime\",\"kid\":3134,\"params\":[{\"type\":\"value\",\"value\":\"N50ReEntry\"}]},{\"name\":\"==\",\"params\":[]},{\"name\":\"Number\",\"kid\":8557,\"params\":[{\"type\":\"value\",\"value\":\"0\"}]}]},{\"type\":\"rule\",\"value\":\"builder-basic_rule_2\",\"elements\":[{\"name\":\"Position\",\"kid\":8584,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Cross\",\"kid\":7789,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"EMA\",\"kid\":4432,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"CLOSE\",\"kid\":9236,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Symbol\",\"kid\":9091,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Instrument Name\",\"kid\":5188,\"params\":[{\"type\":\"value\",\"value\":\"NFO,NIFTY 50,Current Month,,,,\"}]}},{\"type\":\"value\",\"value\":\"3m\"},{\"type\":\"value\",\"value\":\"All\"}]}}]}},{\"type\":\"value\",\"value\":\"21\"}]}},{\"type\":\"keyword\",\"keyword\":{\"name\":\"EMA\",\"kid\":2856,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"CLOSE\",\"kid\":8595,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Symbol\",\"kid\":6400,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Instrument Name\",\"kid\":2657,\"params\":[{\"type\":\"value\",\"value\":\"NFO,NIFTY 50,Current Month,,,,\"}]}},{\"type\":\"value\",\"value\":\"3m\"},{\"type\":\"value\",\"value\":\"All\"}]}}]}},{\"type\":\"value\",\"value\":\"7\"}]}}]}},{\"type\":\"value\",\"value\":\"-1\"}]}]}]}",
+          "conditionDisplay": "( Time ( 'NSE' ) >= Number ( '1400' )  )  and ( Positions Detail ( 'strategy_id', 'run_counter', 'All', 'All', 'PE', 'quantity', 'NIFTY 50' ) == Number ( '0' )  )  and ( Get Runtime ( 'strategy_id', 'run_counter', 'N50ReEntry' ) == Number ( '0' )  )  and ( Position ( Cross ( EMA ( CLOSE ( Symbol ( Instrument Name ( 'NFO,NIFTY 50,Current Month,,,,' ) , '3m', 'All' )  ) , '21' ) , EMA ( CLOSE ( Symbol ( Instrument Name ( 'NFO,NIFTY 50,Current Month,,,,' ) , '3m', 'All' )  ) , '7' )  ) , '-1' )  )",
+          "subType": "None",
+          "visible": 1,
+          "legs": [
+            {
+              "instrument": 1855,
+              "list": 0,
+              "optionType": "PE",
+              "expiryType": "Current Month",
+              "expiry": "tt_curr_monthexpiry('NIFTY 50')",
+              "expiryJson": null,
+              "expiryDisplay": null,
+              "strikeType": "Fx",
+              "strike": "( tt_round ( tt_ATM_SPOT ( 'NIFTY 50', '4' ) , '100' )  )",
+              "strikeJson": "{\"operator\":\"and\",\"operands\":[{\"type\":\"rule\",\"value\":\"builder-basic_rule_0\",\"elements\":[{\"name\":\"Round\",\"kid\":1222,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"ATM SPOT\",\"kid\":3037,\"params\":[{\"type\":\"value\",\"value\":\"NIFTY 50\"},{\"type\":\"value\",\"value\":\"4\"}]}},{\"type\":\"value\",\"value\":\"100\"}]}]}]}",
+              "strikeDisplay": "( Round ( ATM SPOT ( 'NIFTY 50', '4' ) , '100' )  )",
+              "qty": "tt_lots(1,'INSTRUMENT','PE')",
+              "qtyType": "Lots",
+              "qtyDisplay": "1",
+              "qtyJson": null,
+              "qtyExprDisplay": null,
+              "limitPrice": null,
+              "limitPriceDisplay": null,
+              "limitPriceJson": null,
+              "limitPriceExprDisplay": null,
+              "buySell": "B",
+              "entryLimit": null,
+              "entryTrigger": null,
+              "sLLimit": null,
+              "sLTrigger": null,
+              "sLTriggerDisplay": null,
+              "sLTriggerJson": null,
+              "sLTriggerExprDisplay": null,
+              "targetLimit": null,
+              "targetTrigger": null,
+              "productType": "NRML",
+              "underlyingSymbol": "NIFTY 50",
+              "isOvernightProtectionLeg": "No",
+              "updatedAt": "2025-04-17 05:21:55",
+              "createdAt": "2025-04-17 05:21:55"
+            }
+          ],
+          "extra": {
+            "name": null,
+            "variables": [
+              {
+                "variableName": "N50ReEntry",
+                "value": "( tt_Number ( '1' )  )",
+                "display": "( Number ( '1' )  )",
+                "json": "{\"operator\":\"and\",\"operands\":[{\"type\":\"rule\",\"value\":\"builder-basic_rule_0\",\"elements\":[{\"name\":\"Number\",\"kid\":1406,\"params\":[{\"type\":\"value\",\"value\":\"1\"}]}]}]}"
+              }
+            ]
+          }
+        },
+        {
+          "type": "Exit",
+          "conditionValue": "( tt_get_element ( tt_cross ( tt_EMA ( tt_CLOSE ( tt_get_data ( tt_get_instrument ( 'NFO,NIFTY 50,Current Month,,,,' ) , '3m', 'All' )  ) , '7' ) , tt_EMA ( tt_CLOSE ( tt_get_data ( tt_get_instrument ( 'NFO,NIFTY 50,Current Month,,,,' ) , '3m', 'All' )  ) , '21' )  ) , '-1' )  )",
+          "conditionJson": "{\"operator\":\"or\",\"operands\":[{\"type\":\"rule\",\"value\":\"builder-basic_rule_0\",\"elements\":[{\"name\":\"Position\",\"kid\":5535,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Cross\",\"kid\":2456,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"EMA\",\"kid\":1630,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"CLOSE\",\"kid\":1380,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Symbol\",\"kid\":1833,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Instrument Name\",\"kid\":4772,\"params\":[{\"type\":\"value\",\"value\":\"NFO,NIFTY 50,Current Month,,,,\"}]}},{\"type\":\"value\",\"value\":\"3m\"},{\"type\":\"value\",\"value\":\"All\"}]}}]}},{\"type\":\"value\",\"value\":\"7\"}]}},{\"type\":\"keyword\",\"keyword\":{\"name\":\"EMA\",\"kid\":6330,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"CLOSE\",\"kid\":1337,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Symbol\",\"kid\":8229,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Instrument Name\",\"kid\":9292,\"params\":[{\"type\":\"value\",\"value\":\"NFO,NIFTY 50,Current Month,,,,\"}]}},{\"type\":\"value\",\"value\":\"3m\"},{\"type\":\"value\",\"value\":\"All\"}]}}]}},{\"type\":\"value\",\"value\":\"21\"}]}}]}},{\"type\":\"value\",\"value\":\"-1\"}]}]}]}",
+          "conditionDisplay": "( Position ( Cross ( EMA ( CLOSE ( Symbol ( Instrument Name ( 'NFO,NIFTY 50,Current Month,,,,' ) , '3m', 'All' )  ) , '7' ) , EMA ( CLOSE ( Symbol ( Instrument Name ( 'NFO,NIFTY 50,Current Month,,,,' ) , '3m', 'All' )  ) , '21' )  ) , '-1' )  )",
+          "subType": "None",
+          "visible": 1,
+          "legs": [],
+          "extra": {
+            "name": null,
+            "variables": [
+              {
+                "variableName": "N50Profit_Pe",
+                "value": "( tt_get_var ( find_traded_instrument ( 'strategy_id', 'run_counter', 'Entry', 'instrument', 'NIFTY 50', '5', '1', '1' ) , 'LTP' ) - find_traded_instrument ( 'strategy_id', 'run_counter', 'Entry', 'price', 'NIFTY 50', '5', '1', '1' )  )",
+                "display": "( LTP ( Traded Instrument Name ( 'strategy_id', 'run_counter', 'Entry', 'instrument', 'NIFTY 50', '5', '1', '1' ) , 'LTP' ) - Traded Instrument ( 'strategy_id', 'run_counter', 'Entry', 'price', 'NIFTY 50', '5', '1', '1' )  )",
+                "json": "{\"operator\":\"and\",\"operands\":[{\"type\":\"rule\",\"value\":\"builder-basic_rule_0\",\"elements\":[{\"name\":\"LTP\",\"kid\":6909,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Traded Instrument Name\",\"kid\":1788,\"params\":[{\"type\":\"value\",\"value\":\"Entry\"},{\"type\":\"value\",\"value\":\"instrument\"},{\"type\":\"value\",\"value\":\"NIFTY 50\"},{\"type\":\"value\",\"value\":\"5\"},{\"type\":\"value\",\"value\":\"1\"},{\"type\":\"value\",\"value\":\"1\"}]}}]},{\"name\":\"-\",\"params\":[]},{\"name\":\"Traded Instrument\",\"kid\":1291,\"params\":[{\"type\":\"value\",\"value\":\"Entry\"},{\"type\":\"value\",\"value\":\"price\"},{\"type\":\"value\",\"value\":\"NIFTY 50\"},{\"type\":\"value\",\"value\":\"5\"},{\"type\":\"value\",\"value\":\"1\"},{\"type\":\"value\",\"value\":\"1\"}]}]}]}"
+              },
+              {
+                "variableName": "N50Profit_Ce",
+                "value": "( tt_Number ( '0' )  )",
+                "display": "( Number ( '0' )  )",
+                "json": "{\"operator\":\"and\",\"operands\":[{\"type\":\"rule\",\"value\":\"builder-basic_rule_0\",\"elements\":[{\"name\":\"Number\",\"kid\":8070,\"params\":[{\"type\":\"value\",\"value\":\"0\"}]}]}]}"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "list": 0,
+      "name": null,
+      "conditions": [
+        {
+          "type": "Entry",
+          "conditionValue": "( tt_Time ( 'NSE' ) >= tt_Number ( '1400' )  )  and ( tt_position_value ( 'strategy_id', 'run_counter', 'All', 'All', 'CE', 'quantity', 'NIFTY 50' ) == tt_Number ( '0' )  )  and ( get_runtime ( 'strategy_id', 'run_counter', 'N50ReEntry' ) == tt_Number ( '0' )  )  and ( tt_get_element ( tt_cross ( tt_EMA ( tt_CLOSE ( tt_get_data ( tt_get_instrument ( 'NFO,NIFTY 50,Current Month,,,,' ) , '3m', 'All' )  ) , '7' ) , tt_EMA ( tt_CLOSE ( tt_get_data ( tt_get_instrument ( 'NFO,NIFTY 50,Current Month,,,,' ) , '3m', 'All' )  ) , '21' )  ) , '-1' )  )",
+          "conditionJson": "{\"operator\":\"and\",\"operands\":[{\"type\":\"rule\",\"value\":\"builder-basic_rule_0\",\"elements\":[{\"name\":\"Time\",\"kid\":7282,\"params\":[{\"type\":\"value\",\"value\":\"NSE\"}]},{\"name\":\">=\",\"params\":[]},{\"name\":\"Number\",\"kid\":1634,\"params\":[{\"type\":\"value\",\"value\":\"1400\"}]}]},{\"type\":\"rule\",\"value\":\"builder-basic_rule_1\",\"elements\":[{\"name\":\"Positions Detail\",\"kid\":8872,\"params\":[{\"type\":\"value\",\"value\":\"All\"},{\"type\":\"value\",\"value\":\"All\"},{\"type\":\"value\",\"value\":\"CE\"},{\"type\":\"value\",\"value\":\"quantity\"},{\"type\":\"value\",\"value\":\"NIFTY 50\"}]},{\"name\":\"==\",\"params\":[]},{\"name\":\"Number\",\"kid\":4770,\"params\":[{\"type\":\"value\",\"value\":\"0\"}]}]},{\"type\":\"rule\",\"value\":\"builder-basic_rule_3\",\"elements\":[{\"name\":\"Get Runtime\",\"kid\":3311,\"params\":[{\"type\":\"value\",\"value\":\"N50ReEntry\"}]},{\"name\":\"==\",\"params\":[]},{\"name\":\"Number\",\"kid\":4770,\"params\":[{\"type\":\"value\",\"value\":\"0\"}]}]},{\"type\":\"rule\",\"value\":\"builder-basic_rule_2\",\"elements\":[{\"name\":\"Position\",\"kid\":9219,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Cross\",\"kid\":9919,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"EMA\",\"kid\":5312,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"CLOSE\",\"kid\":7716,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Symbol\",\"kid\":5084,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Instrument Name\",\"kid\":5330,\"params\":[{\"type\":\"value\",\"value\":\"NFO,NIFTY 50,Current Month,,,,\"}]}},{\"type\":\"value\",\"value\":\"3m\"},{\"type\":\"value\",\"value\":\"All\"}]}}]}},{\"type\":\"value\",\"value\":\"7\"}]}},{\"type\":\"keyword\",\"keyword\":{\"name\":\"EMA\",\"kid\":7090,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"CLOSE\",\"kid\":9719,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Symbol\",\"kid\":6780,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Instrument Name\",\"kid\":9564,\"params\":[{\"type\":\"value\",\"value\":\"NFO,NIFTY 50,Current Month,,,,\"}]}},{\"type\":\"value\",\"value\":\"3m\"},{\"type\":\"value\",\"value\":\"All\"}]}}]}},{\"type\":\"value\",\"value\":\"21\"}]}}]}},{\"type\":\"value\",\"value\":\"-1\"}]}]}]}",
+          "conditionDisplay": "( Time ( 'NSE' ) >= Number ( '1400' )  )  and ( Positions Detail ( 'strategy_id', 'run_counter', 'All', 'All', 'CE', 'quantity', 'NIFTY 50' ) == Number ( '0' )  )  and ( Get Runtime ( 'strategy_id', 'run_counter', 'N50ReEntry' ) == Number ( '0' )  )  and ( Position ( Cross ( EMA ( CLOSE ( Symbol ( Instrument Name ( 'NFO,NIFTY 50,Current Month,,,,' ) , '3m', 'All' )  ) , '7' ) , EMA ( CLOSE ( Symbol ( Instrument Name ( 'NFO,NIFTY 50,Current Month,,,,' ) , '3m', 'All' )  ) , '21' )  ) , '-1' )  )",
+          "subType": "None",
+          "visible": 1,
+          "legs": [
+            {
+              "instrument": 1855,
+              "list": 0,
+              "optionType": "CE",
+              "expiryType": "Current Month",
+              "expiry": "tt_curr_monthexpiry('NIFTY 50')",
+              "expiryJson": null,
+              "expiryDisplay": null,
+              "strikeType": "Fx",
+              "strike": "( tt_round ( tt_ATM_SPOT ( 'NIFTY 50', '-4' ) , '100' )  )",
+              "strikeJson": "{\"operator\":\"and\",\"operands\":[{\"type\":\"rule\",\"value\":\"builder-basic_rule_0\",\"elements\":[{\"name\":\"Round\",\"kid\":2820,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"ATM SPOT\",\"kid\":5008,\"params\":[{\"type\":\"value\",\"value\":\"NIFTY 50\"},{\"type\":\"value\",\"value\":\"-4\"}]}},{\"type\":\"value\",\"value\":\"100\"}]}]}]}",
+              "strikeDisplay": "( Round ( ATM SPOT ( 'NIFTY 50', '-4' ) , '100' )  )",
+              "qty": "tt_lots(1,'INSTRUMENT','CE')",
+              "qtyType": "Lots",
+              "qtyDisplay": "1",
+              "qtyJson": null,
+              "qtyExprDisplay": null,
+              "limitPrice": null,
+              "limitPriceDisplay": null,
+              "limitPriceJson": null,
+              "limitPriceExprDisplay": null,
+              "buySell": "B",
+              "entryLimit": null,
+              "entryTrigger": null,
+              "sLLimit": null,
+              "sLTrigger": null,
+              "sLTriggerDisplay": null,
+              "sLTriggerJson": null,
+              "sLTriggerExprDisplay": null,
+              "targetLimit": null,
+              "targetTrigger": null,
+              "productType": "NRML",
+              "underlyingSymbol": "NIFTY 50",
+              "isOvernightProtectionLeg": "No",
+              "updatedAt": "2025-04-17 05:21:56",
+              "createdAt": "2025-04-17 05:21:56"
+            }
+          ],
+          "extra": {
+            "name": null,
+            "variables": [
+              {
+                "variableName": "N50ReEntry",
+                "value": "( tt_Number ( '1' )  )",
+                "display": "( Number ( '1' )  )",
+                "json": "{\"operator\":\"and\",\"operands\":[{\"type\":\"rule\",\"value\":\"builder-basic_rule_0\",\"elements\":[{\"name\":\"Number\",\"kid\":1406,\"params\":[{\"type\":\"value\",\"value\":\"1\"}]}]}]}"
+              }
+            ]
+          }
+        },
+        {
+          "type": "Exit",
+          "conditionValue": "( tt_get_element ( tt_cross ( tt_EMA ( tt_CLOSE ( tt_get_data ( tt_get_instrument ( 'NFO,NIFTY 50,Current Month,,,,' ) , '3m', 'All' )  ) , '21' ) , tt_EMA ( tt_CLOSE ( tt_get_data ( tt_get_instrument ( 'NFO,NIFTY 50,Current Month,,,,' ) , '3m', 'All' )  ) , '7' )  ) , '-1' )  )",
+          "conditionJson": "{\"operator\":\"or\",\"operands\":[{\"type\":\"rule\",\"value\":\"builder-basic_rule_0\",\"elements\":[{\"name\":\"Position\",\"kid\":5535,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Cross\",\"kid\":2456,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"EMA\",\"kid\":1630,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"CLOSE\",\"kid\":1380,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Symbol\",\"kid\":1833,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Instrument Name\",\"kid\":4772,\"params\":[{\"type\":\"value\",\"value\":\"NFO,NIFTY 50,Current Month,,,,\"}]}},{\"type\":\"value\",\"value\":\"3m\"},{\"type\":\"value\",\"value\":\"All\"}]}}]}},{\"type\":\"value\",\"value\":\"21\"}]}},{\"type\":\"keyword\",\"keyword\":{\"name\":\"EMA\",\"kid\":6330,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"CLOSE\",\"kid\":1337,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Symbol\",\"kid\":8229,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Instrument Name\",\"kid\":9292,\"params\":[{\"type\":\"value\",\"value\":\"NFO,NIFTY 50,Current Month,,,,\"}]}},{\"type\":\"value\",\"value\":\"3m\"},{\"type\":\"value\",\"value\":\"All\"}]}}]}},{\"type\":\"value\",\"value\":\"7\"}]}}]}},{\"type\":\"value\",\"value\":\"-1\"}]}]}]}",
+          "conditionDisplay": "( Position ( Cross ( EMA ( CLOSE ( Symbol ( Instrument Name ( 'NFO,NIFTY 50,Current Month,,,,' ) , '3m', 'All' )  ) , '21' ) , EMA ( CLOSE ( Symbol ( Instrument Name ( 'NFO,NIFTY 50,Current Month,,,,' ) , '3m', 'All' )  ) , '7' )  ) , '-1' )  )",
+          "subType": "None",
+          "visible": 1,
+          "legs": [],
+          "extra": {
+            "name": null,
+            "variables": [
+              {
+                "variableName": "N50Profit_Ce",
+                "value": "( tt_get_var ( find_traded_instrument ( 'strategy_id', 'run_counter', 'Entry', 'instrument', 'NIFTY 50', '6', '1', '1' ) , 'LTP' ) - find_traded_instrument ( 'strategy_id', 'run_counter', 'Entry', 'price', 'NIFTY 50', '6', '1', '1' )  )",
+                "display": "( LTP ( Traded Instrument Name ( 'strategy_id', 'run_counter', 'Entry', 'instrument', 'NIFTY 50', '6', '1', '1' ) , 'LTP' ) - Traded Instrument ( 'strategy_id', 'run_counter', 'Entry', 'price', 'NIFTY 50', '6', '1', '1' )  )",
+                "json": "{\"operator\":\"and\",\"operands\":[{\"type\":\"rule\",\"value\":\"builder-basic_rule_0\",\"elements\":[{\"name\":\"LTP\",\"kid\":6909,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Traded Instrument Name\",\"kid\":1788,\"params\":[{\"type\":\"value\",\"value\":\"Entry\"},{\"type\":\"value\",\"value\":\"instrument\"},{\"type\":\"value\",\"value\":\"NIFTY 50\"},{\"type\":\"value\",\"value\":\"6\"},{\"type\":\"value\",\"value\":\"1\"},{\"type\":\"value\",\"value\":\"1\"}]}}]},{\"name\":\"-\",\"params\":[]},{\"name\":\"Traded Instrument\",\"kid\":1291,\"params\":[{\"type\":\"value\",\"value\":\"Entry\"},{\"type\":\"value\",\"value\":\"price\"},{\"type\":\"value\",\"value\":\"NIFTY 50\"},{\"type\":\"value\",\"value\":\"6\"},{\"type\":\"value\",\"value\":\"1\"},{\"type\":\"value\",\"value\":\"1\"}]}]}]}"
+              },
+              {
+                "variableName": "N50Profit_Pe",
+                "value": "( tt_Number ( '0' )  )",
+                "display": "( Number ( '0' )  )",
+                "json": "{\"operator\":\"and\",\"operands\":[{\"type\":\"rule\",\"value\":\"builder-basic_rule_0\",\"elements\":[{\"name\":\"Number\",\"kid\":5758,\"params\":[{\"type\":\"value\",\"value\":\"0\"}]}]}]}"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": null,
+      "conditions": [
+        {
+          "type": "Repair Once",
+          "conditionValue": null,
+          "conditionJson": null,
+          "conditionDisplay": null,
+          "subType": "Overnight Protection",
+          "visible": 0,
+          "legs": [],
+          "extra": {
+            "name": null,
+            "variables": []
+          }
+        },
+        {
+          "type": "Universal Exit",
+          "conditionValue": "( tt_Time ( 'NSE' ) >= tt_Number ( '1515' )  )",
+          "conditionJson": "{\"operator\":\"and\",\"operands\":[{\"type\":\"rule\",\"value\":\"builder-basic_rule_0\",\"elements\":[{\"name\":\"Time\",\"kid\":5001,\"params\":[{\"type\":\"value\",\"value\":\"NSE\"}]},{\"name\":\">=\",\"params\":[]},{\"name\":\"Number\",\"kid\":9350,\"params\":[{\"type\":\"value\",\"value\":\"1515\"}]}]}]}",
+          "conditionDisplay": "( Time ( 'NSE' ) >= Number ( '1515' )  )",
+          "subType": "None",
+          "visible": 1,
+          "legs": [],
+          "extra": {
+            "name": null,
+            "variables": []
+          }
+        }
+      ]
+    }
+  ],
+  "currency": "INR",
+  "priceExecution": "Market Price",
+  "tranchSize": 100,
+  "tslToCostAtProfit": 0,
+  "tslProfitIncrease": 0,
+  "tslSlIncrease": 0,
+  "runFrequency": "Continuous",
+  "firstTradeAfterOpen": 1,
+  "lastTradeBeforeClose": 60,
+  "rolloverExpiryPeriod": "Dont Rollover",
+  "capitalRequired": 30000,
+  "priceRevisionAttempts": 3,
+  "tranchWaitSecs": 1,
+  "exitShortsFirst": 0,
+  "priceRevisionTimeout": 0,
+  "reactivateEvery": 360,
+  "finalAction": "MARKET",
+  "exitAtMarket": 0,
+  "runEvery": 1,
+  "rolloverExpiryTime": "1500",
+  "priceTicksMultiple": "10",
+  "pythonCode": null,
+  "isPublic": 0,
+  "minMultiple": 1,
+  "maxMultiple": 100,
+  "freePeriod": null,
+  "fixedFee": "0.00",
+  "fixedFeePeriod": "1",
+  "variableFee": "0.00",
+  "hurdleRate": 0,
+  "recreatePositionsInNewFollowers": "No",
+  "allowDuplication": 0,
+  "confirmationPerSubscriber": 0,
+  "hideSubscribers": "No",
+  "strategyPublicLinkAccess": "Yes",
+  "strategyPublicLink": null,
+  "displayPositionsToNonSubscribers": 0,
+  "highWatermark": "Yes",
+  "showLiveAutoDeployment": 0,
+  "feeShare": null,
+  "isApproved": 0,
+  "feeFrequency": "Month",
+  "backtestLinkSubscribers": null,
+  "backtestLinkNonsubscribers": null
+}

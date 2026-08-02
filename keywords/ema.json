@@ -1,0 +1,18 @@
+{
+    "name": "EMA",
+    "description": "This keyword returns the exponential moving average of any period of any series of the selected Instrument. This keyword is to be used under the position keyword",
+    "how_to_use_markdown": "This keyword returns the exponential moving average of any period of any series of the selected Instrument. This keyword is to be used under the position keyword\n\n![Example](./images/img-1632219914.png)\n\nYou can plot EMA on any series, like close in the above example, you can also plot EMA of RSI, OPEN etc\n\nAn exponential moving average (EMA) is a type of moving average (MA) that places a greater weight and significance on the most recent data points\n\nRead more about EMA here - https://www.investopedia.com/terms/e/ema.asp",
+    "example_image_urls": [
+        "./images/img-1632219914.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "EMA\nThis keyword returns the exponential moving average of any period of any series of the selected Instrument. This keyword is to be used under the position keyword\nYou can plot EMA on any series, like close in the above example, you can also plot EMA of RSI, OPEN etc\nAn exponential moving average (EMA) is a type of moving average (MA) that places a greater weight and significance on the most recent data points\nRead more about EMA here -\nhttps://www.investopedia.com/terms/e/ema.asp",
+    "visual_logic_extracted": "Image [img-1632219914.png] Text:\n+\n\nPosition\nEMA ( CLOSE ( Symbol ( Instrument Name ( NSE,5PAISA,,,,, ), 15m, All) ) , 20), -1"
+}

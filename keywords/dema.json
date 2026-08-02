@@ -1,0 +1,18 @@
+{
+    "name": "DEMA",
+    "description": "This keyword returns the Double Exponential Moving Average value of the instrument. This keyword like all technical indicators are to be used under the Position keyword",
+    "how_to_use_markdown": "This keyword returns the Double Exponential Moving Average value of the instrument. This keyword like all technical indicators are to be used under the Position keyword\n\n![Example](./images/img-1632144305.png)\n\nThe above condition is checking if the Previous 5 minute (-1) DEMA value is greater than previous to previous 5 minute (-2) DEMA value of Nifty Bank spot.\n\nThe DEMA uses two exponential moving averages (EMAs) to eliminate lag and responds more quickly to near-term price changes than a normal exponential moving average (EMA).\n\nRead more about  \u00a0Double Exponential Moving Average  ( DEMA) \u00a0 here -\u00a0 https://www.investopedia.com/terms/d/double-exponential-moving-average.asp",
+    "example_image_urls": [
+        "./images/img-1632144305.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "DEMA\nThis keyword returns the Double Exponential Moving Average value of the instrument. This keyword like all technical indicators are to be used under the Position keyword\nThe above condition is checking if the Previous 5 minute (-1) DEMA value is greater than previous to previous 5 minute (-2) DEMA value of Nifty Bank spot.\u00a0\nThe DEMA uses two exponential moving averages (EMAs) to eliminate lag and responds more quickly to near-term price changes than a normal exponential moving average (EMA).\nRead more about \n\u00a0Double Exponential Moving Average\n (\nDEMA)\n\u00a0 here -\u00a0\nhttps://www.investopedia.com/terms/d/double-exponential-moving-average.asp",
+    "visual_logic_extracted": "Image [img-1632144305.png] Text:\n\u00a9\n\n\u00ae\n\nPosition\nDEMA ( CLOSE ( Syme! Instrument Name (NFO.NIFTY BANK...) Sm All) ),20).-4\n\nPosition\nDEMA ( CLOSE ( Syme! Instrument Name (NFO.NIFTY BANK...) 5m, All) ),20).-2"
+}

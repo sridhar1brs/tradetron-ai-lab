@@ -1,0 +1,18 @@
+{
+    "name": "Ask Price",
+    "description": "It returns the Best Ask Price of the selected Instrument",
+    "how_to_use_markdown": "It returns the Best Ask Price of the selected Instrument\n\n![Example](./images/img-1631703533.png)\n\nNote- A sk price is returned only if it is changed from\u00a0last tick, else returns LTP only",
+    "example_image_urls": [
+        "./images/img-1631703533.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "Ask Price\nIt returns the Best Ask Price of the selected Instrument\nNote- A\nsk price is returned only if it is changed from\u00a0last tick, else returns LTP only",
+    "visual_logic_extracted": "Image [img-1631703533.png] Text:\nx)\n\nAsk Price\nInstrument Name (NFO.NIFTY 50,....)"
+}

@@ -1,0 +1,18 @@
+{
+    "name": "RSI Series",
+    "description": "The RSI provides technical traders with signals about bullish and bearish price momentum, and it is often plotted beneath the graph of an asset\u2019s price.",
+    "how_to_use_markdown": "This keyword returns the RSI series of any period of any selected Instrument. This keyword is to be used under the position keyword\n\n![Example](./images/img-1632230965.png)\n\nThe major difference between the RSI keyword and the RSI series keyword is that in the \u00a0RSI se ries  we can take RSI of different series like OPEN, HIGH ,EMA, while the  RSI\u00a0 keyword just takes the Close values as default.\n\nThe RSI provides technical traders with signals about bullish and bearish price momentum, and it is often plotted beneath the graph of an asset\u2019s price.\n\nRead more about RSI here - https://www.investopedia.com/terms/r/rsi.asp",
+    "example_image_urls": [
+        "./images/img-1632230965.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "RSI Series\nThis keyword returns the RSI series of any period of any selected Instrument. This keyword is to be used under the position keyword\nThe major difference between the RSI keyword and the RSI series keyword is that in the\n\u00a0RSI se\nries\n we can take RSI of different series like OPEN, HIGH ,EMA, while the \nRSI\u00a0\nkeyword just takes the Close values as default.\nThe RSI provides technical traders with signals about bullish and bearish price momentum, and it is often plotted beneath the graph of an asset\u2019s price.\nRead more about RSI here -\nhttps://www.investopedia.com/terms/r/rsi.asp",
+    "visual_logic_extracted": "Image [img-1632230965.png] Text:\n\u00a2)\nPosition\nRSI Series (CLOSE ( Symbol ( Instrument Name ( NFO,NIFTY 50,,,,, ) , day, All) ), 14), -1"
+}

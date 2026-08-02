@@ -1,0 +1,18 @@
+{
+    "name": "Macdsignal",
+    "description": "This keyword returns the MACD Signal Line value of any series of the selected Instrument in any timeframe. This keyword is to be used under the position keyword",
+    "how_to_use_markdown": "This keyword returns the MACD Signal Line value of any series of the selected Instrument in any timeframe. This keyword is to be used under the position keyword\n\n![Example](./images/img-1632222686.png)\n\nYou can plot MACD Signal line on any series, like close in the above example, you can also plot MACD Signal line based on series of RSI, OPEN etc\n\nMoving average convergence divergence (MACD) is a trend-following momentum indicator that shows the relationship between two moving averages of a security\u2019s price.\n\nRead more about MACD here -  https://www.investopedia.com/terms/m/macd.asp",
+    "example_image_urls": [
+        "./images/img-1632222686.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "Macdsignal\nThis keyword returns the MACD Signal Line value of any series of the selected Instrument in any timeframe. This keyword is to be used under the position keyword\nYou can plot MACD Signal line on any series, like close in the above example, you can also plot MACD Signal line based on series of RSI, OPEN etc\nMoving average convergence divergence (MACD) is a trend-following momentum indicator that shows the relationship between two moving averages of a security\u2019s price.\nRead more about MACD here - \nhttps://www.investopedia.com/terms/m/macd.asp",
+    "visual_logic_extracted": "Image [img-1632222686.png] Text:\n+\nPosition\nMacdsignal ( CLOSE ( Symbol ( Instrument Name ( NSE,ITC,,,,, ), day, All) ), 12, 26,9), -1"
+}

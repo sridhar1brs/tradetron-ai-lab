@@ -1,0 +1,19 @@
+{
+    "name": "Net Delta",
+    "description": "This keyword will return\u00a0Net Delta of open positions of the selected underlying for the strategy",
+    "how_to_use_markdown": "This keyword will return \u00a0Net Delta of open positions of the selected underlying for the strategy\n\n![Example](./images/img-1631788137.png)\n\nIf a position is long CE = Net Delta of CE position will be positive\n\nIf a position is short CE = Net Delta of CE position will be negative\n\nIf a position is long PE = Net Delta  of PE position  will be negative\n\nIf a position is short PE = Net Delta  of PE position  will be positive\n\nNet delta will give the summation of all open positions (quantity) multiplied by their respective delta for that underlying\n\n![Example](./images/img-1631788308.png)",
+    "example_image_urls": [
+        "./images/img-1631788137.png",
+        "./images/img-1631788308.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "Net Delta\nThis keyword will return\n\u00a0Net Delta of open positions of the selected underlying for the strategy\u00a0\n\u00a0\nIf a position is long CE = Net Delta of CE position will be positive\nIf a position is short CE = Net Delta of CE position will be negative\nIf a position is long PE = Net Delta \nof PE position\n will be negative\nIf a position is short PE = Net Delta \nof PE position\n will be positive\nNet delta will give the summation of all open positions (quantity) multiplied by their respective delta for that underlying",
+    "visual_logic_extracted": "Image [img-1631788137.png] Text:\nNet Delta\nNIFTY 50\n\nImage [img-1631788308.png] Text:\n[Net Delta = Ss ay, where \u00ab = Delta and y = open quantity"
+}

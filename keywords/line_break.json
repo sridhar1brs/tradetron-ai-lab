@@ -1,0 +1,18 @@
+{
+    "name": "Line Break",
+    "description": "Tradetron supports various different candle types and Line Break is one such candle type. Thus you can use any indicator, instrument or keyword and convert the candle into a Line Break candle.",
+    "how_to_use_markdown": "Tradetron supports various different candle types and Line Break is one such candle type. Thus you can use any indicator, instrument or keyword and convert the candle into a Line Break candle.\n\nSince  Line Break \u00a0 is an independent candle type, it can be accessed by clicking on the name of the indicator (used under position keyword) and selecting the candle type as  Line Break  .\n\n![Example](./images/img-1643614887.JPG)\n\nIn the example share above, we will fetch the High on the previous (-1) Line Break 5 mins candle with price lines as 3 for Nifty 50 spot. You can find more detail on the same candle in the link shared : \u00a0www.definedge.com/introduction-to-line-break-charts/",
+    "example_image_urls": [
+        "./images/img-1643614887.JPG"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "Line Break\nTradetron supports various different candle types and Line Break is one such candle type. Thus you can use any indicator, instrument or keyword and convert the candle into a Line Break candle.\u00a0\nSince \nLine Break\n\u00a0 is an independent candle type, it can be accessed by clicking on the name of the indicator (used under position keyword) and selecting the candle type as \nLine Break\n .\nIn the example share above, we will fetch the High on the previous (-1) Line Break 5 mins candle with price lines as 3 for Nifty 50 spot.\nYou can find more detail on the same candle in the link shared :\n\u00a0www.definedge.com/introduction-to-line-break-charts/",
+    "visual_logic_extracted": "Image [img-1643614887.JPG] Text:\na\n\nPosition\nHIGH ( Line Break ( Symbol ( Instrument Name ( NFO,NIFTY 50,,,,,),5m,All),3)),-1"
+}

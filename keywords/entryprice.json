@@ -1,0 +1,18 @@
+{
+    "name": "EntryPrice",
+    "description": "This keyword will return the latest entry price of the instrument selected.",
+    "how_to_use_markdown": "This keyword will return the latest entry price of the instrument selected.\n\nThis keyword is generally used in the set exit when using a list of stocks in the strategy\n\n![Example](./images/img-1631883202.png)\n\nThe above keyword will return the respective entry prices of the stocks entered from the list\n\nYou can compare this keyword with LTP and create SL /Target conditions",
+    "example_image_urls": [
+        "./images/img-1631883202.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "EntryPrice\nThis keyword will return the latest entry price of the instrument selected.\nThis keyword is generally used in the set exit when using a list of stocks in the strategy\u00a0\nThe above keyword will return the respective entry prices of the stocks entered from the list\nYou can compare this keyword with LTP and create SL /Target conditions",
+    "visual_logic_extracted": "Image [img-1631883202.png] Text:\nEntryPrice\n[Auto|"
+}

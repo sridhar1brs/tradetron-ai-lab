@@ -1,0 +1,18 @@
+{
+    "name": "CMO",
+    "description": "This keyword returns the Chande momentum oscillator of any period of any series of the selected Instrument. This keyword is to be used under the position keyword",
+    "how_to_use_markdown": "This keyword returns the  Chande momentum oscillator  of any period of any series of the selected Instrument. This keyword is to be used under the position keyword\n\n![Example](./images/img-1632227587.png)\n\nYou can plot  Chande momentum oscillator  on any series, like close in the above example, you can also plot  CMO  of RSI, OPEN etc",
+    "example_image_urls": [
+        "./images/img-1632227587.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "CMO\nThis keyword returns the \nChande momentum oscillator\n of any period of any series of the selected Instrument. This keyword is to be used under the position keyword\nYou can plot \nChande momentum oscillator\n on any series, like close in the above example, you can also plot \nCMO\n of RSI, OPEN etc",
+    "visual_logic_extracted": "Image [img-1632227587.png] Text:\nPosition\n\u2018CMO ( CLOSE ( Symbol ( Instrument Name ( NFO,NIFTY 50.,,., ), day, All) ), 20), -1"
+}

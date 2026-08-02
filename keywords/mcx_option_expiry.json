@@ -1,0 +1,18 @@
+{
+    "name": "MCX Option Expiry",
+    "description": "This keyword returns the current weekly expiry date of the instrument as a string in the format YYYY-MM-DD",
+    "how_to_use_markdown": "This keyword returns the current weekly expiry date of the instrument as a string in the format  YYYY-MM-DD\n\nPlease make sure to only use instruments in this that are traded in option derivatives.\n\nThis keyword can be used in condition builder as well as expiry FX in position builder\n\n![Example](./images/img-1632232326.png)\n\nThe above example can be used in condition builder to check if current day is MCX option expiry day",
+    "example_image_urls": [
+        "./images/img-1632232326.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "MCX Option Expiry\nThis keyword returns the current weekly expiry date of the instrument as a string in the format \nYYYY-MM-DD\n\u00a0\n\u00a0Please make sure to only use instruments in this that are traded in option derivatives.\u00a0\nThis keyword can be used in condition builder as well as expiry FX in position builder\nThe above example can be used in condition builder to check if current day is MCX option expiry day",
+    "visual_logic_extracted": "Image [img-1632232326.png] Text:\no-_ 98\nToday == MCX Option Expiry\nMCX Gold, 0"
+}

@@ -1,0 +1,18 @@
+{
+    "name": "Now",
+    "description": "This keyword returns current date and time as an integer as YYYYMMDDHHMM.",
+    "how_to_use_markdown": "This keyword returns current date and time as an integer as YYYYMMDDHHMM.\n\n![Example](./images/img-1631798296.png)",
+    "example_image_urls": [
+        "./images/img-1631798296.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "Now\nThis keyword returns current date and time as an integer as YYYYMMDDHHMM.",
+    "visual_logic_extracted": "Image [img-1631798296.png] Text:\nNow == Number\nNSE 202111121530"
+}

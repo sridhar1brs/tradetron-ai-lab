@@ -1,0 +1,18 @@
+{
+    "name": "DI+",
+    "description": "This keyword returns the value of the positive directional movement indicator line. This keyword like all technical indicators are to be used under the Position keyword",
+    "how_to_use_markdown": "This keyword returns the value of the positive directional movement indicator line. This keyword like all technical indicators are to be used under the Position keyword\n\n![Example](./images/img-1632142631.png)\n\nThe above condition is checking if the Previous day(-1) DMI positive value is greater than the previous to previous day value (-2) for Nifty 50\n\nThe\u00a0 average directional index \u00a0(ADX) is used to determine when the price is trending strongly. The ADX makes use of a positive (+DI) and negative (-DI) directional indicator in addition to the trendline.\n\nRead more about ADX here - https://www.investopedia.com/articles/trading/07/adx-trend-indicator.asp",
+    "example_image_urls": [
+        "./images/img-1632142631.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "DI+\nThis keyword returns the value of the positive directional movement indicator line. This keyword like all technical indicators are to be used under the Position keyword\nThe above condition is checking if the Previous day(-1) DMI positive value is greater than the previous to previous day value (-2) for Nifty 50\nThe\u00a0\naverage directional index\n\u00a0(ADX) is used to determine when the price is trending strongly. The ADX makes use of a positive (+DI) and negative (-DI) directional indicator in addition to the trendline.\u00a0\nRead more about ADX here -\nhttps://www.investopedia.com/articles/trading/07/adx-trend-indicator.asp",
+    "visual_logic_extracted": "Image [img-1632142631.png] Text:\nChoose v\n\nPosition > Position\nDit ( Symbol (Instrument Name (NFO,NIFTY 50,,.,), day, All), 15), 1 Di+ ( Symbol (Instrument Name ( NFO.NIFTY 50,.,., ), day, All) , 15), -2"
+}

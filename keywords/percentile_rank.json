@@ -1,0 +1,18 @@
+{
+    "name": "Percentile Rank",
+    "description": "This keyword has 3 inputs, one is to select the series, another one to select the period which is the no. of previous values to consider or the sample and the final to input the \u00a0value whose percentile needs to be found",
+    "how_to_use_markdown": "This keyword will return the Percentile value of the selected value from series of the particular instrument. Percentile Rank keyword need not be used under the position keyword\n\nThis keyword has 3 inputs, one is to select the series, another one to select the period which is the no. of previous values to consider or the sample and the final to input the \u00a0value whose percentile needs to be found\n\n![Example](./images/img-1632487269.png)\n\nThe above condition will return the Percentile Rank of 250 value of the ITC close series, considering the sample data of the past 20 candles\n\nEg- Suppose 250 is the highest close value of ITC in past 20 candles, then it will return 100, as it is 100 percentile",
+    "example_image_urls": [
+        "./images/img-1632487269.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "Percentile Rank\nThis keyword will return the Percentile value of the selected value from series of the particular instrument. Percentile Rank keyword need not be used under the position keyword\nThis keyword has 3 inputs, one is to select the series, another one to select the period which is the no. of previous values to consider or the sample and the final to input the \u00a0value whose percentile needs to be found\nThe above condition will return the Percentile Rank of 250 value of the ITC close series, considering the sample data of the past 20 candles\nEg- Suppose 250 is the highest close value of ITC in past 20 candles, then it will return 100, as it is 100 percentile",
+    "visual_logic_extracted": "Image [img-1632487269.png] Text:\nPercentile Rank\nCLOSE ( Symbol ( Instrument Name ( NSE,ITC,,,,, ), day, All) ) , 250, 20"
+}

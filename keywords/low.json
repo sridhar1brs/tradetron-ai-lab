@@ -1,0 +1,18 @@
+{
+    "name": "LOW",
+    "description": "This keyword returns the Low value of the selected Instrument. This keyword is to be used under the position keyword",
+    "how_to_use_markdown": "This keyword returns the Low value of the selected Instrument. This keyword is to be used under the position keyword\n\n![Example](./images/img-1632219744.png)\n\nThe above keyword will return the previous day Low of ABFRL",
+    "example_image_urls": [
+        "./images/img-1632219744.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "LOW\nThis keyword returns the Low value of the selected Instrument. This keyword is to be used under the position keyword\nThe above keyword will return the previous day Low of ABFRL",
+    "visual_logic_extracted": "Image [img-1632219744.png] Text:\n+\n\nPosition\nLOW ( Symbol ( Instrument Name ( NSE,ABFRL,,,,, ), day, All) ) , -1"
+}

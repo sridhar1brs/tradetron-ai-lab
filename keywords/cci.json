@@ -1,0 +1,18 @@
+{
+    "name": "CCI",
+    "description": "This keyword returns the Commodity Channel Index (CCI) indicator value of the selected Instrument for the selected timeframe. This keyword is to be used under the position keyword",
+    "how_to_use_markdown": "This keyword returns the Commodity Channel Index (CCI) indicator value of the selected Instrument for the selected timeframe. This keyword is to be used under the position keyword\n\n![Example](./images/img-1632223978.png)\n\nThe above keyword will return the previous day CCI value of ABFRL\n\nThe CCI is a market indicator used to track market movements that may indicate buying or selling\n\nRead more about CCI here - https://www.investopedia.com/articles/active-trading/031914/how-traders-can-utilize-cci-commodity-channel-index-trade-stock-trends.asp",
+    "example_image_urls": [
+        "./images/img-1632223978.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "CCI\nThis keyword returns the Commodity Channel Index (CCI) indicator value of the selected Instrument for the selected timeframe. This keyword is to be used under the position keyword\n\u00a0\nThe above keyword will return the previous day CCI value of ABFRL\nThe CCI is a market indicator used to track market movements that may indicate buying or selling\nRead more about CCI here -\nhttps://www.investopedia.com/articles/active-trading/031914/how-traders-can-utilize-cci-commodity-channel-index-trade-stock-trends.asp",
+    "visual_logic_extracted": "Image [img-1632223978.png] Text:\n+\nPosition\nCCl ( Symbol ( Instrument Name ( NSE,ABFRL,,,,, ), day, All) , 20), -1"
+}

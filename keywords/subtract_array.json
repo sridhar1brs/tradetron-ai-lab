@@ -1,0 +1,18 @@
+{
+    "name": "Subtract Array",
+    "description": "This keyword is used to subtract a value from the entire series /array of the selected instrument. This keyword is used under the position keyword",
+    "how_to_use_markdown": "This keyword is used to subtract a value from the entire series /array of the selected instrument. This keyword is used under the position keyword\n\n![Example](./images/img-1632143170.png)\n\nThe above example will subtract 10 from all the close values of the NIFTY 50 series.\n\nSuppose Nifty yesterday's close value is 17000, it will return 17000-10= 16950",
+    "example_image_urls": [
+        "./images/img-1632143170.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "Subtract Array\nThis keyword is used to subtract a value from the entire series /array of the selected instrument. This keyword is used under the position keyword\nThe above example will subtract 10 from all the close values of the NIFTY 50 series.\nSuppose Nifty yesterday's close value is 17000, it will return 17000-10= 16950",
+    "visual_logic_extracted": "Image [img-1632143170.png] Text:\n+\n\nPosition\nSubtract Array (CLOSE ( Symbol ( Instrument Name ( NFO,NIFTY 50,,,,, ), day, All) ), 10), -1"
+}

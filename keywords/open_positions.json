@@ -1,0 +1,20 @@
+{
+    "name": "Open positions",
+    "description": "To understand the rationale behind the same, take this example:",
+    "how_to_use_markdown": "This keyword will look at all the open positions within the strategy that you have defined and return an absolute integer number. The values it will fetch here will be Boolean values. Thus this keyword can only check if there is an open position for an instrument. If there is an open position then it will fetch 1, else 0.\n\nAssume you trade one lot of RELIANCE futures. When you enter into RELIANCE, the Open Positions keyword will return number 1 as you have 1 open position. Assume you square off the position in RELIANCE futures, the  Open Positions keyword will return number 0.\n\n![Example](./images/img-1632485222.png)\n\nThrough the above keywords, one can check if there are no  Open Positions  for  RELIANCE\n\n![Example](./images/img-1632485299.png)\n\nThrough the above keywords, one can check if there are  Open Positions  for  RELIANCE\n\nThe  Open Positions  keyword should  not\u00a0 be used restrict the number of positions taken in a strategy as shown below.\n\n![Example](./images/img-1631865880.png)\n\nTo understand the rationale behind the same, take this example:\n\nA strategy took an entry in RELIANCE futures and then exited from the same. Post that it takes a re entry in  RELIANCE futures. In this case logically speaking, the number of open positions returned should be 1. However the Tradetron engine will not consider the open positions as 1 and will return 3 as it detects three unique entries.",
+    "example_image_urls": [
+        "./images/img-1632485222.png",
+        "./images/img-1632485299.png",
+        "./images/img-1631865880.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "Open positions\nThis keyword will look at all the open positions within the strategy that you have defined and return an absolute integer number. The values it will fetch here will be Boolean values. Thus this keyword can only check if there is an open position for an instrument. If there is an open position then it will fetch 1, else 0.\nAssume you trade one lot of RELIANCE futures. When you enter into RELIANCE, the Open Positions keyword will return number 1 as you have 1 open position. Assume you square off the position in RELIANCE futures, the \nOpen Positions keyword will return number 0.\u00a0\nThrough the above keywords, one can check if there are no \nOpen Positions\n for \nRELIANCE\u00a0\nThrough the above keywords, one can check if there are \nOpen Positions\n for \nRELIANCE\u00a0\nThe \nOpen Positions\n keyword should \nnot\u00a0\nbe used restrict the number of positions taken in a strategy as shown below.\nTo understand the rationale behind the same, take this example:\u00a0\nA strategy took an entry in RELIANCE futures and then exited from the same. Post that it takes a re entry in \nRELIANCE futures. In this case logically speaking, the number of open positions returned should be 1. However the Tradetron engine will not consider the open positions as 1 and will return 3 as it detects three unique entries.",
+    "visual_logic_extracted": "Image [img-1632485222.png] Text:\nOpen positions == Number\nRELIANCE 0\n\nImage [img-1632485299.png] Text:\nOpen positions l= Number\nRELIANCE 0\n\nImage [img-1631865880.png] Text:\nOpen positions < Number\n5"
+}

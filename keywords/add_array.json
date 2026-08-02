@@ -1,0 +1,19 @@
+{
+    "name": "Add Array",
+    "description": "This keyword is used to add a value to the entire series /array of the selected instrument. This keyword is used under the position keyword",
+    "how_to_use_markdown": "This keyword is used to add a value to the entire series /array of the selected instrument. This keyword is used under the position keyword\n\n![Example](./images/img-1632142896.png)\n\nThe above example will add 10 to all the close values of the NIFTY 50 series\n\nThis keyword can be used under other indicators too, check the example below\n\n![Example](./images/img-1632143080.png)",
+    "example_image_urls": [
+        "./images/img-1632142896.png",
+        "./images/img-1632143080.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "Add Array\nThis keyword is used to add a value to the entire series /array of the selected instrument. This keyword is used under the position keyword\nThe above example will add 10 to all the close values of the NIFTY 50 series\u00a0\nThis keyword can be used under other indicators too, check the example below",
+    "visual_logic_extracted": "Image [img-1632142896.png] Text:\n+\n\nPosition\nAdd Array ( CLOSE ( Symbol ( Instrument Name ( NFO,NIFTY 50,,,,,) , day, All) ), 10), -1\n\nImage [img-1632143080.png] Text:\nPosition\nRSI Series ( Add Array ( CLOSE ( Symbol ( Instrument Name ( NFO,NIFTY 50,,,,,), day, All) ),20),14),-1"
+}

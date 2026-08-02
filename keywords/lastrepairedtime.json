@@ -1,0 +1,18 @@
+{
+    "name": "LastRepairedTime",
+    "description": "This keyword will return the time of repair of the selected underlying",
+    "how_to_use_markdown": "This keyword will return the time of repair of the selected underlying\n\nIt will return an Integer of format HHMM\n\n![Example](./images/img-1632813925.png)\n\nEg- If Repair happened at 2 PM it will return 1400",
+    "example_image_urls": [
+        "./images/img-1632813925.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "LastRepairedTime\nThis keyword will return the time of repair of the selected underlying\nIt will return an Integer of format HHMM\nEg- If Repair happened at 2 PM it will return 1400",
+    "visual_logic_extracted": "Image [img-1632813925.png] Text:\nLastRepairedTime\nNIFTY 50"
+}

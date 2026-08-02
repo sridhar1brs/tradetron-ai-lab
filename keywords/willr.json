@@ -1,0 +1,18 @@
+{
+    "name": "WILLR",
+    "description": "This keyword returns the WIlliams%R indicator value of the selected Instrument for the selected timeframe. This keyword is to be used under the position keyword",
+    "how_to_use_markdown": "This keyword returns the WIlliams%R indicator value of the selected Instrument for the selected timeframe. This keyword is to be used under the position keyword\n\n![Example](./images/img-1632223541.png)\n\nThe above keyword will return the previous day Williams %R value of ABFRL\n\nWilliams %R, also known as the Williams Percent Range, is a type of momentum indicator that moves between 0 and -100 and measures overbought and oversold levels.\n\nRead more about Williams %R here -\u00a0 https://www.investopedia.com/terms/w/williamsr.asp",
+    "example_image_urls": [
+        "./images/img-1632223541.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "WILLR\nThis keyword returns the WIlliams%R indicator value of the selected Instrument for the selected timeframe. This keyword is to be used under the position keyword\nThe above keyword will return the previous day Williams %R value of ABFRL\u00a0\nWilliams %R, also known as the Williams Percent Range, is a type of momentum indicator that moves between 0 and -100 and measures overbought and oversold levels.\nRead more about Williams %R here -\u00a0\nhttps://www.investopedia.com/terms/w/williamsr.asp",
+    "visual_logic_extracted": "Image [img-1632223541.png] Text:\n+\nPosition\nWILLR ( Symbol ( Instrument Name ( NFO,ABFRL,,,,, ) , day, All), 14), -1"
+}

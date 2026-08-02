@@ -1,0 +1,18 @@
+{
+    "name": "Iv",
+    "description": "The above example will return the implied volatility of the option traded in leg 1 of Set 1 Entry",
+    "how_to_use_markdown": "IV returns the   Implied volatility of a particular instrument for the selected underlying instrument.\n\n![Example](./images/img-1631794826.png)\n\nThe above example will return the implied volatility of the option traded in leg 1 of Set 1 Entry",
+    "example_image_urls": [
+        "./images/img-1631794826.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "Iv\nIV returns the\n \nImplied volatility of a particular instrument for the selected underlying instrument.\nThe above example will return the implied volatility of the option traded in leg 1 of Set 1 Entry",
+    "visual_logic_extracted": "Image [img-1631794826.png] Text:\n+\n\nlv\nTraded Instrument Name ( Entry, instrument, NIFTY 50, 1, 1, 1)"
+}

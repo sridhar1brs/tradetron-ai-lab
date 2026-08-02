@@ -1,0 +1,18 @@
+{
+    "name": "Date",
+    "description": "This keyword will fetch a particular date. It can be used to build a logic where you are comparing two different dates. This keyword\u00a0will return the date in YYYY-MM-DD format.",
+    "how_to_use_markdown": "This keyword will fetch a particular date. It can be used to build a logic where you are comparing two different dates. This keyword \u00a0will return the date in YYYY-MM-DD format.\n\n![Example](./images/img-1632138039.png)\n\nIn the example shared above, we are comparing today with a specific date in future. This keyword is specially useful when you want to take positions on a specific date.",
+    "example_image_urls": [
+        "./images/img-1632138039.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "Date\nThis keyword will fetch a particular date. It can be used to build a logic where you are comparing two different dates. This keyword\n\u00a0will return the date in YYYY-MM-DD format.\nIn the example shared above, we are comparing today with a specific date in future. This keyword is specially useful when you want to take positions on a specific date.",
+    "visual_logic_extracted": "Image [img-1632138039.png] Text:\nDate\n2021-12-31"
+}

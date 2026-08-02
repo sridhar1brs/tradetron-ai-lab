@@ -1,0 +1,18 @@
+{
+    "name": "LTP",
+    "description": "Note - To check the Spot index price, just select NFO, NIFTY 50. If you want to check futures price, select NFO,NIFTY 50, Current month expiry. Selecting current month expiry will return its future price",
+    "how_to_use_markdown": "This Keyword returns the Last Traded Price of the selected Instrument. You can use it under condition builder to check the LTP of that particular instrument\n\n![Example](./images/img-1632222763.png)\n\nNote - To check the Spot index price, just select NFO, NIFTY 50. If you want to check futures price, select NFO,NIFTY 50, Current month expiry. Selecting current month expiry will return its future price\n\nRefer to the below links for more clarity\n\nSpot price - https://qna.tradetron.tech/t/how-to-select-nifty-bank-spot/622\n\nFuture price-\u00a0 https://qna.tradetron.tech/t/how-to-select-nifty-futures/810/2",
+    "example_image_urls": [
+        "./images/img-1632222763.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "LTP\nThis Keyword returns the Last Traded Price of the selected Instrument. You can use it under condition builder to check the LTP of that particular instrument\u00a0\nNote - To check the Spot index price, just select NFO, NIFTY 50. If you want to check futures price, select NFO,NIFTY 50, Current month expiry. Selecting current month expiry will return its future price\u00a0\nRefer to the below links for more clarity\u00a0\nSpot price -\nhttps://qna.tradetron.tech/t/how-to-select-nifty-bank-spot/622\nFuture price-\u00a0\nhttps://qna.tradetron.tech/t/how-to-select-nifty-futures/810/2",
+    "visual_logic_extracted": "Image [img-1632222763.png] Text:\nLTP\n\nInstrument Name ( NFO,NIFTY 50,,,,, )"
+}

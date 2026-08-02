@@ -1,0 +1,18 @@
+{
+    "name": "Max OI Instrument",
+    "description": "This keyword will return the instrument with the maximum open interest at that instant. You can input the underlying instrument, expiry and option type. Your request will be processed and a response will be fetched. At the moment it is only available for indices.",
+    "how_to_use_markdown": "This keyword will return the instrument with the maximum open interest at that instant. You can input the underlying instrument, expiry and option type. Your request will be processed and a response will be fetched. At the moment it is only available for indices.\n\n![Example](./images/img-1631870764.png)\n\nThe above image shows how to fetch the instrument with max OI for Nifty Bank, current month put options.",
+    "example_image_urls": [
+        "./images/img-1631870764.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "Max OI Instrument\nThis keyword will return the instrument with the maximum open interest at that instant. You can input the underlying instrument, expiry and option type. Your request will be processed and a response will be fetched. At the moment it is only available for indices.\u00a0\nThe above image shows how to fetch the instrument with max OI for Nifty Bank, current month put options.",
+    "visual_logic_extracted": "Image [img-1631870764.png] Text:\nMax OI Instrument\nBANKNIFTY, current month, PE"
+}

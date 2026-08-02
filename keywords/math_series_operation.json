@@ -1,0 +1,18 @@
+{
+    "name": "Math Series Operation",
+    "description": "In the example shared above, we are taking the difference between the 20 period EMA of daily Nifty 50 spot candles and the 25 period SMA of daily Nifty 50 spot candles.",
+    "how_to_use_markdown": "This keyword is used to perform a mathematical operation on two series data types.  Since we are performing a mathematical operation on two series values, you need to use Position keyword here and select math series operation in the same.\n\n![Example](./images/img-1632486363.png)\n\nIn the example shared above, we are taking the difference between the 20 period EMA of daily Nifty 50 spot candles and the  25 period SMA of daily Nifty 50 spot candles.",
+    "example_image_urls": [
+        "./images/img-1632486363.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "Math Series Operation\nThis keyword is used to perform a mathematical operation on two series data types. \nSince we are performing a mathematical operation on two series values, you need to use Position keyword here and select math series operation in the same.\u00a0\nIn the example shared above, we are taking the difference between the 20 period EMA of daily Nifty 50 spot candles and the \n25 period SMA of daily Nifty 50 spot candles.",
+    "visual_logic_extracted": "Image [img-1632486363.png] Text:\nPosition\nMath Series Operaton(EMA( CLOSE ( Symbol Instument Name NFO.NIFTY 60.) ay. Al) 20), SMA( CLOSE ( Symbol Instrument Name (NFO.NIFTY 60). ay. Al)),25).-).0 if"
+}

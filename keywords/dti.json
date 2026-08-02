@@ -1,0 +1,19 @@
+{
+    "name": "DTI",
+    "description": "This keyword is a technical indicator that measures both the strength and direction of a price movement and is intended to reduce false signals.",
+    "how_to_use_markdown": "This keyword is a technical indicator that measures both the strength and direction of a price movement and is intended to reduce false signals.\n\n![Example](./images/img-1643615966.JPG)\n\nIt has 3 input parameters which are :\n\n![Example](./images/img-1643633128.JPG)\n\nRead more about DTI here \u00a0-\u00a0 https://www.investopedia.com/terms/d/dmi.asp",
+    "example_image_urls": [
+        "./images/img-1643615966.JPG",
+        "./images/img-1643633128.JPG"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "DTI\nThis keyword is a technical indicator that measures both the strength and direction of a price movement and is intended to reduce false signals.\nIt has 3 input parameters which are :\nRead more about DTI here\n\u00a0-\u00a0\nhttps://www.investopedia.com/terms/d/dmi.asp",
+    "visual_logic_extracted": "Image [img-1643615966.JPG] Text:\nPosition\n\nDTI ( Symbol ( Instrument Name ( NFO,NIFTY 50,,,,, ), day, All) , 13, 8,5), -1\n\nImage [img-1643633128.JPG] Text:\nKeyword Paramters\n\nOhle\n\nsymbol x\n\nal?\n*) %\n3\nq\n\nSperiod\n\nUperiod\n\nOk\n\nCancel"
+}

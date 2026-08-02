@@ -1,0 +1,19 @@
+{
+    "name": "Net Quantity",
+    "description": "Suppose 1 lot \u00a0NIFTY 17000CE is sold in entry leg 1, it will return -50",
+    "how_to_use_markdown": "It returns the\u00a0 Net quantity/Open Quantity of that particular instrument in that strategy. Please note that this keyword will give you Net Quantity of that instrument in whole strategy not\u00a0at Set Level.\n\n![Example](./images/img-1631710371.png)\n\nThe above example will return the net quantity of ADANIENT in the strategy.\n\n![Example](./images/img-1631710449.png)\n\nThe above example will return the net quantity of the instrument traded in leg 1 of set 1 in the entry which has NIFTY50 as underlying. It will take that particular leg reference and fetch what is the instrument being Traded. Following that it will scan full strategy and return Net Quantity of that particular instrument.\n\nSuppose 1 lot \u00a0NIFTY 17000CE is sold in entry leg 1, it will return -50\n\nIf the same traded instrument is squared off it in some other condition, it will return 0\n\nUsage Note\n\nNet QTY  is a  strategy-level  keyword. It reads the instrument name from the referenced position and then scans the  entire strategy  to calculate the total active quantity for that instrument.\n\nNet QTY is  not  a set-level or position-level keyword \u2014 it returns the aggregate quantity for the instrument across the whole strategy.",
+    "example_image_urls": [
+        "./images/img-1631710371.png",
+        "./images/img-1631710449.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "Net Quantity\nIt returns the\u00a0\nNet quantity/Open Quantity of that particular instrument in that strategy. Please note that this keyword will give you Net Quantity of that instrument in whole strategy not\u00a0at Set Level.\nThe above example will return the net quantity of ADANIENT in the strategy.\nThe above example will return the net quantity of the instrument traded in leg 1 of set 1 in the entry which has NIFTY50 as underlying. It will take that particular leg reference and fetch what is the instrument being Traded. Following that it will scan full strategy and return Net Quantity of that particular instrument.\nSuppose 1 lot \u00a0NIFTY 17000CE is sold in entry leg 1, it will return -50\u00a0\nIf the same traded instrument is squared off it in some other condition, it will return 0\u00a0\nUsage Note\nNet QTY\n is a \nstrategy-level\n keyword. It reads the instrument name from the referenced position and then scans the \nentire strategy\n to calculate the total active quantity for that instrument.\nNet QTY is \nnot\n a set-level or position-level keyword \u2014 it returns the aggregate quantity for the instrument across the whole strategy.",
+    "visual_logic_extracted": "Image [img-1631710371.png] Text:\na\n\nNet Quantity\n\nInstrument Name ( NSE,ADANIENT,,,,, )\n\nImage [img-1631710449.png] Text:\na\n\nNet Quantity\n\nTraded Instrument Name ( Entry, instrument, NIFTY 50, 1, 1, 1)"
+}

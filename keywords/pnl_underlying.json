@@ -1,0 +1,18 @@
+{
+    "name": "PNL Underlying",
+    "description": "This keyword will return profit/loss of the strategy for that counter for only the instrument that has been selected here.",
+    "how_to_use_markdown": "This keyword will return profit/loss of the strategy for that counter for only the instrument that has been selected here.\n\nGenerally used when the user wants to exit the strategy when the target/stop loss amount reached for that particular strategy as a whole if we keep the condition in the  set\u00a0 exit.\n\nPNL is a strategy level keyword, generally kept in set exit, to exit all open positions of the underlying instrument while keeping all other positions untouched.\n\nThis keyword will reset only after universal exit.\n\n![Example](./images/img-1631795955.png)\n\nIn the example share above, the system will trigger and exit when the PNL of all HDFCBANK instruments are greater than or equal to 500.",
+    "example_image_urls": [
+        "./images/img-1631795955.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "PNL Underlying\nThis keyword will return profit/loss of the strategy for that counter for only the instrument that has been selected here.\u00a0\nGenerally used when the user wants to exit the strategy when the target/stop loss amount reached for that particular strategy as a whole if we keep the condition in the \nset\u00a0\nexit.\nPNL is a strategy level keyword, generally kept in set exit, to exit all open positions of the underlying instrument while keeping all other positions untouched.\u00a0\nThis keyword will reset only after universal exit.\nIn the example share above, the system will trigger and exit when the PNL of all HDFCBANK instruments are greater than or equal to 500.",
+    "visual_logic_extracted": "Image [img-1631795955.png] Text:\no\nPNL Underlying >= Number\nHDFCBANK 500"
+}

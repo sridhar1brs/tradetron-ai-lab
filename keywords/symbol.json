@@ -1,0 +1,18 @@
+{
+    "name": "Symbol",
+    "description": "This keyword is used in order\u00a0to fetch the data for a particular time frame based on the selected instrument(Instrument name, traded instrument name, futures).",
+    "how_to_use_markdown": "This keyword is used in order \u00a0to fetch the data for a particular time frame based on the selected instrument(Instrument name, traded instrument name, futures).\n\nGenerally, symbol will be used inside the other keywords to select the instrument of choice.\n\nThe symbol keyword will be a default keyword under most keywords. It will be available by default wherever instrument needs to be selected.\n\n![Example](./images/img-1631878055.png)\n\nIn the above condition, symbol keyword is used to select the timeframe and the instrument name.",
+    "example_image_urls": [
+        "./images/img-1631878055.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "Symbol\nThis keyword is used in order\n\u00a0to fetch the data for a particular time frame based on the selected instrument(Instrument name, traded instrument name, futures).\nGenerally, symbol will be used inside the other keywords to select the instrument of choice.\nThe symbol keyword will be a default keyword under most keywords. It will be available by default wherever instrument needs to be selected.\nIn the above condition, symbol keyword is used to select the timeframe and the instrument name.",
+    "visual_logic_extracted": "Image [img-1631878055.png] Text:\nPosition\n(CLOSE (Symbol Instrument Name (NFONIFTY 80,..). day Al)), 4"
+}

@@ -1,0 +1,18 @@
+{
+    "name": "StochRsiD",
+    "description": "This keyword returns the Stochastic Oscillator value of the D line plotted on RSI. This keyword like all technical indicators are to be used under the Position keyword",
+    "how_to_use_markdown": "This keyword returns the Stochastic Oscillator value of the D line plotted on RSI. This keyword like all technical indicators are to be used under the Position keyword\n\n![Example](./images/img-1632146045.png)\n\nThe above condition is checking if Previous day(-1)  Stochastic Oscillator value of the K line is greater than Previous day(-1)  Stochastic Oscillator value of the D line both plotted on RSI.\n\nA stochastic oscillator is a popular technical indicator for generating overbought and oversold signals. These indicators are plotted on RSI.\u00a0 Read more about Stock K and D here - https://www.investopedia.com/terms/s/stochasticoscillator.asp",
+    "example_image_urls": [
+        "./images/img-1632146045.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "StochRsiD\nThis keyword returns the Stochastic Oscillator value of the D line plotted on RSI. This keyword like all technical indicators are to be used under the Position keyword\nThe above condition is checking if Previous day(-1) \nStochastic Oscillator value of the K line is greater than Previous day(-1) \nStochastic Oscillator value of the D line both plotted on RSI.\nA stochastic oscillator is a popular technical indicator for generating overbought and oversold signals. These indicators are plotted on RSI.\u00a0\nRead more about Stock K and D here -\nhttps://www.investopedia.com/terms/s/stochasticoscillator.asp",
+    "visual_logic_extracted": "Image [img-1632146045.png] Text:\nPosition\n\u2018StochRsk( CLOSE ( Symbol (Instument Name (NFO.NIFTY 80,\n\nPosition\n\u2018StochRsiD ( CLOSE ( Symbol Instrument Name (NFONIFTY 50,\n\nay Al1)) 14.5.3) 1\n\n\u00a9 \u00e9\n| day. A)). 14.5.3)"
+}

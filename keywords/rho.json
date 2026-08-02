@@ -1,0 +1,18 @@
+{
+    "name": "Rho",
+    "description": "Rho keyword returns the Rho value of the particular option",
+    "how_to_use_markdown": "Rho keyword returns the Rho value of the particular option\n\n![Example](./images/img-1632133890.png)",
+    "example_image_urls": [
+        "./images/img-1632133890.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "Rho\nRho keyword returns the Rho value of the particular option",
+    "visual_logic_extracted": "Image [img-1632133890.png] Text:\n+\n\nRho\nTraded Instrument Name ( Entry, instrument, NIFTY 50, 1, 1, 1)"
+}

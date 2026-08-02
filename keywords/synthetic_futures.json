@@ -1,0 +1,19 @@
+{
+    "name": "Synthetic Futures",
+    "description": "This keyword will calculate the put call parity and fetch the synthetic futures of the current week based on the same. This can be used to calculate weekly futures and trade based on the same to spot arbitrage opportunities.",
+    "how_to_use_markdown": "This keyword will calculate the put call parity and fetch the synthetic futures of the current week based on the same. This can be used to calculate weekly futures and trade based on the same to spot arbitrage opportunities.\n\n![Example](./images/img-1631867673.png)\n\nThe above image shows how can you use synthetic futures as a standalone keyword for other mathematical operations.\n\n![Example](./images/img-1631868027.png)\n\nThe above image shows how can you use synthetic futures \u00a0to calculate the ATM strike based on the same.",
+    "example_image_urls": [
+        "./images/img-1631867673.png",
+        "./images/img-1631868027.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "Synthetic Futures\nThis keyword will calculate the put call parity and fetch the synthetic futures of the current week based on the same. This can be used to calculate weekly futures and trade based on the same to spot arbitrage opportunities.\u00a0\nThe above image shows how can you use synthetic futures as a standalone keyword for other mathematical operations.\u00a0\nThe above image shows how can you use synthetic futures\n\u00a0to calculate the ATM strike based on the same.",
+    "visual_logic_extracted": "Image [img-1631867673.png] Text:\nSynthetic Futures\nNIFTY 50\n\nImage [img-1631868027.png] Text:\nGet Strike\nNIFTY 50, Synthetic Futures ( NIFTY 50 )"
+}

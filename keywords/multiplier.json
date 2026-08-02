@@ -1,0 +1,18 @@
+{
+    "name": "Multiplier",
+    "description": "Multiplier is the keyword used when we want to multiply any value in the strategy as per the multiplier selected during that deployment.",
+    "how_to_use_markdown": "Multiplier is the keyword used when we want to multiply any value in the strategy as per the multiplier selected during that deployment.\n\nUseful, if the user wants to deploy using different multiplier like 2X,5X etc\n\nIf deployment is under 2X, multiplier will return 2\n\n![Example](./images/img-1631710845.png)",
+    "example_image_urls": [
+        "./images/img-1631710845.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "Multiplier\n\u00a0Multiplier is the keyword used when we want to multiply any value in the strategy as per the multiplier selected during that deployment.\nUseful, if the user wants to deploy using different multiplier like 2X,5X etc\nIf deployment is under 2X, multiplier will return 2",
+    "visual_logic_extracted": "Image [img-1631710845.png] Text:\nNumber\n500\n\n*\n\nMultiplier"
+}

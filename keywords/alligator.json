@@ -1,0 +1,20 @@
+{
+    "name": "Alligator",
+    "description": "This keyword will fetch the 'Jaw Length' line of the Nifty 50 spot day candle.",
+    "how_to_use_markdown": "This keyword gives the Alligator value in series of the selected Instrument. This keyword is to be used in the Position keyword. The same indicator will take the input of several values used in the calculation on the same indicator lines. The Alligator indicator can return the value of any one of the three lines, Jaw Length, Teeth Length and Lips Length.\n\n![Example](./images/img-1635918284.png)\n\nThis keyword will fetch the 'Jaw Length' line of the Nifty 50 spot day candle.\n\n![Example](./images/img-1635918403.png)\n\nThis keyword will fetch the 'Teeth Length' line of the Nifty 50 spot day candle.\n\n![Example](./images/img-1635918905.png)\n\nThis keyword will fetch the 'Lips Length' line of the Nifty 50 spot day candle.\n\nThese keyword(s) can be used along with other keywords to create a logic based on the same indicator.",
+    "example_image_urls": [
+        "./images/img-1635918284.png",
+        "./images/img-1635918403.png",
+        "./images/img-1635918905.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "Alligator\nThis keyword gives the Alligator value in series of the selected Instrument. This keyword is to be used in the Position keyword. The same indicator will take the input of several values used in the calculation on the same indicator lines. The Alligator indicator can return the value of any one of the three lines, Jaw Length, Teeth Length and Lips Length. \u00a0\nThis keyword will fetch the 'Jaw Length' line of the Nifty 50 spot day candle.\nThis keyword will fetch the 'Teeth Length' line of the Nifty 50 spot day candle.\nThis keyword will fetch the 'Lips Length' line of the Nifty 50 spot day candle.\nThese keyword(s) can be used along with other keywords to create a logic based on the same indicator.",
+    "visual_logic_extracted": "Image [img-1635918284.png] Text:\nPosition\nAlligator ( Symbol ( Instrument Name (NFO,NIFTY 50,,,,, ), day, All) , 13, 8, 5, 5, 5, 3, JawLength ), 0\n\nImage [img-1635918403.png] Text:\nPosition\nAlligator ( Symbol ( Instrument Name ( NFO,NIFTY 50,,,,,), day, All) , 13, 8, 5, 5, 5, 3, TeethLength ) , 0\n\nImage [img-1635918905.png] Text:\nx]\n\nPosition\nAlligator ( Symbol ( Instrument Name ( NFO,NIFTY 50,,,,, ) , day, All) , 13, 8, 5, 5, 5, 3, LipsLength ) , 0"
+}

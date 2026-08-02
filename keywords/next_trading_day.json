@@ -1,0 +1,20 @@
+{
+    "name": "Next Trading Day",
+    "description": "It will return the current date as a string in format YYYY-MM-DD",
+    "how_to_use_markdown": "Next Trading Day returns the next trading date in string format. It cannot be equated with any number. The keyword you are comparing with should also return a string only\n\nIt will return the  current date as a string in format YYYY-MM-DD\n\n![Example](./images/img-1716010932.png)\n\nIt can be used as follows:\n\n![Example](./images/img-1716011518.png)\n\nThis will check if tomorrow is the next trading day. If yes the conditions will be true.\n\n![Example](./images/img-1716011605.png)\n\nThe above logic can be used in case of situations when there is a holday on a day before expiry. The above logic will help you ensure your tade happens one day previos to the expiry date accounting for the holiday.",
+    "example_image_urls": [
+        "./images/img-1716010932.png",
+        "./images/img-1716011518.png",
+        "./images/img-1716011605.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "Next Trading Day\nNext Trading Day returns the next trading date in string format. It cannot be equated with any number. The keyword you are comparing with should also return a string only\nIt will return the \ncurrent date as a string in format YYYY-MM-DD\n\u00a0\nIt can be used as follows:\nThis will check if tomorrow is the next trading day. If yes the conditions will be true.\u00a0\nThe above logic can be used in case of situations when there is a holday on a day before expiry. The above logic will help you ensure your tade happens one day previos to the expiry date accounting for the holiday.",
+    "visual_logic_extracted": "Image [img-1716010932.png] Text:\nNext Trading Day\nNSE\n\nImage [img-1716011518.png] Text:\nTomorrow == Next Trading Day\nNSE NSE\n\nImage [img-1716011605.png] Text:\nCurrent Week Expiry == Next Trading Day\nNIFTY 50, 0 NSE"
+}

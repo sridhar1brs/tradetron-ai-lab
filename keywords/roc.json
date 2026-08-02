@@ -1,0 +1,18 @@
+{
+    "name": "ROC",
+    "description": "This keyword returns the Rate of change of any period of any series of the selected Instrument. This keyword is to be used under the position keyword",
+    "how_to_use_markdown": "This keyword returns the Rate of change of any period of any series of the selected Instrument. This keyword is to be used under the position keyword\n\n![Example](./images/img-1632225019.png)\n\nROC = ((price/prevPrice)-1)*100\n\nThis keyword function is a part of TA LIB -  https://www.ta-lib.org/function.html\n\nYou can plot ROC on any series, like close in the above example, you can also select ROCP of RSI, OPEN etc",
+    "example_image_urls": [
+        "./images/img-1632225019.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "ROC\nThis keyword returns the Rate of change of any period of any series of the selected Instrument. This keyword is to be used under the position keyword\nROC = ((price/prevPrice)-1)*100\nThis keyword function is a part of TA LIB - \nhttps://www.ta-lib.org/function.html\n\u00a0\nYou can plot ROC on any series, like close in the above example, you can also select ROCP of RSI, OPEN etc",
+    "visual_logic_extracted": "Image [img-1632225019.png] Text:\n+\n\nPosition\nROC ( CLOSE ( Symbol ( Instrument Name ( NFO,NIFTY 50,,,,, ) , day, All) ), 20), -1"
+}

@@ -1,0 +1,18 @@
+{
+    "name": "PCR",
+    "description": "This keyword will return a numerical value of the PUT-CALL ratio based on open interest at that instant. You can input the underlying instrument and expiry. Your request will be processed and a numeric response will be fetched. At the moment it is only available for indices.",
+    "how_to_use_markdown": "This keyword will return a numerical value of the PUT-CALL ratio based on open interest at that instant. You can input the underlying instrument and expiry. Your request will be processed and a numeric response will be fetched. At the moment it is only available for indices.\n\nThe above image shows how to build a condition to check \u00a0the PCR  Nifty 50, current week options and take a trade if the same is greater than or equal to 1.25.\n\n![Example](./images/img-1631871857.png)",
+    "example_image_urls": [
+        "./images/img-1631871857.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "PCR\nThis keyword will return a numerical value of the PUT-CALL ratio based on open interest at that instant. You can input the underlying instrument and expiry. Your request will be processed and a numeric response will be fetched. At the moment it is only available for indices.\u00a0\nThe above image shows how to build a condition to check\n\u00a0the PCR\n Nifty 50, current week options and take a trade if the same is greater than or equal to 1.25.",
+    "visual_logic_extracted": "Image [img-1631871857.png] Text:\no\n\nPCR >= Number\nNIFTY, current week 1.25"
+}

@@ -1,0 +1,19 @@
+{
+    "name": "Today",
+    "description": "Similarly, if you want to trade on other days apart from weekly expiry, use the condition below",
+    "how_to_use_markdown": "Today returns the current day's date in string format. It cannot be equated with any number. The opposite end should also return a string only\n\nToday will return the  current date as a string in format YYYY-MM-DD\n\nYou can use the Today keyword in a no. of ways, to compare if today is the current week expiry, only trade if today is monthly expiry and so on.\n\n![Example](./images/img-1631799001.png)\n\nThe above condition will be true only if Today is the current week expiry\n\nSimilarly, if you want to trade on other days apart from weekly expiry, use the condition below\n\n![Example](./images/img-1631799071.png)",
+    "example_image_urls": [
+        "./images/img-1631799001.png",
+        "./images/img-1631799071.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "Today\nToday returns the current day's date in string format. It cannot be equated with any number. The opposite end should also return a string only\nToday will return the \ncurrent date as a string in format YYYY-MM-DD\n\u00a0\nYou can use the Today keyword in a no. of ways, to compare if today is the current week expiry, only trade if today is monthly expiry and so on.\nThe above condition will be true only if Today is the current week expiry\nSimilarly, if you want to trade on other days apart from weekly expiry, use the condition below",
+    "visual_logic_extracted": "Image [img-1631799001.png] Text:\n\u00a9\nToday == Current Week Expiry\nNSE NIFTY 50, 0\n\nImage [img-1631799071.png] Text:\n0-98 ;\nToday != Current Week Expiry\nNSE NIFTY 50, 0"
+}

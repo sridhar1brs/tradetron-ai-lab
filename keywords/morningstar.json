@@ -1,0 +1,18 @@
+{
+    "name": "MORNINGSTAR",
+    "description": "https://www.ta-lib.org/function.html",
+    "how_to_use_markdown": "This keyword is used to check if a particular candle was a Morningstar candle. It is supposed to be used under the position keyword. This keyword has been used as a part of TA lib. You can find more details on the same from the link shared below:\n\nhttps://www.ta-lib.org/function.html\n\n![Example](./images/img-1632229465.png)\n\nThe above example will check if the previous (-1) 5 minute candle of Nifty 50 was an\u00a0 Morningstar candle",
+    "example_image_urls": [
+        "./images/img-1632229465.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "MORNINGSTAR\nThis keyword is used to check if a particular candle was a Morningstar candle. It is supposed to be used under the position keyword. This keyword has been used as a part of TA lib. You can find more details on the same from the link shared below:\nhttps://www.ta-lib.org/function.html\nThe above example will check if the previous (-1) 5 minute candle of Nifty 50 was an\u00a0\nMorningstar candle",
+    "visual_logic_extracted": "Image [img-1632229465.png] Text:\nPosition == Number\nMORNINGSTAR ( Symbol ( Instrument Name ( NFO,NIFTY 50,,,,,), 5m, All) ), -1 1"
+}

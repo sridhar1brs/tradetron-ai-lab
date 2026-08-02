@@ -1,0 +1,235 @@
+{
+  "_format": "tt-strategy/v2",
+  "_readme": {
+    "about": "Tradetron strategy export. Edit and re-import via the ASB Import button.",
+    "logic": "To change a condition's logic, edit its \"conditionJson\" (the AST). The \"conditionValue\"/\"conditionDisplay\" text is regenerated from it on import.",
+    "legs": "For a leg field that has a \"*Json\" (e.g. \"strikeJson\"), edit the JSON — its text form is regenerated on import. Fields with no \"*Json\" (e.g. \"qty\") are plain text: edit them directly.",
+    "structure": "Add/remove/duplicate legs, conditions or sets by editing the arrays.",
+    "do_not": "Do not add \"*_id\" foreign keys back. Lists referenced by id must be ones you own."
+  },
+  "name": "Copy of MACD Crossover",
+  "description": null,
+  "tags": [],
+  "variables": [],
+  "sets": [
+    {
+      "list": 0,
+      "name": null,
+      "conditions": [
+        {
+          "type": "Entry",
+          "conditionValue": "( tt_get_element ( tt_MACD ( tt_CLOSE ( tt_get_data ( tt_get_future_instrument ( 'Crudeoil' ) , '30m', 'All' )  ) , '12', '26' ) , '-1' ) > tt_get_element ( tt_MACDsignal ( tt_CLOSE ( tt_get_data ( tt_get_future_instrument ( 'Crudeoil' ) , '30m', 'All' )  ) , '12', '26', '9' ) , '-1' )  )  and ( tt_get_element ( tt_MACD ( tt_CLOSE ( tt_get_data ( tt_get_future_instrument ( 'Crudeoil' ) , '30m', 'All' )  ) , '12', '26' ) , '-2' ) < tt_get_element ( tt_MACDsignal ( tt_CLOSE ( tt_get_data ( tt_get_future_instrument ( 'Crudeoil' ) , '30m', 'All' )  ) , '12', '26', '9' ) , '-2' )  )  and ( tt_get_element ( tt_MACDhist ( tt_CLOSE ( tt_get_data ( tt_get_future_instrument ( 'Crudeoil' ) , '30m', 'All' )  ) , '12', '26', '9' ) , '-1' ) > tt_Number ( '0' )  )",
+          "conditionJson": "{\"operator\":\"and\",\"operands\":[{\"type\":\"rule\",\"value\":\"builder-basic_rule_0\",\"elements\":[{\"name\":\"Position\",\"kid\":1418,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"MACD\",\"kid\":1090,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"CLOSE\",\"kid\":4995,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Symbol\",\"kid\":1744,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Futures\",\"kid\":2349,\"params\":[{\"type\":\"value\",\"value\":\"Crudeoil\"}]}},{\"type\":\"value\",\"value\":\"30m\"},{\"type\":\"value\",\"value\":\"All\"}]}}]}},{\"type\":\"value\",\"value\":\"12\"},{\"type\":\"value\",\"value\":\"26\"}]}},{\"type\":\"value\",\"value\":\"-1\"}]},{\"name\":\">\",\"params\":[]},{\"name\":\"Position\",\"kid\":8950,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Macdsignal\",\"kid\":4688,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"CLOSE\",\"kid\":6018,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Symbol\",\"kid\":4484,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Futures\",\"kid\":6556,\"params\":[{\"type\":\"value\",\"value\":\"Crudeoil\"}]}},{\"type\":\"value\",\"value\":\"30m\"},{\"type\":\"value\",\"value\":\"All\"}]}}]}},{\"type\":\"value\",\"value\":\"12\"},{\"type\":\"value\",\"value\":\"26\"},{\"type\":\"value\",\"value\":\"9\"}]}},{\"type\":\"value\",\"value\":\"-1\"}]}]},{\"type\":\"rule\",\"value\":\"builder-basic_rule_1\",\"elements\":[{\"name\":\"Position\",\"kid\":1418,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"MACD\",\"kid\":1090,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"CLOSE\",\"kid\":4995,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Symbol\",\"kid\":1744,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Futures\",\"kid\":2349,\"params\":[{\"type\":\"value\",\"value\":\"Crudeoil\"}]}},{\"type\":\"value\",\"value\":\"30m\"},{\"type\":\"value\",\"value\":\"All\"}]}}]}},{\"type\":\"value\",\"value\":\"12\"},{\"type\":\"value\",\"value\":\"26\"}]}},{\"type\":\"value\",\"value\":\"-2\"}]},{\"name\":\"<\",\"params\":[]},{\"name\":\"Position\",\"kid\":8950,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Macdsignal\",\"kid\":4688,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"CLOSE\",\"kid\":6018,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Symbol\",\"kid\":4484,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Futures\",\"kid\":6556,\"params\":[{\"type\":\"value\",\"value\":\"Crudeoil\"}]}},{\"type\":\"value\",\"value\":\"30m\"},{\"type\":\"value\",\"value\":\"All\"}]}}]}},{\"type\":\"value\",\"value\":\"12\"},{\"type\":\"value\",\"value\":\"26\"},{\"type\":\"value\",\"value\":\"9\"}]}},{\"type\":\"value\",\"value\":\"-2\"}]}]},{\"type\":\"rule\",\"value\":\"builder-basic_rule_2\",\"elements\":[{\"name\":\"Position\",\"kid\":6945,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Macdhist\",\"kid\":6149,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"CLOSE\",\"kid\":6117,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Symbol\",\"kid\":2333,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Futures\",\"kid\":7511,\"params\":[{\"type\":\"value\",\"value\":\"Crudeoil\"}]}},{\"type\":\"value\",\"value\":\"30m\"},{\"type\":\"value\",\"value\":\"All\"}]}}]}},{\"type\":\"value\",\"value\":\"12\"},{\"type\":\"value\",\"value\":\"26\"},{\"type\":\"value\",\"value\":\"9\"}]}},{\"type\":\"value\",\"value\":\"-1\"}]},{\"name\":\">\",\"params\":[]},{\"name\":\"Number\",\"kid\":6565,\"params\":[{\"type\":\"value\",\"value\":\"0\"}]}]}]}",
+          "conditionDisplay": "( Position ( MACD ( CLOSE ( Symbol ( Futures ( 'Crudeoil' ) , '30m', 'All' )  ) , '12', '26' ) , '-1' ) > Position ( Macdsignal ( CLOSE ( Symbol ( Futures ( 'Crudeoil' ) , '30m', 'All' )  ) , '12', '26', '9' ) , '-1' )  )  and ( Position ( MACD ( CLOSE ( Symbol ( Futures ( 'Crudeoil' ) , '30m', 'All' )  ) , '12', '26' ) , '-2' ) < Position ( Macdsignal ( CLOSE ( Symbol ( Futures ( 'Crudeoil' ) , '30m', 'All' )  ) , '12', '26', '9' ) , '-2' )  )  and ( Position ( Macdhist ( CLOSE ( Symbol ( Futures ( 'Crudeoil' ) , '30m', 'All' )  ) , '12', '26', '9' ) , '-1' ) > Number ( '0' )  )",
+          "subType": "None",
+          "visible": 1,
+          "legs": [
+            {
+              "instrument": 1830,
+              "list": 0,
+              "optionType": null,
+              "expiry": "tt_mcx_fut_expiry('Crudeoil', 0)",
+              "expiryType": "Current Month",
+              "expiryJson": null,
+              "expiryDisplay": null,
+              "strikeType": null,
+              "strike": null,
+              "strikeJson": null,
+              "strikeDisplay": null,
+              "qty": "tt_lots(1,'INSTRUMENT','F')",
+              "qtyType": "Lots",
+              "qtyDisplay": "1",
+              "qtyJson": null,
+              "qtyExprDisplay": null,
+              "buySell": "B",
+              "totalValue": null,
+              "limitPrice": null,
+              "limitPriceJson": null,
+              "limitPriceDisplay": null,
+              "limitPriceExprDisplay": null,
+              "entryTrigger": null,
+              "entryLimit": null,
+              "sLTrigger": null,
+              "sLTriggerJson": null,
+              "sLTriggerDisplay": null,
+              "sLTriggerExprDisplay": null,
+              "sLLimit": null,
+              "targetTrigger": null,
+              "targetLimit": null,
+              "isOvernightProtectionLeg": "No",
+              "productType": "MIS",
+              "underlyingSymbol": "Crudeoil",
+              "tmp": 0,
+              "updatedAt": "2026-08-01 14:11:36",
+              "createdAt": "2026-08-01 14:11:36"
+            }
+          ],
+          "extra": {
+            "name": null,
+            "variables": []
+          }
+        },
+        {
+          "type": "Exit",
+          "conditionValue": "( tt_get_element ( tt_MACD ( tt_CLOSE ( tt_get_data ( tt_get_future_instrument ( 'Crudeoil' ) , '30m', 'All' )  ) , '12', '26' ) , '-1' ) < tt_get_element ( tt_MACDsignal ( tt_CLOSE ( tt_get_data ( tt_get_future_instrument ( 'Crudeoil' ) , '30m', 'All' )  ) , '12', '26', '9' ) , '-1' )  )  and ( tt_get_element ( tt_MACD ( tt_CLOSE ( tt_get_data ( tt_get_future_instrument ( 'Crudeoil' ) , '30m', 'All' )  ) , '12', '26' ) , '-2' ) > tt_get_element ( tt_MACDsignal ( tt_CLOSE ( tt_get_data ( tt_get_future_instrument ( 'Crudeoil' ) , '30m', 'All' )  ) , '12', '26', '9' ) , '-2' )  )  and ( tt_get_element ( tt_MACDhist ( tt_CLOSE ( tt_get_data ( tt_get_future_instrument ( 'Crudeoil' ) , '30m', 'All' )  ) , '12', '26', '9' ) , '-1' ) < tt_Number ( '0' )  )",
+          "conditionJson": "{\"operator\":\"and\",\"operands\":[{\"type\":\"rule\",\"value\":\"builder-basic_rule_0\",\"elements\":[{\"name\":\"Position\",\"kid\":1418,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"MACD\",\"kid\":1090,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"CLOSE\",\"kid\":4995,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Symbol\",\"kid\":1744,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Futures\",\"kid\":2349,\"params\":[{\"type\":\"value\",\"value\":\"Crudeoil\"}]}},{\"type\":\"value\",\"value\":\"30m\"},{\"type\":\"value\",\"value\":\"All\"}]}}]}},{\"type\":\"value\",\"value\":\"12\"},{\"type\":\"value\",\"value\":\"26\"}]}},{\"type\":\"value\",\"value\":\"-1\"}]},{\"name\":\"<\",\"params\":[]},{\"name\":\"Position\",\"kid\":8950,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Macdsignal\",\"kid\":4688,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"CLOSE\",\"kid\":6018,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Symbol\",\"kid\":4484,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Futures\",\"kid\":6556,\"params\":[{\"type\":\"value\",\"value\":\"Crudeoil\"}]}},{\"type\":\"value\",\"value\":\"30m\"},{\"type\":\"value\",\"value\":\"All\"}]}}]}},{\"type\":\"value\",\"value\":\"12\"},{\"type\":\"value\",\"value\":\"26\"},{\"type\":\"value\",\"value\":\"9\"}]}},{\"type\":\"value\",\"value\":\"-1\"}]}]},{\"type\":\"rule\",\"value\":\"builder-basic_rule_1\",\"elements\":[{\"name\":\"Position\",\"kid\":1418,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"MACD\",\"kid\":1090,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"CLOSE\",\"kid\":4995,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Symbol\",\"kid\":1744,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Futures\",\"kid\":2349,\"params\":[{\"type\":\"value\",\"value\":\"Crudeoil\"}]}},{\"type\":\"value\",\"value\":\"30m\"},{\"type\":\"value\",\"value\":\"All\"}]}}]}},{\"type\":\"value\",\"value\":\"12\"},{\"type\":\"value\",\"value\":\"26\"}]}},{\"type\":\"value\",\"value\":\"-2\"}]},{\"name\":\">\",\"params\":[]},{\"name\":\"Position\",\"kid\":8950,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Macdsignal\",\"kid\":4688,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"CLOSE\",\"kid\":6018,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Symbol\",\"kid\":4484,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Futures\",\"kid\":6556,\"params\":[{\"type\":\"value\",\"value\":\"Crudeoil\"}]}},{\"type\":\"value\",\"value\":\"30m\"},{\"type\":\"value\",\"value\":\"All\"}]}}]}},{\"type\":\"value\",\"value\":\"12\"},{\"type\":\"value\",\"value\":\"26\"},{\"type\":\"value\",\"value\":\"9\"}]}},{\"type\":\"value\",\"value\":\"-2\"}]}]},{\"type\":\"rule\",\"value\":\"builder-basic_rule_2\",\"elements\":[{\"name\":\"Position\",\"kid\":6945,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Macdhist\",\"kid\":6149,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"CLOSE\",\"kid\":6117,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Symbol\",\"kid\":2333,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Futures\",\"kid\":7511,\"params\":[{\"type\":\"value\",\"value\":\"Crudeoil\"}]}},{\"type\":\"value\",\"value\":\"30m\"},{\"type\":\"value\",\"value\":\"All\"}]}}]}},{\"type\":\"value\",\"value\":\"12\"},{\"type\":\"value\",\"value\":\"26\"},{\"type\":\"value\",\"value\":\"9\"}]}},{\"type\":\"value\",\"value\":\"-1\"}]},{\"name\":\"<\",\"params\":[]},{\"name\":\"Number\",\"kid\":6565,\"params\":[{\"type\":\"value\",\"value\":\"0\"}]}]}]}",
+          "conditionDisplay": "( Position ( MACD ( CLOSE ( Symbol ( Futures ( 'Crudeoil' ) , '30m', 'All' )  ) , '12', '26' ) , '-1' ) < Position ( Macdsignal ( CLOSE ( Symbol ( Futures ( 'Crudeoil' ) , '30m', 'All' )  ) , '12', '26', '9' ) , '-1' )  )  and ( Position ( MACD ( CLOSE ( Symbol ( Futures ( 'Crudeoil' ) , '30m', 'All' )  ) , '12', '26' ) , '-2' ) > Position ( Macdsignal ( CLOSE ( Symbol ( Futures ( 'Crudeoil' ) , '30m', 'All' )  ) , '12', '26', '9' ) , '-2' )  )  and ( Position ( Macdhist ( CLOSE ( Symbol ( Futures ( 'Crudeoil' ) , '30m', 'All' )  ) , '12', '26', '9' ) , '-1' ) < Number ( '0' )  )",
+          "subType": "None",
+          "visible": 1,
+          "legs": [],
+          "extra": {
+            "name": null,
+            "variables": []
+          }
+        }
+      ]
+    },
+    {
+      "list": 0,
+      "name": null,
+      "conditions": [
+        {
+          "type": "Entry",
+          "conditionValue": "( tt_get_element ( tt_MACD ( tt_CLOSE ( tt_get_data ( tt_get_future_instrument ( 'Crudeoil' ) , '30m', 'All' )  ) , '12', '26' ) , '-1' ) < tt_get_element ( tt_MACDsignal ( tt_CLOSE ( tt_get_data ( tt_get_future_instrument ( 'Crudeoil' ) , '30m', 'All' )  ) , '12', '26', '9' ) , '-1' )  )  and ( tt_get_element ( tt_MACD ( tt_CLOSE ( tt_get_data ( tt_get_future_instrument ( 'Crudeoil' ) , '30m', 'All' )  ) , '12', '26' ) , '-2' ) > tt_get_element ( tt_MACDsignal ( tt_CLOSE ( tt_get_data ( tt_get_future_instrument ( 'Crudeoil' ) , '30m', 'All' )  ) , '12', '26', '9' ) , '-2' )  )  and ( tt_get_element ( tt_MACDhist ( tt_CLOSE ( tt_get_data ( tt_get_future_instrument ( 'Crudeoil' ) , '30m', 'All' )  ) , '12', '26', '9' ) , '-1' ) < tt_Number ( '0' )  )",
+          "conditionJson": "{\"operator\":\"and\",\"operands\":[{\"type\":\"rule\",\"value\":\"builder-basic_rule_0\",\"elements\":[{\"name\":\"Position\",\"kid\":1418,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"MACD\",\"kid\":1090,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"CLOSE\",\"kid\":4995,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Symbol\",\"kid\":1744,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Futures\",\"kid\":2349,\"params\":[{\"type\":\"value\",\"value\":\"Crudeoil\"}]}},{\"type\":\"value\",\"value\":\"30m\"},{\"type\":\"value\",\"value\":\"All\"}]}}]}},{\"type\":\"value\",\"value\":\"12\"},{\"type\":\"value\",\"value\":\"26\"}]}},{\"type\":\"value\",\"value\":\"-1\"}]},{\"name\":\"<\",\"params\":[]},{\"name\":\"Position\",\"kid\":8950,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Macdsignal\",\"kid\":4688,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"CLOSE\",\"kid\":6018,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Symbol\",\"kid\":4484,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Futures\",\"kid\":6556,\"params\":[{\"type\":\"value\",\"value\":\"Crudeoil\"}]}},{\"type\":\"value\",\"value\":\"30m\"},{\"type\":\"value\",\"value\":\"All\"}]}}]}},{\"type\":\"value\",\"value\":\"12\"},{\"type\":\"value\",\"value\":\"26\"},{\"type\":\"value\",\"value\":\"9\"}]}},{\"type\":\"value\",\"value\":\"-1\"}]}]},{\"type\":\"rule\",\"value\":\"builder-basic_rule_1\",\"elements\":[{\"name\":\"Position\",\"kid\":1418,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"MACD\",\"kid\":1090,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"CLOSE\",\"kid\":4995,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Symbol\",\"kid\":1744,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Futures\",\"kid\":2349,\"params\":[{\"type\":\"value\",\"value\":\"Crudeoil\"}]}},{\"type\":\"value\",\"value\":\"30m\"},{\"type\":\"value\",\"value\":\"All\"}]}}]}},{\"type\":\"value\",\"value\":\"12\"},{\"type\":\"value\",\"value\":\"26\"}]}},{\"type\":\"value\",\"value\":\"-2\"}]},{\"name\":\">\",\"params\":[]},{\"name\":\"Position\",\"kid\":8950,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Macdsignal\",\"kid\":4688,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"CLOSE\",\"kid\":6018,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Symbol\",\"kid\":4484,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Futures\",\"kid\":6556,\"params\":[{\"type\":\"value\",\"value\":\"Crudeoil\"}]}},{\"type\":\"value\",\"value\":\"30m\"},{\"type\":\"value\",\"value\":\"All\"}]}}]}},{\"type\":\"value\",\"value\":\"12\"},{\"type\":\"value\",\"value\":\"26\"},{\"type\":\"value\",\"value\":\"9\"}]}},{\"type\":\"value\",\"value\":\"-2\"}]}]},{\"type\":\"rule\",\"value\":\"builder-basic_rule_2\",\"elements\":[{\"name\":\"Position\",\"kid\":6945,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Macdhist\",\"kid\":6149,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"CLOSE\",\"kid\":6117,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Symbol\",\"kid\":2333,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Futures\",\"kid\":7511,\"params\":[{\"type\":\"value\",\"value\":\"Crudeoil\"}]}},{\"type\":\"value\",\"value\":\"30m\"},{\"type\":\"value\",\"value\":\"All\"}]}}]}},{\"type\":\"value\",\"value\":\"12\"},{\"type\":\"value\",\"value\":\"26\"},{\"type\":\"value\",\"value\":\"9\"}]}},{\"type\":\"value\",\"value\":\"-1\"}]},{\"name\":\"<\",\"params\":[]},{\"name\":\"Number\",\"kid\":6565,\"params\":[{\"type\":\"value\",\"value\":\"0\"}]}]}]}",
+          "conditionDisplay": "( Position ( MACD ( CLOSE ( Symbol ( Futures ( 'Crudeoil' ) , '30m', 'All' )  ) , '12', '26' ) , '-1' ) < Position ( Macdsignal ( CLOSE ( Symbol ( Futures ( 'Crudeoil' ) , '30m', 'All' )  ) , '12', '26', '9' ) , '-1' )  )  and ( Position ( MACD ( CLOSE ( Symbol ( Futures ( 'Crudeoil' ) , '30m', 'All' )  ) , '12', '26' ) , '-2' ) > Position ( Macdsignal ( CLOSE ( Symbol ( Futures ( 'Crudeoil' ) , '30m', 'All' )  ) , '12', '26', '9' ) , '-2' )  )  and ( Position ( Macdhist ( CLOSE ( Symbol ( Futures ( 'Crudeoil' ) , '30m', 'All' )  ) , '12', '26', '9' ) , '-1' ) < Number ( '0' )  )",
+          "subType": "None",
+          "visible": 1,
+          "legs": [
+            {
+              "instrument": 1830,
+              "list": 0,
+              "optionType": null,
+              "expiry": "tt_mcx_fut_expiry('Crudeoil', 0)",
+              "expiryType": "Current Month",
+              "expiryJson": null,
+              "expiryDisplay": null,
+              "strikeType": null,
+              "strike": null,
+              "strikeJson": null,
+              "strikeDisplay": null,
+              "qty": "tt_lots(1,'INSTRUMENT','F')",
+              "qtyType": "Lots",
+              "qtyDisplay": "1",
+              "qtyJson": null,
+              "qtyExprDisplay": null,
+              "buySell": "S",
+              "totalValue": null,
+              "limitPrice": null,
+              "limitPriceJson": null,
+              "limitPriceDisplay": null,
+              "limitPriceExprDisplay": null,
+              "entryTrigger": null,
+              "entryLimit": null,
+              "sLTrigger": null,
+              "sLTriggerJson": null,
+              "sLTriggerDisplay": null,
+              "sLTriggerExprDisplay": null,
+              "sLLimit": null,
+              "targetTrigger": null,
+              "targetLimit": null,
+              "isOvernightProtectionLeg": "No",
+              "productType": "MIS",
+              "underlyingSymbol": "Crudeoil",
+              "tmp": 0,
+              "updatedAt": "2026-08-01 14:11:36",
+              "createdAt": "2026-08-01 14:11:36"
+            }
+          ],
+          "extra": {
+            "name": null,
+            "variables": []
+          }
+        },
+        {
+          "type": "Exit",
+          "conditionValue": "( tt_get_element ( tt_MACD ( tt_CLOSE ( tt_get_data ( tt_get_future_instrument ( 'Crudeoil' ) , '30m', 'All' )  ) , '12', '26' ) , '-1' ) > tt_get_element ( tt_MACDsignal ( tt_CLOSE ( tt_get_data ( tt_get_future_instrument ( 'Crudeoil' ) , '30m', 'All' )  ) , '12', '26', '9' ) , '-1' )  )  and ( tt_get_element ( tt_MACD ( tt_CLOSE ( tt_get_data ( tt_get_future_instrument ( 'Crudeoil' ) , '30m', 'All' )  ) , '12', '26' ) , '-2' ) < tt_get_element ( tt_MACDsignal ( tt_CLOSE ( tt_get_data ( tt_get_future_instrument ( 'Crudeoil' ) , '30m', 'All' )  ) , '12', '26', '9' ) , '-2' )  )  and ( tt_get_element ( tt_MACDhist ( tt_CLOSE ( tt_get_data ( tt_get_future_instrument ( 'Crudeoil' ) , '30m', 'All' )  ) , '12', '26', '9' ) , '-1' ) > tt_Number ( '0' )  )",
+          "conditionJson": "{\"operator\":\"and\",\"operands\":[{\"type\":\"rule\",\"value\":\"builder-basic_rule_0\",\"elements\":[{\"name\":\"Position\",\"kid\":1418,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"MACD\",\"kid\":1090,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"CLOSE\",\"kid\":4995,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Symbol\",\"kid\":1744,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Futures\",\"kid\":2349,\"params\":[{\"type\":\"value\",\"value\":\"Crudeoil\"}]}},{\"type\":\"value\",\"value\":\"30m\"},{\"type\":\"value\",\"value\":\"All\"}]}}]}},{\"type\":\"value\",\"value\":\"12\"},{\"type\":\"value\",\"value\":\"26\"}]}},{\"type\":\"value\",\"value\":\"-1\"}]},{\"name\":\">\",\"params\":[]},{\"name\":\"Position\",\"kid\":8950,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Macdsignal\",\"kid\":4688,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"CLOSE\",\"kid\":6018,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Symbol\",\"kid\":4484,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Futures\",\"kid\":6556,\"params\":[{\"type\":\"value\",\"value\":\"Crudeoil\"}]}},{\"type\":\"value\",\"value\":\"30m\"},{\"type\":\"value\",\"value\":\"All\"}]}}]}},{\"type\":\"value\",\"value\":\"12\"},{\"type\":\"value\",\"value\":\"26\"},{\"type\":\"value\",\"value\":\"9\"}]}},{\"type\":\"value\",\"value\":\"-1\"}]}]},{\"type\":\"rule\",\"value\":\"builder-basic_rule_1\",\"elements\":[{\"name\":\"Position\",\"kid\":1418,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"MACD\",\"kid\":1090,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"CLOSE\",\"kid\":4995,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Symbol\",\"kid\":1744,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Futures\",\"kid\":2349,\"params\":[{\"type\":\"value\",\"value\":\"Crudeoil\"}]}},{\"type\":\"value\",\"value\":\"30m\"},{\"type\":\"value\",\"value\":\"All\"}]}}]}},{\"type\":\"value\",\"value\":\"12\"},{\"type\":\"value\",\"value\":\"26\"}]}},{\"type\":\"value\",\"value\":\"-2\"}]},{\"name\":\"<\",\"params\":[]},{\"name\":\"Position\",\"kid\":8950,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Macdsignal\",\"kid\":4688,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"CLOSE\",\"kid\":6018,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Symbol\",\"kid\":4484,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Futures\",\"kid\":6556,\"params\":[{\"type\":\"value\",\"value\":\"Crudeoil\"}]}},{\"type\":\"value\",\"value\":\"30m\"},{\"type\":\"value\",\"value\":\"All\"}]}}]}},{\"type\":\"value\",\"value\":\"12\"},{\"type\":\"value\",\"value\":\"26\"},{\"type\":\"value\",\"value\":\"9\"}]}},{\"type\":\"value\",\"value\":\"-2\"}]}]},{\"type\":\"rule\",\"value\":\"builder-basic_rule_2\",\"elements\":[{\"name\":\"Position\",\"kid\":6945,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Macdhist\",\"kid\":6149,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"CLOSE\",\"kid\":6117,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Symbol\",\"kid\":2333,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Futures\",\"kid\":7511,\"params\":[{\"type\":\"value\",\"value\":\"Crudeoil\"}]}},{\"type\":\"value\",\"value\":\"30m\"},{\"type\":\"value\",\"value\":\"All\"}]}}]}},{\"type\":\"value\",\"value\":\"12\"},{\"type\":\"value\",\"value\":\"26\"},{\"type\":\"value\",\"value\":\"9\"}]}},{\"type\":\"value\",\"value\":\"-1\"}]},{\"name\":\">\",\"params\":[]},{\"name\":\"Number\",\"kid\":6565,\"params\":[{\"type\":\"value\",\"value\":\"0\"}]}]}]}",
+          "conditionDisplay": "( Position ( MACD ( CLOSE ( Symbol ( Futures ( 'Crudeoil' ) , '30m', 'All' )  ) , '12', '26' ) , '-1' ) > Position ( Macdsignal ( CLOSE ( Symbol ( Futures ( 'Crudeoil' ) , '30m', 'All' )  ) , '12', '26', '9' ) , '-1' )  )  and ( Position ( MACD ( CLOSE ( Symbol ( Futures ( 'Crudeoil' ) , '30m', 'All' )  ) , '12', '26' ) , '-2' ) < Position ( Macdsignal ( CLOSE ( Symbol ( Futures ( 'Crudeoil' ) , '30m', 'All' )  ) , '12', '26', '9' ) , '-2' )  )  and ( Position ( Macdhist ( CLOSE ( Symbol ( Futures ( 'Crudeoil' ) , '30m', 'All' )  ) , '12', '26', '9' ) , '-1' ) > Number ( '0' )  )",
+          "subType": "None",
+          "visible": 1,
+          "legs": [],
+          "extra": {
+            "name": null,
+            "variables": []
+          }
+        }
+      ]
+    },
+    {
+      "name": null,
+      "conditions": [
+        {
+          "type": "Repair Once",
+          "conditionValue": null,
+          "conditionJson": null,
+          "conditionDisplay": null,
+          "subType": "Overnight Protection",
+          "visible": 0,
+          "legs": [],
+          "extra": {
+            "name": null,
+            "variables": []
+          }
+        },
+        {
+          "type": "Universal Exit",
+          "conditionValue": "( tt_Time ( 'NSE' ) > tt_Number ( '2230' )  )  or ( tt_PNL ( 'strategy_id', 'run_counter' ) > tt_Number ( '5000' ) * tt_Multiplier ( 'strategy_id' )  )",
+          "conditionJson": "{\"operator\":\"or\",\"operands\":[{\"type\":\"rule\",\"value\":\"builder-basic_rule_0\",\"elements\":[{\"name\":\"Time\",\"kid\":5487,\"params\":[{\"type\":\"value\",\"value\":\"NSE\"}]},{\"name\":\">\",\"params\":[]},{\"name\":\"Number\",\"kid\":9305,\"params\":[{\"type\":\"value\",\"value\":\"2230\"}]}]},{\"type\":\"rule\",\"value\":\"builder-basic_rule_1\",\"elements\":[{\"name\":\"PNL\",\"params\":[]},{\"name\":\">\",\"params\":[]},{\"name\":\"Number\",\"kid\":3796,\"params\":[{\"type\":\"value\",\"value\":\"5000\"}]},{\"name\":\"*\",\"params\":[]},{\"name\":\"Multiplier\",\"params\":[]}]}]}",
+          "conditionDisplay": "( Time ( 'NSE' ) > Number ( '2230' )  )  or ( PNL ( 'strategy_id', 'run_counter' ) > Number ( '5000' ) * Multiplier ( 'strategy_id' )  )",
+          "subType": "None",
+          "visible": 1,
+          "legs": [],
+          "extra": {
+            "name": null,
+            "variables": []
+          }
+        }
+      ]
+    }
+  ],
+  "currency": "INR",
+  "priceExecution": "Market Price",
+  "tranchSize": 100,
+  "tslToCostAtProfit": 0,
+  "tslProfitIncrease": 0,
+  "tslSlIncrease": 0,
+  "runFrequency": "Continuous",
+  "firstTradeAfterOpen": 1800,
+  "lastTradeBeforeClose": 10,
+  "rolloverExpiryPeriod": "Dont Rollover",
+  "capitalRequired": 100000,
+  "priceRevisionAttempts": 1,
+  "tranchWaitSecs": 10,
+  "exitShortsFirst": 0,
+  "priceRevisionTimeout": 0,
+  "reactivateEvery": 300,
+  "finalAction": "MARKET",
+  "exitAtMarket": 0,
+  "runEvery": 60,
+  "rolloverExpiryTime": "1500",
+  "priceTicksMultiple": "1",
+  "pythonCode": null,
+  "isPublic": 0,
+  "minMultiple": 1,
+  "maxMultiple": 100,
+  "freePeriod": null,
+  "fixedFee": "0.00",
+  "fixedFeePeriod": "1",
+  "variableFee": "0.00",
+  "hurdleRate": 0,
+  "recreatePositionsInNewFollowers": "No",
+  "allowDuplication": 1,
+  "confirmationPerSubscriber": 0,
+  "hideSubscribers": "No",
+  "strategyPublicLinkAccess": "Yes",
+  "strategyPublicLink": null,
+  "displayPositionsToNonSubscribers": 0,
+  "highWatermark": "Yes",
+  "showLiveAutoDeployment": 0,
+  "feeShare": null,
+  "isApproved": 0,
+  "feeFrequency": "Month",
+  "backtestLinkSubscribers": null,
+  "backtestLinkNonsubscribers": null
+}

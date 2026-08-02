@@ -1,0 +1,18 @@
+{
+    "name": "Absolute",
+    "description": "This keyword returns the positive value of the inputs.",
+    "how_to_use_markdown": "This keyword returns the positive value of the inputs.\n\n![Example](./images/img-1632309781.png)\n\nThe above condition will return the absolute (positive) value of the math operation, even if LTP is smaller than the entry price, it will still return a positive number",
+    "example_image_urls": [
+        "./images/img-1632309781.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "Absolute\nThis keyword returns the positive value of the inputs.\nThe above condition will return the absolute (positive) value of the math operation, even if LTP is smaller than the entry price, it will still return a positive number",
+    "visual_logic_extracted": "Image [img-1632309781.png] Text:\n+\n\nAbsolute\nMath Operation ( LTP ( Traded Instrument Name ( Entry, instrument, NIFTY 50, 1, 1, 1) ), Traded Instrument ( Entry, price, NIFTY 50, 1, 1,1),-)"
+}

@@ -1,0 +1,396 @@
+{
+  "_format": "tt-strategy/v2",
+  "_readme": {
+    "about": "Tradetron strategy export. Edit and re-import via the ASB Import button.",
+    "logic": "To change a condition's logic, edit its \"conditionJson\" (the AST). The \"conditionValue\"/\"conditionDisplay\" text is regenerated from it on import.",
+    "legs": "For a leg field that has a \"*Json\" (e.g. \"strikeJson\"), edit the JSON — its text form is regenerated on import. Fields with no \"*Json\" (e.g. \"qty\") are plain text: edit them directly.",
+    "structure": "Add/remove/duplicate legs, conditions or sets by editing the arrays.",
+    "do_not": "Do not add \"*_id\" foreign keys back. Lists referenced by id must be ones you own."
+  },
+  "name": "Stocklist Swing(Tgt: 5% , Avg: -5% , AvgCnt:2)",
+  "description": null,
+  "tags": [],
+  "variables": [
+    {
+      "variableName": "BuyValue",
+      "value": "( tt_Number ( '5000' )  )",
+      "display": "( Number ( '5000' )  )",
+      "json": "{\"operator\":\"and\",\"operands\":[{\"type\":\"rule\",\"value\":\"builder-basic_rule_0\",\"elements\":[{\"name\":\"Number\",\"kid\":7121,\"params\":[{\"type\":\"value\",\"value\":\"5000\"}]}]}]}"
+    },
+    {
+      "variableName": "AvgValue",
+      "value": "( tt_Number ( '5000' )  )",
+      "display": "( Number ( '5000' )  )",
+      "json": "{\"operator\":\"and\",\"operands\":[{\"type\":\"rule\",\"value\":\"builder-basic_rule_0\",\"elements\":[{\"name\":\"Number\",\"kid\":7121,\"params\":[{\"type\":\"value\",\"value\":\"5000\"}]}]}]}"
+    }
+  ],
+  "sets": [
+    {
+      "list": 222389,
+      "name": null,
+      "conditions": [
+        {
+          "type": "Entry",
+          "conditionValue": "(  ( tt_Time ( 'NSE' ) >= tt_Number ( '915' )  )  and ( tt_position_value ( 'strategy_id', 'run_counter', 'Entry', 'All', 'All', 'quantity', '|SwingStocksList_1|' ) == tt_Number ( '0' )  )  )  or (  ( tt_position_value ( 'strategy_id', 'run_counter', 'Entry', 'All', 'All', 'quantity', '|SwingStocksList_1|' ) != tt_Number ( '0' )  )  and ( tt_Time ( 'NSE' ) >= get_runtime ( 'strategy_id', 'run_counter', '|SwingStocksList_1|_exit_time' ) + tt_Number ( '1' )  )  )",
+          "conditionJson": "{\"operator\":\"or\",\"operands\":[{\"type\":\"group\",\"value\":\"builder-basic_group_1\",\"children\":{\"operator\":\"and\",\"operands\":[{\"type\":\"rule\",\"value\":\"builder-basic_rule_1\",\"elements\":[{\"name\":\"Time\",\"kid\":9887,\"params\":[{\"type\":\"value\",\"value\":\"NSE\"}]},{\"name\":\">=\",\"params\":[]},{\"name\":\"Number\",\"kid\":1624,\"params\":[{\"type\":\"value\",\"value\":\"915\"}]}]},{\"type\":\"rule\",\"value\":\"builder-basic_rule_2\",\"elements\":[{\"name\":\"Positions Detail\",\"kid\":1545,\"params\":[{\"type\":\"value\",\"value\":\"Entry\"},{\"type\":\"value\",\"value\":\"All\"},{\"type\":\"value\",\"value\":\"All\"},{\"type\":\"value\",\"value\":\"quantity\"},{\"type\":\"value\",\"value\":\"|SwingStocksList_1|\"}]},{\"name\":\"==\",\"params\":[]},{\"name\":\"Number\",\"kid\":8467,\"params\":[{\"type\":\"value\",\"value\":\"0\"}]}]}]}},{\"type\":\"group\",\"value\":\"builder-basic_group_5\",\"children\":{\"operator\":\"and\",\"operands\":[{\"type\":\"rule\",\"value\":\"builder-basic_rule_5\",\"elements\":[{\"name\":\"Positions Detail\",\"kid\":1545,\"params\":[{\"type\":\"value\",\"value\":\"Entry\"},{\"type\":\"value\",\"value\":\"All\"},{\"type\":\"value\",\"value\":\"All\"},{\"type\":\"value\",\"value\":\"quantity\"},{\"type\":\"value\",\"value\":\"|SwingStocksList_1|\"}]},{\"name\":\"!=\",\"params\":[]},{\"name\":\"Number\",\"kid\":8467,\"params\":[{\"type\":\"value\",\"value\":\"0\"}]}]},{\"type\":\"rule\",\"value\":\"builder-basic_rule_6\",\"elements\":[{\"name\":\"Time\",\"kid\":6477,\"params\":[{\"type\":\"value\",\"value\":\"NSE\"}]},{\"name\":\">=\",\"params\":[]},{\"name\":\"Get Runtime\",\"kid\":2770,\"params\":[{\"type\":\"value\",\"value\":\"|SwingStocksList_1|_exit_time\"}]},{\"name\":\"+\",\"params\":[]},{\"name\":\"Number\",\"kid\":8467,\"params\":[{\"type\":\"value\",\"value\":\"1\"}]}]}]}}]}",
+          "conditionDisplay": "(  ( tt_Time ( 'NSE' ) >= tt_Number ( '915' )  )  and ( tt_position_value ( 'strategy_id', 'run_counter', 'Entry', 'All', 'All', 'quantity', '|SwingStocksList_1|' ) == tt_Number ( '0' )  )  )  or (  ( tt_position_value ( 'strategy_id', 'run_counter', 'Entry', 'All', 'All', 'quantity', '|SwingStocksList_1|' ) != tt_Number ( '0' )  )  and ( tt_Time ( 'NSE' ) >= get_runtime ( 'strategy_id', 'run_counter', '|SwingStocksList_1|_exit_time' ) + tt_Number ( '1' )  )  )",
+          "subType": "None",
+          "visible": 1,
+          "legs": [
+            {
+              "instrument": 0,
+              "list": 222389,
+              "optionType": null,
+              "expiryType": "Current Week",
+              "expiry": null,
+              "expiryJson": null,
+              "expiryDisplay": null,
+              "strikeType": "ATM",
+              "strike": null,
+              "strikeJson": null,
+              "strikeDisplay": null,
+              "qty": "( tt_round ( tt_math ( get_runtime ( 'strategy_id', 'run_counter', 'BuyValue' ) , tt_get_var ( tt_get_instrument ( 'NSE,INSTRUMENT,,,,,' ) , 'LTP' ) , '/' ) , '1' )  )",
+              "qtyType": "Value",
+              "qtyDisplay": "2500",
+              "qtyJson": "{\"operator\":\"and\",\"operands\":[{\"type\":\"rule\",\"value\":\"builder-basic_rule_0\",\"elements\":[{\"name\":\"Round\",\"kid\":4642,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Math Operation\",\"kid\":4036,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Get Runtime Number\",\"kid\":8984,\"params\":[{\"type\":\"value\",\"value\":\"BuyValue\"}]}},{\"type\":\"keyword\",\"keyword\":{\"name\":\"LTP\",\"kid\":6802,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Instrument Name\",\"kid\":8810,\"params\":[{\"type\":\"value\",\"value\":\"NSE,|SwingStocksList_1|,,,,,\"}]}}]}},{\"type\":\"value\",\"value\":\"/\"}]}},{\"type\":\"value\",\"value\":\"1\"}]}]}]}",
+              "qtyExprDisplay": "( Round ( Math Operation ( Get Runtime Number ( 'strategy_id', 'run_counter', 'BuyValue' ) , LTP ( Instrument Name ( 'NSE,|SwingStocksList_1|,,,,,' ) , 'LTP' ) , '/' ) , '1' )  )",
+              "limitPrice": null,
+              "limitPriceDisplay": null,
+              "limitPriceJson": null,
+              "limitPriceExprDisplay": null,
+              "buySell": "B",
+              "entryLimit": null,
+              "entryTrigger": null,
+              "sLLimit": null,
+              "sLTrigger": null,
+              "sLTriggerDisplay": null,
+              "sLTriggerJson": null,
+              "sLTriggerExprDisplay": null,
+              "targetLimit": null,
+              "targetTrigger": null,
+              "productType": "CNC",
+              "underlyingSymbol": null,
+              "isOvernightProtectionLeg": "No",
+              "updatedAt": "2025-12-10 15:07:22",
+              "createdAt": "2025-12-10 15:07:22"
+            }
+          ],
+          "extra": {
+            "name": null,
+            "variables": [
+              {
+                "variableName": "|SwingStocksList_1|_instrument",
+                "value": "( find_traded_instrument ( 'strategy_id', 'run_counter', 'Entry', 'instrument', '|SwingStocksList_1|', '1', '1', '1' )  )",
+                "display": "( Traded Instrument Name ( 'strategy_id', 'run_counter', 'Entry', 'instrument', '|SwingStocksList_1|', '1', '1', '1' )  )",
+                "json": "{\"operator\":\"and\",\"operands\":[{\"type\":\"rule\",\"value\":\"builder-basic_rule_0\",\"elements\":[{\"name\":\"Traded Instrument Name\",\"kid\":9228,\"params\":[{\"type\":\"value\",\"value\":\"Entry\"},{\"type\":\"value\",\"value\":\"instrument\"},{\"type\":\"value\",\"value\":\"|SwingStocksList_1|\"},{\"type\":\"value\",\"value\":\"1\"},{\"type\":\"value\",\"value\":\"1\"},{\"type\":\"value\",\"value\":\"1\"}]}]}]}"
+              },
+              {
+                "variableName": "|SwingStocksList_1|_avg_price",
+                "value": "( find_traded_instrument ( 'strategy_id', 'run_counter', 'Entry', 'price', '|SwingStocksList_1|', '1', '1', '1' )  )",
+                "display": "( Traded Instrument ( 'strategy_id', 'run_counter', 'Entry', 'price', '|SwingStocksList_1|', '1', '1', '1' )  )",
+                "json": "{\"operator\":\"and\",\"operands\":[{\"type\":\"rule\",\"value\":\"builder-basic_rule_0\",\"elements\":[{\"name\":\"Traded Instrument\",\"kid\":8196,\"params\":[{\"type\":\"value\",\"value\":\"Entry\"},{\"type\":\"value\",\"value\":\"price\"},{\"type\":\"value\",\"value\":\"|SwingStocksList_1|\"},{\"type\":\"value\",\"value\":\"1\"},{\"type\":\"value\",\"value\":\"1\"},{\"type\":\"value\",\"value\":\"1\"}]}]}]}"
+              },
+              {
+                "variableName": "|SwingStocksList_1|_qty",
+                "value": "( tt_round ( tt_math ( get_runtime ( 'strategy_id', 'run_counter', 'BuyValue' ) , tt_get_var ( tt_get_instrument ( 'NSE,|SwingStocksList_1|,,,,,' ) , 'LTP' ) , '/' ) , '1' )  )",
+                "display": "( Round ( Math Operation ( Get Runtime Number ( 'strategy_id', 'run_counter', 'BuyValue' ) , LTP ( Instrument Name ( 'NSE,|SwingStocksList_1|,,,,,' ) , 'LTP' ) , '/' ) , '1' )  )",
+                "json": "{\"operator\":\"and\",\"operands\":[{\"type\":\"rule\",\"value\":\"builder-basic_rule_0\",\"elements\":[{\"name\":\"Round\",\"kid\":9553,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Math Operation\",\"kid\":6299,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Get Runtime Number\",\"kid\":4039,\"params\":[{\"type\":\"value\",\"value\":\"BuyValue\"}]}},{\"type\":\"keyword\",\"keyword\":{\"name\":\"LTP\",\"kid\":6483,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Instrument Name\",\"kid\":1783,\"params\":[{\"type\":\"value\",\"value\":\"NSE,|SwingStocksList_1|,,,,,\"}]}}]}},{\"type\":\"value\",\"value\":\"/\"}]}},{\"type\":\"value\",\"value\":\"1\"}]}]}]}"
+              },
+              {
+                "variableName": "|SwingStocksList_1|_total_value",
+                "value": "( tt_round ( tt_math ( get_runtime ( 'strategy_id', 'run_counter', 'BuyValue' ) , tt_get_var ( tt_get_instrument ( 'NSE,|SwingStocksList_1|,,,,,' ) , 'LTP' ) , '/' ) , '1' ) * find_traded_instrument ( 'strategy_id', 'run_counter', 'Entry', 'price', '|SwingStocksList_1|', '1', '1', '1' )  )",
+                "display": "( Round ( Math Operation ( Get Runtime Number ( 'strategy_id', 'run_counter', 'BuyValue' ) , LTP ( Instrument Name ( 'NSE,|SwingStocksList_1|,,,,,' ) , 'LTP' ) , '/' ) , '1' ) * Traded Instrument ( 'strategy_id', 'run_counter', 'Entry', 'price', '|SwingStocksList_1|', '1', '1', '1' )  )",
+                "json": "{\"operator\":\"and\",\"operands\":[{\"type\":\"rule\",\"value\":\"builder-basic_rule_0\",\"elements\":[{\"name\":\"Round\",\"kid\":9553,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Math Operation\",\"kid\":6299,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Get Runtime Number\",\"kid\":4039,\"params\":[{\"type\":\"value\",\"value\":\"BuyValue\"}]}},{\"type\":\"keyword\",\"keyword\":{\"name\":\"LTP\",\"kid\":6483,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Instrument Name\",\"kid\":1783,\"params\":[{\"type\":\"value\",\"value\":\"NSE,|SwingStocksList_1|,,,,,\"}]}}]}},{\"type\":\"value\",\"value\":\"/\"}]}},{\"type\":\"value\",\"value\":\"1\"}]},{\"name\":\"*\",\"params\":[]},{\"name\":\"Traded Instrument\",\"kid\":7709,\"params\":[{\"type\":\"value\",\"value\":\"Entry\"},{\"type\":\"value\",\"value\":\"price\"},{\"type\":\"value\",\"value\":\"|SwingStocksList_1|\"},{\"type\":\"value\",\"value\":\"1\"},{\"type\":\"value\",\"value\":\"1\"},{\"type\":\"value\",\"value\":\"1\"}]}]}]}"
+              },
+              {
+                "variableName": "|SwingStocksList_1|_repair_count",
+                "value": "( tt_Number ( '0' )  )",
+                "display": "( Number ( '0' )  )",
+                "json": "{\"operator\":\"and\",\"operands\":[{\"type\":\"rule\",\"value\":\"builder-basic_rule_0\",\"elements\":[{\"name\":\"Number\",\"kid\":3547,\"params\":[{\"type\":\"value\",\"value\":\"0\"}]}]}]}"
+              },
+              {
+                "variableName": "|SwingStocksList_1|_exit_time",
+                "value": "( tt_Number ( '0' )  )",
+                "display": "( Number ( '0' )  )",
+                "json": "{\"operator\":\"and\",\"operands\":[{\"type\":\"rule\",\"value\":\"builder-basic_rule_0\",\"elements\":[{\"name\":\"Number\",\"kid\":3547,\"params\":[{\"type\":\"value\",\"value\":\"0\"}]}]}]}"
+              }
+            ]
+          }
+        },
+        {
+          "type": "Repair Once",
+          "conditionValue": "( tt_get_var ( get_runtime ( 'strategy_id', 'run_counter', '|SwingStocksList_1|_instrument' ) , 'LTP' ) < get_runtime ( 'strategy_id', 'run_counter', '|SwingStocksList_1|_avg_price' ) * tt_Number ( '0.95' )  )  and ( get_runtime ( 'strategy_id', 'run_counter', '|SwingStocksList_1|_repair_count' ) == tt_Number ( '0' )  )",
+          "conditionJson": "{\"operator\":\"and\",\"operands\":[{\"type\":\"rule\",\"value\":\"builder-basic_rule_0\",\"elements\":[{\"name\":\"LTP\",\"kid\":8092,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Get Runtime\",\"kid\":4731,\"params\":[{\"type\":\"value\",\"value\":\"|SwingStocksList_1|_instrument\"}]}}]},{\"name\":\"<\",\"params\":[]},{\"name\":\"Get Runtime Number\",\"kid\":7971,\"params\":[{\"type\":\"value\",\"value\":\"|SwingStocksList_1|_avg_price\"}]},{\"name\":\"*\",\"params\":[]},{\"name\":\"Number\",\"kid\":6235,\"params\":[{\"type\":\"value\",\"value\":\"0.95\"}]}]},{\"type\":\"rule\",\"value\":\"builder-basic_rule_1\",\"elements\":[{\"name\":\"Get Runtime\",\"kid\":6649,\"params\":[{\"type\":\"value\",\"value\":\"|SwingStocksList_1|_repair_count\"}]},{\"name\":\"==\",\"params\":[]},{\"name\":\"Number\",\"kid\":5453,\"params\":[{\"type\":\"value\",\"value\":\"0\"}]}]}]}",
+          "conditionDisplay": "( LTP ( Get Runtime ( 'strategy_id', 'run_counter', '|SwingStocksList_1|_instrument' ) , 'LTP' ) < Get Runtime Number ( 'strategy_id', 'run_counter', '|SwingStocksList_1|_avg_price' ) * Number ( '0.95' )  )  and ( Get Runtime ( 'strategy_id', 'run_counter', '|SwingStocksList_1|_repair_count' ) == Number ( '0' )  )",
+          "subType": "None",
+          "visible": 1,
+          "legs": [
+            {
+              "instrument": 0,
+              "list": 222389,
+              "optionType": null,
+              "expiryType": "Current Week",
+              "expiry": null,
+              "expiryJson": null,
+              "expiryDisplay": null,
+              "strikeType": "ATM",
+              "strike": null,
+              "strikeJson": null,
+              "strikeDisplay": null,
+              "qty": "( tt_round ( tt_math ( get_runtime ( 'strategy_id', 'run_counter', 'AvgValue' ) , tt_get_var ( tt_get_instrument ( 'NSE,INSTRUMENT,,,,,' ) , 'LTP' ) , '/' ) , '1' )  )",
+              "qtyType": "Value",
+              "qtyDisplay": "2500",
+              "qtyJson": "{\"operator\":\"and\",\"operands\":[{\"type\":\"rule\",\"value\":\"builder-basic_rule_0\",\"elements\":[{\"name\":\"Round\",\"kid\":4642,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Math Operation\",\"kid\":4036,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Get Runtime Number\",\"kid\":8984,\"params\":[{\"type\":\"value\",\"value\":\"AvgValue\"}]}},{\"type\":\"keyword\",\"keyword\":{\"name\":\"LTP\",\"kid\":6802,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Instrument Name\",\"kid\":8810,\"params\":[{\"type\":\"value\",\"value\":\"NSE,|SwingStocksList_1|,,,,,\"}]}}]}},{\"type\":\"value\",\"value\":\"/\"}]}},{\"type\":\"value\",\"value\":\"1\"}]}]}]}",
+              "qtyExprDisplay": "( Round ( Math Operation ( Get Runtime Number ( 'strategy_id', 'run_counter', 'AvgValue' ) , LTP ( Instrument Name ( 'NSE,|SwingStocksList_1|,,,,,' ) , 'LTP' ) , '/' ) , '1' )  )",
+              "limitPrice": null,
+              "limitPriceDisplay": null,
+              "limitPriceJson": null,
+              "limitPriceExprDisplay": null,
+              "buySell": "B",
+              "entryLimit": null,
+              "entryTrigger": null,
+              "sLLimit": null,
+              "sLTrigger": null,
+              "sLTriggerDisplay": null,
+              "sLTriggerJson": null,
+              "sLTriggerExprDisplay": null,
+              "targetLimit": null,
+              "targetTrigger": null,
+              "productType": "CNC",
+              "underlyingSymbol": null,
+              "isOvernightProtectionLeg": "No",
+              "updatedAt": "2025-12-10 15:07:22",
+              "createdAt": "2025-12-10 15:07:22"
+            }
+          ],
+          "extra": {
+            "name": null,
+            "variables": [
+              {
+                "variableName": "|SwingStocksList_1|_avg_price",
+                "value": "( ( tt_math ( find_traded_instrument ( 'strategy_id', 'run_counter', 'Repair Once', 'price', '|SwingStocksList_1|', '1', '1', '1' ) , tt_round ( tt_math ( get_runtime ( 'strategy_id', 'run_counter', 'AvgValue' ) , find_traded_instrument ( 'strategy_id', 'run_counter', 'Repair Once', 'price', '|SwingStocksList_1|', '1', '1', '1' ) , '/' ) , '1' ) , '*' ) + get_runtime ( 'strategy_id', 'run_counter', '|SwingStocksList_1|_total_value' ) ) / ( get_runtime ( 'strategy_id', 'run_counter', '|SwingStocksList_1|_qty' ) + tt_round ( tt_math ( get_runtime ( 'strategy_id', 'run_counter', 'AvgValue' ) , find_traded_instrument ( 'strategy_id', 'run_counter', 'Repair Once', 'price', '|SwingStocksList_1|', '1', '1', '1' ) , '/' ) , '1' ) )  )",
+                "display": "( ( Math Operation ( Traded Instrument ( 'strategy_id', 'run_counter', 'Repair Once', 'price', '|SwingStocksList_1|', '1', '1', '1' ) , Round ( Math Operation ( Get Runtime Number ( 'strategy_id', 'run_counter', 'AvgValue' ) , Traded Instrument ( 'strategy_id', 'run_counter', 'Repair Once', 'price', '|SwingStocksList_1|', '1', '1', '1' ) , '/' ) , '1' ) , '*' ) + Get Runtime ( 'strategy_id', 'run_counter', '|SwingStocksList_1|_total_value' ) ) / ( Get Runtime ( 'strategy_id', 'run_counter', '|SwingStocksList_1|_qty' ) + Round ( Math Operation ( Get Runtime Number ( 'strategy_id', 'run_counter', 'AvgValue' ) , Traded Instrument ( 'strategy_id', 'run_counter', 'Repair Once', 'price', '|SwingStocksList_1|', '1', '1', '1' ) , '/' ) , '1' ) )  )",
+                "json": "{\"operator\":\"and\",\"operands\":[{\"type\":\"rule\",\"value\":\"builder-basic_rule_0\",\"elements\":[{\"name\":\"(\",\"params\":[]},{\"name\":\"Math Operation\",\"kid\":2273,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Traded Instrument\",\"kid\":9440,\"params\":[{\"type\":\"value\",\"value\":\"Repair Once\"},{\"type\":\"value\",\"value\":\"price\"},{\"type\":\"value\",\"value\":\"|SwingStocksList_1|\"},{\"type\":\"value\",\"value\":\"1\"},{\"type\":\"value\",\"value\":\"1\"},{\"type\":\"value\",\"value\":\"1\"}]}},{\"type\":\"keyword\",\"keyword\":{\"name\":\"Round\",\"kid\":3934,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Math Operation\",\"kid\":3278,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Get Runtime Number\",\"kid\":7367,\"params\":[{\"type\":\"value\",\"value\":\"AvgValue\"}]}},{\"type\":\"keyword\",\"keyword\":{\"name\":\"Traded Instrument\",\"kid\":4367,\"params\":[{\"type\":\"value\",\"value\":\"Repair Once\"},{\"type\":\"value\",\"value\":\"price\"},{\"type\":\"value\",\"value\":\"|SwingStocksList_1|\"},{\"type\":\"value\",\"value\":\"1\"},{\"type\":\"value\",\"value\":\"1\"},{\"type\":\"value\",\"value\":\"1\"}]}},{\"type\":\"value\",\"value\":\"/\"}]}},{\"type\":\"value\",\"value\":\"1\"}]}},{\"type\":\"value\",\"value\":\"*\"}]},{\"name\":\"+\",\"params\":[]},{\"name\":\"Get Runtime\",\"kid\":1560,\"params\":[{\"type\":\"value\",\"value\":\"|SwingStocksList_1|_total_value\"}]},{\"name\":\")\",\"params\":[]},{\"name\":\"/\",\"params\":[]},{\"name\":\"(\",\"params\":[]},{\"name\":\"Get Runtime\",\"kid\":8474,\"params\":[{\"type\":\"value\",\"value\":\"|SwingStocksList_1|_qty\"}]},{\"name\":\"+\",\"params\":[]},{\"name\":\"Round\",\"kid\":2091,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Math Operation\",\"kid\":3631,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Get Runtime Number\",\"kid\":9698,\"params\":[{\"type\":\"value\",\"value\":\"AvgValue\"}]}},{\"type\":\"keyword\",\"keyword\":{\"name\":\"Traded Instrument\",\"kid\":3481,\"params\":[{\"type\":\"value\",\"value\":\"Repair Once\"},{\"type\":\"value\",\"value\":\"price\"},{\"type\":\"value\",\"value\":\"|SwingStocksList_1|\"},{\"type\":\"value\",\"value\":\"1\"},{\"type\":\"value\",\"value\":\"1\"},{\"type\":\"value\",\"value\":\"1\"}]}},{\"type\":\"value\",\"value\":\"/\"}]}},{\"type\":\"value\",\"value\":\"1\"}]},{\"name\":\")\",\"params\":[]}]}]}"
+              },
+              {
+                "variableName": "|SwingStocksList_1|_repair_count",
+                "value": "( get_runtime ( 'strategy_id', 'run_counter', '|SwingStocksList_1|_repair_count' ) + tt_Number ( '1' )  )",
+                "display": "( Get Runtime ( 'strategy_id', 'run_counter', '|SwingStocksList_1|_repair_count' ) + Number ( '1' )  )",
+                "json": "{\"operator\":\"and\",\"operands\":[{\"type\":\"rule\",\"value\":\"builder-basic_rule_0\",\"elements\":[{\"name\":\"Get Runtime\",\"kid\":6646,\"params\":[{\"type\":\"value\",\"value\":\"|SwingStocksList_1|_repair_count\"}]},{\"name\":\"+\",\"params\":[]},{\"name\":\"Number\",\"kid\":3904,\"params\":[{\"type\":\"value\",\"value\":\"1\"}]}]}]}"
+              },
+              {
+                "variableName": "|SwingStocksList_1|_qty",
+                "value": "( tt_round ( tt_math ( get_runtime ( 'strategy_id', 'run_counter', 'AvgValue' ) , find_traded_instrument ( 'strategy_id', 'run_counter', 'Repair Once', 'price', '|SwingStocksList_1|', '1', '1', '1' ) , '/' ) , '1' ) + get_runtime ( 'strategy_id', 'run_counter', '|SwingStocksList_1|_qty' )  )",
+                "display": "( Round ( Math Operation ( Get Runtime Number ( 'strategy_id', 'run_counter', 'AvgValue' ) , Traded Instrument ( 'strategy_id', 'run_counter', 'Repair Once', 'price', '|SwingStocksList_1|', '1', '1', '1' ) , '/' ) , '1' ) + Get Runtime ( 'strategy_id', 'run_counter', '|SwingStocksList_1|_qty' )  )",
+                "json": "{\"operator\":\"and\",\"operands\":[{\"type\":\"rule\",\"value\":\"builder-basic_rule_0\",\"elements\":[{\"name\":\"Round\",\"kid\":5398,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Math Operation\",\"kid\":8535,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Get Runtime Number\",\"kid\":7938,\"params\":[{\"type\":\"value\",\"value\":\"AvgValue\"}]}},{\"type\":\"keyword\",\"keyword\":{\"name\":\"Traded Instrument\",\"kid\":3823,\"params\":[{\"type\":\"value\",\"value\":\"Repair Once\"},{\"type\":\"value\",\"value\":\"price\"},{\"type\":\"value\",\"value\":\"|SwingStocksList_1|\"},{\"type\":\"value\",\"value\":\"1\"},{\"type\":\"value\",\"value\":\"1\"},{\"type\":\"value\",\"value\":\"1\"}]}},{\"type\":\"value\",\"value\":\"/\"}]}},{\"type\":\"value\",\"value\":\"1\"}]},{\"name\":\"+\",\"params\":[]},{\"name\":\"Get Runtime\",\"kid\":8656,\"params\":[{\"type\":\"value\",\"value\":\"|SwingStocksList_1|_qty\"}]}]}]}"
+              },
+              {
+                "variableName": "|SwingStocksList_1|_total_value",
+                "value": "( ( tt_round ( tt_math ( get_runtime ( 'strategy_id', 'run_counter', 'AvgValue' ) , find_traded_instrument ( 'strategy_id', 'run_counter', 'Repair Once', 'price', '|SwingStocksList_1|', '1', '1', '1' ) , '/' ) , '1' ) * find_traded_instrument ( 'strategy_id', 'run_counter', 'Repair Once', 'price', '|SwingStocksList_1|', '1', '1', '1' ) ) + get_runtime ( 'strategy_id', 'run_counter', '|SwingStocksList_1|_total_value' )  )",
+                "display": "( ( Round ( Math Operation ( Get Runtime Number ( 'strategy_id', 'run_counter', 'AvgValue' ) , Traded Instrument ( 'strategy_id', 'run_counter', 'Repair Once', 'price', '|SwingStocksList_1|', '1', '1', '1' ) , '/' ) , '1' ) * Traded Instrument ( 'strategy_id', 'run_counter', 'Repair Once', 'price', '|SwingStocksList_1|', '1', '1', '1' ) ) + Get Runtime ( 'strategy_id', 'run_counter', '|SwingStocksList_1|_total_value' )  )",
+                "json": "{\"operator\":\"and\",\"operands\":[{\"type\":\"rule\",\"value\":\"builder-basic_rule_0\",\"elements\":[{\"name\":\"(\",\"params\":[]},{\"name\":\"Round\",\"kid\":5398,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Math Operation\",\"kid\":8535,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Get Runtime Number\",\"kid\":7938,\"params\":[{\"type\":\"value\",\"value\":\"AvgValue\"}]}},{\"type\":\"keyword\",\"keyword\":{\"name\":\"Traded Instrument\",\"kid\":2734,\"params\":[{\"type\":\"value\",\"value\":\"Repair Once\"},{\"type\":\"value\",\"value\":\"price\"},{\"type\":\"value\",\"value\":\"|SwingStocksList_1|\"},{\"type\":\"value\",\"value\":\"1\"},{\"type\":\"value\",\"value\":\"1\"},{\"type\":\"value\",\"value\":\"1\"}]}},{\"type\":\"value\",\"value\":\"/\"}]}},{\"type\":\"value\",\"value\":\"1\"}]},{\"name\":\"*\",\"params\":[]},{\"name\":\"Traded Instrument\",\"kid\":2292,\"params\":[{\"type\":\"value\",\"value\":\"Repair Once\"},{\"type\":\"value\",\"value\":\"price\"},{\"type\":\"value\",\"value\":\"|SwingStocksList_1|\"},{\"type\":\"value\",\"value\":\"1\"},{\"type\":\"value\",\"value\":\"1\"},{\"type\":\"value\",\"value\":\"1\"}]},{\"name\":\")\",\"params\":[]},{\"name\":\"+\",\"params\":[]},{\"name\":\"Get Runtime\",\"kid\":2905,\"params\":[{\"type\":\"value\",\"value\":\"|SwingStocksList_1|_total_value\"}]}]}]}"
+              }
+            ]
+          }
+        },
+        {
+          "type": "Repair Once",
+          "conditionValue": "( tt_get_var ( get_runtime ( 'strategy_id', 'run_counter', '|SwingStocksList_1|_instrument' ) , 'LTP' ) < get_runtime ( 'strategy_id', 'run_counter', '|SwingStocksList_1|_avg_price' ) * tt_Number ( '0.95' )  )  and ( get_runtime ( 'strategy_id', 'run_counter', '|SwingStocksList_1|_repair_count' ) == tt_Number ( '1' )  )",
+          "conditionJson": "{\"operator\":\"and\",\"operands\":[{\"type\":\"rule\",\"value\":\"builder-basic_rule_0\",\"elements\":[{\"name\":\"LTP\",\"kid\":8092,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Get Runtime\",\"kid\":4731,\"params\":[{\"type\":\"value\",\"value\":\"|SwingStocksList_1|_instrument\"}]}}]},{\"name\":\"<\",\"params\":[]},{\"name\":\"Get Runtime Number\",\"kid\":7971,\"params\":[{\"type\":\"value\",\"value\":\"|SwingStocksList_1|_avg_price\"}]},{\"name\":\"*\",\"params\":[]},{\"name\":\"Number\",\"kid\":6235,\"params\":[{\"type\":\"value\",\"value\":\"0.95\"}]}]},{\"type\":\"rule\",\"value\":\"builder-basic_rule_1\",\"elements\":[{\"name\":\"Get Runtime\",\"kid\":6649,\"params\":[{\"type\":\"value\",\"value\":\"|SwingStocksList_1|_repair_count\"}]},{\"name\":\"==\",\"params\":[]},{\"name\":\"Number\",\"kid\":5453,\"params\":[{\"type\":\"value\",\"value\":\"1\"}]}]}]}",
+          "conditionDisplay": "( LTP ( Get Runtime ( 'strategy_id', 'run_counter', '|SwingStocksList_1|_instrument' ) , 'LTP' ) < Get Runtime Number ( 'strategy_id', 'run_counter', '|SwingStocksList_1|_avg_price' ) * Number ( '0.95' )  )  and ( Get Runtime ( 'strategy_id', 'run_counter', '|SwingStocksList_1|_repair_count' ) == Number ( '1' )  )",
+          "subType": "None",
+          "visible": 1,
+          "legs": [
+            {
+              "instrument": 0,
+              "list": 222389,
+              "optionType": null,
+              "expiryType": "Current Week",
+              "expiry": null,
+              "expiryJson": null,
+              "expiryDisplay": null,
+              "strikeType": "ATM",
+              "strike": null,
+              "strikeJson": null,
+              "strikeDisplay": null,
+              "qty": "( tt_round ( tt_math ( get_runtime ( 'strategy_id', 'run_counter', 'AvgValue' ) , tt_get_var ( tt_get_instrument ( 'NSE,INSTRUMENT,,,,,' ) , 'LTP' ) , '/' ) , '1' )  )",
+              "qtyType": "Value",
+              "qtyDisplay": "2500",
+              "qtyJson": "{\"operator\":\"and\",\"operands\":[{\"type\":\"rule\",\"value\":\"builder-basic_rule_0\",\"elements\":[{\"name\":\"Round\",\"kid\":4642,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Math Operation\",\"kid\":4036,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Get Runtime Number\",\"kid\":8984,\"params\":[{\"type\":\"value\",\"value\":\"AvgValue\"}]}},{\"type\":\"keyword\",\"keyword\":{\"name\":\"LTP\",\"kid\":6802,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Instrument Name\",\"kid\":8810,\"params\":[{\"type\":\"value\",\"value\":\"NSE,|SwingStocksList_1|,,,,,\"}]}}]}},{\"type\":\"value\",\"value\":\"/\"}]}},{\"type\":\"value\",\"value\":\"1\"}]}]}]}",
+              "qtyExprDisplay": "( Round ( Math Operation ( Get Runtime Number ( 'strategy_id', 'run_counter', 'AvgValue' ) , LTP ( Instrument Name ( 'NSE,|SwingStocksList_1|,,,,,' ) , 'LTP' ) , '/' ) , '1' )  )",
+              "limitPrice": null,
+              "limitPriceDisplay": null,
+              "limitPriceJson": null,
+              "limitPriceExprDisplay": null,
+              "buySell": "B",
+              "entryLimit": null,
+              "entryTrigger": null,
+              "sLLimit": null,
+              "sLTrigger": null,
+              "sLTriggerDisplay": null,
+              "sLTriggerJson": null,
+              "sLTriggerExprDisplay": null,
+              "targetLimit": null,
+              "targetTrigger": null,
+              "productType": "CNC",
+              "underlyingSymbol": null,
+              "isOvernightProtectionLeg": "No",
+              "updatedAt": "2025-12-10 15:07:22",
+              "createdAt": "2025-12-10 15:07:22"
+            }
+          ],
+          "extra": {
+            "name": null,
+            "variables": [
+              {
+                "variableName": "|SwingStocksList_1|_avg_price",
+                "value": "( ( get_runtime ( 'strategy_id', 'run_counter', '|SwingStocksList_1|_total_value' ) + tt_math ( find_traded_instrument ( 'strategy_id', 'run_counter', 'Repair Once', 'price', '|SwingStocksList_1|', '1', '2', '1' ) , tt_round ( tt_math ( get_runtime ( 'strategy_id', 'run_counter', 'AvgValue' ) , find_traded_instrument ( 'strategy_id', 'run_counter', 'Repair Once', 'price', '|SwingStocksList_1|', '1', '2', '1' ) , '/' ) , '1' ) , '*' ) ) / ( get_runtime ( 'strategy_id', 'run_counter', '|SwingStocksList_1|_qty' ) + tt_round ( tt_math ( get_runtime ( 'strategy_id', 'run_counter', 'AvgValue' ) , find_traded_instrument ( 'strategy_id', 'run_counter', 'Repair Once', 'price', '|SwingStocksList_1|', '1', '2', '1' ) , '/' ) , '1' ) )  )",
+                "display": "( ( Get Runtime ( 'strategy_id', 'run_counter', '|SwingStocksList_1|_total_value' ) + Math Operation ( Traded Instrument ( 'strategy_id', 'run_counter', 'Repair Once', 'price', '|SwingStocksList_1|', '1', '2', '1' ) , Round ( Math Operation ( Get Runtime Number ( 'strategy_id', 'run_counter', 'AvgValue' ) , Traded Instrument ( 'strategy_id', 'run_counter', 'Repair Once', 'price', '|SwingStocksList_1|', '1', '2', '1' ) , '/' ) , '1' ) , '*' ) ) / ( Get Runtime ( 'strategy_id', 'run_counter', '|SwingStocksList_1|_qty' ) + Round ( Math Operation ( Get Runtime Number ( 'strategy_id', 'run_counter', 'AvgValue' ) , Traded Instrument ( 'strategy_id', 'run_counter', 'Repair Once', 'price', '|SwingStocksList_1|', '1', '2', '1' ) , '/' ) , '1' ) )  )",
+                "json": "{\"operator\":\"and\",\"operands\":[{\"type\":\"rule\",\"value\":\"builder-basic_rule_0\",\"elements\":[{\"name\":\"(\",\"params\":[]},{\"name\":\"Get Runtime\",\"kid\":1560,\"params\":[{\"type\":\"value\",\"value\":\"|SwingStocksList_1|_total_value\"}]},{\"name\":\"+\",\"params\":[]},{\"name\":\"Math Operation\",\"kid\":6755,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Traded Instrument\",\"kid\":6464,\"params\":[{\"type\":\"value\",\"value\":\"Repair Once\"},{\"type\":\"value\",\"value\":\"price\"},{\"type\":\"value\",\"value\":\"|SwingStocksList_1|\"},{\"type\":\"value\",\"value\":\"1\"},{\"type\":\"value\",\"value\":\"2\"},{\"type\":\"value\",\"value\":\"1\"}]}},{\"type\":\"keyword\",\"keyword\":{\"name\":\"Round\",\"kid\":1616,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Math Operation\",\"kid\":8771,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Get Runtime Number\",\"kid\":6570,\"params\":[{\"type\":\"value\",\"value\":\"AvgValue\"}]}},{\"type\":\"keyword\",\"keyword\":{\"name\":\"Traded Instrument\",\"kid\":6048,\"params\":[{\"type\":\"value\",\"value\":\"Repair Once\"},{\"type\":\"value\",\"value\":\"price\"},{\"type\":\"value\",\"value\":\"|SwingStocksList_1|\"},{\"type\":\"value\",\"value\":\"1\"},{\"type\":\"value\",\"value\":\"2\"},{\"type\":\"value\",\"value\":\"1\"}]}},{\"type\":\"value\",\"value\":\"/\"}]}},{\"type\":\"value\",\"value\":\"1\"}]}},{\"type\":\"value\",\"value\":\"*\"}]},{\"name\":\")\",\"params\":[]},{\"name\":\"/\",\"params\":[]},{\"name\":\"(\",\"params\":[]},{\"name\":\"Get Runtime\",\"kid\":8474,\"params\":[{\"type\":\"value\",\"value\":\"|SwingStocksList_1|_qty\"}]},{\"name\":\"+\",\"params\":[]},{\"name\":\"Round\",\"kid\":2091,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Math Operation\",\"kid\":3631,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Get Runtime Number\",\"kid\":9698,\"params\":[{\"type\":\"value\",\"value\":\"AvgValue\"}]}},{\"type\":\"keyword\",\"keyword\":{\"name\":\"Traded Instrument\",\"kid\":7667,\"params\":[{\"type\":\"value\",\"value\":\"Repair Once\"},{\"type\":\"value\",\"value\":\"price\"},{\"type\":\"value\",\"value\":\"|SwingStocksList_1|\"},{\"type\":\"value\",\"value\":\"1\"},{\"type\":\"value\",\"value\":\"2\"},{\"type\":\"value\",\"value\":\"1\"}]}},{\"type\":\"value\",\"value\":\"/\"}]}},{\"type\":\"value\",\"value\":\"1\"}]},{\"name\":\")\",\"params\":[]}]}]}"
+              },
+              {
+                "variableName": "|SwingStocksList_1|_repair_count",
+                "value": "( get_runtime ( 'strategy_id', 'run_counter', '|SwingStocksList_1|_repair_count' ) + tt_Number ( '1' )  )",
+                "display": "( Get Runtime ( 'strategy_id', 'run_counter', '|SwingStocksList_1|_repair_count' ) + Number ( '1' )  )",
+                "json": "{\"operator\":\"and\",\"operands\":[{\"type\":\"rule\",\"value\":\"builder-basic_rule_0\",\"elements\":[{\"name\":\"Get Runtime\",\"kid\":6646,\"params\":[{\"type\":\"value\",\"value\":\"|SwingStocksList_1|_repair_count\"}]},{\"name\":\"+\",\"params\":[]},{\"name\":\"Number\",\"kid\":3904,\"params\":[{\"type\":\"value\",\"value\":\"1\"}]}]}]}"
+              }
+            ]
+          }
+        },
+        {
+          "type": "Exit",
+          "conditionValue": "( tt_get_var ( get_runtime ( 'strategy_id', 'run_counter', '|SwingStocksList_1|_instrument' ) , 'LTP' ) > ( get_runtime ( 'strategy_id', 'run_counter', '|SwingStocksList_1|_avg_price' ) * tt_Number ( '1.05' ) )  )",
+          "conditionJson": "{\"operator\":\"and\",\"operands\":[{\"type\":\"rule\",\"value\":\"builder-basic_rule_0\",\"elements\":[{\"name\":\"LTP\",\"kid\":3829,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Get Runtime\",\"kid\":1799,\"params\":[{\"type\":\"value\",\"value\":\"|SwingStocksList_1|_instrument\"}]}}]},{\"name\":\">\",\"params\":[]},{\"name\":\"(\",\"params\":[]},{\"name\":\"Get Runtime\",\"kid\":2630,\"params\":[{\"type\":\"value\",\"value\":\"|SwingStocksList_1|_avg_price\"}]},{\"name\":\"*\",\"params\":[]},{\"name\":\"Number\",\"kid\":4171,\"params\":[{\"type\":\"value\",\"value\":\"1.05\"}]},{\"name\":\")\",\"params\":[]}]}]}",
+          "conditionDisplay": "( LTP ( Get Runtime ( 'strategy_id', 'run_counter', '|SwingStocksList_1|_instrument' ) , 'LTP' ) > ( Get Runtime ( 'strategy_id', 'run_counter', '|SwingStocksList_1|_avg_price' ) * Number ( '1.05' ) )  )",
+          "subType": "None",
+          "visible": 1,
+          "legs": [],
+          "extra": {
+            "name": null,
+            "variables": [
+              {
+                "variableName": "|SwingStocksList_1|_avg_price",
+                "value": "( tt_Number ( '0' )  )",
+                "display": "( Number ( '0' )  )",
+                "json": "{\"operator\":\"and\",\"operands\":[{\"type\":\"rule\",\"value\":\"builder-basic_rule_0\",\"elements\":[{\"name\":\"Number\",\"kid\":8512,\"params\":[{\"type\":\"value\",\"value\":\"0\"}]}]}]}"
+              },
+              {
+                "variableName": "|SwingStocksList_1|_exit_time",
+                "value": "( tt_Time ( 'NSE' )  )",
+                "display": "( Time ( 'NSE' )  )",
+                "json": "{\"operator\":\"and\",\"operands\":[{\"type\":\"rule\",\"value\":\"builder-basic_rule_0\",\"elements\":[{\"name\":\"Time\",\"kid\":5688,\"params\":[{\"type\":\"value\",\"value\":\"NSE\"}]}]}]}"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "list": 0,
+      "name": null,
+      "conditions": [
+        {
+          "type": "Entry",
+          "conditionValue": "( tt_Number ( '0' )  )",
+          "conditionJson": "{\"operator\":\"and\",\"operands\":[{\"type\":\"rule\",\"value\":\"builder-basic_rule_0\",\"elements\":[{\"name\":\"Number\",\"kid\":5707,\"params\":[{\"type\":\"value\",\"value\":\"0\"}]}]}]}",
+          "conditionDisplay": "( Number ( '0' )  )",
+          "subType": "None",
+          "visible": 1,
+          "legs": [],
+          "extra": {
+            "name": null,
+            "variables": []
+          }
+        },
+        {
+          "type": "Exit",
+          "conditionValue": "( tt_Number ( '0' )  )",
+          "conditionJson": "{\"operator\":\"and\",\"operands\":[{\"type\":\"rule\",\"value\":\"builder-basic_rule_0\",\"elements\":[{\"name\":\"Number\",\"kid\":5707,\"params\":[{\"type\":\"value\",\"value\":\"0\"}]}]}]}",
+          "conditionDisplay": "( Number ( '0' )  )",
+          "subType": "None",
+          "visible": 1,
+          "legs": [],
+          "extra": {
+            "name": null,
+            "variables": []
+          }
+        }
+      ]
+    },
+    {
+      "name": null,
+      "conditions": [
+        {
+          "type": "Repair Once",
+          "conditionValue": null,
+          "conditionJson": null,
+          "conditionDisplay": null,
+          "subType": "Overnight Protection",
+          "visible": 0,
+          "legs": [],
+          "extra": {
+            "name": null,
+            "variables": []
+          }
+        },
+        {
+          "type": "Universal Exit",
+          "conditionValue": null,
+          "conditionJson": null,
+          "conditionDisplay": null,
+          "subType": "None",
+          "visible": 1,
+          "legs": [],
+          "extra": {
+            "name": null,
+            "variables": []
+          }
+        }
+      ]
+    }
+  ],
+  "currency": "INR",
+  "priceExecution": "Market Price",
+  "tranchSize": 100,
+  "tslToCostAtProfit": 0,
+  "tslProfitIncrease": 0,
+  "tslSlIncrease": 0,
+  "runFrequency": "Only Once",
+  "firstTradeAfterOpen": 1,
+  "lastTradeBeforeClose": 60,
+  "rolloverExpiryPeriod": "Dont Rollover",
+  "capitalRequired": 100000,
+  "priceRevisionAttempts": 1,
+  "tranchWaitSecs": 1,
+  "exitShortsFirst": 0,
+  "priceRevisionTimeout": 0,
+  "reactivateEvery": 0,
+  "finalAction": "MARKET",
+  "exitAtMarket": 0,
+  "runEvery": 1,
+  "rolloverExpiryTime": "1500",
+  "priceTicksMultiple": "1",
+  "pythonCode": null,
+  "isPublic": 0,
+  "minMultiple": 1,
+  "maxMultiple": 100,
+  "freePeriod": null,
+  "fixedFee": "0.00",
+  "fixedFeePeriod": "1",
+  "variableFee": "0.00",
+  "hurdleRate": 0,
+  "recreatePositionsInNewFollowers": "No",
+  "allowDuplication": 0,
+  "confirmationPerSubscriber": 0,
+  "hideSubscribers": "No",
+  "strategyPublicLinkAccess": "Yes",
+  "strategyPublicLink": null,
+  "displayPositionsToNonSubscribers": 0,
+  "highWatermark": "Yes",
+  "showLiveAutoDeployment": 0,
+  "feeShare": null,
+  "isApproved": 0,
+  "feeFrequency": "Month",
+  "backtestLinkSubscribers": null,
+  "backtestLinkNonsubscribers": null
+}

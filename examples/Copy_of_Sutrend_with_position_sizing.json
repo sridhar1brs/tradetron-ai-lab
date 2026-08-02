@@ -1,0 +1,341 @@
+{
+  "_format": "tt-strategy/v2",
+  "_readme": {
+    "about": "Tradetron strategy export. Edit and re-import via the ASB Import button.",
+    "logic": "To change a condition's logic, edit its \"conditionJson\" (the AST). The \"conditionValue\"/\"conditionDisplay\" text is regenerated from it on import.",
+    "legs": "For a leg field that has a \"*Json\" (e.g. \"strikeJson\"), edit the JSON — its text form is regenerated on import. Fields with no \"*Json\" (e.g. \"qty\") are plain text: edit them directly.",
+    "structure": "Add/remove/duplicate legs, conditions or sets by editing the arrays.",
+    "do_not": "Do not add \"*_id\" foreign keys back. Lists referenced by id must be ones you own."
+  },
+  "name": "Copy of Sutrend with position sizing",
+  "description": null,
+  "tags": [],
+  "variables": [],
+  "sets": [
+    {
+      "list": 50,
+      "name": null,
+      "conditions": [
+        {
+          "type": "Entry",
+          "conditionValue": "( tt_get_element ( tt_CLOSE ( tt_get_data ( tt_get_future_instrument ( '|All Futures NFO|' ) , '15m', 'All' )  ) , '-1' ) > tt_get_element ( tt_SUPERTREND ( tt_get_data ( tt_get_future_instrument ( '|All Futures NFO|' ) , '15m', 'All' ) , '10', '3' ) , '-1' )  )  and ( tt_get_element ( tt_CLOSE ( tt_get_data ( tt_get_future_instrument ( '|All Futures NFO|' ) , '15m', 'All' )  ) , '-2' ) < tt_get_element ( tt_SUPERTREND ( tt_get_data ( tt_get_future_instrument ( '|All Futures NFO|' ) , '15m', 'All' ) , '10', '3' ) , '-2' )  )",
+          "conditionJson": "{\"operator\":\"and\",\"operands\":[{\"type\":\"rule\",\"value\":\"builder-basic_rule_0\",\"elements\":[{\"name\":\"Position\",\"kid\":2602,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"CLOSE\",\"kid\":8014,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Symbol\",\"kid\":3918,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Futures\",\"kid\":3738,\"params\":[{\"type\":\"value\",\"value\":\"|All Futures NFO|\"}]}},{\"type\":\"value\",\"value\":\"15m\"},{\"type\":\"value\",\"value\":\"All\"}]}}]}},{\"type\":\"value\",\"value\":\"-1\"}]},{\"name\":\">\",\"params\":[]},{\"name\":\"Position\",\"kid\":9954,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"SUPERTREND\",\"kid\":2213,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Symbol\",\"kid\":8027,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Futures\",\"kid\":2875,\"params\":[{\"type\":\"value\",\"value\":\"|All Futures NFO|\"}]}},{\"type\":\"value\",\"value\":\"15m\"},{\"type\":\"value\",\"value\":\"All\"}]}},{\"type\":\"value\",\"value\":\"10\"},{\"type\":\"value\",\"value\":\"3\"}]}},{\"type\":\"value\",\"value\":\"-1\"}]}]},{\"type\":\"rule\",\"value\":\"builder-basic_rule_1\",\"elements\":[{\"name\":\"Position\",\"kid\":2602,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"CLOSE\",\"kid\":8014,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Symbol\",\"kid\":3918,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Futures\",\"kid\":3738,\"params\":[{\"type\":\"value\",\"value\":\"|All Futures NFO|\"}]}},{\"type\":\"value\",\"value\":\"15m\"},{\"type\":\"value\",\"value\":\"All\"}]}}]}},{\"type\":\"value\",\"value\":\"-2\"}]},{\"name\":\"<\",\"params\":[]},{\"name\":\"Position\",\"kid\":9954,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"SUPERTREND\",\"kid\":2213,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Symbol\",\"kid\":8027,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Futures\",\"kid\":2875,\"params\":[{\"type\":\"value\",\"value\":\"|All Futures NFO|\"}]}},{\"type\":\"value\",\"value\":\"15m\"},{\"type\":\"value\",\"value\":\"All\"}]}},{\"type\":\"value\",\"value\":\"10\"},{\"type\":\"value\",\"value\":\"3\"}]}},{\"type\":\"value\",\"value\":\"-2\"}]}]}]}",
+          "conditionDisplay": "( Position ( CLOSE ( Symbol ( Futures ( '|All Futures NFO|' ) , '15m', 'All' )  ) , '-1' ) > Position ( SUPERTREND ( Symbol ( Futures ( '|All Futures NFO|' ) , '15m', 'All' ) , '10', '3' ) , '-1' )  )  and ( Position ( CLOSE ( Symbol ( Futures ( '|All Futures NFO|' ) , '15m', 'All' )  ) , '-2' ) < Position ( SUPERTREND ( Symbol ( Futures ( '|All Futures NFO|' ) , '15m', 'All' ) , '10', '3' ) , '-2' )  )",
+          "subType": "None",
+          "visible": 1,
+          "legs": [
+            {
+              "instrument": 0,
+              "list": 50,
+              "optionType": null,
+              "expiry": "tt_curr_monthexpiry('INSTRUMENT')",
+              "expiryType": "Current Month",
+              "expiryJson": null,
+              "expiryDisplay": null,
+              "strikeType": "ATM",
+              "strike": null,
+              "strikeJson": null,
+              "strikeDisplay": null,
+              "qty": "tt_lots(2,'INSTRUMENT','F')",
+              "qtyType": "Lots",
+              "qtyDisplay": "2",
+              "qtyJson": null,
+              "qtyExprDisplay": null,
+              "buySell": "B",
+              "totalValue": null,
+              "limitPrice": null,
+              "limitPriceJson": null,
+              "limitPriceDisplay": null,
+              "limitPriceExprDisplay": null,
+              "entryTrigger": null,
+              "entryLimit": null,
+              "sLTrigger": null,
+              "sLTriggerJson": null,
+              "sLTriggerDisplay": null,
+              "sLTriggerExprDisplay": null,
+              "sLLimit": null,
+              "targetTrigger": null,
+              "targetLimit": null,
+              "isOvernightProtectionLeg": "No",
+              "productType": "NRML",
+              "underlyingSymbol": null,
+              "tmp": 0,
+              "updatedAt": "2026-08-01 14:14:40",
+              "createdAt": "2026-08-01 14:14:40"
+            }
+          ],
+          "extra": {
+            "name": null,
+            "variables": []
+          }
+        },
+        {
+          "type": "Repair Once",
+          "conditionValue": "( tt_get_var ( tt_get_future_instrument ( '|All Futures NFO|' ) , 'LTP' ) > tt_get_runtime ( 'strategy_id', '|All Futures NFO|', 'EntryPrice' ) * tt_Number ( '1.03' )  )",
+          "conditionJson": "{\"operator\":\"and\",\"operands\":[{\"type\":\"rule\",\"value\":\"builder-basic_rule_0\",\"elements\":[{\"name\":\"LTP\",\"kid\":5946,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Futures\",\"kid\":1920,\"params\":[{\"type\":\"value\",\"value\":\"|All Futures NFO|\"}]}}]},{\"name\":\">\",\"params\":[]},{\"name\":\"EntryPrice\",\"kid\":2029,\"params\":[{\"type\":\"value\",\"value\":\"|All Futures NFO|\"}]},{\"name\":\"*\",\"params\":[]},{\"name\":\"Number\",\"kid\":2495,\"params\":[{\"type\":\"value\",\"value\":\"1.03\"}]}]}]}",
+          "conditionDisplay": "( LTP ( Futures ( '|All Futures NFO|' ) , 'LTP' ) > EntryPrice ( 'strategy_id', '|All Futures NFO|', 'EntryPrice' ) * Number ( '1.03' )  )",
+          "subType": "None",
+          "visible": 1,
+          "legs": [
+            {
+              "instrument": 0,
+              "list": 50,
+              "optionType": null,
+              "expiry": "tt_curr_monthexpiry('INSTRUMENT')",
+              "expiryType": "Current Month",
+              "expiryJson": null,
+              "expiryDisplay": null,
+              "strikeType": "ATM",
+              "strike": null,
+              "strikeJson": null,
+              "strikeDisplay": null,
+              "qty": "tt_lots(1,'INSTRUMENT','F')",
+              "qtyType": "Lots",
+              "qtyDisplay": "1",
+              "qtyJson": null,
+              "qtyExprDisplay": null,
+              "buySell": "S",
+              "totalValue": null,
+              "limitPrice": null,
+              "limitPriceJson": null,
+              "limitPriceDisplay": null,
+              "limitPriceExprDisplay": null,
+              "entryTrigger": null,
+              "entryLimit": null,
+              "sLTrigger": null,
+              "sLTriggerJson": null,
+              "sLTriggerDisplay": null,
+              "sLTriggerExprDisplay": null,
+              "sLLimit": null,
+              "targetTrigger": null,
+              "targetLimit": null,
+              "isOvernightProtectionLeg": "No",
+              "productType": "NRML",
+              "underlyingSymbol": null,
+              "tmp": 0,
+              "updatedAt": "2026-08-01 14:14:40",
+              "createdAt": "2026-08-01 14:14:40"
+            }
+          ],
+          "extra": {
+            "name": null,
+            "variables": []
+          }
+        },
+        {
+          "type": "Exit",
+          "conditionValue": "( tt_get_element ( tt_CLOSE ( tt_get_data ( tt_get_future_instrument ( '|All Futures NFO|' ) , '15m', 'All' )  ) , '-1' ) < tt_get_element ( tt_SUPERTREND ( tt_get_data ( tt_get_future_instrument ( '|All Futures NFO|' ) , '15m', 'All' ) , '10', '3' ) , '-1' )  )  and ( tt_get_element ( tt_CLOSE ( tt_get_data ( tt_get_future_instrument ( '|All Futures NFO|' ) , '15m', 'All' )  ) , '-2' ) > tt_get_element ( tt_SUPERTREND ( tt_get_data ( tt_get_future_instrument ( '|All Futures NFO|' ) , '15m', 'All' ) , '10', '3' ) , '-2' )  )",
+          "conditionJson": "{\"operator\":\"and\",\"operands\":[{\"type\":\"rule\",\"value\":\"builder-basic_rule_0\",\"elements\":[{\"name\":\"Position\",\"kid\":2602,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"CLOSE\",\"kid\":8014,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Symbol\",\"kid\":3918,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Futures\",\"kid\":3738,\"params\":[{\"type\":\"value\",\"value\":\"|All Futures NFO|\"}]}},{\"type\":\"value\",\"value\":\"15m\"},{\"type\":\"value\",\"value\":\"All\"}]}}]}},{\"type\":\"value\",\"value\":\"-1\"}]},{\"name\":\"<\",\"params\":[]},{\"name\":\"Position\",\"kid\":9954,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"SUPERTREND\",\"kid\":2213,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Symbol\",\"kid\":8027,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Futures\",\"kid\":2875,\"params\":[{\"type\":\"value\",\"value\":\"|All Futures NFO|\"}]}},{\"type\":\"value\",\"value\":\"15m\"},{\"type\":\"value\",\"value\":\"All\"}]}},{\"type\":\"value\",\"value\":\"10\"},{\"type\":\"value\",\"value\":\"3\"}]}},{\"type\":\"value\",\"value\":\"-1\"}]}]},{\"type\":\"rule\",\"value\":\"builder-basic_rule_1\",\"elements\":[{\"name\":\"Position\",\"kid\":2602,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"CLOSE\",\"kid\":8014,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Symbol\",\"kid\":3918,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Futures\",\"kid\":3738,\"params\":[{\"type\":\"value\",\"value\":\"|All Futures NFO|\"}]}},{\"type\":\"value\",\"value\":\"15m\"},{\"type\":\"value\",\"value\":\"All\"}]}}]}},{\"type\":\"value\",\"value\":\"-2\"}]},{\"name\":\">\",\"params\":[]},{\"name\":\"Position\",\"kid\":9954,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"SUPERTREND\",\"kid\":2213,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Symbol\",\"kid\":8027,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Futures\",\"kid\":2875,\"params\":[{\"type\":\"value\",\"value\":\"|All Futures NFO|\"}]}},{\"type\":\"value\",\"value\":\"15m\"},{\"type\":\"value\",\"value\":\"All\"}]}},{\"type\":\"value\",\"value\":\"10\"},{\"type\":\"value\",\"value\":\"3\"}]}},{\"type\":\"value\",\"value\":\"-2\"}]}]}]}",
+          "conditionDisplay": "( Position ( CLOSE ( Symbol ( Futures ( '|All Futures NFO|' ) , '15m', 'All' )  ) , '-1' ) < Position ( SUPERTREND ( Symbol ( Futures ( '|All Futures NFO|' ) , '15m', 'All' ) , '10', '3' ) , '-1' )  )  and ( Position ( CLOSE ( Symbol ( Futures ( '|All Futures NFO|' ) , '15m', 'All' )  ) , '-2' ) > Position ( SUPERTREND ( Symbol ( Futures ( '|All Futures NFO|' ) , '15m', 'All' ) , '10', '3' ) , '-2' )  )",
+          "subType": "None",
+          "visible": 1,
+          "legs": [],
+          "extra": {
+            "name": null,
+            "variables": []
+          }
+        }
+      ]
+    },
+    {
+      "list": 50,
+      "name": null,
+      "conditions": [
+        {
+          "type": "Entry",
+          "conditionValue": "( tt_get_element ( tt_cross ( tt_SUPERTREND ( tt_get_data ( tt_get_future_instrument ( '|All Futures NFO|' ) , '15m', 'All' ) , '10', '3' ) , tt_CLOSE ( tt_get_data ( tt_get_future_instrument ( '|All Futures NFO|' ) , '15m', 'All' )  )  ) , '-1' )  )",
+          "conditionJson": "{\"operator\":\"and\",\"operands\":[{\"type\":\"rule\",\"value\":\"builder-basic_rule_0\",\"elements\":[{\"name\":\"Position\",\"kid\":1227,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Cross\",\"kid\":1894,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"SUPERTREND\",\"kid\":8749,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Symbol\",\"kid\":7376,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Futures\",\"kid\":1545,\"params\":[{\"type\":\"value\",\"value\":\"|All Futures NFO|\"}]}},{\"type\":\"value\",\"value\":\"15m\"},{\"type\":\"value\",\"value\":\"All\"}]}},{\"type\":\"value\",\"value\":\"10\"},{\"type\":\"value\",\"value\":\"3\"}]}},{\"type\":\"keyword\",\"keyword\":{\"name\":\"CLOSE\",\"kid\":9488,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Symbol\",\"kid\":2155,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Futures\",\"kid\":7552,\"params\":[{\"type\":\"value\",\"value\":\"|All Futures NFO|\"}]}},{\"type\":\"value\",\"value\":\"15m\"},{\"type\":\"value\",\"value\":\"All\"}]}}]}}]}},{\"type\":\"value\",\"value\":\"-1\"}]}]}]}",
+          "conditionDisplay": "( Position ( Cross ( SUPERTREND ( Symbol ( Futures ( '|All Futures NFO|' ) , '15m', 'All' ) , '10', '3' ) , CLOSE ( Symbol ( Futures ( '|All Futures NFO|' ) , '15m', 'All' )  )  ) , '-1' )  )",
+          "subType": "None",
+          "visible": 1,
+          "legs": [
+            {
+              "instrument": 0,
+              "list": 50,
+              "optionType": null,
+              "expiry": "tt_curr_monthexpiry('INSTRUMENT')",
+              "expiryType": "Current Month",
+              "expiryJson": null,
+              "expiryDisplay": null,
+              "strikeType": "ATM",
+              "strike": null,
+              "strikeJson": null,
+              "strikeDisplay": null,
+              "qty": "tt_lots(2,'INSTRUMENT','F')",
+              "qtyType": "Lots",
+              "qtyDisplay": "2",
+              "qtyJson": null,
+              "qtyExprDisplay": null,
+              "buySell": "S",
+              "totalValue": null,
+              "limitPrice": null,
+              "limitPriceJson": null,
+              "limitPriceDisplay": null,
+              "limitPriceExprDisplay": null,
+              "entryTrigger": null,
+              "entryLimit": null,
+              "sLTrigger": null,
+              "sLTriggerJson": null,
+              "sLTriggerDisplay": null,
+              "sLTriggerExprDisplay": null,
+              "sLLimit": null,
+              "targetTrigger": null,
+              "targetLimit": null,
+              "isOvernightProtectionLeg": "No",
+              "productType": "NRML",
+              "underlyingSymbol": null,
+              "tmp": 0,
+              "updatedAt": "2026-08-01 14:14:40",
+              "createdAt": "2026-08-01 14:14:40"
+            }
+          ],
+          "extra": {
+            "name": null,
+            "variables": []
+          }
+        },
+        {
+          "type": "Repair Once",
+          "conditionValue": "( tt_get_var ( tt_get_future_instrument ( '|All Futures NFO|' ) , 'LTP' ) < find_traded_instrument ( 'strategy_id', 'run_counter', 'Entry', 'price', '|All Futures NFO|', '2', '1', '1' ) * tt_Number ( '0.97' )  )",
+          "conditionJson": "{\"operator\":\"and\",\"operands\":[{\"type\":\"rule\",\"value\":\"builder-basic_rule_0\",\"elements\":[{\"name\":\"LTP\",\"kid\":6651,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Futures\",\"kid\":5831,\"params\":[{\"type\":\"value\",\"value\":\"|All Futures NFO|\"}]}}]},{\"name\":\"<\",\"params\":[]},{\"name\":\"Traded Instrument\",\"kid\":3298,\"params\":[{\"type\":\"value\",\"value\":\"Entry\"},{\"type\":\"value\",\"value\":\"price\"},{\"type\":\"value\",\"value\":\"|All Futures NFO|\"},{\"type\":\"value\",\"value\":\"2\"},{\"type\":\"value\",\"value\":\"1\"},{\"type\":\"value\",\"value\":\"1\"}]},{\"name\":\"*\",\"params\":[]},{\"name\":\"Number\",\"kid\":5981,\"params\":[{\"type\":\"value\",\"value\":\"0.97\"}]}]}]}",
+          "conditionDisplay": "( LTP ( Futures ( '|All Futures NFO|' ) , 'LTP' ) < Traded Instrument ( 'strategy_id', 'run_counter', 'Entry', 'price', '|All Futures NFO|', '2', '1', '1' ) * Number ( '0.97' )  )",
+          "subType": "None",
+          "visible": 1,
+          "legs": [
+            {
+              "instrument": 0,
+              "list": 50,
+              "optionType": null,
+              "expiry": "tt_curr_monthexpiry('INSTRUMENT')",
+              "expiryType": "Current Month",
+              "expiryJson": null,
+              "expiryDisplay": null,
+              "strikeType": "ATM",
+              "strike": null,
+              "strikeJson": null,
+              "strikeDisplay": null,
+              "qty": "tt_lots(1,'INSTRUMENT','F')",
+              "qtyType": "Lots",
+              "qtyDisplay": "1",
+              "qtyJson": null,
+              "qtyExprDisplay": null,
+              "buySell": "B",
+              "totalValue": null,
+              "limitPrice": null,
+              "limitPriceJson": null,
+              "limitPriceDisplay": null,
+              "limitPriceExprDisplay": null,
+              "entryTrigger": null,
+              "entryLimit": null,
+              "sLTrigger": null,
+              "sLTriggerJson": null,
+              "sLTriggerDisplay": null,
+              "sLTriggerExprDisplay": null,
+              "sLLimit": null,
+              "targetTrigger": null,
+              "targetLimit": null,
+              "isOvernightProtectionLeg": "No",
+              "productType": "NRML",
+              "underlyingSymbol": null,
+              "tmp": 0,
+              "updatedAt": "2026-08-01 14:14:40",
+              "createdAt": "2026-08-01 14:14:40"
+            }
+          ],
+          "extra": {
+            "name": null,
+            "variables": []
+          }
+        },
+        {
+          "type": "Exit",
+          "conditionValue": "( tt_get_element ( tt_cross ( tt_CLOSE ( tt_get_data ( tt_get_future_instrument ( '|All Futures NFO|' ) , '15m', 'All' )  ) , tt_SUPERTREND ( tt_get_data ( tt_get_future_instrument ( '|All Futures NFO|' ) , '15m', 'All' ) , '10', '3' )  ) , '-1' )  )",
+          "conditionJson": "{\"operator\":\"and\",\"operands\":[{\"type\":\"rule\",\"value\":\"builder-basic_rule_0\",\"elements\":[{\"name\":\"Position\",\"kid\":8800,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Cross\",\"kid\":8068,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"CLOSE\",\"kid\":8466,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Symbol\",\"kid\":2587,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Futures\",\"kid\":1797,\"params\":[{\"type\":\"value\",\"value\":\"|All Futures NFO|\"}]}},{\"type\":\"value\",\"value\":\"15m\"},{\"type\":\"value\",\"value\":\"All\"}]}}]}},{\"type\":\"keyword\",\"keyword\":{\"name\":\"SUPERTREND\",\"kid\":7042,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Symbol\",\"kid\":4614,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Futures\",\"kid\":7251,\"params\":[{\"type\":\"value\",\"value\":\"|All Futures NFO|\"}]}},{\"type\":\"value\",\"value\":\"15m\"},{\"type\":\"value\",\"value\":\"All\"}]}},{\"type\":\"value\",\"value\":\"10\"},{\"type\":\"value\",\"value\":\"3\"}]}}]}},{\"type\":\"value\",\"value\":\"-1\"}]}]}]}",
+          "conditionDisplay": "( Position ( Cross ( CLOSE ( Symbol ( Futures ( '|All Futures NFO|' ) , '15m', 'All' )  ) , SUPERTREND ( Symbol ( Futures ( '|All Futures NFO|' ) , '15m', 'All' ) , '10', '3' )  ) , '-1' )  )",
+          "subType": "None",
+          "visible": 1,
+          "legs": [],
+          "extra": {
+            "name": null,
+            "variables": []
+          }
+        }
+      ]
+    },
+    {
+      "name": null,
+      "conditions": [
+        {
+          "type": "Repair Once",
+          "conditionValue": null,
+          "conditionJson": null,
+          "conditionDisplay": null,
+          "subType": "Overnight Protection",
+          "visible": 0,
+          "legs": [],
+          "extra": {
+            "name": null,
+            "variables": []
+          }
+        },
+        {
+          "type": "Universal Exit",
+          "conditionValue": "( tt_Today ( 'NSE' ) == tt_curr_monthexpiry ( 'NIFTY 50', '0' )  )  and ( tt_Time ( 'NSE' ) > tt_Number ( '1500' )  )",
+          "conditionJson": "{\"operator\":\"and\",\"operands\":[{\"type\":\"rule\",\"value\":\"builder-basic_rule_0\",\"elements\":[{\"name\":\"Today\",\"kid\":1824,\"params\":[{\"type\":\"value\",\"value\":\"NSE\"}]},{\"name\":\"==\",\"params\":[]},{\"name\":\"Current Month Expiry\",\"kid\":4672,\"params\":[{\"type\":\"value\",\"value\":\"NIFTY 50\"},{\"type\":\"value\",\"value\":\"0\"}]}]},{\"type\":\"rule\",\"value\":\"builder-basic_rule_1\",\"elements\":[{\"name\":\"Time\",\"kid\":8050,\"params\":[{\"type\":\"value\",\"value\":\"NSE\"}]},{\"name\":\">\",\"params\":[]},{\"name\":\"Number\",\"kid\":1149,\"params\":[{\"type\":\"value\",\"value\":\"1500\"}]}]}]}",
+          "conditionDisplay": "( Today ( 'NSE' ) == Current Month Expiry ( 'NIFTY 50', '0' )  )  and ( Time ( 'NSE' ) > Number ( '1500' )  )",
+          "subType": "None",
+          "visible": 1,
+          "legs": [],
+          "extra": {
+            "name": null,
+            "variables": []
+          }
+        }
+      ]
+    }
+  ],
+  "currency": null,
+  "priceExecution": "Market Price",
+  "tranchSize": 100,
+  "tslToCostAtProfit": 0,
+  "tslProfitIncrease": 0,
+  "tslSlIncrease": 0,
+  "runFrequency": "Continuous",
+  "firstTradeAfterOpen": 600,
+  "lastTradeBeforeClose": 600,
+  "rolloverExpiryPeriod": "Dont Rollover",
+  "capitalRequired": 100000,
+  "priceRevisionAttempts": 1,
+  "tranchWaitSecs": 10,
+  "exitShortsFirst": 0,
+  "priceRevisionTimeout": 0,
+  "reactivateEvery": 300,
+  "finalAction": "MARKET",
+  "exitAtMarket": 0,
+  "runEvery": 60,
+  "rolloverExpiryTime": "1500",
+  "priceTicksMultiple": "1",
+  "pythonCode": null,
+  "isPublic": 0,
+  "minMultiple": 1,
+  "maxMultiple": 100,
+  "freePeriod": null,
+  "fixedFee": "0.00",
+  "fixedFeePeriod": "1",
+  "variableFee": "0.00",
+  "hurdleRate": 0,
+  "recreatePositionsInNewFollowers": "No",
+  "allowDuplication": 1,
+  "confirmationPerSubscriber": 0,
+  "hideSubscribers": "No",
+  "strategyPublicLinkAccess": "Yes",
+  "strategyPublicLink": null,
+  "displayPositionsToNonSubscribers": 0,
+  "highWatermark": "Yes",
+  "showLiveAutoDeployment": 0,
+  "feeShare": null,
+  "isApproved": 0,
+  "feeFrequency": "Month",
+  "backtestLinkSubscribers": null,
+  "backtestLinkNonsubscribers": null
+}

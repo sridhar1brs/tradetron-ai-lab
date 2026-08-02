@@ -1,0 +1,18 @@
+{
+    "name": "Coppock Curve",
+    "description": "This keyword returns a long-term price momentum indicator used primarily to recognize major downturns and upturns in a stock market index. It is also known as the \"Coppock Guide.\"",
+    "how_to_use_markdown": "This keyword returns a long-term price momentum indicator used primarily to recognize major downturns and upturns in a stock market index. It is also known as the \"Coppock Guide.\"\n\n![Example](./images/img-1643608979.JPG)\n\nYou have to mention  Wma Period\u00a0 as input for the keyword",
+    "example_image_urls": [
+        "./images/img-1643608979.JPG"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "Coppock Curve\nThis keyword returns a long-term price momentum indicator used primarily to recognize major downturns and upturns in a stock market index. It is also known as the \"Coppock Guide.\"\nYou have to mention \nWma Period\u00a0\nas input for the keyword\u00a0\n\u00a0\nYou can fetch the Coppock Curve on any series, like close in the above example, you can also plot \nCoppock\n Curve of RSI, OPEN etc\nRead about \nCoppock Curve\u00a0\nhere - \nhttps://www.investopedia.com/terms/c/coppockcurve.asp",
+    "visual_logic_extracted": "Image [img-1643608979.JPG] Text:\nPosition\nCoppock Curve ( CLOSE ( Symbol ( Instrument Name ( NFO,NIFTY 50.\n\n), 5m, All) ),20),-1"
+}

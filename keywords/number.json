@@ -1,0 +1,18 @@
+{
+    "name": "Number",
+    "description": "This keyword \u00a0can be used to define or compare with a value output of an existing keyword",
+    "how_to_use_markdown": "This keyword is the simplest of all and just returns the number that is input by the user.\n\nThis keyword \u00a0can be used to define or compare with a value output of an existing keyword\n\n![Example](./images/img-1631877797.png)\n\nIn the above condition, the number keyword is used to check if the PNL keyword is more than 500.",
+    "example_image_urls": [
+        "./images/img-1631877797.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "Number\nThis keyword is the simplest of all and just returns the number that is input by the user.\nThis keyword \u00a0can be used to define or compare with a value output of an existing keyword\nIn the above condition, the number keyword is used to check if the PNL keyword is more than 500.",
+    "visual_logic_extracted": "Image [img-1631877797.png] Text:\ntx]\nPNL >= Number\n500"
+}

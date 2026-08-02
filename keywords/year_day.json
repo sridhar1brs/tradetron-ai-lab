@@ -1,0 +1,18 @@
+{
+    "name": "Year Day",
+    "description": "The above condition will be satisfied if today is the 205th day of the year",
+    "how_to_use_markdown": "Year day returns the c urrent day number from the beginning of the year as an integer\n\n![Example](./images/img-1631796936.png)\n\nThe above condition will be satisfied if today is the 205th day of the year",
+    "example_image_urls": [
+        "./images/img-1631796936.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "Year Day\nYear day returns the c\nurrent day number from the beginning of the year as an integer\n\u00a0\nThe above condition will be satisfied if today is the 205th day of the year",
+    "visual_logic_extracted": "Image [img-1631796936.png] Text:\nYear Day == Number\nNSE 205"
+}

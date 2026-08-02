@@ -1,0 +1,19 @@
+{
+    "name": "Position",
+    "description": "Selecting -1 indicates the previous candle. -2 indicates previous to the previous candle and so on.",
+    "how_to_use_markdown": "Position keyword one of the most fundamental and most used keyword in Tradetron\n\nPosition keyword is used to pinpoint and get the data of a particular position from a series\n\nMost technical indicators, OHLCV data is retrieved using this position keyword\n\nPosition keyword has 2 inputs, one is to select the data series like close, EMA, SMA etc and the next is to pinpoint the position to retrieve the data\n\n![Example](./images/img-1631795793.png)\n\nSelecting -1 indicates the previous candle. -2 indicates previous to the previous candle and so on.\n\nSelecting 0 indicates the current candle, so basically, position( close)0 is the same as LTP\n\nPlease note position input cannot be positive, it has to be 0 or a negative number\n\n![Example](./images/img-1631795607.png)\n\nIn the above example, the position keyword is used to get the previous day close value of the Nifty 50 futures chart\n\nPls read this blog for more clarity -  https://blog.tradetron.tech/node/21",
+    "example_image_urls": [
+        "./images/img-1631795793.png",
+        "./images/img-1631795607.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "Position\nPosition keyword one of the most fundamental and most used keyword in Tradetron\nPosition keyword is used to pinpoint and get the data of a particular position from a series\u00a0\nMost technical indicators, OHLCV data is retrieved using this position keyword\nPosition keyword has 2 inputs, one is to select the data series like close, EMA, SMA etc and the next is to pinpoint the position to retrieve the data\nSelecting -1 indicates the previous candle. -2 indicates previous to the previous candle and so on.\u00a0\nSelecting 0 indicates the current candle, so basically, position( close)0 is the same as LTP\u00a0\nPlease note position input cannot be positive, it has to be 0 or a negative number\u00a0\nIn the above example, the position keyword is used to get the previous day close value of the Nifty 50 futures chart\nPls read this blog for more clarity - \nhttps://blog.tradetron.tech/node/21",
+    "visual_logic_extracted": "Image [img-1631795793.png] Text:\nKeyword Paramters\n\nSeries\n\n| CLOSE x\n\nPosition\n\ncE |\n\nImage [img-1631795607.png] Text:\n+\n\nPosition\nCLOSE ( Symbol ( Instrument Name ( NFO,NIFTY 50,Current Month,,,, ), day, All) ), -1"
+}

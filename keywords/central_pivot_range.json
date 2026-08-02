@@ -1,0 +1,19 @@
+{
+    "name": "Central Pivot Range",
+    "description": "Components:",
+    "how_to_use_markdown": "This keyword returns the Central Pivot Range (CPR) value of the selected Instrument. This keyword is to be used under the position keyword. CPR works on DAILY timeframe by default\n\n![Example](./images/img-1773908452.png)\n\nComponents:\n\n![Example](./images/img-1643636582.png)\n\nThe above keyword will return the previous day CPR value of NIFTY 50\n\nCentral Pivot Range (CPR) \u00a0versatile technical indicator usually comprising of only 3 levels: A central pivot point (pivot), \u00a0A top central level (TC), and A bottom central level (BC).\n\nRead more about Central Pivot Range (CPR) \u00a0- https://zerodha.com/varsity/chapter/the-central-pivot-range/",
+    "example_image_urls": [
+        "./images/img-1773908452.png",
+        "./images/img-1643636582.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "Central Pivot Range\nThis keyword returns the Central Pivot Range (CPR) value of the selected Instrument. This keyword is to be used under the position keyword. CPR works on DAILY timeframe by default\nComponents:\nThe above keyword will return the previous day CPR value of NIFTY 50\nCentral Pivot Range (CPR) \u00a0versatile technical indicator usually comprising of only 3 levels: A central pivot point (pivot), \u00a0A top central level (TC), and A bottom central level (BC).\nRead more about Central Pivot Range (CPR) \u00a0- https://zerodha.com/varsity/chapter/the-central-pivot-range/",
+    "visual_logic_extracted": "Image [img-1773908452.png] Text:\nPosition\nCentral Pivot Range ( Instrument Name ( NFO,NIFTY 50,,,,,) , day), -1\n\nImage [img-1643636582.png] Text:\nKeyword Paramters\n\nInstrument\n\n( Instrument Name x 1\n\nValue\n\npit\nas\n\nTC\nBC\n\nOk\n\nCancel"
+}

@@ -1,0 +1,18 @@
+{
+    "name": "Math Operation",
+    "description": "It can also be used under the round keyword to get a rounded output rather than a decimal value.",
+    "how_to_use_markdown": "This keyword is used to perform a mathematical operation on two inputs/keywords. The output of math operation keyword is a float.\n\nIt can also be used under the round keyword to get a rounded output rather than a decimal value.\n\n![Example](./images/img-1632312404.png)\n\nIn the example shared above, we are adding 5 and 15, so the output will be 20",
+    "example_image_urls": [
+        "./images/img-1632312404.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "Math Operation\nThis keyword is used to perform a mathematical operation on two inputs/keywords. The output of math operation keyword is a float.\u00a0\nIt can also be used under the round keyword to get a rounded output rather than a decimal value.\nIn the example shared above, we are adding 5 and 15, so the output will be 20",
+    "visual_logic_extracted": "Image [img-1632312404.png] Text:\nMath Operation\nNumber (5), Number (15), +"
+}

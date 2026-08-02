@@ -1,0 +1,20 @@
+{
+    "name": "Chandelier Exit",
+    "description": "The final condition should look like this:",
+    "how_to_use_markdown": "This keyword returns the Chandelier Exit value of the instrument selected. You can fetch this keyword by searching for it within the position keyword.\n\n![Example](./images/img-1716020952.png)\n\nOn selecting  Chandelier Exit you can input if you need the log exit or short exit along with your inputs for period and multiplier.\n\nThe final condition should look like this:\n\n![Example](./images/img-1716020831.png)\n\n![Example](./images/img-1716021098.png)\n\nThe above condition will check if the Chandelier Exit is greater than the close of Nifty 50 on a 5 min candle.",
+    "example_image_urls": [
+        "./images/img-1716020952.png",
+        "./images/img-1716020831.png",
+        "./images/img-1716021098.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "Chandelier Exit\nThis keyword returns the Chandelier Exit value of the instrument selected. You can fetch this keyword by searching for it within the position keyword. \u00a0\nOn selecting \nChandelier Exit you can input if you need the log exit or short exit along with your inputs for period and multiplier.\u00a0\nThe final condition should look like this:\nThe above condition will check if the Chandelier Exit is greater than the close of Nifty 50 on a 5 min candle.",
+    "visual_logic_extracted": "Image [img-1716020952.png] Text:\nKeyword Paramters\n\nSeries\n\nChoose\n\nchandd\n\nOk\n\nCancel\n\nImage [img-1716020831.png] Text:\nwo\n\n{ choose\n{ choose\n{ choose\n{ choose\n\n{ choose\n\nKeyword Paramters\n\nOhle\n\n| symbot x\n\n3\ng\n}\n\nMultiplier\n\nBlo\nE\n2\n|\n\nLong Exit x\n\nShort Exit\n\nOk || Cancel\n\nImage [img-1716021098.png] Text:\nSmal). if\n\nPosition\n(Chandelar it ( Syrtal Instrument Name (NFO NIFTY 60), 5m.) 14,8, Long Ext), -1"
+}

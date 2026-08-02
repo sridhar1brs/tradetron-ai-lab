@@ -1,0 +1,18 @@
+{
+    "name": "Zero Lag EMA",
+    "description": "This keyword returns the Zero Lag EMA of any period of any series of the selected Instrument. This keyword is to be used under the position keyword",
+    "how_to_use_markdown": "This keyword returns the Zero Lag EMA of any period of any series of the selected Instrument. This keyword is to be used under the position keyword\n\n![Example](./images/img-1632224820.png)\n\nYou can plot the\u00a0 Zero Lag EMA \u00a0 on any series, like close in the above example, you can also plot EMA of RSI, OPEN etc",
+    "example_image_urls": [
+        "./images/img-1632224820.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "Zero Lag EMA\nThis keyword returns the Zero Lag EMA of any period of any series of the selected Instrument. This keyword is to be used under the position keyword\nYou can plot the\u00a0\nZero Lag EMA\n\u00a0 on any series, like close in the above example, you can also plot EMA of RSI, OPEN etc",
+    "visual_logic_extracted": "Image [img-1632224820.png] Text:\nPosition\nZero Lag EMA ( CLOSE ( Symbol ( Instrument Name ( NFO,NIFTY 50.,...\n\n\u00bb day, All)), 20), -1"
+}

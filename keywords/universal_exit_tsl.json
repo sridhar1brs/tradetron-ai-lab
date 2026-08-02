@@ -1,0 +1,20 @@
+{
+    "name": "Universal Exit TSL",
+    "description": "Using Tradetron you can now build a strategy level Trailing Stoploss.",
+    "how_to_use_markdown": "Using Tradetron you can now build a strategy level Trailing Stoploss.\n\nSearch for keyword \"Universal Exit TSL\" in your Universal exit condition.\n\n![Example](./images/img-1700648156.png)\n\nClick on the keyword and select the inputs for TSL type, Activation, Lock profit, Increase profit by and Increase TSL by:\n\n![Example](./images/img-1700648227.png)\n\n![Example](./images/img-1700647855.png)\n\nSelect your TSL type:\n\nTSL - Points will calculate all values based on rupees in PNL\n\nTSL - Percentage will calculate all values in % of the capital mentioned\n\nThis is the start point of your TSL.\n\nExample: If your strategy makes a profit of more than 20 rupees in \"activate at\", the TSL will begin only when your strategy makes a PNL profit of 20 and above.\n\nThis will exit your position if the price moves against you for more than the selected % or points from the activate at level.\n\nExample: If your strategies TSL is activated at 20 rupees if the profit begins to move below 20 rupees, \"Lock profit at\" will exit at 10 rupees or 10% in profit.\n\nNow add your \"Increase profit by\"\n\nThis is the minimum move in your favor before which the TSL will be modified.\n\nNow add your \"Increase TSL by\"\n\nThe TSL will move by the points or percentage indicated here. Note: All values in this keyword has to be based on 1X multiplier.",
+    "example_image_urls": [
+        "./images/img-1700648156.png",
+        "./images/img-1700648227.png",
+        "./images/img-1700647855.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "Universal Exit TSL\nUsing Tradetron you can now build a strategy level Trailing Stoploss.\u00a0\nSearch for keyword \"Universal Exit TSL\" in your Universal exit condition.\u00a0\nClick on the keyword and select the inputs for TSL type, Activation, Lock profit, Increase profit by and Increase TSL by:\nSelect your TSL type:\u00a0\nTSL - Points will calculate all values based on rupees in PNL\nTSL - Percentage will calculate all values in % of the capital mentioned\nThis is the start point of your TSL.\u00a0\nExample: If your strategy makes a profit of more than 20 rupees in \"activate at\", the TSL will begin only when your strategy makes a PNL profit of 20 and above. \u00a0\nThis will exit your position if the price moves against you for more than the selected % or points from the activate at level.\u00a0\nExample: If your strategies TSL is activated at 20 rupees if the profit begins to move below 20 rupees, \"Lock profit at\" will exit at 10 rupees or 10% in profit.\u00a0\nNow add your \"Increase profit by\"\nThis is the minimum move in your favor before which the TSL will be modified.\u00a0\nNow add your \"Increase TSL by\"\nThe TSL will move by the points or percentage indicated here.\nNote: All values in this keyword has to be based on 1X multiplier.",
+    "visual_logic_extracted": "Image [img-1700648156.png] Text:\nChoose\n\nuniver\n\nsect) Strategylnfo\n\nUniversal Exit\n\nImage [img-1700648227.png] Text:\nKeyword Paramters\n\nTsl Type\n\ntsl-points x\n\nActivate At\n20\n\nLock Profit At\n\nIncrease In Profit By\n\nIncrease TsI By\n\nfo)\n\nOk Cancel\n\nImage [img-1700647855.png] Text:\nUniversal Exit TSL\ntsl-points, 20, 10, 1, 1"
+}

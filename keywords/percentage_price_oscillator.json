@@ -1,0 +1,18 @@
+{
+    "name": "Percentage Price Oscillator",
+    "description": "This keyword returns the Percentage Price Oscillator of any period of any series of the selected Instrument. This keyword is to be used under the position keyword",
+    "how_to_use_markdown": "This keyword returns the Percentage Price Oscillator of any period of any series of the selected Instrument. This keyword is to be used under the position keyword\n\n![Example](./images/img-1632224575.png)\n\nYou can plot Percentage Price Oscillator on any series, like close in the above example, you can also plot EMA of RSI, OPEN etc",
+    "example_image_urls": [
+        "./images/img-1632224575.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "Percentage Price Oscillator\nThis keyword returns the Percentage Price Oscillator of any period of any series of the selected Instrument. This keyword is to be used under the position keyword\nYou can plot Percentage Price Oscillator on any series, like close in the above example, you can also plot EMA of RSI, OPEN etc",
+    "visual_logic_extracted": "Image [img-1632224575.png] Text:\nPosition\nPercentage Price Oscillator ( CLOSE ( Symbol ( Instrument Name ( NFO,NIFTY 50,Current Month...) , day, All) ), 20, 20, EMA), -1"
+}

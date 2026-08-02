@@ -1,0 +1,18 @@
+{
+    "name": "Day",
+    "description": "Day keyword returns the current day of the current month. Please make sure not to use 25.00 or something. It should be a positive integer only.",
+    "how_to_use_markdown": "Day keyword returns the current day of the current month. Please make sure not to use 25.00 or something. It should be a positive integer only.\n\nThe below example is checking whether today is the 21st day of the month\n\n![Example](./images/img-1631712035.png)",
+    "example_image_urls": [
+        "./images/img-1631712035.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "Day\nDay keyword returns the current day of the current month. Please make sure not to use 25.00 or something. It should be a positive integer only.\u00a0\nThe below example is checking whether today is the 21st day of the month",
+    "visual_logic_extracted": "Image [img-1631712035.png] Text:\nNumber\n21"
+}

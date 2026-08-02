@@ -1,0 +1,18 @@
+{
+    "name": "VWAP Series",
+    "description": "This keyword returns the VWAP value of the selected Instrument for the selected timeframe. This keyword is to be used under the position keyword",
+    "how_to_use_markdown": "This keyword returns the VWAP value of the selected Instrument for the selected timeframe. This keyword is to be used under the position keyword\n\n![Example](./images/img-1632311289.png)\n\nThe above keyword will return the previous 15 min VWAP value of NIFTY 50 Current month Futures\n\nPlease note that, VWAP series cannot be used on the spot chart as spot indexes don't have volumes, need to select futures chart\n\nThe volume-weighted average price (VWAP) is a trading benchmark used by traders that gives the average price a security has traded at throughout the day, based on both volume and price.\n\nRead about VWAP here -\u00a0 https://www.investopedia.com/terms/v/vwap.asp",
+    "example_image_urls": [
+        "./images/img-1632311289.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "VWAP Series\nThis keyword returns the VWAP value of the selected Instrument for the selected timeframe. This keyword is to be used under the position keyword\nThe above keyword will return the previous 15 min VWAP value of NIFTY 50 Current month Futures\nPlease note that, VWAP series cannot be used on the spot chart as spot indexes don't have volumes, need to select futures chart\nThe volume-weighted average price (VWAP) is a trading benchmark used by traders that gives the average price a security has traded at throughout the day, based on both volume and price.\nRead about VWAP here -\u00a0\nhttps://www.investopedia.com/terms/v/vwap.asp",
+    "visual_logic_extracted": "Image [img-1632311289.png] Text:\n+\n\nPosition\n\\VWAP Series ( Instrument Name ( NFO,NIFTY 50,Current Month,,,, ), 15m), -1"
+}

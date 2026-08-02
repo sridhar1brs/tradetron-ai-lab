@@ -1,0 +1,20 @@
+{
+    "name": "Leg Exit",
+    "description": "Add your instrument name, set, condition and leg number and select your target or stop loss in percentage or points and assign a value to the same.",
+    "how_to_use_markdown": "Adding a target and stop-loss to your instruments have become very easy on Tradetron using the Leg Exit keyword.\n\n![Example](./images/img-1668773578.png)\n\nAdd your instrument name, set, condition and leg number and select your target or stop loss in percentage or points and assign a value to the same.\n\n![Example](./images/img-1668773628.png)\n\nThe condition builder will automatically fetch if the position is long or short and based on the same trigger your target or stop loss as needed.\n\n![Example](./images/img-1668773964.png)\n\nHere is how your final condition is supposed to look like. Feel free to use multiple leg exits to add targets and stoplosses. Your leg will exit once whichever condition is true first.\n\nLeg TSL / Leg Exit / Leg SL Trail \u2014 Usage Note\n\nUse Leg TSL, Leg Exit, and Leg SL Trail only for legs that are intended to trade once. These features do not work correctly for re-entries. If you allow the same leg to enter again from the same position, the leg-exit logic may fail or cause the strategy to loop.\n\nTo prevent problems, make sure your logic includes a keyword or condition that blocks re-entry for that leg when using any of these set-exit keywords. In short: if a leg is meant to run only once, ensure it can\u2019t re-enter from the same position \u2014 otherwise Leg Exit / Leg TSL / Leg SL Trail will not function as expected.\n\nVideo on the topic:\n\nhttps://youtu.be/M2PlEGXmSNc",
+    "example_image_urls": [
+        "./images/img-1668773578.png",
+        "./images/img-1668773628.png",
+        "./images/img-1668773964.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "Leg Exit\nAdding a target and stop-loss to your instruments have become very easy on Tradetron using the Leg Exit keyword.\u00a0\nAdd your instrument name, set, condition and leg number and select your target or stop loss in percentage or points and assign a value to the same.\u00a0\nThe condition builder will automatically fetch if the position is long or short and based on the same trigger your target or stop loss as needed.\u00a0\nHere is how your final condition is supposed to look like. Feel free to use multiple leg exits to add targets and stoplosses. Your leg will exit once whichever condition is true first.\u00a0\nLeg TSL / Leg Exit / Leg SL Trail \u2014 Usage Note\nUse Leg TSL, Leg Exit, and Leg SL Trail only for legs that are intended to trade once. These features do not work correctly for re-entries. If you allow the same leg to enter again from the same position, the leg-exit logic may fail or cause the strategy to loop.\nTo prevent problems, make sure your logic includes a keyword or condition that blocks re-entry for that leg when using any of these set-exit keywords. In short: if a leg is meant to run only once, ensure it can\u2019t re-enter from the same position \u2014 otherwise Leg Exit / Leg TSL / Leg SL Trail will not function as expected.\nVideo on the topic:\u00a0\nhttps://youtu.be/M2PlEGXmSNc",
+    "visual_logic_extracted": "Image [img-1668773578.png] Text:\n| Choose A |\n\nStrategylnfo\n\nLeg Exit\n\nImage [img-1668773628.png] Text:\nKeyword Paramters\n\nCondition Type\n\n| Enty\n\nUnderlying\n\n[ Choose\n\nSet Number\na\nCondition Number\n1\nLeg Number\nu\nTargetisl Ptipct\n\n| Target Points x\n\nValue\n[20\n\nOk |{ Cancel\n\nImage [img-1668773964.png] Text:\na\n\nEntry, NIFTY 50, 1, 1, 1, Target Points, 20\n\n| | Choose v | Leg Exit\n\na\n\nEntry, NIFTY 50, 1, 1, 1, Target Percent, 20\n\n| | Choose v | Leg Exit"
+}

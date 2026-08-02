@@ -1,0 +1,18 @@
+{
+    "name": "Highest High Value",
+    "description": "You can fetch the Highest High on any series, like close in the above example, you can also plot EMA of RSI, OPEN etc.",
+    "how_to_use_markdown": "This keyword returns the Highest High value of all the values in the series of the selected Instrument. This keyword is to be used under the position keyword\n\n![Example](./images/img-1632386892.png)\n\nYou can fetch the Highest High on any series, like close in the above example, you can also plot EMA of RSI, OPEN etc.\n\nIt is important to note that the highest high value here will not include the high of the current candle (0). It will look at the maximum value of the last hundred day candles from the previous candle (-1).",
+    "example_image_urls": [
+        "./images/img-1632386892.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "Highest High Value\nThis keyword returns the Highest High value of all the values in the series of the selected Instrument. This keyword is to be used under the position keyword\nYou can fetch the Highest High on any series, like close in the above example, you can also plot EMA of RSI, OPEN etc. \nIt is important to note that the highest high value here will not include the high of the current candle (0). It will look at the maximum value of the last hundred day candles from the previous candle (-1).",
+    "visual_logic_extracted": "Image [img-1632386892.png] Text:\nPosition\nHighest High Value ( CLOSE ( Symbol ( Instrument Name ( NFO,NIFTY 50,,.,, ), day, All) ), 100), -4"
+}

@@ -1,0 +1,18 @@
+{
+    "name": "StochK",
+    "description": "This keyword returns the Stochastic Oscillator value of the K line. This keyword like all technical indicators are to be used under the Position keyword",
+    "how_to_use_markdown": "This keyword returns the Stochastic Oscillator value of the K line. This keyword like all technical indicators are to be used under the Position keyword\n\n![Example](./images/img-1632137271.png)\n\nThe above condition is checking if Previous day(-1)  Stochastic Oscillator value of the K line is greater than Previous day(-1)\u00a0 Stochastic Oscillator value of the D line\n\nA stochastic oscillator is a popular technical indicator for generating overbought and oversold signals. Read more about Stock K and D here - https://www.investopedia.com/terms/s/stochasticoscillator.asp",
+    "example_image_urls": [
+        "./images/img-1632137271.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "StochK\nThis keyword returns the Stochastic Oscillator value of the K line. This keyword like all technical indicators are to be used under the Position keyword\nThe above condition is checking if Previous day(-1) \nStochastic Oscillator value of the K line is greater than Previous day(-1)\u00a0\nStochastic Oscillator value of the D line\nA stochastic oscillator is a popular technical indicator for generating overbought and oversold signals.\nRead more about Stock K and D here -\nhttps://www.investopedia.com/terms/s/stochasticoscillator.asp",
+    "visual_logic_extracted": "Image [img-1632137271.png] Text:\nChoose v \u00a9 \u00a9 \u00a9\nPosition > Position\n\nStochK ( Symbol ( Instrument Name ( NFO,NIFTY 50... ), day, All) 5,3), -1 StochD ( Symbol ( Instrument Name ( NFO,NIFTY 50,,.., ), day, All), 5, 3,3), -1"
+}

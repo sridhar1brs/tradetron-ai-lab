@@ -1,0 +1,18 @@
+{
+    "name": "Median",
+    "description": "This keyword has 2 inputs, one is to select the series, other is to select the period which is the no. of previous values to consider or the sample",
+    "how_to_use_markdown": "This keyword will return the median of the series selected of the particular instrument.\n\nThis keyword has 2 inputs, one is to select the series, other is to select the period which is the no. of previous values to consider or the sample\n\n![Example](./images/img-1708673230.png)\n\nThe above condition will return the median of the NIFTY 50 close series, considering the sample data of the past 20 candles of 1 min timeframe",
+    "example_image_urls": [
+        "./images/img-1708673230.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "Median\nThis keyword will return the median of the series selected of the particular instrument.\nThis keyword has 2 inputs, one is to select the series, other is to select the period which is the no. of previous values to consider or the sample\nThe above condition will return the median of the NIFTY 50 close series, considering the sample data of the past 20 candles of 1 min timeframe",
+    "visual_logic_extracted": "Image [img-1708673230.png] Text:\nMedian\n\nCLOSE ( Symbol ( Instrument Name ( NFO.NIFTY 50,...\n\n). tm, All) ) 20\n\nNumber\noO\n\nPaste *"
+}

@@ -1,0 +1,18 @@
+{
+    "name": "LastRepairedUnderlyingPrice",
+    "description": "It will return you the underlying price of the instrument which got repaired recently. It will thus capture the spot value of nifty in this case. It will also constantly update the value of the same whenever a repair or exit trade of any set gets triggered.",
+    "how_to_use_markdown": "It will return you the underlying price of the instrument which got repaired recently. It will thus capture the spot value of nifty in this case. It will also constantly update the value of the same whenever a repair or exit trade  of any set  gets triggered.\n\n![Example](./images/img-1631790403.png)",
+    "example_image_urls": [
+        "./images/img-1631790403.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "LastRepairedUnderlyingPrice\nIt will return you the underlying price of the instrument which got repaired recently. It will thus capture the spot value of nifty in this case. It will also constantly update the value of the same whenever a repair or exit trade \nof any set\n gets triggered.",
+    "visual_logic_extracted": "Image [img-1631790403.png] Text:\nLastRepairedUnderlyingPrice\nNIFTY 50"
+}

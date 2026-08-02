@@ -1,0 +1,18 @@
+{
+    "name": "Futures",
+    "description": "This keyword returns the name of Futures Instrument of selected underlying / list Example: FUTIDX_NIFTY_24SEP2020_XX_0",
+    "how_to_use_markdown": "This keyword returns the name of Futures Instrument of selected underlying / list Example: FUTIDX_NIFTY_24SEP2020_XX_0\n\n![Example](./images/img-1631711073.png)",
+    "example_image_urls": [
+        "./images/img-1631711073.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "Futures\nThis keyword returns the name of Futures Instrument of selected underlying / list Example: FUTIDX_NIFTY_24SEP2020_XX_0",
+    "visual_logic_extracted": "Image [img-1631711073.png] Text:\nFutures\nNIFTY 50"
+}

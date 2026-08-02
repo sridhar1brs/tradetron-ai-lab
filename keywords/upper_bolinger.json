@@ -1,0 +1,18 @@
+{
+    "name": "Upper Bolinger",
+    "description": "This keyword returns the upper Bollinger value of any period of any series of the selected Instrument. This keyword is to be used under the position keyword",
+    "how_to_use_markdown": "This keyword returns the upper Bollinger value of any period of any series of the selected Instrument. This keyword is to be used under the position keyword\n\n![Example](./images/img-1632221475.png)\n\nYou can plot Upper Bollinger on any series, like close in the above example, you can also plot Upper Bollinger of RSI, OPEN etc\n\nBollinger Bands are envelopes plotted at a standard deviation level above and below a simple moving average of the price.\n\nRead more about Bollinger Bands here -\u00a0 https://www.fidelity.com/learning-center/trading-investing/technical-analysis/technical-indicator-guide/bollinger-bands",
+    "example_image_urls": [
+        "./images/img-1632221475.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "Upper Bolinger\nThis keyword returns the upper Bollinger value of any period of any series of the selected Instrument. This keyword is to be used under the position keyword\nYou can plot Upper Bollinger on any series, like close in the above example, you can also plot Upper Bollinger of RSI, OPEN etc\nBollinger Bands are envelopes plotted at a standard deviation level above and below a simple moving average of the price.\nRead more about Bollinger Bands here -\u00a0\nhttps://www.fidelity.com/learning-center/trading-investing/technical-analysis/technical-indicator-guide/bollinger-bands",
+    "visual_logic_extracted": "Image [img-1632221475.png] Text:\n+\n\nPosition\nUpper Bolinger ( CLOSE ( Symbol ( Instrument Name ( NFO,ABFRI\n\n), day, All)),20,2),-1"
+}

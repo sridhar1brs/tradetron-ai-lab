@@ -1,0 +1,29 @@
+{
+  "name": "Traded Instrument PNL",
+  "category": "Trade Management",
+  "description": "Retrieves the real-time Profit and Loss (PNL) of a specific instrument that has already been traded. Commonly used for trailing stop loss logic.",
+  "return_type": "Number",
+  "parameters": [
+    {
+      "name": "Underlying",
+      "type": "Instrument",
+      "description": "The underlying instrument (e.g., Nifty 50)."
+    },
+    {
+      "name": "Set Number",
+      "type": "Integer",
+      "description": "The Set number of the trade."
+    },
+    {
+      "name": "Condition Number",
+      "type": "Integer",
+      "description": "The condition number."
+    },
+    {
+      "name": "Leg Number",
+      "type": "Integer",
+      "description": "The specific leg number to calculate PNL for."
+    }
+  ],
+  "usage_example": "Traded Instrument PNL(Underlying: BankNifty, Set Number: 1, Condition Number: 1, Leg Number: 2) < -500"
+}

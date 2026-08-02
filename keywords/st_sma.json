@@ -1,0 +1,18 @@
+{
+    "name": "ST SMA",
+    "description": "This keyword returns the Supertrend value of the instrument selected. The supertrend will be calculated based on SMA. Like, most technical indicators this has to be used under the Position keyword.",
+    "how_to_use_markdown": "This keyword returns the Supertrend value of the instrument selected. The supertrend will be calculated based on SMA. Like, most technical indicators this has to be used under the Position keyword.\n\n![Example](./images/img-1683120577.png)\n\nThe above keyword is checking whether the previous day close of the NIFTY 50 spot is greater than its Supertrend value\n\nSuper Trend is a trend following indicator similar to moving averages\n\nRead about Supertrend here -  https://www.elearnmarkets.com/blog/supertrend-indicator-strategy-trading/",
+    "example_image_urls": [
+        "./images/img-1683120577.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "ST SMA\nThis keyword returns the Supertrend value of the instrument selected. The supertrend will be calculated based on SMA. Like, most technical indicators this has to be used under the Position keyword.\u00a0\nThe above keyword is checking whether the previous day close of the NIFTY 50 spot is greater than its Supertrend value\u00a0\nSuper Trend is a trend following indicator similar to moving averages\nRead about Supertrend here - \nhttps://www.elearnmarkets.com/blog/supertrend-indicator-strategy-trading/",
+    "visual_logic_extracted": "Image [img-1683120577.png] Text:\nChoose v\n\no\u00b0.\u00b08 x]\n\nPosition > Position\nCLOSE ( Symbol ( Instrument Name ( NFO,NIFTY ), day, All)), \u2018ST SMA ( Symbol ( Instrument Name ( NFO,NIFTY 50,\n\nday, All), 10,3), -1"
+}

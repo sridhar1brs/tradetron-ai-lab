@@ -1,0 +1,20 @@
+{
+    "name": "Previous Expiry",
+    "description": "This keyword returns the date of the last historic expiry of an expired instrument as a string in the format YYYY-MM-DD.",
+    "how_to_use_markdown": "This keyword returns the date of the last historic expiry of an expired instrument as a string in the format  YYYY-MM-DD.\n\n![Example](./images/img-1712657579.png)\n\n![Example](./images/img-1712657957.png)\n\nIn here you can input your instrument name, the expiry type and the offset of the expiry. 0 will give you the latest expired expiry, 1 will give you the previous to previous expiry and so on.  Note: You cannot add a negative number in the offset\n\nThis keyword is mainly used to check if today is the first day of a new series of a monthly or weekly contract.\n\n![Example](./images/img-1712657433.png)\n\nYou can use the Previous Expiry keyword in days difference if you have strategies where the entry trade has to happen on the day after the expiry.",
+    "example_image_urls": [
+        "./images/img-1712657579.png",
+        "./images/img-1712657957.png",
+        "./images/img-1712657433.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "Previous Expiry\nThis keyword returns the date of the last historic expiry of an expired instrument as a string in the format \nYYYY-MM-DD.\u00a0\nIn here you can input your instrument name, the expiry type and the offset of the expiry. 0 will give you the latest expired expiry, 1 will give you the previous to previous expiry and so on. \nNote: You cannot add a negative number in the offset\nThis keyword is mainly used to check if today is the first day of a new series of a monthly or weekly contract.\u00a0\nYou can use the Previous Expiry keyword in days difference if you have strategies where the entry trade has to happen on the day after the expiry.",
+    "visual_logic_extracted": "Image [img-1712657579.png] Text:\nPrevious Expiry\nNIFTY 50, Week, 0\n\nImage [img-1712657957.png] Text:\nPrevious Expiry\nNIFTY 50, Week, 0\n\nKeyword Paramters\nUnderlying\n| NIFTY 50\n\nExpiry Type\n\n| Week\n\n- Nth Expiry\n\npo)\n\nOk Cancel\n\nImage [img-1712657433.png] Text:\nDays Difference (D2-D1) == Number\nPrevious Expiry ( NIFTY 50, Month, 0 ) , Today (NSE ) 1"
+}

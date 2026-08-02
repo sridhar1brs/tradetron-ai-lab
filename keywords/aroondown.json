@@ -1,0 +1,18 @@
+{
+    "name": "AROONDOWN",
+    "description": "This keyword returns the AROON DOWN indicator value of the selected Instrument for the selected timeframe. This keyword is to be used under the position keyword",
+    "how_to_use_markdown": "This keyword returns the AROON DOWN indicator value of the selected Instrument for the selected timeframe. This keyword is to be used under the position keyword\n\n![Example](./images/img-1632223879.png)\n\nThe above keyword will return the previous day AROON DOWN value of ABFRL\n\nThe Aroon indicator is a technical indicator that is used to identify trend changes in the price of an asset, as well as the strength of that trend.\n\nLearn more about Aroon here - https://www.investopedia.com/terms/a/aroon.asp",
+    "example_image_urls": [
+        "./images/img-1632223879.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "AROONDOWN\nThis keyword returns the AROON DOWN indicator value of the selected Instrument for the selected timeframe. This keyword is to be used under the position keyword\nThe above keyword will return the previous day AROON DOWN value of ABFRL\nThe Aroon indicator is a technical indicator that is used to identify trend changes in the price of an asset, as well as the strength of that trend.\nLearn more about Aroon here -\nhttps://www.investopedia.com/terms/a/aroon.asp",
+    "visual_logic_extracted": "Image [img-1632223879.png] Text:\nPosition\nAROONDOWN ( Symbol ( Instrument Name ( NSE,ABFRL,,,,, ), day, All) , 25), -1"
+}

@@ -1,0 +1,24 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+venv/
+env/
+ENV/
+
+# System / OS files
+.DS_Store
+Thumbs.db
+
+# Temp analyze & scratch scripts
+analyze*.py
+fix_*.py
+check_*.py
+inspect_*.py
+parse_test.py
+screenshot.png
+
+# User env files
+.env

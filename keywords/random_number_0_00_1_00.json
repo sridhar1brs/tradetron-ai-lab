@@ -1,0 +1,18 @@
+{
+    "name": "Random Number(0.00-1.00)",
+    "description": "This keyword will return a random number that can be used for complex mathematical operations as a part of a formula that requires a randomly changing number. It will only return absolute decimal numbers from 0 to 1.00",
+    "how_to_use_markdown": "This keyword will return a random number that can be used for complex mathematical operations as a part of a formula that requires a randomly changing number. It will only return absolute decimal numbers from 0 to 1.00\n\n![Example](./images/img-1631872758.png)",
+    "example_image_urls": [
+        "./images/img-1631872758.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "Random Number(0.00-1.00)\nThis keyword will return a random number that can be used for complex mathematical operations as a part of a formula that requires a randomly changing number. It will only return absolute decimal numbers from 0 to 1.00",
+    "visual_logic_extracted": "Image [img-1631872758.png] Text:\nRandom Number(0.00-1.00)"
+}

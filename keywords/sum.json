@@ -1,0 +1,18 @@
+{
+    "name": "Sum",
+    "description": "This keyword has 2 inputs, one is to select the series, other is to select the period which is the no. of previous values to consider to add",
+    "how_to_use_markdown": "This keyword will return the sum of the series selected of the particular instrument.\n\nSUM is generally used under the position keyword\n\nThis keyword has 2 inputs, one is to select the series, other is to select the period which is the no. of previous values to consider to add\n\n![Example](./images/img-1632309264.png)\n\nThe above condition will return the sum of the previous 3 close prices of  \u00a0NIFTY 50",
+    "example_image_urls": [
+        "./images/img-1632309264.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "Sum\nThis keyword will return the sum of the series selected of the particular instrument.\nSUM is generally used under the position keyword\nThis keyword has 2 inputs, one is to select the series, other is to select the period which is the no. of previous values to consider to add\nThe above condition will return the sum of the previous 3 close prices of \n\u00a0NIFTY 50",
+    "visual_logic_extracted": "Image [img-1632309264.png] Text:\n+\n\nPosition\nSum ( CLOSE ( Symbol ( Instrument Name ( NFO,NIFTY 50,,,,, ), day, All) ),3),-1"
+}

@@ -1,0 +1,19 @@
+{
+    "name": "OHLC Sum",
+    "description": "This keyword can be used for all series based technical indicator's. It will fetch the value of a particular candle in series for two different instruments and sum it up. \u00a0You can thus check the combined premium of two strikes.",
+    "how_to_use_markdown": "This keyword can be used for all series based technical indicator's. It will fetch the value of a particular candle in series for two different instruments and sum it up. \u00a0You can thus check the combined premium of two strikes.\n\nThis keyword is nested within most series or technical indicators. In order to OHLC sum, you need to select position keyword and then select the series/indictor for which you need to find the spread between the two instruments. Post that click on the indicator to select keyword 'OHLC Sum'.\n\n![Example](./images/img-1632483076.png)\n\n![Example](./images/img-1632139142.png)\n\nAs shown in the above example, you can find the previous 5 minute close of the current week ATM CE and PE for the weekly option for Nifty 50 and sum it up.",
+    "example_image_urls": [
+        "./images/img-1632483076.png",
+        "./images/img-1632139142.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "OHLC Sum\nThis keyword can be used for all series based technical indicator's. It will fetch the value of a particular candle in series for two different instruments and sum it up. \u00a0You can thus check the combined premium of two strikes.\u00a0\nThis keyword is nested within most series or technical indicators. In order to OHLC sum, you need to select position keyword and then select the series/indictor for which you need to find the spread between the two instruments. Post that click on the indicator to select keyword 'OHLC Sum'.\nAs shown in the above example, you can find the previous 5 minute close of the current week ATM CE and PE for the weekly option for Nifty 50 and sum it up.",
+    "visual_logic_extracted": "Image [img-1632483076.png] Text:\n(OPEN ( Symbol (Instrument Name (), day All)).-1\n\nKeyword Paramters\n\nOhle\nSymbol x 4|\nl\nOHLC Spread\nRenko\nRenko - closed candle\n\nRenko dynamic bricks\n\nImage [img-1632139142.png] Text:\nPosition\nCLOSE ( OHLC Sum ( Instrument Name ( NFO,NIFTY 50,Current Week,CE,ATM,0,0 ) , Instrument Name ( NFO,NIFTY 50,Current\nWeek,PE,ATM,0,0),5m)), -1"
+}

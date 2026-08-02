@@ -1,0 +1,379 @@
+{
+  "_format": "tt-strategy/v2",
+  "_readme": {
+    "about": "Tradetron strategy export. Edit and re-import via the ASB Import button.",
+    "logic": "To change a condition's logic, edit its \"conditionJson\" (the AST). The \"conditionValue\"/\"conditionDisplay\" text is regenerated from it on import.",
+    "legs": "For a leg field that has a \"*Json\" (e.g. \"strikeJson\"), edit the JSON — its text form is regenerated on import. Fields with no \"*Json\" (e.g. \"qty\") are plain text: edit them directly.",
+    "structure": "Add/remove/duplicate legs, conditions or sets by editing the arrays.",
+    "do_not": "Do not add \"*_id\" foreign keys back. Lists referenced by id must be ones you own."
+  },
+  "name": "Copy of Excel Index futures trading  strategy template",
+  "description": "This is a demo strategy that you can duplicate and customize to create your own. Please note that it is meant for learning purposes and should not be used for live trading as is.",
+  "tags": [],
+  "variables": [],
+  "sets": [
+    {
+      "list": 0,
+      "name": null,
+      "conditions": [
+        {
+          "type": "Entry",
+          "conditionValue": "( get_runtime ( 'strategy_id', 'run_counter', 'Nifty 50_b' )  )  and ( get_runtime ( 'strategy_id', 'run_counter', 'Nifty 50_b' ) == tt_Number ( '1' )  )",
+          "conditionJson": "{\"operator\":\"and\",\"operands\":[{\"type\":\"rule\",\"value\":\"builder-basic_rule_1\",\"elements\":[{\"name\":\"Get Runtime\",\"kid\":3224,\"params\":[{\"type\":\"value\",\"value\":\"Nifty 50_b\"}]}]},{\"type\":\"rule\",\"value\":\"builder-basic_rule_0\",\"elements\":[{\"name\":\"Get Runtime\",\"kid\":3224,\"params\":[{\"type\":\"value\",\"value\":\"Nifty 50_b\"}]},{\"name\":\"==\",\"params\":[]},{\"name\":\"Number\",\"kid\":1232,\"params\":[{\"type\":\"value\",\"value\":\"1\"}]}]}]}",
+          "conditionDisplay": "( Get Runtime ( 'strategy_id', 'run_counter', 'Nifty 50_b' )  )  and ( Get Runtime ( 'strategy_id', 'run_counter', 'Nifty 50_b' ) == Number ( '1' )  )",
+          "subType": "None",
+          "visible": 1,
+          "legs": [
+            {
+              "instrument": 1618,
+              "list": 0,
+              "optionType": null,
+              "expiry": "tt_curr_monthexpiry('NIFTY 50')",
+              "expiryType": "Current Month",
+              "expiryJson": null,
+              "expiryDisplay": null,
+              "strikeType": null,
+              "strike": null,
+              "strikeJson": null,
+              "strikeDisplay": null,
+              "qty": "( get_runtime ( 'strategy_id', 'run_counter', 'N_b_quantity' )  )",
+              "qtyType": "Lots",
+              "qtyDisplay": null,
+              "qtyJson": "{\"operator\":\"and\",\"operands\":[{\"type\":\"rule\",\"value\":\"builder-basic_rule_0\",\"elements\":[{\"name\":\"Get Runtime\",\"kid\":4235,\"params\":[{\"type\":\"value\",\"value\":\"N_b_quantity\"}]}]}]}",
+              "qtyExprDisplay": "( Get Runtime ( 'strategy_id', 'run_counter', 'N_b_quantity' )  )",
+              "buySell": "B",
+              "totalValue": null,
+              "limitPrice": null,
+              "limitPriceJson": null,
+              "limitPriceDisplay": null,
+              "limitPriceExprDisplay": null,
+              "entryTrigger": null,
+              "entryLimit": null,
+              "sLTrigger": null,
+              "sLTriggerJson": null,
+              "sLTriggerDisplay": null,
+              "sLTriggerExprDisplay": null,
+              "sLLimit": null,
+              "targetTrigger": null,
+              "targetLimit": null,
+              "isOvernightProtectionLeg": "No",
+              "productType": "NRML",
+              "underlyingSymbol": "NIFTY 50",
+              "tmp": 0,
+              "updatedAt": "2026-08-01 15:22:52",
+              "createdAt": "2026-08-01 15:22:52"
+            }
+          ],
+          "extra": {
+            "name": null,
+            "variables": []
+          }
+        },
+        {
+          "type": "Exit",
+          "conditionValue": "(  ( get_runtime ( 'strategy_id', 'run_counter', 'N_b_exit' )  )  and ( get_runtime ( 'strategy_id', 'run_counter', 'N_b_exit' ) == tt_Number ( '1' )  )  )  or (  ( get_runtime ( 'strategy_id', 'run_counter', 'N_b_Target' )  )  and ( tt_get_var ( find_traded_instrument ( 'strategy_id', 'run_counter', 'Entry', 'instrument', 'NIFTY 50', '1', '1', '1' ) , 'LTP' ) >= find_traded_instrument ( 'strategy_id', 'run_counter', 'Entry', 'price', 'NIFTY 50', '1', '1', '1' ) + get_runtime ( 'strategy_id', 'run_counter', 'N_b_Target' )  )  )  or (  ( get_runtime ( 'strategy_id', 'run_counter', 'N_b_stoploss' )  )  and ( tt_get_var ( find_traded_instrument ( 'strategy_id', 'run_counter', 'Entry', 'instrument', 'NIFTY 50', '1', '1', '1' ) , 'LTP' ) < find_traded_instrument ( 'strategy_id', 'run_counter', 'Entry', 'price', 'NIFTY 50', '1', '1', '1' ) - get_runtime ( 'strategy_id', 'run_counter', 'N_b_stoploss' )  )  )",
+          "conditionJson": "{\"operator\":\"or\",\"operands\":[{\"type\":\"group\",\"value\":\"builder-basic_group_1\",\"children\":{\"operator\":\"and\",\"operands\":[{\"type\":\"rule\",\"value\":\"builder-basic_rule_1\",\"elements\":[{\"name\":\"Get Runtime\",\"kid\":4469,\"params\":[{\"type\":\"value\",\"value\":\"N_b_exit\"}]}]},{\"type\":\"rule\",\"value\":\"builder-basic_rule_2\",\"elements\":[{\"name\":\"Get Runtime\",\"kid\":4469,\"params\":[{\"type\":\"value\",\"value\":\"N_b_exit\"}]},{\"name\":\"==\",\"params\":[]},{\"name\":\"Number\",\"kid\":9093,\"params\":[{\"type\":\"value\",\"value\":\"1\"}]}]}]}},{\"type\":\"group\",\"value\":\"builder-basic_group_4\",\"children\":{\"operator\":\"and\",\"operands\":[{\"type\":\"rule\",\"value\":\"builder-basic_rule_4\",\"elements\":[{\"name\":\"Get Runtime\",\"kid\":4469,\"params\":[{\"type\":\"value\",\"value\":\"N_b_Target\"}]}]},{\"type\":\"rule\",\"value\":\"builder-basic_rule_5\",\"elements\":[{\"name\":\"LTP\",\"kid\":5094,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Traded Instrument Name\",\"kid\":1097,\"params\":[{\"type\":\"value\",\"value\":\"Entry\"},{\"type\":\"value\",\"value\":\"instrument\"},{\"type\":\"value\",\"value\":\"NIFTY 50\"},{\"type\":\"value\",\"value\":\"1\"},{\"type\":\"value\",\"value\":\"1\"},{\"type\":\"value\",\"value\":\"1\"}]}}]},{\"name\":\">=\",\"params\":[]},{\"name\":\"Traded Instrument\",\"kid\":1431,\"params\":[{\"type\":\"value\",\"value\":\"Entry\"},{\"type\":\"value\",\"value\":\"price\"},{\"type\":\"value\",\"value\":\"NIFTY 50\"},{\"type\":\"value\",\"value\":\"1\"},{\"type\":\"value\",\"value\":\"1\"},{\"type\":\"value\",\"value\":\"1\"}]},{\"name\":\"+\",\"params\":[]},{\"name\":\"Get Runtime\",\"kid\":4469,\"params\":[{\"type\":\"value\",\"value\":\"N_b_Target\"}]}]}]}},{\"type\":\"group\",\"value\":\"builder-basic_group_7\",\"children\":{\"operator\":\"and\",\"operands\":[{\"type\":\"rule\",\"value\":\"builder-basic_rule_7\",\"elements\":[{\"name\":\"Get Runtime\",\"kid\":4469,\"params\":[{\"type\":\"value\",\"value\":\"N_b_stoploss\"}]}]},{\"type\":\"rule\",\"value\":\"builder-basic_rule_8\",\"elements\":[{\"name\":\"LTP\",\"kid\":5094,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Traded Instrument Name\",\"kid\":1097,\"params\":[{\"type\":\"value\",\"value\":\"Entry\"},{\"type\":\"value\",\"value\":\"instrument\"},{\"type\":\"value\",\"value\":\"NIFTY 50\"},{\"type\":\"value\",\"value\":\"1\"},{\"type\":\"value\",\"value\":\"1\"},{\"type\":\"value\",\"value\":\"1\"}]}}]},{\"name\":\"<\",\"params\":[]},{\"name\":\"Traded Instrument\",\"kid\":1431,\"params\":[{\"type\":\"value\",\"value\":\"Entry\"},{\"type\":\"value\",\"value\":\"price\"},{\"type\":\"value\",\"value\":\"NIFTY 50\"},{\"type\":\"value\",\"value\":\"1\"},{\"type\":\"value\",\"value\":\"1\"},{\"type\":\"value\",\"value\":\"1\"}]},{\"name\":\"-\",\"params\":[]},{\"name\":\"Get Runtime\",\"kid\":4469,\"params\":[{\"type\":\"value\",\"value\":\"N_b_stoploss\"}]}]}]}}]}",
+          "conditionDisplay": "(  ( get_runtime ( 'strategy_id', 'run_counter', 'N_b_exit' )  )  and ( get_runtime ( 'strategy_id', 'run_counter', 'N_b_exit' ) == tt_Number ( '1' )  )  )  or (  ( get_runtime ( 'strategy_id', 'run_counter', 'N_b_Target' )  )  and ( tt_get_var ( find_traded_instrument ( 'strategy_id', 'run_counter', 'Entry', 'instrument', 'NIFTY 50', '1', '1', '1' ) , 'LTP' ) >= find_traded_instrument ( 'strategy_id', 'run_counter', 'Entry', 'price', 'NIFTY 50', '1', '1', '1' ) + get_runtime ( 'strategy_id', 'run_counter', 'N_b_Target' )  )  )  or (  ( get_runtime ( 'strategy_id', 'run_counter', 'N_b_stoploss' )  )  and ( tt_get_var ( find_traded_instrument ( 'strategy_id', 'run_counter', 'Entry', 'instrument', 'NIFTY 50', '1', '1', '1' ) , 'LTP' ) < find_traded_instrument ( 'strategy_id', 'run_counter', 'Entry', 'price', 'NIFTY 50', '1', '1', '1' ) - get_runtime ( 'strategy_id', 'run_counter', 'N_b_stoploss' )  )  )",
+          "subType": "None",
+          "visible": 1,
+          "legs": [],
+          "extra": {
+            "name": null,
+            "variables": []
+          }
+        }
+      ]
+    },
+    {
+      "list": 0,
+      "name": null,
+      "conditions": [
+        {
+          "type": "Entry",
+          "conditionValue": "( get_runtime ( 'strategy_id', 'run_counter', 'Nifty 50_s' )  )  and ( get_runtime ( 'strategy_id', 'run_counter', 'Nifty 50_s' ) == tt_Number ( '1' )  )",
+          "conditionJson": "{\"operator\":\"and\",\"operands\":[{\"type\":\"rule\",\"value\":\"builder-basic_rule_0\",\"elements\":[{\"name\":\"Get Runtime\",\"kid\":3224,\"params\":[{\"type\":\"value\",\"value\":\"Nifty 50_s\"}]}]},{\"type\":\"rule\",\"value\":\"builder-basic_rule_1\",\"elements\":[{\"name\":\"Get Runtime\",\"kid\":3224,\"params\":[{\"type\":\"value\",\"value\":\"Nifty 50_s\"}]},{\"name\":\"==\",\"params\":[]},{\"name\":\"Number\",\"kid\":1232,\"params\":[{\"type\":\"value\",\"value\":\"1\"}]}]}]}",
+          "conditionDisplay": "( Get Runtime ( 'strategy_id', 'run_counter', 'Nifty 50_s' )  )  and ( Get Runtime ( 'strategy_id', 'run_counter', 'Nifty 50_s' ) == Number ( '1' )  )",
+          "subType": "None",
+          "visible": 1,
+          "legs": [
+            {
+              "instrument": 1618,
+              "list": 0,
+              "optionType": null,
+              "expiry": "tt_curr_monthexpiry('NIFTY 50')",
+              "expiryType": "Current Month",
+              "expiryJson": null,
+              "expiryDisplay": null,
+              "strikeType": null,
+              "strike": null,
+              "strikeJson": null,
+              "strikeDisplay": null,
+              "qty": "( get_runtime ( 'strategy_id', 'run_counter', 'N_s_quantity' )  )",
+              "qtyType": "Qty",
+              "qtyDisplay": null,
+              "qtyJson": "{\"operator\":\"and\",\"operands\":[{\"type\":\"rule\",\"value\":\"builder-basic_rule_0\",\"elements\":[{\"name\":\"Get Runtime\",\"kid\":1948,\"params\":[{\"type\":\"value\",\"value\":\"N_s_quantity\"}]}]}]}",
+              "qtyExprDisplay": "( Get Runtime ( 'strategy_id', 'run_counter', 'N_s_quantity' )  )",
+              "buySell": "S",
+              "totalValue": null,
+              "limitPrice": null,
+              "limitPriceJson": null,
+              "limitPriceDisplay": null,
+              "limitPriceExprDisplay": null,
+              "entryTrigger": null,
+              "entryLimit": null,
+              "sLTrigger": null,
+              "sLTriggerJson": null,
+              "sLTriggerDisplay": null,
+              "sLTriggerExprDisplay": null,
+              "sLLimit": null,
+              "targetTrigger": null,
+              "targetLimit": null,
+              "isOvernightProtectionLeg": "No",
+              "productType": "NRML",
+              "underlyingSymbol": "NIFTY 50",
+              "tmp": 0,
+              "updatedAt": "2026-08-01 15:22:52",
+              "createdAt": "2026-08-01 15:22:52"
+            }
+          ],
+          "extra": {
+            "name": null,
+            "variables": []
+          }
+        },
+        {
+          "type": "Exit",
+          "conditionValue": "(  ( get_runtime ( 'strategy_id', 'run_counter', 'N_s_exit' )  )  and ( get_runtime ( 'strategy_id', 'run_counter', 'N_s_exit' ) == tt_Number ( '1' )  )  )  or (  ( get_runtime ( 'strategy_id', 'run_counter', 'N_s_Target' )  )  and ( tt_get_var ( find_traded_instrument ( 'strategy_id', 'run_counter', 'Entry', 'instrument', 'NIFTY 50', '2', '1', '1' ) , 'LTP' ) <= find_traded_instrument ( 'strategy_id', 'run_counter', 'Entry', 'price', 'NIFTY 50', '2', '1', '1' ) - get_runtime ( 'strategy_id', 'run_counter', 'N_s_Target' )  )  )  or (  ( get_runtime ( 'strategy_id', 'run_counter', 'N_s_stoploss' )  )  and ( tt_get_var ( find_traded_instrument ( 'strategy_id', 'run_counter', 'Entry', 'instrument', 'NIFTY 50', '2', '1', '1' ) , 'LTP' ) >= find_traded_instrument ( 'strategy_id', 'run_counter', 'Entry', 'price', 'NIFTY 50', '2', '1', '1' ) + get_runtime ( 'strategy_id', 'run_counter', 'N_s_stoploss' )  )  )",
+          "conditionJson": "{\"operator\":\"or\",\"operands\":[{\"type\":\"group\",\"value\":\"builder-basic_group_1\",\"children\":{\"operator\":\"and\",\"operands\":[{\"type\":\"rule\",\"value\":\"builder-basic_rule_1\",\"elements\":[{\"name\":\"Get Runtime\",\"kid\":4469,\"params\":[{\"type\":\"value\",\"value\":\"N_s_exit\"}]}]},{\"type\":\"rule\",\"value\":\"builder-basic_rule_2\",\"elements\":[{\"name\":\"Get Runtime\",\"kid\":4469,\"params\":[{\"type\":\"value\",\"value\":\"N_s_exit\"}]},{\"name\":\"==\",\"params\":[]},{\"name\":\"Number\",\"kid\":9093,\"params\":[{\"type\":\"value\",\"value\":\"1\"}]}]}]}},{\"type\":\"group\",\"value\":\"builder-basic_group_4\",\"children\":{\"operator\":\"and\",\"operands\":[{\"type\":\"rule\",\"value\":\"builder-basic_rule_4\",\"elements\":[{\"name\":\"Get Runtime\",\"kid\":4469,\"params\":[{\"type\":\"value\",\"value\":\"N_s_Target\"}]}]},{\"type\":\"rule\",\"value\":\"builder-basic_rule_5\",\"elements\":[{\"name\":\"LTP\",\"kid\":5094,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Traded Instrument Name\",\"kid\":1097,\"params\":[{\"type\":\"value\",\"value\":\"Entry\"},{\"type\":\"value\",\"value\":\"instrument\"},{\"type\":\"value\",\"value\":\"NIFTY 50\"},{\"type\":\"value\",\"value\":\"2\"},{\"type\":\"value\",\"value\":\"1\"},{\"type\":\"value\",\"value\":\"1\"}]}}]},{\"name\":\"<=\",\"params\":[]},{\"name\":\"Traded Instrument\",\"kid\":1431,\"params\":[{\"type\":\"value\",\"value\":\"Entry\"},{\"type\":\"value\",\"value\":\"price\"},{\"type\":\"value\",\"value\":\"NIFTY 50\"},{\"type\":\"value\",\"value\":\"2\"},{\"type\":\"value\",\"value\":\"1\"},{\"type\":\"value\",\"value\":\"1\"}]},{\"name\":\"-\",\"params\":[]},{\"name\":\"Get Runtime\",\"kid\":4469,\"params\":[{\"type\":\"value\",\"value\":\"N_s_Target\"}]}]}]}},{\"type\":\"group\",\"value\":\"builder-basic_group_7\",\"children\":{\"operator\":\"and\",\"operands\":[{\"type\":\"rule\",\"value\":\"builder-basic_rule_7\",\"elements\":[{\"name\":\"Get Runtime\",\"kid\":4469,\"params\":[{\"type\":\"value\",\"value\":\"N_s_stoploss\"}]}]},{\"type\":\"rule\",\"value\":\"builder-basic_rule_8\",\"elements\":[{\"name\":\"LTP\",\"kid\":5094,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Traded Instrument Name\",\"kid\":1097,\"params\":[{\"type\":\"value\",\"value\":\"Entry\"},{\"type\":\"value\",\"value\":\"instrument\"},{\"type\":\"value\",\"value\":\"NIFTY 50\"},{\"type\":\"value\",\"value\":\"2\"},{\"type\":\"value\",\"value\":\"1\"},{\"type\":\"value\",\"value\":\"1\"}]}}]},{\"name\":\">=\",\"params\":[]},{\"name\":\"Traded Instrument\",\"kid\":1431,\"params\":[{\"type\":\"value\",\"value\":\"Entry\"},{\"type\":\"value\",\"value\":\"price\"},{\"type\":\"value\",\"value\":\"NIFTY 50\"},{\"type\":\"value\",\"value\":\"2\"},{\"type\":\"value\",\"value\":\"1\"},{\"type\":\"value\",\"value\":\"1\"}]},{\"name\":\"+\",\"params\":[]},{\"name\":\"Get Runtime\",\"kid\":4469,\"params\":[{\"type\":\"value\",\"value\":\"N_s_stoploss\"}]}]}]}}]}",
+          "conditionDisplay": "(  ( get_runtime ( 'strategy_id', 'run_counter', 'N_s_exit' )  )  and ( get_runtime ( 'strategy_id', 'run_counter', 'N_s_exit' ) == tt_Number ( '1' )  )  )  or (  ( get_runtime ( 'strategy_id', 'run_counter', 'N_s_Target' )  )  and ( tt_get_var ( find_traded_instrument ( 'strategy_id', 'run_counter', 'Entry', 'instrument', 'NIFTY 50', '2', '1', '1' ) , 'LTP' ) <= find_traded_instrument ( 'strategy_id', 'run_counter', 'Entry', 'price', 'NIFTY 50', '2', '1', '1' ) - get_runtime ( 'strategy_id', 'run_counter', 'N_s_Target' )  )  )  or (  ( get_runtime ( 'strategy_id', 'run_counter', 'N_s_stoploss' )  )  and ( tt_get_var ( find_traded_instrument ( 'strategy_id', 'run_counter', 'Entry', 'instrument', 'NIFTY 50', '2', '1', '1' ) , 'LTP' ) >= find_traded_instrument ( 'strategy_id', 'run_counter', 'Entry', 'price', 'NIFTY 50', '2', '1', '1' ) + get_runtime ( 'strategy_id', 'run_counter', 'N_s_stoploss' )  )  )",
+          "subType": "None",
+          "visible": 1,
+          "legs": [],
+          "extra": {
+            "name": null,
+            "variables": []
+          }
+        }
+      ]
+    },
+    {
+      "list": 0,
+      "name": null,
+      "conditions": [
+        {
+          "type": "Entry",
+          "conditionValue": "( get_runtime ( 'strategy_id', 'run_counter', 'Nifty Bank_b' )  )  and ( get_runtime ( 'strategy_id', 'run_counter', 'Nifty Bank_b' ) == tt_Number ( '1' )  )",
+          "conditionJson": "{\"operator\":\"and\",\"operands\":[{\"type\":\"rule\",\"value\":\"builder-basic_rule_0\",\"elements\":[{\"name\":\"Get Runtime\",\"kid\":3224,\"params\":[{\"type\":\"value\",\"value\":\"Nifty Bank_b\"}]}]},{\"type\":\"rule\",\"value\":\"builder-basic_rule_1\",\"elements\":[{\"name\":\"Get Runtime\",\"kid\":3224,\"params\":[{\"type\":\"value\",\"value\":\"Nifty Bank_b\"}]},{\"name\":\"==\",\"params\":[]},{\"name\":\"Number\",\"kid\":1232,\"params\":[{\"type\":\"value\",\"value\":\"1\"}]}]}]}",
+          "conditionDisplay": "( Get Runtime ( 'strategy_id', 'run_counter', 'Nifty Bank_b' )  )  and ( Get Runtime ( 'strategy_id', 'run_counter', 'Nifty Bank_b' ) == Number ( '1' )  )",
+          "subType": "None",
+          "visible": 1,
+          "legs": [
+            {
+              "instrument": 1617,
+              "list": 0,
+              "optionType": null,
+              "expiry": "tt_curr_monthexpiry('NIFTY BANK')",
+              "expiryType": "Current Month",
+              "expiryJson": null,
+              "expiryDisplay": null,
+              "strikeType": null,
+              "strike": null,
+              "strikeJson": null,
+              "strikeDisplay": null,
+              "qty": "( get_runtime ( 'strategy_id', 'run_counter', 'NB_b_quantity' )  )",
+              "qtyType": "Qty",
+              "qtyDisplay": null,
+              "qtyJson": "{\"operator\":\"and\",\"operands\":[{\"type\":\"rule\",\"value\":\"builder-basic_rule_0\",\"elements\":[{\"name\":\"Get Runtime\",\"kid\":3347,\"params\":[{\"type\":\"value\",\"value\":\"NB_b_quantity\"}]}]}]}",
+              "qtyExprDisplay": "( Get Runtime ( 'strategy_id', 'run_counter', 'NB_b_quantity' )  )",
+              "buySell": "B",
+              "totalValue": null,
+              "limitPrice": null,
+              "limitPriceJson": null,
+              "limitPriceDisplay": null,
+              "limitPriceExprDisplay": null,
+              "entryTrigger": null,
+              "entryLimit": null,
+              "sLTrigger": null,
+              "sLTriggerJson": null,
+              "sLTriggerDisplay": null,
+              "sLTriggerExprDisplay": null,
+              "sLLimit": null,
+              "targetTrigger": null,
+              "targetLimit": null,
+              "isOvernightProtectionLeg": "No",
+              "productType": "NRML",
+              "underlyingSymbol": "NIFTY BANK",
+              "tmp": 0,
+              "updatedAt": "2026-08-01 15:22:52",
+              "createdAt": "2026-08-01 15:22:52"
+            }
+          ],
+          "extra": {
+            "name": null,
+            "variables": []
+          }
+        },
+        {
+          "type": "Exit",
+          "conditionValue": "(  ( get_runtime ( 'strategy_id', 'run_counter', 'NB_b_exit' )  )  and ( get_runtime ( 'strategy_id', 'run_counter', 'NB_b_exit' ) == tt_Number ( '1' )  )  )  or (  ( get_runtime ( 'strategy_id', 'run_counter', 'NB_b_Target' )  )  and ( tt_get_var ( find_traded_instrument ( 'strategy_id', 'run_counter', 'Entry', 'instrument', 'NIFTY BANK', '3', '1', '1' ) , 'LTP' ) >= find_traded_instrument ( 'strategy_id', 'run_counter', 'Entry', 'price', 'NIFTY BANK', '3', '1', '1' ) + get_runtime ( 'strategy_id', 'run_counter', 'NB_b_Target' )  )  )  or (  ( get_runtime ( 'strategy_id', 'run_counter', 'NB_b_stoploss' )  )  and ( tt_get_var ( find_traded_instrument ( 'strategy_id', 'run_counter', 'Entry', 'instrument', 'NIFTY BANK', '3', '1', '1' ) , 'LTP' ) < find_traded_instrument ( 'strategy_id', 'run_counter', 'Entry', 'price', 'NIFTY BANK', '3', '1', '1' ) - get_runtime ( 'strategy_id', 'run_counter', 'NB_b_stoploss' )  )  )",
+          "conditionJson": "{\"operator\":\"or\",\"operands\":[{\"type\":\"group\",\"value\":\"builder-basic_group_1\",\"children\":{\"operator\":\"and\",\"operands\":[{\"type\":\"rule\",\"value\":\"builder-basic_rule_1\",\"elements\":[{\"name\":\"Get Runtime\",\"kid\":4469,\"params\":[{\"type\":\"value\",\"value\":\"NB_b_exit\"}]}]},{\"type\":\"rule\",\"value\":\"builder-basic_rule_2\",\"elements\":[{\"name\":\"Get Runtime\",\"kid\":4469,\"params\":[{\"type\":\"value\",\"value\":\"NB_b_exit\"}]},{\"name\":\"==\",\"params\":[]},{\"name\":\"Number\",\"kid\":9093,\"params\":[{\"type\":\"value\",\"value\":\"1\"}]}]}]}},{\"type\":\"group\",\"value\":\"builder-basic_group_4\",\"children\":{\"operator\":\"and\",\"operands\":[{\"type\":\"rule\",\"value\":\"builder-basic_rule_4\",\"elements\":[{\"name\":\"Get Runtime\",\"kid\":4469,\"params\":[{\"type\":\"value\",\"value\":\"NB_b_Target\"}]}]},{\"type\":\"rule\",\"value\":\"builder-basic_rule_5\",\"elements\":[{\"name\":\"LTP\",\"kid\":5094,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Traded Instrument Name\",\"kid\":1097,\"params\":[{\"type\":\"value\",\"value\":\"Entry\"},{\"type\":\"value\",\"value\":\"instrument\"},{\"type\":\"value\",\"value\":\"NIFTY BANK\"},{\"type\":\"value\",\"value\":\"3\"},{\"type\":\"value\",\"value\":\"1\"},{\"type\":\"value\",\"value\":\"1\"}]}}]},{\"name\":\">=\",\"params\":[]},{\"name\":\"Traded Instrument\",\"kid\":1431,\"params\":[{\"type\":\"value\",\"value\":\"Entry\"},{\"type\":\"value\",\"value\":\"price\"},{\"type\":\"value\",\"value\":\"NIFTY BANK\"},{\"type\":\"value\",\"value\":\"3\"},{\"type\":\"value\",\"value\":\"1\"},{\"type\":\"value\",\"value\":\"1\"}]},{\"name\":\"+\",\"params\":[]},{\"name\":\"Get Runtime\",\"kid\":4469,\"params\":[{\"type\":\"value\",\"value\":\"NB_b_Target\"}]}]}]}},{\"type\":\"group\",\"value\":\"builder-basic_group_7\",\"children\":{\"operator\":\"and\",\"operands\":[{\"type\":\"rule\",\"value\":\"builder-basic_rule_7\",\"elements\":[{\"name\":\"Get Runtime\",\"kid\":4469,\"params\":[{\"type\":\"value\",\"value\":\"NB_b_stoploss\"}]}]},{\"type\":\"rule\",\"value\":\"builder-basic_rule_8\",\"elements\":[{\"name\":\"LTP\",\"kid\":5094,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Traded Instrument Name\",\"kid\":1097,\"params\":[{\"type\":\"value\",\"value\":\"Entry\"},{\"type\":\"value\",\"value\":\"instrument\"},{\"type\":\"value\",\"value\":\"NIFTY BANK\"},{\"type\":\"value\",\"value\":\"3\"},{\"type\":\"value\",\"value\":\"1\"},{\"type\":\"value\",\"value\":\"1\"}]}}]},{\"name\":\"<\",\"params\":[]},{\"name\":\"Traded Instrument\",\"kid\":1431,\"params\":[{\"type\":\"value\",\"value\":\"Entry\"},{\"type\":\"value\",\"value\":\"price\"},{\"type\":\"value\",\"value\":\"NIFTY BANK\"},{\"type\":\"value\",\"value\":\"3\"},{\"type\":\"value\",\"value\":\"1\"},{\"type\":\"value\",\"value\":\"1\"}]},{\"name\":\"-\",\"params\":[]},{\"name\":\"Get Runtime\",\"kid\":4469,\"params\":[{\"type\":\"value\",\"value\":\"NB_b_stoploss\"}]}]}]}}]}",
+          "conditionDisplay": "(  ( get_runtime ( 'strategy_id', 'run_counter', 'NB_b_exit' )  )  and ( get_runtime ( 'strategy_id', 'run_counter', 'NB_b_exit' ) == tt_Number ( '1' )  )  )  or (  ( get_runtime ( 'strategy_id', 'run_counter', 'NB_b_Target' )  )  and ( tt_get_var ( find_traded_instrument ( 'strategy_id', 'run_counter', 'Entry', 'instrument', 'NIFTY BANK', '3', '1', '1' ) , 'LTP' ) >= find_traded_instrument ( 'strategy_id', 'run_counter', 'Entry', 'price', 'NIFTY BANK', '3', '1', '1' ) + get_runtime ( 'strategy_id', 'run_counter', 'NB_b_Target' )  )  )  or (  ( get_runtime ( 'strategy_id', 'run_counter', 'NB_b_stoploss' )  )  and ( tt_get_var ( find_traded_instrument ( 'strategy_id', 'run_counter', 'Entry', 'instrument', 'NIFTY BANK', '3', '1', '1' ) , 'LTP' ) < find_traded_instrument ( 'strategy_id', 'run_counter', 'Entry', 'price', 'NIFTY BANK', '3', '1', '1' ) - get_runtime ( 'strategy_id', 'run_counter', 'NB_b_stoploss' )  )  )",
+          "subType": "None",
+          "visible": 1,
+          "legs": [],
+          "extra": {
+            "name": null,
+            "variables": []
+          }
+        }
+      ]
+    },
+    {
+      "list": 0,
+      "name": null,
+      "conditions": [
+        {
+          "type": "Entry",
+          "conditionValue": "( get_runtime ( 'strategy_id', 'run_counter', 'Nifty Bank_s' )  )  and ( get_runtime ( 'strategy_id', 'run_counter', 'Nifty Bank_s' ) == tt_Number ( '1' )  )",
+          "conditionJson": "{\"operator\":\"and\",\"operands\":[{\"type\":\"rule\",\"value\":\"builder-basic_rule_0\",\"elements\":[{\"name\":\"Get Runtime\",\"kid\":3224,\"params\":[{\"type\":\"value\",\"value\":\"Nifty Bank_s\"}]}]},{\"type\":\"rule\",\"value\":\"builder-basic_rule_1\",\"elements\":[{\"name\":\"Get Runtime\",\"kid\":3224,\"params\":[{\"type\":\"value\",\"value\":\"Nifty Bank_s\"}]},{\"name\":\"==\",\"params\":[]},{\"name\":\"Number\",\"kid\":1232,\"params\":[{\"type\":\"value\",\"value\":\"1\"}]}]}]}",
+          "conditionDisplay": "( Get Runtime ( 'strategy_id', 'run_counter', 'Nifty Bank_s' )  )  and ( Get Runtime ( 'strategy_id', 'run_counter', 'Nifty Bank_s' ) == Number ( '1' )  )",
+          "subType": "None",
+          "visible": 1,
+          "legs": [
+            {
+              "instrument": 1617,
+              "list": 0,
+              "optionType": null,
+              "expiry": "tt_curr_monthexpiry('NIFTY BANK')",
+              "expiryType": "Current Month",
+              "expiryJson": null,
+              "expiryDisplay": null,
+              "strikeType": null,
+              "strike": null,
+              "strikeJson": null,
+              "strikeDisplay": null,
+              "qty": "( get_runtime ( 'strategy_id', 'run_counter', 'NB_s_quantity' )  )",
+              "qtyType": "Qty",
+              "qtyDisplay": null,
+              "qtyJson": "{\"operator\":\"and\",\"operands\":[{\"type\":\"rule\",\"value\":\"builder-basic_rule_0\",\"elements\":[{\"name\":\"Get Runtime\",\"kid\":8095,\"params\":[{\"type\":\"value\",\"value\":\"NB_s_quantity\"}]}]}]}",
+              "qtyExprDisplay": "( Get Runtime ( 'strategy_id', 'run_counter', 'NB_s_quantity' )  )",
+              "buySell": "S",
+              "totalValue": null,
+              "limitPrice": null,
+              "limitPriceJson": null,
+              "limitPriceDisplay": null,
+              "limitPriceExprDisplay": null,
+              "entryTrigger": null,
+              "entryLimit": null,
+              "sLTrigger": null,
+              "sLTriggerJson": null,
+              "sLTriggerDisplay": null,
+              "sLTriggerExprDisplay": null,
+              "sLLimit": null,
+              "targetTrigger": null,
+              "targetLimit": null,
+              "isOvernightProtectionLeg": "No",
+              "productType": "NRML",
+              "underlyingSymbol": "NIFTY BANK",
+              "tmp": 0,
+              "updatedAt": "2026-08-01 15:22:52",
+              "createdAt": "2026-08-01 15:22:52"
+            }
+          ],
+          "extra": {
+            "name": null,
+            "variables": []
+          }
+        },
+        {
+          "type": "Exit",
+          "conditionValue": "(  ( get_runtime ( 'strategy_id', 'run_counter', 'NB_s_exit' )  )  and ( get_runtime ( 'strategy_id', 'run_counter', 'NB_s_exit' ) == tt_Number ( '1' )  )  )  or (  ( get_runtime ( 'strategy_id', 'run_counter', 'NB_s_Target' )  )  and ( tt_get_var ( find_traded_instrument ( 'strategy_id', 'run_counter', 'Entry', 'instrument', 'NIFTY BANK', '4', '1', '1' ) , 'LTP' ) <= find_traded_instrument ( 'strategy_id', 'run_counter', 'Entry', 'price', 'NIFTY BANK', '4', '1', '1' ) - get_runtime ( 'strategy_id', 'run_counter', 'NB_s_Target' )  )  )  or (  ( get_runtime ( 'strategy_id', 'run_counter', 'NB_s_stoploss' )  )  and ( tt_get_var ( find_traded_instrument ( 'strategy_id', 'run_counter', 'Entry', 'instrument', 'NIFTY BANK', '4', '1', '1' ) , 'LTP' ) >= find_traded_instrument ( 'strategy_id', 'run_counter', 'Entry', 'price', 'NIFTY BANK', '4', '1', '1' ) + get_runtime ( 'strategy_id', 'run_counter', 'NB_s_stoploss' )  )  )",
+          "conditionJson": "{\"operator\":\"or\",\"operands\":[{\"type\":\"group\",\"value\":\"builder-basic_group_1\",\"children\":{\"operator\":\"and\",\"operands\":[{\"type\":\"rule\",\"value\":\"builder-basic_rule_1\",\"elements\":[{\"name\":\"Get Runtime\",\"kid\":4469,\"params\":[{\"type\":\"value\",\"value\":\"NB_s_exit\"}]}]},{\"type\":\"rule\",\"value\":\"builder-basic_rule_2\",\"elements\":[{\"name\":\"Get Runtime\",\"kid\":4469,\"params\":[{\"type\":\"value\",\"value\":\"NB_s_exit\"}]},{\"name\":\"==\",\"params\":[]},{\"name\":\"Number\",\"kid\":9093,\"params\":[{\"type\":\"value\",\"value\":\"1\"}]}]}]}},{\"type\":\"group\",\"value\":\"builder-basic_group_4\",\"children\":{\"operator\":\"and\",\"operands\":[{\"type\":\"rule\",\"value\":\"builder-basic_rule_4\",\"elements\":[{\"name\":\"Get Runtime\",\"kid\":4469,\"params\":[{\"type\":\"value\",\"value\":\"NB_s_Target\"}]}]},{\"type\":\"rule\",\"value\":\"builder-basic_rule_5\",\"elements\":[{\"name\":\"LTP\",\"kid\":5094,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Traded Instrument Name\",\"kid\":1097,\"params\":[{\"type\":\"value\",\"value\":\"Entry\"},{\"type\":\"value\",\"value\":\"instrument\"},{\"type\":\"value\",\"value\":\"NIFTY BANK\"},{\"type\":\"value\",\"value\":\"4\"},{\"type\":\"value\",\"value\":\"1\"},{\"type\":\"value\",\"value\":\"1\"}]}}]},{\"name\":\"<=\",\"params\":[]},{\"name\":\"Traded Instrument\",\"kid\":1431,\"params\":[{\"type\":\"value\",\"value\":\"Entry\"},{\"type\":\"value\",\"value\":\"price\"},{\"type\":\"value\",\"value\":\"NIFTY BANK\"},{\"type\":\"value\",\"value\":\"4\"},{\"type\":\"value\",\"value\":\"1\"},{\"type\":\"value\",\"value\":\"1\"}]},{\"name\":\"-\",\"params\":[]},{\"name\":\"Get Runtime\",\"kid\":4469,\"params\":[{\"type\":\"value\",\"value\":\"NB_s_Target\"}]}]}]}},{\"type\":\"group\",\"value\":\"builder-basic_group_7\",\"children\":{\"operator\":\"and\",\"operands\":[{\"type\":\"rule\",\"value\":\"builder-basic_rule_7\",\"elements\":[{\"name\":\"Get Runtime\",\"kid\":4469,\"params\":[{\"type\":\"value\",\"value\":\"NB_s_stoploss\"}]}]},{\"type\":\"rule\",\"value\":\"builder-basic_rule_8\",\"elements\":[{\"name\":\"LTP\",\"kid\":5094,\"params\":[{\"type\":\"keyword\",\"keyword\":{\"name\":\"Traded Instrument Name\",\"kid\":1097,\"params\":[{\"type\":\"value\",\"value\":\"Entry\"},{\"type\":\"value\",\"value\":\"instrument\"},{\"type\":\"value\",\"value\":\"NIFTY BANK\"},{\"type\":\"value\",\"value\":\"4\"},{\"type\":\"value\",\"value\":\"1\"},{\"type\":\"value\",\"value\":\"1\"}]}}]},{\"name\":\">=\",\"params\":[]},{\"name\":\"Traded Instrument\",\"kid\":1431,\"params\":[{\"type\":\"value\",\"value\":\"Entry\"},{\"type\":\"value\",\"value\":\"price\"},{\"type\":\"value\",\"value\":\"NIFTY BANK\"},{\"type\":\"value\",\"value\":\"4\"},{\"type\":\"value\",\"value\":\"1\"},{\"type\":\"value\",\"value\":\"1\"}]},{\"name\":\"+\",\"params\":[]},{\"name\":\"Get Runtime\",\"kid\":4469,\"params\":[{\"type\":\"value\",\"value\":\"NB_s_stoploss\"}]}]}]}}]}",
+          "conditionDisplay": "(  ( get_runtime ( 'strategy_id', 'run_counter', 'NB_s_exit' )  )  and ( get_runtime ( 'strategy_id', 'run_counter', 'NB_s_exit' ) == tt_Number ( '1' )  )  )  or (  ( get_runtime ( 'strategy_id', 'run_counter', 'NB_s_Target' )  )  and ( tt_get_var ( find_traded_instrument ( 'strategy_id', 'run_counter', 'Entry', 'instrument', 'NIFTY BANK', '4', '1', '1' ) , 'LTP' ) <= find_traded_instrument ( 'strategy_id', 'run_counter', 'Entry', 'price', 'NIFTY BANK', '4', '1', '1' ) - get_runtime ( 'strategy_id', 'run_counter', 'NB_s_Target' )  )  )  or (  ( get_runtime ( 'strategy_id', 'run_counter', 'NB_s_stoploss' )  )  and ( tt_get_var ( find_traded_instrument ( 'strategy_id', 'run_counter', 'Entry', 'instrument', 'NIFTY BANK', '4', '1', '1' ) , 'LTP' ) >= find_traded_instrument ( 'strategy_id', 'run_counter', 'Entry', 'price', 'NIFTY BANK', '4', '1', '1' ) + get_runtime ( 'strategy_id', 'run_counter', 'NB_s_stoploss' )  )  )",
+          "subType": "None",
+          "visible": 1,
+          "legs": [],
+          "extra": {
+            "name": null,
+            "variables": []
+          }
+        }
+      ]
+    },
+    {
+      "name": null,
+      "conditions": [
+        {
+          "type": "Repair Once",
+          "conditionValue": null,
+          "conditionJson": null,
+          "conditionDisplay": null,
+          "subType": "Overnight Protection",
+          "visible": 0,
+          "legs": [],
+          "extra": {
+            "name": null,
+            "variables": []
+          }
+        },
+        {
+          "type": "Universal Exit",
+          "conditionValue": "( get_runtime ( 'strategy_id', 'run_counter', 'complete' )  )  and ( get_runtime ( 'strategy_id', 'run_counter', 'complete' ) == tt_Number ( '1' )  )",
+          "conditionJson": "{\"operator\":\"and\",\"operands\":[{\"type\":\"rule\",\"value\":\"builder-basic_rule_1\",\"elements\":[{\"name\":\"Get Runtime\",\"kid\":4646,\"params\":[{\"type\":\"value\",\"value\":\"complete\"}]}]},{\"type\":\"rule\",\"value\":\"builder-basic_rule_0\",\"elements\":[{\"name\":\"Get Runtime\",\"kid\":4646,\"params\":[{\"type\":\"value\",\"value\":\"complete\"}]},{\"name\":\"==\",\"params\":[]},{\"name\":\"Number\",\"kid\":7104,\"params\":[{\"type\":\"value\",\"value\":\"1\"}]}]}]}",
+          "conditionDisplay": "( Get Runtime ( 'strategy_id', 'run_counter', 'complete' )  )  and ( Get Runtime ( 'strategy_id', 'run_counter', 'complete' ) == Number ( '1' )  )",
+          "subType": "None",
+          "visible": 1,
+          "legs": [],
+          "extra": {
+            "name": null,
+            "variables": []
+          }
+        }
+      ]
+    }
+  ],
+  "currency": "INR",
+  "priceExecution": "Market Price",
+  "tranchSize": 100,
+  "tslToCostAtProfit": 0,
+  "tslProfitIncrease": 0,
+  "tslSlIncrease": 0,
+  "runFrequency": "Continuous",
+  "firstTradeAfterOpen": 1,
+  "lastTradeBeforeClose": 60,
+  "rolloverExpiryPeriod": "Dont Rollover",
+  "capitalRequired": 100000,
+  "priceRevisionAttempts": 1,
+  "tranchWaitSecs": 10,
+  "exitShortsFirst": 0,
+  "priceRevisionTimeout": 0,
+  "reactivateEvery": 2,
+  "finalAction": "MARKET",
+  "exitAtMarket": 0,
+  "runEvery": 1,
+  "rolloverExpiryTime": "1500",
+  "priceTicksMultiple": "1",
+  "pythonCode": null,
+  "isPublic": 0,
+  "minMultiple": 1,
+  "maxMultiple": 100,
+  "freePeriod": null,
+  "fixedFee": "0.00",
+  "fixedFeePeriod": "1",
+  "variableFee": "0.00",
+  "hurdleRate": 0,
+  "recreatePositionsInNewFollowers": "No",
+  "allowDuplication": 1,
+  "confirmationPerSubscriber": 1,
+  "hideSubscribers": "No",
+  "strategyPublicLinkAccess": "Yes",
+  "strategyPublicLink": null,
+  "displayPositionsToNonSubscribers": 0,
+  "highWatermark": "Yes",
+  "showLiveAutoDeployment": 0,
+  "feeShare": null,
+  "isApproved": 0,
+  "feeFrequency": "Month",
+  "backtestLinkSubscribers": null,
+  "backtestLinkNonsubscribers": null
+}

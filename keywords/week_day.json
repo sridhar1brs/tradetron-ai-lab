@@ -1,0 +1,19 @@
+{
+    "name": "Week Day",
+    "description": "The above condition will be satisfied if today is Monday",
+    "how_to_use_markdown": "Week Day returns Day of the week as an integer as 1 for Monday, 2 for Tuesday and so on till 5 as Friday\n\n![Example](./images/img-1631797067.png)\n\nThe above condition will be satisfied if today is Monday\n\nThe weekday keyword is very useful for users who want to trade only on particular days of the week. You can create multiple sets such that each set is active only on that particular day\n\n![Example](./images/img-1631797168.png)\n\nThe above condition will be satisfied on all the days except Monday\n\nNumber range is from 1- 5",
+    "example_image_urls": [
+        "./images/img-1631797067.png",
+        "./images/img-1631797168.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "Week Day\nWeek Day returns Day of the week as an integer as 1 for Monday, 2 for Tuesday and so on till 5 as Friday\nThe above condition will be satisfied if today is Monday\nThe weekday keyword is very useful for users who want to trade only on particular days of the week. You can create multiple sets such that each set is active only on that particular day\u00a0\nThe above condition will be satisfied on all the days except Monday\nNumber range is from 1- 5",
+    "visual_logic_extracted": "Image [img-1631797067.png] Text:\nWeek Day\nNSE\n\nImage [img-1631797168.png] Text:\ni es *)\nWeek Day l= Number\nNSE 1"
+}

@@ -1,0 +1,19 @@
+{
+    "name": "Lot Size",
+    "description": "This keyword will fetch the current lot size of an instrument and return an integer number of the same. Lot size can be used in combination with other keywords to make comprehensive formulae to achieve a specific mathematical operation. Its specially useful when using lists and will only work on futures and option instruments.",
+    "how_to_use_markdown": "This keyword will fetch the current lot size of an instrument and return an integer number of the same. Lot size can be used in combination with other keywords to make comprehensive formulae to achieve a specific mathematical operation. Its specially useful when using lists and will only work on futures and option instruments.\n\n![Example](./images/img-1631866676.png)\n\nThe above image is of the keyword to find the lot size of Nifty 50 current month futures.\n\nThe above image is of the keyword to find the lot size of Nifty 50 current week ATM CE.\n\n![Example](./images/img-1631866776.png)",
+    "example_image_urls": [
+        "./images/img-1631866676.png",
+        "./images/img-1631866776.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "Lot Size\nThis keyword will fetch the current lot size of an instrument and return an integer number of the same. Lot size can be used in combination with other keywords to make comprehensive formulae to achieve a specific mathematical operation. Its specially useful when using lists and will only work on futures and option instruments.\u00a0\nThe above image is of the keyword to find the lot size of Nifty 50 current month futures.\nThe above image is of the keyword to find the lot size of Nifty 50 current week ATM CE.",
+    "visual_logic_extracted": "Image [img-1631866676.png] Text:\n6\n\nLot Size\nInstrument Name ( NFO,NIFTY 50,Current Month,,,, )\n\nImage [img-1631866776.png] Text:\n6\n\nLot Size\nInstrument Name ( NFO,NIFTY 50,Current Week,CE,ATM,0,0 )"
+}

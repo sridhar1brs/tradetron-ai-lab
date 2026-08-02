@@ -1,0 +1,18 @@
+{
+    "name": "LINEARREG_ANGLE",
+    "description": "This keyword returns the Linear Regression Angle of any period of any series of the selected Instrument. This keyword is to be used under the position keyword.",
+    "how_to_use_markdown": "This keyword returns the Linear Regression Angle of any period of any series of the selected Instrument. This keyword is to be used under the position keyword.\n\nThis keyword has been used as a part of TA lib. You can find more details on the same from the link shared below:\n\nhttps://www.ta-lib.org/function.html\n\n![Example](./images/img-1632394037.png)\n\nYou can fetch the  Linear Regression Angle  on any series, like close in the above example, you can also plot EMA of RSI, OPEN etc",
+    "example_image_urls": [
+        "./images/img-1632394037.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "LINEARREG_ANGLE\nThis keyword returns the Linear Regression Angle of any period of any series of the selected Instrument. This keyword is to be used under the position keyword.\u00a0\nThis keyword has been used as a part of TA lib. You can find more details on the same from the link shared below:\nhttps://www.ta-lib.org/function.html\nYou can fetch the \nLinear Regression Angle\n on any series, like close in the above example, you can also plot EMA of RSI, OPEN etc",
+    "visual_logic_extracted": "Image [img-1632394037.png] Text:\nix\n\nPosition\nLINEARREG_ANGLE ( CLOSE ( Symbol ( Instrument Name (NFO,NIFTY 50,,,,,), 5m, All)), 14),-1"
+}

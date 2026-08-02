@@ -1,0 +1,18 @@
+{
+    "name": "Stdev",
+    "description": "This keyword will return the rolling standard deviation of the series selected of the particular instrument.",
+    "how_to_use_markdown": "This keyword will return the rolling standard deviation of the series selected of the particular instrument.\n\nSTDEV is generally used under position keyword\n\nThis keyword has 2 inputs, one is to select the series, other is to select the period which is the no. of previous values to consider or the sample\n\n![Example](./images/img-1631881032.png)\n\nThe above condition will return the \u00a0standard deviation of the NIFTY 50 close series, considering the sample data of past 20 candles",
+    "example_image_urls": [
+        "./images/img-1631881032.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "Stdev\nThis keyword will return the rolling standard deviation of the series selected of the particular instrument.\nSTDEV is generally used under position keyword\nThis keyword has 2 inputs, one is to select the series, other is to select the period which is the no. of previous values to consider or the sample\nThe above condition will return the \u00a0standard deviation of the NIFTY 50 close series, considering the sample data of past 20 candles",
+    "visual_logic_extracted": "Image [img-1631881032.png] Text:\n+\n\nPosition\nStdev ( CLOSE ( Symbol ( Instrument Name ( NFO,NIFTY 50,,,,, ), day, All) ),20),-1"
+}

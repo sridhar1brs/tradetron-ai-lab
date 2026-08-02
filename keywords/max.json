@@ -1,0 +1,18 @@
+{
+    "name": "Max",
+    "description": "This keyword returns the maximum value of the two inputs.",
+    "how_to_use_markdown": "This keyword returns the maximum value of the two inputs.\n\n![Example](./images/img-1632311036.png)\n\nThe above condition will return the maximum value, in this case, 1500\n\nYou can also input different series like CLOSE, EMA and find the maximum of the two. Make sure to use the position keyword while selecting series as input",
+    "example_image_urls": [
+        "./images/img-1632311036.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "Max\nThis keyword returns the maximum value of the two inputs.\nThe above condition will return the maximum value, in this case, 1500\nYou can also input different series like CLOSE, EMA and find the maximum of the two. Make sure to use the position keyword while selecting series as input",
+    "visual_logic_extracted": "Image [img-1632311036.png] Text:\n\u00a9\nMax\n\nNumber ( 1500 ) , Number ( 50 )"
+}

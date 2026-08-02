@@ -1,0 +1,19 @@
+{
+    "name": "MCX Fut Expiry",
+    "description": "This keyword returns the monthly futures expiry date of the instrument as a string in the format YYYY-MM-DD",
+    "how_to_use_markdown": "This keyword returns the monthly futures expiry date of the instrument as a string in the format  YYYY-MM-DD\n\nThis keyword can be used in condition builder as well as in expiry FX of the position builder\n\n![Example](./images/img-1632231581.png)\n\nThe above example can be used in condition builder to check if the current day is the monthly expiry of the MCX instrument\n\n![Example](./images/img-1632232030.png)\n\nThe above condition can be used in the expiry FX of the position builder to trade next month expiry",
+    "example_image_urls": [
+        "./images/img-1632231581.png",
+        "./images/img-1632232030.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "MCX Fut Expiry\nThis keyword returns the monthly futures expiry date of the instrument as a string in the format \nYYYY-MM-DD\n\u00a0\nThis keyword can be used in condition builder as well as in expiry FX of the position builder\nThe above example can be used in condition builder to check if the current day is the monthly expiry of the MCX instrument\nThe above condition can be used in the expiry FX of the position builder to trade next month expiry",
+    "visual_logic_extracted": "Image [img-1632231581.png] Text:\no-_ 98\nToday == MCX Fut Expiry\nMCX Crudeoil, 0\n\nImage [img-1632232030.png] Text:\nMCX Fut Expiry\nCrudeoil, 1"
+}

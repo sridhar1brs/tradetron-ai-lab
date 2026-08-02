@@ -1,0 +1,19 @@
+{
+    "name": "Get Runtime Number",
+    "description": "This keyword is used to fetch the numeric value of a runtime variable generated using python or from Tradetron API. The inputs you use here will be case and space sensitive.",
+    "how_to_use_markdown": "This keyword is used to fetch the numeric value of a runtime variable generated using python or from Tradetron API. The inputs you use here will be case and space sensitive.\n\n![Example](./images/img-1632392471.png)\n\nIn the example shared above, the keyword will look for the variable called 'TRADETRON' and find the number associated with it.\n\nGet runtime number was primarily introduced to allow the get runtime feature to be used at places where it would be illogical to have a string value. In the example shared below, we can use find strike to fetch the premium of a particular number which is a runtime variable called 'TRADETRON'.\n\n![Example](./images/img-1632392767.png)",
+    "example_image_urls": [
+        "./images/img-1632392471.png",
+        "./images/img-1632392767.png"
+    ],
+    "parameters": [
+        {
+            "name": "Extract parameters manually or update script parser",
+            "type": "Any",
+            "description": "Details pending"
+        }
+    ],
+    "return_type": "Any",
+    "raw_scraped_text": "Get Runtime Number\nThis keyword is used to fetch the numeric value of a runtime variable generated using python or from Tradetron API. The inputs you use here will be case and space sensitive.\u00a0\nIn the example shared above, the keyword will look for the variable called 'TRADETRON' and find the number associated with it.\u00a0\nGet runtime number was primarily introduced to allow the get runtime feature to be used at places where it would be illogical to have a string value. In the example shared below, we can use find strike to fetch the premium of a particular number which is a runtime variable called 'TRADETRON'.",
+    "visual_logic_extracted": "Image [img-1632392471.png] Text:\nGet Runtime Number\nTRADETRON\n\nImage [img-1632392767.png] Text:\nFind Strike\nNIFTY 50, Select Expiry (week, 0), Itp, Get Runtime Number (TRADETRON ) , All, any"
+}
