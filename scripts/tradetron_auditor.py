@@ -9,6 +9,8 @@ Performs chronological strategy execution auditing, schema validation, and rule 
 5. Condition Group AST 'children' Wrapper Validator (Rule 9)
 6. Unused Global Variable Detector
 7. Position Builder Leg Quantity Formula Syntax Check
+8. Positions Detail Case-Sensitivity Validator (Rule 24)
+9. Traded Instrument Coordinate Integrity Validator (Rule 25)
 """
 
 import json
@@ -57,7 +59,14 @@ def validate_ui_schema(data):
     num_sets = len(sets)
     raw_str_data = json.dumps(data)
 
-    # 1. Check Unused Global Variables (count <= 1 means only defined in variables array, never used)
+    # Map all active leg coordinates: (set_num, cond_num, leg_num)
+    active_legs = set()
+    for s_idx, s in enumerate(sets, 1):
+        for c_idx, c in enumerate(s.get("conditions", []), 1):
+            for l_idx in range(1, len(c.get("legs", [])) + 1):
+                active_legs.add((s_idx, c_idx, l_idx))
+
+    # 1. Check Unused Global Variables
     variables = data.get("variables", [])
     for v in variables:
         v_name = v.get("variableName", "")
@@ -79,7 +88,7 @@ def validate_ui_schema(data):
             if cjson:
                 try:
                     ast = json.loads(cjson) if isinstance(cjson, str) else cjson
-                    _check_ast_nodes(ast, s_idx + 1, c_idx + 1, schema_errors, schema_warnings)
+                    _check_ast_nodes(ast, s_idx + 1, c_idx + 1, active_legs, schema_errors, schema_warnings)
                 except Exception:
                     pass
                 
@@ -97,14 +106,14 @@ def validate_ui_schema(data):
 
     return schema_errors, schema_warnings
 
-def _check_ast_nodes(node, set_num, cond_num, errors, warnings):
+def _check_ast_nodes(node, set_num, cond_num, active_legs, errors, warnings):
     if not isinstance(node, dict):
         return
         
     if node.get("type") == "group":
         if "children" not in node and "operator" in node:
             errors.append(f"[RULE 9 VIOLATION] ConditionGroup in Set {set_num} Cond {cond_num} is missing 'children' dictionary wrapper!")
-        _check_ast_nodes(node.get("children", {}), set_num, cond_num, errors, warnings)
+        _check_ast_nodes(node.get("children", {}), set_num, cond_num, active_legs, errors, warnings)
         return
 
     operands = node.get("operands", [])
@@ -135,9 +144,28 @@ def _check_ast_nodes(node, set_num, cond_num, errors, warnings):
                         op_symbol = params[2].get("value", "")
                         if op_symbol not in ["*", "+", "-", "/"]:
                             warnings.append(f"[RULE 13 WARNING] Math Operation in Set {set_num} Cond {cond_num} operator symbol '{op_symbol}' is not at index 3 (Postfix array order expected).")
+
+                # Rule 24: Positions Detail Case-Sensitivity Validator
+                if el_name == "Positions Detail":
+                    if len(params) >= 4:
+                        field_val = params[3].get("value", "")
+                        if field_val == "Quantity" or field_val == "PRICE":
+                            errors.append(f"[RULE 24 VIOLATION] Positions Detail in Set {set_num} Cond {cond_num} uses '{field_val}'. Field parameter is strictly case-sensitive and must be lowercase ('quantity', 'price')!")
+
+                # Rule 25: Traded Instrument Coordinate Integrity Validator
+                if el_name in ["Traded Instrument", "Traded Instrument Name"]:
+                    if len(params) >= 6:
+                        try:
+                            t_set = int(params[3].get("value", 0))
+                            t_cond = int(params[4].get("value", 0))
+                            t_leg = int(params[5].get("value", 0))
+                            if (t_set, t_cond, t_leg) not in active_legs and active_legs:
+                                warnings.append(f"[RULE 25 WARNING] {el_name} in Set {set_num} Cond {cond_num} references target coordinate ({t_set}, {t_cond}, {t_leg}) which does not match an active leg!")
+                        except Exception:
+                            pass
                             
         elif op.get("type") == "group":
-            _check_ast_nodes(op, set_num, cond_num, errors, warnings)
+            _check_ast_nodes(op, set_num, cond_num, active_legs, errors, warnings)
 
 def audit_strategy(filepath):
     print(f"============================================================")
@@ -187,7 +215,6 @@ def audit_strategy(filepath):
             else:
                 print(f"  -> [{ctype.upper()}] Logic: [None]")
 
-    # Perform UI Schema & Rule Validation
     errors, warnings = validate_ui_schema(data)
 
     print(f"\n============================================================")
