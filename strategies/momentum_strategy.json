@@ -78,7 +78,7 @@
               "strike": "( Get Strike + Get Runtime(OTM_Offset) )",
               "strikeJson": "{\"operator\": \"and\", \"operands\": [{\"type\": \"rule\", \"value\": \"builder-basic_rule_0\", \"elements\": [{\"name\": \"Get Strike\", \"kid\": 1000, \"params\": [{\"type\": \"value\", \"value\": \"NIFTY 50\"}, {\"type\": \"keyword\", \"keyword\": {\"name\": \"LTP\", \"kid\": 1001, \"params\": [{\"type\": \"keyword\", \"keyword\": {\"name\": \"Instrument Name\", \"kid\": 1002, \"params\": [{\"type\": \"value\", \"value\": \"NFO,NIFTY 50,,,,\"}]}}]}}]}, {\"name\": \"+\", \"params\": []}, {\"name\": \"Get Runtime\", \"kid\": 1003, \"params\": [{\"type\": \"value\", \"value\": \"OTM_Offset\"}]}]}]}",
               "strikeDisplay": null,
-              "qty": "tt_lots(1,'INSTRUMENT','CE')",
+              "qty": "1",
               "qtyType": "Lots",
               "qtyDisplay": "1",
               "qtyJson": null,
@@ -89,7 +89,15 @@
               "targetTrigger": null,
               "sLLimit": null,
               "sLTrigger": null,
-              "exchange": "NFO"
+              "exchange": "NFO",
+              "instrumentType": "OPTIDX",
+              "limitPrice": null,
+              "limitPriceJson": null,
+              "limitPriceDisplay": null,
+              "limitPriceExprDisplay": null,
+              "sLTriggerJson": null,
+              "sLTriggerDisplay": null,
+              "sLTriggerExprDisplay": null
             }
           ],
           "extra": {
@@ -136,7 +144,7 @@
               "strike": "( Get Strike - Get Runtime(OTM_Offset) )",
               "strikeJson": "{\"operator\": \"and\", \"operands\": [{\"type\": \"rule\", \"value\": \"builder-basic_rule_0\", \"elements\": [{\"name\": \"Get Strike\", \"kid\": 1000, \"params\": [{\"type\": \"value\", \"value\": \"NIFTY 50\"}, {\"type\": \"keyword\", \"keyword\": {\"name\": \"LTP\", \"kid\": 1001, \"params\": [{\"type\": \"keyword\", \"keyword\": {\"name\": \"Instrument Name\", \"kid\": 1002, \"params\": [{\"type\": \"value\", \"value\": \"NFO,NIFTY 50,,,,\"}]}}]}}]}, {\"name\": \"-\", \"params\": []}, {\"name\": \"Get Runtime\", \"kid\": 1003, \"params\": [{\"type\": \"value\", \"value\": \"OTM_Offset\"}]}]}]}",
               "strikeDisplay": null,
-              "qty": "tt_lots(1,'INSTRUMENT','PE')",
+              "qty": "1",
               "qtyType": "Lots",
               "qtyDisplay": "1",
               "qtyJson": null,
@@ -147,7 +155,15 @@
               "targetTrigger": null,
               "sLLimit": null,
               "sLTrigger": null,
-              "exchange": "NFO"
+              "exchange": "NFO",
+              "instrumentType": "OPTIDX",
+              "limitPrice": null,
+              "limitPriceJson": null,
+              "limitPriceDisplay": null,
+              "limitPriceExprDisplay": null,
+              "sLTriggerJson": null,
+              "sLTriggerDisplay": null,
+              "sLTriggerExprDisplay": null
             }
           ],
           "extra": {

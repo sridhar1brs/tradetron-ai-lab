@@ -11,7 +11,8 @@ Performs chronological strategy execution auditing, schema validation, and rule 
 7. Position Builder Leg Quantity Formula Syntax Check
 8. Positions Detail Case-Sensitivity Validator (Rule 24)
 9. Traded Instrument Coordinate Integrity Validator (Rule 25)
-10. Leg Metadata Completeness Check (Rule 28)
+10. Leg Metadata Completeness Check (Rule 28: exchange, instrument, instrumentType)
+11. Position Builder Leg Qty & Price Field Renderer Check (Rule 30)
 """
 
 import json
@@ -99,14 +100,17 @@ def validate_ui_schema(data):
                 if st_json and st_type != "Fx":
                     schema_errors.append(f"[RULE 5 VIOLATION] Set {s_idx + 1} Cond {c_idx + 1} Leg {l_idx + 1} uses strikeJson formula but strikeType is '{st_type}'. Must be 'Fx'!")
 
-                # Rule 28: Leg Metadata Completeness Check (exchange & instrument)
-                if not leg.get("exchange") or not leg.get("instrument"):
-                    schema_errors.append(f"[RULE 28 VIOLATION] Set {s_idx + 1} Cond {c_idx + 1} Leg {l_idx + 1} has null/empty 'exchange' or 'instrument'! Must explicitly specify 'NFO' or 'NSE'.")
+                # Rule 28: Leg Metadata Completeness Check (exchange, instrument, instrumentType)
+                if not leg.get("exchange") or not leg.get("instrument") or not leg.get("instrumentType"):
+                    schema_errors.append(f"[RULE 28 VIOLATION] Set {s_idx + 1} Cond {c_idx + 1} Leg {l_idx + 1} has null/empty 'exchange', 'instrument', or 'instrumentType'! Must explicitly specify ('NFO', 'NFO', 'OPTIDX') or ('NSE', 'NSE', 'EQ').")
 
-                # Leg Quantity Formula Syntax Check
-                qty_str = str(leg.get("qty", ""))
-                if "tt_value" in qty_str and "tt_get_runtime" in qty_str:
-                    schema_errors.append(f"[MACRO FORMULA ERROR] Set {s_idx + 1} Cond {c_idx + 1} Leg {l_idx + 1} uses invalid nested 'tt_get_runtime' inside 'tt_value()'! tt_value requires a literal numeric input.")
+                # Rule 30: Position Builder Leg Qty & Price Field Renderer Check
+                qty_val = str(leg.get("qty", ""))
+                if "tt_lots" in qty_val or "tt_value" in qty_val:
+                    schema_errors.append(f"[RULE 30 VIOLATION] Set {s_idx + 1} Cond {c_idx + 1} Leg {l_idx + 1} has raw macro '{qty_val}' inside 'qty'. Set 'qty': '1' (for Lots) or '10000' (for Value) to render the UI input box cleanly!")
+
+                if leg.get("limitPriceJson") is not None or leg.get("sLTriggerJson") is not None:
+                    schema_warnings.append(f"[RULE 30 WARNING] Set {s_idx + 1} Cond {c_idx + 1} Leg {l_idx + 1} has non-null limitPriceJson/sLTriggerJson. For Market orders, set these to null so UI leaves them unhighlighted.")
 
     return schema_errors, schema_warnings
 
