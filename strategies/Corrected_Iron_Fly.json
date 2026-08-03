@@ -49,7 +49,7 @@
           "visible": 1,
           "legs": [
             {
-              "instrument": 1855,
+              "instrument": "NFO",
               "list": 0,
               "optionType": "CE",
               "expiryType": "Current Month",
@@ -58,7 +58,7 @@
               "expiryDisplay": null,
               "strikeType": "Fx",
               "strike": "( Get Strike + Get Runtime(HedgeGap) )",
-              "strikeJson": "{\"operator\": \"and\", \"operands\": [{\"type\": \"rule\", \"value\": \"builder-basic_rule_0\", \"elements\": [{\"name\": \"Get Strike\", \"kid\": 1000, \"params\": [{\"type\": \"value\", \"value\": \"NIFTY 50\"}, {\"type\": \"keyword\", \"keyword\": {\"name\": \"LTP\", \"kid\": 1001, \"params\": [{\"type\": \"keyword\", \"keyword\": {\"name\": \"Instrument Name\", \"kid\": 1002, \"params\": [{\"type\": \"value\", \"value\": \"NFO,NIFTY 50,,,,\"}]}}]}}]}, {\"name\": \"+\", \"params\": []}, {\"name\": \"Get Runtime\", \"kid\": 1003, \"params\": [{\"type\": \"value\", \"value\": \"HedgeGap\"}]}]}]}",
+              "strikeJson": "{\"operator\": \"and\", \"operands\": [{\"type\": \"rule\", \"value\": \"builder-basic_rule_0\", \"elements\": [{\"name\": \"Get Strike\", \"kid\": 1000, \"params\": [{\"type\": \"value\", \"value\": \"NIFTY 50\"}, {\"type\": \"keyword\", \"keyword\": {\"name\": \"LTP\", \"kid\": 1001, \"params\": [{\"type\": \"keyword\", \"keyword\": {\"name\": \"Instrument Name\", \"kid\": 1002, \"params\": [{\"type\": \"value\", \"value\": \"NFO,NIFTY 50,,,,,\"}]}}]}}]}, {\"name\": \"+\", \"params\": []}, {\"name\": \"Get Runtime\", \"kid\": 1003, \"params\": [{\"type\": \"value\", \"value\": \"HedgeGap\"}]}]}]}",
               "strikeDisplay": null,
               "qty": "tt_lots(1,'INSTRUMENT','CE')",
               "qtyType": "Lots",
@@ -70,10 +70,11 @@
               "targetLimit": null,
               "targetTrigger": null,
               "sLLimit": null,
-              "sLTrigger": null
+              "sLTrigger": null,
+              "exchange": "NFO"
             },
             {
-              "instrument": 1855,
+              "instrument": "NFO",
               "list": 0,
               "optionType": "PE",
               "expiryType": "Current Month",
@@ -82,7 +83,7 @@
               "expiryDisplay": null,
               "strikeType": "Fx",
               "strike": "( Get Strike - Get Runtime(HedgeGap) )",
-              "strikeJson": "{\"operator\": \"and\", \"operands\": [{\"type\": \"rule\", \"value\": \"builder-basic_rule_0\", \"elements\": [{\"name\": \"Get Strike\", \"kid\": 1000, \"params\": [{\"type\": \"value\", \"value\": \"NIFTY 50\"}, {\"type\": \"keyword\", \"keyword\": {\"name\": \"LTP\", \"kid\": 1001, \"params\": [{\"type\": \"keyword\", \"keyword\": {\"name\": \"Instrument Name\", \"kid\": 1002, \"params\": [{\"type\": \"value\", \"value\": \"NFO,NIFTY 50,,,,\"}]}}]}}]}, {\"name\": \"-\", \"params\": []}, {\"name\": \"Get Runtime\", \"kid\": 1003, \"params\": [{\"type\": \"value\", \"value\": \"HedgeGap\"}]}]}]}",
+              "strikeJson": "{\"operator\": \"and\", \"operands\": [{\"type\": \"rule\", \"value\": \"builder-basic_rule_0\", \"elements\": [{\"name\": \"Get Strike\", \"kid\": 1000, \"params\": [{\"type\": \"value\", \"value\": \"NIFTY 50\"}, {\"type\": \"keyword\", \"keyword\": {\"name\": \"LTP\", \"kid\": 1001, \"params\": [{\"type\": \"keyword\", \"keyword\": {\"name\": \"Instrument Name\", \"kid\": 1002, \"params\": [{\"type\": \"value\", \"value\": \"NFO,NIFTY 50,,,,,\"}]}}]}}]}, {\"name\": \"-\", \"params\": []}, {\"name\": \"Get Runtime\", \"kid\": 1003, \"params\": [{\"type\": \"value\", \"value\": \"HedgeGap\"}]}]}]}",
               "strikeDisplay": null,
               "qty": "tt_lots(1,'INSTRUMENT','PE')",
               "qtyType": "Lots",
@@ -94,7 +95,8 @@
               "targetLimit": null,
               "targetTrigger": null,
               "sLLimit": null,
-              "sLTrigger": null
+              "sLTrigger": null,
+              "exchange": "NFO"
             }
           ],
           "extra": {
@@ -111,7 +113,7 @@
           "visible": 1,
           "legs": [
             {
-              "instrument": 1855,
+              "instrument": "NFO",
               "list": 0,
               "optionType": "CE",
               "expiryType": "Current Month",
@@ -120,7 +122,7 @@
               "expiryDisplay": null,
               "strikeType": "Fx",
               "strike": "( Get Strike(Spot LTP) )",
-              "strikeJson": "{\"operator\": \"and\", \"operands\": [{\"type\": \"rule\", \"value\": \"builder-basic_rule_0\", \"elements\": [{\"name\": \"Get Strike\", \"kid\": 1000, \"params\": [{\"type\": \"value\", \"value\": \"NIFTY 50\"}, {\"type\": \"keyword\", \"keyword\": {\"name\": \"LTP\", \"kid\": 1001, \"params\": [{\"type\": \"keyword\", \"keyword\": {\"name\": \"Instrument Name\", \"kid\": 1002, \"params\": [{\"type\": \"value\", \"value\": \"NFO,NIFTY 50,,,,\"}]}}]}}]}]}]}",
+              "strikeJson": "{\"operator\": \"and\", \"operands\": [{\"type\": \"rule\", \"value\": \"builder-basic_rule_0\", \"elements\": [{\"name\": \"Get Strike\", \"kid\": 1000, \"params\": [{\"type\": \"value\", \"value\": \"NIFTY 50\"}, {\"type\": \"keyword\", \"keyword\": {\"name\": \"LTP\", \"kid\": 1001, \"params\": [{\"type\": \"keyword\", \"keyword\": {\"name\": \"Instrument Name\", \"kid\": 1002, \"params\": [{\"type\": \"value\", \"value\": \"NFO,NIFTY 50,,,,,\"}]}}]}}]}]}]}",
               "strikeDisplay": null,
               "qty": "tt_lots(1,'INSTRUMENT','CE')",
               "qtyType": "Lots",
@@ -132,10 +134,11 @@
               "targetLimit": null,
               "targetTrigger": null,
               "sLLimit": null,
-              "sLTrigger": null
+              "sLTrigger": null,
+              "exchange": "NFO"
             },
             {
-              "instrument": 1855,
+              "instrument": "NFO",
               "list": 0,
               "optionType": "PE",
               "expiryType": "Current Month",
@@ -144,7 +147,7 @@
               "expiryDisplay": null,
               "strikeType": "Fx",
               "strike": "( Get Strike(Spot LTP) )",
-              "strikeJson": "{\"operator\": \"and\", \"operands\": [{\"type\": \"rule\", \"value\": \"builder-basic_rule_0\", \"elements\": [{\"name\": \"Get Strike\", \"kid\": 1000, \"params\": [{\"type\": \"value\", \"value\": \"NIFTY 50\"}, {\"type\": \"keyword\", \"keyword\": {\"name\": \"LTP\", \"kid\": 1001, \"params\": [{\"type\": \"keyword\", \"keyword\": {\"name\": \"Instrument Name\", \"kid\": 1002, \"params\": [{\"type\": \"value\", \"value\": \"NFO,NIFTY 50,,,,\"}]}}]}}]}]}]}",
+              "strikeJson": "{\"operator\": \"and\", \"operands\": [{\"type\": \"rule\", \"value\": \"builder-basic_rule_0\", \"elements\": [{\"name\": \"Get Strike\", \"kid\": 1000, \"params\": [{\"type\": \"value\", \"value\": \"NIFTY 50\"}, {\"type\": \"keyword\", \"keyword\": {\"name\": \"LTP\", \"kid\": 1001, \"params\": [{\"type\": \"keyword\", \"keyword\": {\"name\": \"Instrument Name\", \"kid\": 1002, \"params\": [{\"type\": \"value\", \"value\": \"NFO,NIFTY 50,,,,,\"}]}}]}}]}]}]}",
               "strikeDisplay": null,
               "qty": "tt_lots(1,'INSTRUMENT','PE')",
               "qtyType": "Lots",
@@ -156,7 +159,8 @@
               "targetLimit": null,
               "targetTrigger": null,
               "sLLimit": null,
-              "sLTrigger": null
+              "sLTrigger": null,
+              "exchange": "NFO"
             }
           ],
           "extra": {
@@ -167,13 +171,13 @@
         {
           "type": "Repair Once",
           "conditionValue": null,
-          "conditionJson": "{\"operator\": \"and\", \"operands\": [{\"type\": \"rule\", \"value\": \"builder-basic_rule_0\", \"elements\": [{\"name\": \"Traded Instrument\", \"kid\": 2745, \"params\": [{\"type\": \"value\", \"value\": \"Entry\"}, {\"type\": \"value\", \"value\": \"quantity\"}, {\"type\": \"value\", \"value\": \"NIFTY 50\"}, {\"type\": \"value\", \"value\": \"1\"}, {\"type\": \"value\", \"value\": \"4\"}, {\"type\": \"value\", \"value\": \"1\"}]}, {\"name\": \">\", \"params\": []}, {\"name\": \"Number\", \"kid\": 2094, \"params\": [{\"type\": \"value\", \"value\": \"0\"}]}]}, {\"type\": \"rule\", \"value\": \"builder-basic_rule_1\", \"elements\": [{\"name\": \"Net Quantity\", \"kid\": 5884, \"params\": [{\"type\": \"keyword\", \"keyword\": {\"name\": \"Traded Instrument\", \"kid\": 8557, \"params\": [{\"type\": \"value\", \"value\": \"Entry\"}, {\"type\": \"value\", \"value\": \"quantity\"}, {\"type\": \"value\", \"value\": \"NIFTY 50\"}, {\"type\": \"value\", \"value\": \"1\"}, {\"type\": \"value\", \"value\": \"1\"}, {\"type\": \"value\", \"value\": \"1\"}]}}]}, {\"name\": \"!=\", \"params\": []}, {\"name\": \"Number\", \"kid\": 8222, \"params\": [{\"type\": \"value\", \"value\": \"0\"}]}]}]}",
+          "conditionJson": "{\"operator\": \"and\", \"operands\": [{\"type\": \"rule\", \"value\": \"builder-basic_rule_0\", \"elements\": [{\"name\": \"Traded Instrument\", \"kid\": 2745, \"params\": [{\"type\": \"value\", \"value\": \"Entry\"}, {\"type\": \"value\", \"value\": \"quantity\"}, {\"type\": \"value\", \"value\": \"NIFTY 50\"}, {\"type\": \"value\", \"value\": \"1\"}, {\"type\": \"value\", \"value\": \"2\"}, {\"type\": \"value\", \"value\": \"1\"}]}, {\"name\": \">\", \"params\": []}, {\"name\": \"Number\", \"kid\": 2094, \"params\": [{\"type\": \"value\", \"value\": \"0\"}]}]}, {\"type\": \"rule\", \"value\": \"builder-basic_rule_1\", \"elements\": [{\"name\": \"Net Quantity\", \"kid\": 5884, \"params\": [{\"type\": \"keyword\", \"keyword\": {\"name\": \"Traded Instrument\", \"kid\": 8557, \"params\": [{\"type\": \"value\", \"value\": \"Entry\"}, {\"type\": \"value\", \"value\": \"quantity\"}, {\"type\": \"value\", \"value\": \"NIFTY 50\"}, {\"type\": \"value\", \"value\": \"1\"}, {\"type\": \"value\", \"value\": \"1\"}, {\"type\": \"value\", \"value\": \"1\"}]}}]}, {\"name\": \"!=\", \"params\": []}, {\"name\": \"Number\", \"kid\": 8222, \"params\": [{\"type\": \"value\", \"value\": \"0\"}]}]}]}",
           "conditionDisplay": null,
           "subType": "None",
           "visible": 1,
           "legs": [
             {
-              "instrument": 1855,
+              "instrument": "NFO",
               "list": 0,
               "optionType": "CE",
               "expiryType": "Current Month",
@@ -194,7 +198,8 @@
               "targetLimit": null,
               "targetTrigger": null,
               "sLLimit": null,
-              "sLTrigger": null
+              "sLTrigger": null,
+              "exchange": "NFO"
             }
           ],
           "extra": {
@@ -205,13 +210,13 @@
         {
           "type": "Repair Once",
           "conditionValue": null,
-          "conditionJson": "{\"operator\": \"and\", \"operands\": [{\"type\": \"rule\", \"value\": \"builder-basic_rule_0\", \"elements\": [{\"name\": \"Traded Instrument\", \"kid\": 3381, \"params\": [{\"type\": \"value\", \"value\": \"Entry\"}, {\"type\": \"value\", \"value\": \"quantity\"}, {\"type\": \"value\", \"value\": \"NIFTY 50\"}, {\"type\": \"value\", \"value\": \"1\"}, {\"type\": \"value\", \"value\": \"4\"}, {\"type\": \"value\", \"value\": \"1\"}]}, {\"name\": \">\", \"params\": []}, {\"name\": \"Number\", \"kid\": 2153, \"params\": [{\"type\": \"value\", \"value\": \"0\"}]}]}, {\"type\": \"rule\", \"value\": \"builder-basic_rule_1\", \"elements\": [{\"name\": \"Net Quantity\", \"kid\": 6406, \"params\": [{\"type\": \"keyword\", \"keyword\": {\"name\": \"Traded Instrument\", \"kid\": 2523, \"params\": [{\"type\": \"value\", \"value\": \"Entry\"}, {\"type\": \"value\", \"value\": \"quantity\"}, {\"type\": \"value\", \"value\": \"NIFTY 50\"}, {\"type\": \"value\", \"value\": \"1\"}, {\"type\": \"value\", \"value\": \"1\"}, {\"type\": \"value\", \"value\": \"2\"}]}}]}, {\"name\": \"!=\", \"params\": []}, {\"name\": \"Number\", \"kid\": 3450, \"params\": [{\"type\": \"value\", \"value\": \"0\"}]}]}]}",
+          "conditionJson": "{\"operator\": \"and\", \"operands\": [{\"type\": \"rule\", \"value\": \"builder-basic_rule_0\", \"elements\": [{\"name\": \"Traded Instrument\", \"kid\": 3381, \"params\": [{\"type\": \"value\", \"value\": \"Entry\"}, {\"type\": \"value\", \"value\": \"quantity\"}, {\"type\": \"value\", \"value\": \"NIFTY 50\"}, {\"type\": \"value\", \"value\": \"1\"}, {\"type\": \"value\", \"value\": \"2\"}, {\"type\": \"value\", \"value\": \"2\"}]}, {\"name\": \">\", \"params\": []}, {\"name\": \"Number\", \"kid\": 2153, \"params\": [{\"type\": \"value\", \"value\": \"0\"}]}]}, {\"type\": \"rule\", \"value\": \"builder-basic_rule_1\", \"elements\": [{\"name\": \"Net Quantity\", \"kid\": 6406, \"params\": [{\"type\": \"keyword\", \"keyword\": {\"name\": \"Traded Instrument\", \"kid\": 2523, \"params\": [{\"type\": \"value\", \"value\": \"Entry\"}, {\"type\": \"value\", \"value\": \"quantity\"}, {\"type\": \"value\", \"value\": \"NIFTY 50\"}, {\"type\": \"value\", \"value\": \"1\"}, {\"type\": \"value\", \"value\": \"1\"}, {\"type\": \"value\", \"value\": \"2\"}]}}]}, {\"name\": \"!=\", \"params\": []}, {\"name\": \"Number\", \"kid\": 3450, \"params\": [{\"type\": \"value\", \"value\": \"0\"}]}]}]}",
           "conditionDisplay": null,
           "subType": "None",
           "visible": 1,
           "legs": [
             {
-              "instrument": 1855,
+              "instrument": "NFO",
               "list": 0,
               "optionType": "PE",
               "expiryType": "Current Month",
@@ -232,7 +237,8 @@
               "targetLimit": null,
               "targetTrigger": null,
               "sLLimit": null,
-              "sLTrigger": null
+              "sLTrigger": null,
+              "exchange": "NFO"
             }
           ],
           "extra": {
@@ -249,13 +255,13 @@
         {
           "type": "Entry",
           "conditionValue": null,
-          "conditionJson": "{\"operator\": \"and\", \"operands\": [{\"type\": \"rule\", \"value\": \"builder-basic_rule_0\", \"elements\": [{\"name\": \"LTP\", \"kid\": 8417, \"params\": [{\"type\": \"keyword\", \"keyword\": {\"name\": \"Instrument Name\", \"kid\": 7367, \"params\": [{\"type\": \"value\", \"value\": \"NFO,NIFTY 50,,,,\"}]}}]}, {\"name\": \">\", \"params\": []}, {\"name\": \"Traded Instrument\", \"kid\": 2545, \"params\": [{\"type\": \"value\", \"value\": \"Entry\"}, {\"type\": \"value\", \"value\": \"strike\"}, {\"type\": \"value\", \"value\": \"NIFTY 50\"}, {\"type\": \"value\", \"value\": \"1\"}, {\"type\": \"value\", \"value\": \"1\"}, {\"type\": \"value\", \"value\": \"1\"}]}]}]}",
+          "conditionJson": "{\"operator\": \"and\", \"operands\": [{\"type\": \"rule\", \"value\": \"builder-basic_rule_0\", \"elements\": [{\"name\": \"LTP\", \"kid\": 8417, \"params\": [{\"type\": \"keyword\", \"keyword\": {\"name\": \"Instrument Name\", \"kid\": 7367, \"params\": [{\"type\": \"value\", \"value\": \"NFO,NIFTY 50,,,,,\"}]}}]}, {\"name\": \">\", \"params\": []}, {\"name\": \"Traded Instrument\", \"kid\": 2545, \"params\": [{\"type\": \"value\", \"value\": \"Entry\"}, {\"type\": \"value\", \"value\": \"strike\"}, {\"type\": \"value\", \"value\": \"NIFTY 50\"}, {\"type\": \"value\", \"value\": \"1\"}, {\"type\": \"value\", \"value\": \"1\"}, {\"type\": \"value\", \"value\": \"1\"}]}]}]}",
           "conditionDisplay": null,
           "subType": "None",
           "visible": 1,
           "legs": [
             {
-              "instrument": 1855,
+              "instrument": "NFO",
               "list": 0,
               "optionType": "CE",
               "expiryType": "Current Month",
@@ -276,10 +282,11 @@
               "targetLimit": null,
               "targetTrigger": null,
               "sLLimit": null,
-              "sLTrigger": null
+              "sLTrigger": null,
+              "exchange": "NFO"
             },
             {
-              "instrument": 1855,
+              "instrument": "NFO",
               "list": 0,
               "optionType": "CE",
               "expiryType": "Current Month",
@@ -300,7 +307,8 @@
               "targetLimit": null,
               "targetTrigger": null,
               "sLLimit": null,
-              "sLTrigger": null
+              "sLTrigger": null,
+              "exchange": "NFO"
             }
           ],
           "extra": {
@@ -317,7 +325,7 @@
           "visible": 1,
           "legs": [
             {
-              "instrument": 1855,
+              "instrument": "NFO",
               "list": 0,
               "optionType": "CE",
               "expiryType": "Current Month",
@@ -338,7 +346,8 @@
               "targetLimit": null,
               "targetTrigger": null,
               "sLLimit": null,
-              "sLTrigger": null
+              "sLTrigger": null,
+              "exchange": "NFO"
             }
           ],
           "extra": {
@@ -355,13 +364,13 @@
         {
           "type": "Entry",
           "conditionValue": null,
-          "conditionJson": "{\"operator\": \"and\", \"operands\": [{\"type\": \"rule\", \"value\": \"builder-basic_rule_0\", \"elements\": [{\"name\": \"LTP\", \"kid\": 7058, \"params\": [{\"type\": \"keyword\", \"keyword\": {\"name\": \"Instrument Name\", \"kid\": 7540, \"params\": [{\"type\": \"value\", \"value\": \"NFO,NIFTY 50,,,,\"}]}}]}, {\"name\": \"<\", \"params\": []}, {\"name\": \"Traded Instrument\", \"kid\": 9324, \"params\": [{\"type\": \"value\", \"value\": \"Entry\"}, {\"type\": \"value\", \"value\": \"strike\"}, {\"type\": \"value\", \"value\": \"NIFTY 50\"}, {\"type\": \"value\", \"value\": \"1\"}, {\"type\": \"value\", \"value\": \"1\"}, {\"type\": \"value\", \"value\": \"2\"}]}]}]}",
+          "conditionJson": "{\"operator\": \"and\", \"operands\": [{\"type\": \"rule\", \"value\": \"builder-basic_rule_0\", \"elements\": [{\"name\": \"LTP\", \"kid\": 7058, \"params\": [{\"type\": \"keyword\", \"keyword\": {\"name\": \"Instrument Name\", \"kid\": 7540, \"params\": [{\"type\": \"value\", \"value\": \"NFO,NIFTY 50,,,,,\"}]}}]}, {\"name\": \"<\", \"params\": []}, {\"name\": \"Traded Instrument\", \"kid\": 9324, \"params\": [{\"type\": \"value\", \"value\": \"Entry\"}, {\"type\": \"value\", \"value\": \"strike\"}, {\"type\": \"value\", \"value\": \"NIFTY 50\"}, {\"type\": \"value\", \"value\": \"1\"}, {\"type\": \"value\", \"value\": \"1\"}, {\"type\": \"value\", \"value\": \"2\"}]}]}]}",
           "conditionDisplay": null,
           "subType": "None",
           "visible": 1,
           "legs": [
             {
-              "instrument": 1855,
+              "instrument": "NFO",
               "list": 0,
               "optionType": "PE",
               "expiryType": "Current Month",
@@ -382,10 +391,11 @@
               "targetLimit": null,
               "targetTrigger": null,
               "sLLimit": null,
-              "sLTrigger": null
+              "sLTrigger": null,
+              "exchange": "NFO"
             },
             {
-              "instrument": 1855,
+              "instrument": "NFO",
               "list": 0,
               "optionType": "PE",
               "expiryType": "Current Month",
@@ -406,7 +416,8 @@
               "targetLimit": null,
               "targetTrigger": null,
               "sLLimit": null,
-              "sLTrigger": null
+              "sLTrigger": null,
+              "exchange": "NFO"
             }
           ],
           "extra": {
@@ -423,7 +434,7 @@
           "visible": 1,
           "legs": [
             {
-              "instrument": 1855,
+              "instrument": "NFO",
               "list": 0,
               "optionType": "PE",
               "expiryType": "Current Month",
@@ -444,7 +455,8 @@
               "targetLimit": null,
               "targetTrigger": null,
               "sLLimit": null,
-              "sLTrigger": null
+              "sLTrigger": null,
+              "exchange": "NFO"
             }
           ],
           "extra": {
@@ -467,7 +479,7 @@
           "visible": 1,
           "legs": [
             {
-              "instrument": 1855,
+              "instrument": "NFO",
               "list": 0,
               "optionType": "CE",
               "expiryType": "Current Month",
@@ -488,10 +500,11 @@
               "targetLimit": null,
               "targetTrigger": null,
               "sLLimit": null,
-              "sLTrigger": null
+              "sLTrigger": null,
+              "exchange": "NFO"
             },
             {
-              "instrument": 1855,
+              "instrument": "NFO",
               "list": 0,
               "optionType": "PE",
               "expiryType": "Current Month",
@@ -512,7 +525,8 @@
               "targetLimit": null,
               "targetTrigger": null,
               "sLLimit": null,
-              "sLTrigger": null
+              "sLTrigger": null,
+              "exchange": "NFO"
             }
           ],
           "extra": {
