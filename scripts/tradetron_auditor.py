@@ -13,6 +13,7 @@ Performs chronological strategy execution auditing, schema validation, and rule 
 9. Traded Instrument Coordinate Integrity Validator (Rule 25)
 10. Leg Metadata Completeness Check (Rule 28: exchange, instrument, instrumentType)
 11. Position Builder Leg Qty & Price Field Renderer Check (Rule 30)
+12. Database Instrument Primary Key Integer Validator (Rule 31)
 """
 
 import json
@@ -101,8 +102,18 @@ def validate_ui_schema(data):
                     schema_errors.append(f"[RULE 5 VIOLATION] Set {s_idx + 1} Cond {c_idx + 1} Leg {l_idx + 1} uses strikeJson formula but strikeType is '{st_type}'. Must be 'Fx'!")
 
                 # Rule 28: Leg Metadata Completeness Check (exchange, instrument, instrumentType)
-                if not leg.get("exchange") or not leg.get("instrument") or not leg.get("instrumentType"):
-                    schema_errors.append(f"[RULE 28 VIOLATION] Set {s_idx + 1} Cond {c_idx + 1} Leg {l_idx + 1} has null/empty 'exchange', 'instrument', or 'instrumentType'! Must explicitly specify ('NFO', 'NFO', 'OPTIDX') or ('NSE', 'NSE', 'EQ').")
+                if leg.get("exchange") is None or leg.get("instrument") is None or not leg.get("instrumentType"):
+                    schema_errors.append(f"[RULE 28 VIOLATION] Set {s_idx + 1} Cond {c_idx + 1} Leg {l_idx + 1} has null/empty 'exchange', 'instrument', or 'instrumentType'!")
+
+                # Rule 31: Database Instrument Primary Key Integer Validator
+                inst_val = leg.get("instrument")
+                underlying_val = leg.get("underlyingSymbol", "")
+                if underlying_val == "NIFTY 50" and inst_val != 1855:
+                    schema_errors.append(f"[RULE 31 VIOLATION] Set {s_idx + 1} Cond {c_idx + 1} Leg {l_idx + 1} has 'instrument': {repr(inst_val)}. NIFTY 50 options MUST use integer database ID 1855 so Tradetron UI populates top row dropdowns!")
+                elif underlying_val == "NIFTY BANK" and inst_val != 1854:
+                    schema_errors.append(f"[RULE 31 VIOLATION] Set {s_idx + 1} Cond {c_idx + 1} Leg {l_idx + 1} has 'instrument': {repr(inst_val)}. NIFTY BANK options MUST use integer database ID 1854!")
+                elif isinstance(inst_val, str) and inst_val.isalpha():
+                    schema_errors.append(f"[RULE 31 VIOLATION] Set {s_idx + 1} Cond {c_idx + 1} Leg {l_idx + 1} has raw string 'instrument': '{inst_val}'. Must be integer database ID (e.g. 1855, 1854, or 0)!")
 
                 # Rule 30: Position Builder Leg Qty & Price Field Renderer Check
                 qty_val = str(leg.get("qty", ""))

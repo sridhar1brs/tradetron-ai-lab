@@ -56,7 +56,7 @@
           "visible": 1,
           "legs": [
             {
-              "instrument": "NSE",
+              "instrument": 0,
               "list": 222389,
               "optionType": null,
               "expiryType": null,
@@ -109,7 +109,7 @@
           "visible": 1,
           "legs": [
             {
-              "instrument": "NSE",
+              "instrument": 0,
               "list": 222389,
               "optionType": null,
               "expiryType": null,
@@ -162,7 +162,7 @@
           "visible": 1,
           "legs": [
             {
-              "instrument": "NSE",
+              "instrument": 0,
               "list": 222389,
               "optionType": null,
               "expiryType": null,
@@ -234,7 +234,7 @@
           "visible": 1,
           "legs": [
             {
-              "instrument": "NSE",
+              "instrument": 0,
               "list": 222389,
               "optionType": null,
               "expiryType": null,
@@ -287,7 +287,7 @@
           "visible": 1,
           "legs": [
             {
-              "instrument": "NSE",
+              "instrument": 0,
               "list": 222389,
               "optionType": null,
               "expiryType": null,
@@ -340,7 +340,7 @@
           "visible": 1,
           "legs": [
             {
-              "instrument": "NSE",
+              "instrument": 0,
               "list": 222389,
               "optionType": null,
               "expiryType": null,

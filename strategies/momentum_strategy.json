@@ -67,7 +67,7 @@
           "visible": 1,
           "legs": [
             {
-              "instrument": "NFO",
+              "instrument": 1855,
               "list": 0,
               "optionType": "CE",
               "expiryType": "Current Week",
@@ -133,7 +133,7 @@
           "visible": 1,
           "legs": [
             {
-              "instrument": "NFO",
+              "instrument": 1855,
               "list": 0,
               "optionType": "PE",
               "expiryType": "Current Week",

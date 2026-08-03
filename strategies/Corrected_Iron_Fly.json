@@ -49,7 +49,7 @@
           "visible": 1,
           "legs": [
             {
-              "instrument": "NFO",
+              "instrument": 1855,
               "list": 0,
               "optionType": "CE",
               "expiryType": "Current Month",
@@ -82,7 +82,7 @@
               "sLTriggerExprDisplay": null
             },
             {
-              "instrument": "NFO",
+              "instrument": 1855,
               "list": 0,
               "optionType": "PE",
               "expiryType": "Current Month",
@@ -129,7 +129,7 @@
           "visible": 1,
           "legs": [
             {
-              "instrument": "NFO",
+              "instrument": 1855,
               "list": 0,
               "optionType": "CE",
               "expiryType": "Current Month",
@@ -162,7 +162,7 @@
               "sLTriggerExprDisplay": null
             },
             {
-              "instrument": "NFO",
+              "instrument": 1855,
               "list": 0,
               "optionType": "PE",
               "expiryType": "Current Month",
@@ -209,7 +209,7 @@
           "visible": 1,
           "legs": [
             {
-              "instrument": "NFO",
+              "instrument": 1855,
               "list": 0,
               "optionType": "CE",
               "expiryType": "Current Month",
@@ -256,7 +256,7 @@
           "visible": 1,
           "legs": [
             {
-              "instrument": "NFO",
+              "instrument": 1855,
               "list": 0,
               "optionType": "PE",
               "expiryType": "Current Month",
@@ -309,7 +309,7 @@
           "visible": 1,
           "legs": [
             {
-              "instrument": "NFO",
+              "instrument": 1855,
               "list": 0,
               "optionType": "CE",
               "expiryType": "Current Month",
@@ -342,7 +342,7 @@
               "sLTriggerExprDisplay": null
             },
             {
-              "instrument": "NFO",
+              "instrument": 1855,
               "list": 0,
               "optionType": "CE",
               "expiryType": "Current Month",
@@ -389,7 +389,7 @@
           "visible": 1,
           "legs": [
             {
-              "instrument": "NFO",
+              "instrument": 1855,
               "list": 0,
               "optionType": "CE",
               "expiryType": "Current Month",
@@ -442,7 +442,7 @@
           "visible": 1,
           "legs": [
             {
-              "instrument": "NFO",
+              "instrument": 1855,
               "list": 0,
               "optionType": "PE",
               "expiryType": "Current Month",
@@ -475,7 +475,7 @@
               "sLTriggerExprDisplay": null
             },
             {
-              "instrument": "NFO",
+              "instrument": 1855,
               "list": 0,
               "optionType": "PE",
               "expiryType": "Current Month",
@@ -522,7 +522,7 @@
           "visible": 1,
           "legs": [
             {
-              "instrument": "NFO",
+              "instrument": 1855,
               "list": 0,
               "optionType": "PE",
               "expiryType": "Current Month",
@@ -575,7 +575,7 @@
           "visible": 1,
           "legs": [
             {
-              "instrument": "NFO",
+              "instrument": 1855,
               "list": 0,
               "optionType": "CE",
               "expiryType": "Current Month",
@@ -608,7 +608,7 @@
               "sLTriggerExprDisplay": null
             },
             {
-              "instrument": "NFO",
+              "instrument": 1855,
               "list": 0,
               "optionType": "PE",
               "expiryType": "Current Month",
