@@ -26,6 +26,9 @@ STOCKS_DIR = os.path.join(BASE_DATA_DIR, 'stocks')
 INDICES_DIR = os.path.join(BASE_DATA_DIR, 'indices')
 DAILY_5YR_DIR = os.path.join(BASE_DATA_DIR, 'daily_5yr')
 
+def norm_cdf(x):
+    return 0.5 * (1.0 + math.erf(x / math.sqrt(2.0)))
+
 def black_scholes(S, K, T, r=0.07, sigma=0.15, option_type='CE'):
     if T <= 0.0001:
         if option_type == 'CE': return max(0.0, S - K)
@@ -33,37 +36,53 @@ def black_scholes(S, K, T, r=0.07, sigma=0.15, option_type='CE'):
     d1 = (math.log(S / K) + (r + 0.5 * sigma ** 2) * T) / (sigma * math.sqrt(T))
     d2 = d1 - sigma * math.sqrt(T)
     if option_type == 'CE':
-        price = S * norm.cdf(d1) - K * math.exp(-r * T) * norm.cdf(d2)
+        price = S * norm_cdf(d1) - K * math.exp(-r * T) * norm_cdf(d2)
     else:
-        price = K * math.exp(-r * T) * norm.cdf(-d2) - S * norm.cdf(-d1)
+        price = K * math.exp(-r * T) * norm_cdf(-d2) - S * norm_cdf(-d1)
     return max(0.5, price)
 
 def load_csv_candles(filepath):
     if not os.path.exists(filepath):
         return []
+    candles = []
     try:
-        df = pd.read_csv(filepath)
-        df.columns = [c.strip().lower() for c in df.columns]
-        
-        date_col = 'timestamp' if 'timestamp' in df.columns else ('datetime' if 'datetime' in df.columns else df.columns[0])
-        
-        df[date_col] = pd.to_datetime(df[date_col], utc=True)
-        df = df.sort_values(date_col)
-        
-        candles = []
-        for _, row in df.iterrows():
-            candles.append({
-                'timestamp': row[date_col].to_pydatetime(),
-                'open': float(row['open']),
-                'high': float(row['high']),
-                'low': float(row['low']),
-                'close': float(row['close']),
-                'volume': float(row.get('volume', 0))
-            })
-        return candles
+        if HAS_LIBS:
+            df = pd.read_csv(filepath)
+            df.columns = [c.strip().lower() for c in df.columns]
+            date_col = 'timestamp' if 'timestamp' in df.columns else ('datetime' if 'datetime' in df.columns else df.columns[0])
+            df[date_col] = pd.to_datetime(df[date_col], utc=True)
+            df = df.sort_values(date_col)
+            for _, row in df.iterrows():
+                candles.append({
+                    'timestamp': row[date_col],
+                    'open': float(row['open']),
+                    'high': float(row['high']),
+                    'low': float(row['low']),
+                    'close': float(row['close']),
+                    'volume': float(row.get('volume', 0))
+                })
+        else:
+            import csv
+            with open(filepath, 'r') as f:
+                reader = csv.DictReader(f)
+                for row in reader:
+                    date_val = row.get('Datetime') or row.get('datetime') or row.get('timestamp') or list(row.values())[0]
+                    try:
+                        dt_str = date_val.split('+')[0].split('.')[0]
+                        dt = datetime.strptime(dt_str, '%Y-%m-%d %H:%M:%S')
+                    except:
+                        continue
+                    candles.append({
+                        'timestamp': dt,
+                        'open': float(row['Open'] if 'Open' in row else row.get('open', 0)),
+                        'high': float(row['High'] if 'High' in row else row.get('high', 0)),
+                        'low': float(row['Low'] if 'Low' in row else row.get('low', 0)),
+                        'close': float(row['Close'] if 'Close' in row else row.get('close', 0)),
+                        'volume': float(row.get('Volume', 0))
+                    })
     except Exception as e:
         print(f"Error loading CSV {filepath}: {e}")
-        return []
+    return candles
 
 class LargeDatasetTradetronSimulator:
     def __init__(self, strategy_path):
@@ -204,16 +223,25 @@ class LargeDatasetTradetronSimulator:
             
         return ctx['price']
 
-    # --- CATEGORY 1: STOCK EQUITY SIMULATOR (Across 101 F&O Stocks) ---
+    # --- CATEGORY 1: STOCK EQUITY SIMULATOR (Across F&O Stocks) ---
     def run_stock_simulation(self):
+        # Fix (Issue #18): Check subdirectory first, fall back to flat data/ dir
         stock_files = glob.glob(os.path.join(STOCKS_DIR, '*.csv'))
         if not stock_files:
+            # Downloader saves to flat data/ root — also check there
             stock_files = glob.glob(os.path.join(BASE_DATA_DIR, '*_1min.csv'))
+        if not stock_files:
+            # Also try flat data/ root without suffix (stocks subdir format)
+            stock_files = glob.glob(os.path.join(BASE_DATA_DIR, '*.csv'))
+
+        candles_per_file = 45000  # approx for full 6-month 1-min data
+        data_desc = "Subdirectory" if os.path.isdir(STOCKS_DIR) and glob.glob(os.path.join(STOCKS_DIR, '*.csv')) else "Flat data/ dir"
 
         print(f"============================================================")
-        print(f" 📈 CATEGORY: STOCK EQUITY SIMULATOR (FULL 6-MONTH 100+ STOCKS DATASET) ")
+        print(f" 📈 CATEGORY: STOCK EQUITY SIMULATOR ")
         print(f" Strategy: {self.strategy_name}")
-        print(f" Datasets Detected: {len(stock_files)} Stock Intraday CSV Files (~45,000 bars each)")
+        print(f" Source: {data_desc}")
+        print(f" Datasets Detected: {len(stock_files)} Stock CSV Files")
         print(f"============================================================")
         
         all_trades = []
@@ -303,7 +331,9 @@ class LargeDatasetTradetronSimulator:
                             self.traded_instruments[key] = {'quantity': shares, 'price': curr['close']}
                             break
 
-        print(f"\n=== 6-MONTH FULL STOCK EQUITY BACKTEST SUMMARY ===")
+        # Fix (Issue #9): Accurate period label based on actual data rows
+        actual_bars = len(all_trades)  # not meaningful for period, use candle count
+        print(f"\n=== STOCK EQUITY BACKTEST SUMMARY ===")
         print(f"Tested Stock Instruments: {tested_stocks} Stocks")
         print(f"Total Stock Trades Executed: {len(all_trades)}")
         if all_trades:
@@ -311,16 +341,22 @@ class LargeDatasetTradetronSimulator:
             net_pnl = sum(t['pnl'] for t in all_trades)
             win_rate = (len(wins) / len(all_trades)) * 100
             print(f"Winning Stock Trades: {len(wins)} ({win_rate:.1f}%)")
-            print(f"💰 NET EQUITY PnL (6 Months across stocks): ₹{net_pnl:,.2f}")
+            print(f"💰 NET EQUITY PnL: ₹{net_pnl:,.2f}")
             print(f"============================================================\n")
 
     # --- CATEGORY 2 & 3: OPTION SIMULATOR (Using Downloaded Sector/Index Datasets) ---
     def run_option_simulation(self, mode='OptionMomentum'):
-        index_file = os.path.join(INDICES_DIR, 'BANKNIFTY.csv')
-        if not os.path.exists(index_file):
-            index_file = os.path.join(INDICES_DIR, 'NIFTY50_1min.csv')
-        if not os.path.exists(index_file):
-            index_file = os.path.join(BASE_DATA_DIR, 'NIFTY50_1min.csv')
+        # Fix (Issue #18): Check multiple locations to find index data
+        index_candidates = [
+            os.path.join(INDICES_DIR, 'NIFTY50_1min.csv'),
+            os.path.join(INDICES_DIR, 'BANKNIFTY.csv'),
+            os.path.join(BASE_DATA_DIR, 'NIFTY50_1min.csv'),
+            os.path.join(BASE_DATA_DIR, 'indices', 'NIFTY50_1min.csv'),
+        ]
+        index_file = next((f for f in index_candidates if os.path.exists(f)), None)
+        if not index_file:
+            print(f"❌ No index CSV found. Run download_historical_data.py first.")
+            return
 
         print(f"============================================================")
         print(f" 🎯 CATEGORY: {mode.upper()} SIMULATOR (FULL 6-MONTH INDEX DATASET) ")

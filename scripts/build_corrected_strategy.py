@@ -18,6 +18,7 @@ def get_spot_atm_ast():
                                 "name": "LTP", "kid": 1001, "params": [
                                     {"type": "keyword", "keyword": {
                                         "name": "Instrument Name", "kid": 1002, "params": [
+                                            # Fix (Issue #2 & #3): 5 commas = 6 slots (Spot, no Current Month) per Rule 17 & 27
                                             {"type": "value", "value": "NFO,NIFTY 50,,,,"}
                                         ]
                                     }}
@@ -48,6 +49,7 @@ def get_strike_ast(operator, var_name):
                                 "name": "LTP", "kid": 1001, "params": [
                                     {"type": "keyword", "keyword": {
                                         "name": "Instrument Name", "kid": 1002, "params": [
+                                            # Fix (Issue #2 & #3): 5 commas = 6 slots (Spot, no Current Month) per Rule 17 & 27
                                             {"type": "value", "value": "NFO,NIFTY 50,,,,"}
                                         ]
                                     }}
@@ -121,7 +123,7 @@ strat_desc = """
 <p>---------------</p>
 <p>1. <strong>Entry:</strong></p>
 <ul>
-  <li>Time: 3:15 PM (15:15 IST) on the first trading day after monthly expiry (usually Friday).</li>
+  <li>Time: 3:00 PM (15:00 IST) on the first trading day after monthly expiry (usually Friday) per Rule 36.</li>
   <li>Selection: Sell ATM Call and Put for the next monthly expiry. Strike is selected where premiums are closest to being equal (price‑balanced strangle center) and must be a multiple of 100.</li>
   <li>Expected premium collected: ₹700–800.</li>
   <li>Hedges: Buy Call & Put hedges 600 points away from the straddle strike.</li>
@@ -161,7 +163,8 @@ s1 = SetBlock(1)
 
 # S1 ENTRY (BUY LEGS ONLY FOR MARGIN OPTIMIZATION)
 c1_entry = Condition(ctype="Entry")
-c1_entry.add_rule(Rule(Keyword("Time", "NSE"), ">=", "1515")) # 3:15 PM Entry
+# Rule 36: Entry trigger set to 1500 (3:00 PM) for optimal fill liquidity before 1515 auto-squareoff volatility
+c1_entry.add_rule(Rule(Keyword("Time", "NSE"), ">=", "1500"))
 # Leg 1: Long CE Hedge
 c1_entry.add_leg(Leg("NIFTY 50", "CE", "B", 1, strike="( Get Strike + Get Runtime(HedgeGap) )", strike_type="Fx", strike_json=get_strike_ast("+", "HedgeGap")))
 # Leg 2: Long PE Hedge
@@ -172,10 +175,11 @@ s1.add_condition(c1_entry)
 c1_repair = Condition(ctype="Repair Once")
 # Trigger short legs only after Long legs are executed successfully (Traded Instrument Qty != 0)
 c1_repair.add_rule(Rule(Keyword("Traded Instrument", "Entry", "quantity", "NIFTY 50", "1", "1", "1"), "!=", "0"))
-# Leg 1 (Repair): Short CE ATM
-c1_repair.add_leg(Leg("NIFTY 50", "CE", "S", 1, strike="( Get Strike(Spot LTP) )", strike_type="Fx", strike_json=get_spot_atm_ast()))
-# Leg 2 (Repair): Short PE ATM
-c1_repair.add_leg(Leg("NIFTY 50", "PE", "S", 1, strike="( Get Strike(Spot LTP) )", strike_type="Fx", strike_json=get_spot_atm_ast()))
+# Fix (Issue #8): Short straddle uses Next Month expiry for monthly Iron Fly
+# Leg 1 (Repair): Short CE ATM — Spot-based ATM via Get Strike (Next Month expiry)
+c1_repair.add_leg(Leg("NIFTY 50", "CE", "S", 1, strike="( Get Strike(Spot LTP) )", strike_type="Fx", strike_json=get_spot_atm_ast(), expiry_type="Next Month"))
+# Leg 2 (Repair): Short PE ATM — Spot-based ATM via Get Strike (Next Month expiry)
+c1_repair.add_leg(Leg("NIFTY 50", "PE", "S", 1, strike="( Get Strike(Spot LTP) )", strike_type="Fx", strike_json=get_spot_atm_ast(), expiry_type="Next Month"))
 s1.add_condition(c1_repair)
 
 # --- CLEAN UP BLOCKS for Set 4 Trigger ---
@@ -203,7 +207,8 @@ strat.add_set(s1)
 s2 = SetBlock(2)
 c2_entry = Condition(ctype="Entry")
 # Trigger: Spot crosses CE boundary (LTP > Traded Strike of S1 E Leg 1)
-c2_entry.add_rule(Rule(Keyword("LTP", Keyword("Instrument Name", "NFO,NIFTY 50,,,,")), ">", Keyword("Traded Instrument", "Entry", "strike", "NIFTY 50", "1", "1", "1")))
+# Fix (Issue #3): Use Spot LTP (5 commas, no Current Month) per Rules 17 & 27
+c2_entry.add_rule(Rule(Keyword("LTP", Keyword("Instrument Name", "NFO,NIFTY 50,,,,,")) , ">", Keyword("Traded Instrument", "Entry", "strike", "NIFTY 50", "1", "1", "1")))
 
 # Sell old CE Hedge EXACTLY at its traded strike
 c2_entry.add_leg(Leg("NIFTY 50", "CE", "S", 1, strike="( Traded Instrument )", strike_type="Fx", strike_json=get_traded_instrument_ast(1, 1, 1))) 
@@ -226,7 +231,8 @@ strat.add_set(s2)
 s3 = SetBlock(3)
 c3_entry = Condition(ctype="Entry")
 # Trigger: Spot crosses PE boundary (LTP < Traded Strike of S1 E Leg 2)
-c3_entry.add_rule(Rule(Keyword("LTP", Keyword("Instrument Name", "NFO,NIFTY 50,,,,")), "<", Keyword("Traded Instrument", "Entry", "strike", "NIFTY 50", "1", "1", "2")))
+# Fix (Issue #3): Use Spot LTP (5 commas, no Current Month) per Rules 17 & 27
+c3_entry.add_rule(Rule(Keyword("LTP", Keyword("Instrument Name", "NFO,NIFTY 50,,,,,")) , "<", Keyword("Traded Instrument", "Entry", "strike", "NIFTY 50", "1", "1", "2")))
 
 # Sell old PE Hedge EXACTLY at its traded strike
 c3_entry.add_leg(Leg("NIFTY 50", "PE", "S", 1, strike="( Traded Instrument )", strike_type="Fx", strike_json=get_traded_instrument_ast(1, 1, 2)))
@@ -275,5 +281,6 @@ ue_cond.add_rule(g1)
 ue_cond.add_rule(g2)
 strat.set_universal_exit(ue_cond)
 
-strat.export("../strategies/Corrected_Iron_Fly.json", "base_strategy.json")
-print("Compiled Margin-Optimized Iron Fly strategy to ../strategies/Corrected_Iron_Fly.json")
+# Fix (Issue #11): export() now resolves paths using __file__, no need to pass base_strategy.json path
+strat.export("Corrected_Iron_Fly.json")
+print("Compiled Margin-Optimized Iron Fly strategy to strategies/Corrected_Iron_Fly.json")

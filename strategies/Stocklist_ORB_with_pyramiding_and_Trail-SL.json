@@ -12,12 +12,6 @@
   "tags": [],
   "variables": [
     {
-      "variableName": "StartTime",
-      "value": "( tt_Time ( 'NSE' )  )",
-      "display": "( Time ( 'NSE' )  )",
-      "json": "{\"operator\":\"and\",\"operands\":[{\"type\":\"rule\",\"value\":\"builder-basic_rule_0\",\"elements\":[{\"name\":\"Time\",\"kid\":8631,\"params\":[{\"type\":\"value\",\"value\":\"NSE\"}]}]}]}"
-    },
-    {
       "variableName": "Pyramid_Step1",
       "value": "( tt_Number ( '1.01' )  )",
       "display": "( Number ( '1.01' )  )",

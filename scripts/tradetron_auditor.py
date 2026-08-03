@@ -112,8 +112,11 @@ def validate_ui_schema(data):
                     schema_errors.append(f"[RULE 31 VIOLATION] Set {s_idx + 1} Cond {c_idx + 1} Leg {l_idx + 1} has 'instrument': {repr(inst_val)}. NIFTY 50 options MUST use integer database ID 1855 so Tradetron UI populates top row dropdowns!")
                 elif underlying_val == "NIFTY BANK" and inst_val != 1854:
                     schema_errors.append(f"[RULE 31 VIOLATION] Set {s_idx + 1} Cond {c_idx + 1} Leg {l_idx + 1} has 'instrument': {repr(inst_val)}. NIFTY BANK options MUST use integer database ID 1854!")
-                elif isinstance(inst_val, str) and inst_val.isalpha():
-                    schema_errors.append(f"[RULE 31 VIOLATION] Set {s_idx + 1} Cond {c_idx + 1} Leg {l_idx + 1} has raw string 'instrument': '{inst_val}'. Must be integer database ID (e.g. 1855, 1854, or 0)!")
+                # Fix (Issue #12): isalpha() only catches pure-letter strings like "NFO".
+                # It misses "NIFTY 50" (space), "1855" as string, or None.
+                # Correct check: instrument must be an integer DB primary key.
+                elif not isinstance(inst_val, int):
+                    schema_errors.append(f"[RULE 31 VIOLATION] Set {s_idx + 1} Cond {c_idx + 1} Leg {l_idx + 1} has non-integer 'instrument': {repr(inst_val)}. Must be integer database ID (e.g. 1855, 1854, or 0)!")
 
                 # Rule 30: Position Builder Leg Qty & Price Field Renderer Check
                 qty_val = str(leg.get("qty", ""))
@@ -123,6 +126,8 @@ def validate_ui_schema(data):
                 # A plain number string like '1' with no macro causes greyed-out Fx state in Tradetron web modal
                 if qty_type == "Lots" and "tt_lots" not in qty_val:
                     schema_errors.append(f"[RULE 30 VIOLATION] Set {s_idx + 1} Cond {c_idx + 1} Leg {l_idx + 1} qtyType='Lots' but qty='{qty_val}' is missing tt_lots() macro. Must be e.g. tt_lots(1,'INSTRUMENT','CE') for UI to render numeric box.")
+                elif qty_type == "Lots" and "'INSTRUMENT'" not in qty_val and '"INSTRUMENT"' not in qty_val:
+                    schema_warnings.append(f"[RULE 30 WARNING] Set {s_idx + 1} Cond {c_idx + 1} Leg {l_idx + 1} qty='{qty_val}' uses literal symbol instead of 'INSTRUMENT'. Tradetron web UI requires literal 'INSTRUMENT' string (e.g. tt_lots(1,'INSTRUMENT','CE')) to bind to dropdown.")
                 elif qty_type == "Value" and "tt_value" not in qty_val:
                     schema_errors.append(f"[RULE 30 VIOLATION] Set {s_idx + 1} Cond {c_idx + 1} Leg {l_idx + 1} qtyType='Value' but qty='{qty_val}' is missing tt_value() macro. Must be e.g. tt_value(10000,'INSTRUMENT','').")
                 # isOvernightProtectionLeg must be present
@@ -140,13 +145,17 @@ def validate_ui_schema(data):
 def _check_ast_nodes(node, set_num, cond_num, active_legs, errors, warnings):
     if not isinstance(node, dict):
         return
-        
+
+    # Fix (Issue #6): Root-level AST nodes have no "type" key — they have
+    # "operator" + "operands" directly. Handle both root nodes AND group nodes.
     if node.get("type") == "group":
         if "children" not in node and "operator" in node:
             errors.append(f"[RULE 9 VIOLATION] ConditionGroup in Set {set_num} Cond {cond_num} is missing 'children' dictionary wrapper!")
         _check_ast_nodes(node.get("children", {}), set_num, cond_num, active_legs, errors, warnings)
         return
 
+    # Handle root-level nodes (no "type", have "operator" + "operands")
+    # and children dict (same structure). Both cases: iterate operands.
     operands = node.get("operands", [])
     for op in operands:
         if op.get("type") == "rule":

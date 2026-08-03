@@ -1,0 +1,23 @@
+{
+  "_format": "tt-strategy/v2",
+  "name": "Test Broken Leg TSL Strategy",
+  "description": "Test file containing deliberate Leg TSL nested keyword error.",
+  "variables": [],
+  "sets": [
+    {
+      "list": 0,
+      "conditions": [
+        {
+          "type": "Entry",
+          "conditionJson": "{\"operator\": \"and\", \"operands\": [{\"type\": \"rule\", \"value\": \"builder-basic_rule_0\", \"elements\": [{\"name\": \"Time\", \"params\": [{\"type\": \"value\", \"value\": \"NSE\"}]}, {\"name\": \">=\", \"params\": []}, {\"name\": \"Number\", \"params\": [{\"type\": \"value\", \"value\": \"0920\"}]}]}]}",
+          "legs": []
+        },
+        {
+          "type": "Exit",
+          "conditionJson": "{\"operator\": \"or\", \"operands\": [{\"type\": \"rule\", \"value\": \"builder-basic_rule_0\", \"elements\": [{\"name\": \"Leg TSL\", \"params\": [{\"type\": \"value\", \"value\": \"Entry\"}, {\"type\": \"value\", \"value\": \"NIFTY 50\"}, {\"type\": \"value\", \"value\": \"1\"}, {\"type\": \"value\", \"value\": \"1\"}, {\"type\": \"value\", \"value\": \"1\"}, {\"type\": \"value\", \"value\": \"tsl-pct\"}, {\"type\": \"keyword\", \"keyword\": {\"name\": \"Get Runtime\", \"params\": [{\"type\": \"value\", \"value\": \"TSL_Trigger\"}]}}]}]}]}",
+          "legs": []
+        }
+      ]
+    }
+  ]
+}

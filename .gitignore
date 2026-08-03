@@ -8,17 +8,16 @@ venv/
 env/
 ENV/
 
+# Large historical market data files
+data/
+
+# Scratch & temporary analyze scripts
+scripts/scratch/
+screenshot.png
+
 # System / OS files
 .DS_Store
 Thumbs.db
-
-# Temp analyze & scratch scripts
-analyze*.py
-fix_*.py
-check_*.py
-inspect_*.py
-parse_test.py
-screenshot.png
 
 # User env files
 .env

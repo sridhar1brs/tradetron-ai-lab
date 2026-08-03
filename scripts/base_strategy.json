@@ -7,8 +7,8 @@
     "structure": "Add/remove/duplicate legs, conditions or sets by editing the arrays.",
     "do_not": "Do not add \"*_id\" foreign keys back. Lists referenced by id must be ones you own."
   },
-  "name": "Live N50 IntraDay NoRe 2pm EMA 3m Cross Buy SL,TG: EMA ITM:4 Mstr 100x mtly",
-  "description": "<p>Rolling EMA</p><p>SL: EMA TGT: EMA</p><p>NoRe- NoReEntry</p>",
+  "name": "PLACEHOLDER_STRATEGY_NAME",
+  "description": "",
   "tags": [
     {
       "label": "Pairs",
