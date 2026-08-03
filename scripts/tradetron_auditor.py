@@ -117,11 +117,23 @@ def validate_ui_schema(data):
 
                 # Rule 30: Position Builder Leg Qty & Price Field Renderer Check
                 qty_val = str(leg.get("qty", ""))
-                if "tt_lots" in qty_val or "tt_value" in qty_val:
-                    schema_errors.append(f"[RULE 30 VIOLATION] Set {s_idx + 1} Cond {c_idx + 1} Leg {l_idx + 1} has raw macro '{qty_val}' inside 'qty'. Set 'qty': '1' (for Lots) or '10000' (for Value) to render the UI input box cleanly!")
+                qty_type = leg.get("qtyType", "")
+                # For Lots: qty MUST use tt_lots() macro (e.g. tt_lots(1,'INSTRUMENT','CE'))
+                # For Value: qty MUST use tt_value() macro (e.g. tt_value(10000,'INSTRUMENT',''))
+                # A plain number string like '1' with no macro causes greyed-out Fx state in Tradetron web modal
+                if qty_type == "Lots" and "tt_lots" not in qty_val:
+                    schema_errors.append(f"[RULE 30 VIOLATION] Set {s_idx + 1} Cond {c_idx + 1} Leg {l_idx + 1} qtyType='Lots' but qty='{qty_val}' is missing tt_lots() macro. Must be e.g. tt_lots(1,'INSTRUMENT','CE') for UI to render numeric box.")
+                elif qty_type == "Value" and "tt_value" not in qty_val:
+                    schema_errors.append(f"[RULE 30 VIOLATION] Set {s_idx + 1} Cond {c_idx + 1} Leg {l_idx + 1} qtyType='Value' but qty='{qty_val}' is missing tt_value() macro. Must be e.g. tt_value(10000,'INSTRUMENT','').")
+                # isOvernightProtectionLeg must be present
+                if leg.get("isOvernightProtectionLeg") is None:
+                    schema_warnings.append(f"[RULE 30 WARNING] Set {s_idx + 1} Cond {c_idx + 1} Leg {l_idx + 1} missing 'isOvernightProtectionLeg' field. Set to 'No' for non-overnight legs.")
 
                 if leg.get("limitPriceJson") is not None or leg.get("sLTriggerJson") is not None:
                     schema_warnings.append(f"[RULE 30 WARNING] Set {s_idx + 1} Cond {c_idx + 1} Leg {l_idx + 1} has non-null limitPriceJson/sLTriggerJson. For Market orders, set these to null so UI leaves them unhighlighted.")
+                # qtyExprDisplay must be present (can be None but key must exist)
+                if "qtyExprDisplay" not in leg:
+                    schema_warnings.append(f"[RULE 30 WARNING] Set {s_idx + 1} Cond {c_idx + 1} Leg {l_idx + 1} missing 'qtyExprDisplay' key. Add it as null to prevent UI rendering fallback to Fx state.")
 
     return schema_errors, schema_warnings
 
