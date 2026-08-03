@@ -3,7 +3,7 @@
 Tradetron Strategy AST Auditor & UI Schema Validator Engine
 Performs chronological strategy execution auditing, schema validation, and rule enforcement:
 1. Macro Keyword Primitive Parameter Check (Leg TSL, Leg Exit, Leg SL Trail)
-2. Spot Index Instrument String Validator (Rule 17)
+2. Spot Index Instrument String Validator (Rule 17 & Rule 27)
 3. Math Operation Array Order Validator (Rule 13)
 4. Universal Exit Placement Validator (Rule 8)
 5. Condition Group AST 'children' Wrapper Validator (Rule 9)
@@ -11,6 +11,7 @@ Performs chronological strategy execution auditing, schema validation, and rule 
 7. Position Builder Leg Quantity Formula Syntax Check
 8. Positions Detail Case-Sensitivity Validator (Rule 24)
 9. Traded Instrument Coordinate Integrity Validator (Rule 25)
+10. Leg Metadata Completeness Check (Rule 28)
 """
 
 import json
@@ -59,7 +60,6 @@ def validate_ui_schema(data):
     num_sets = len(sets)
     raw_str_data = json.dumps(data)
 
-    # Map all active leg coordinates: (set_num, cond_num, leg_num)
     active_legs = set()
     for s_idx, s in enumerate(sets, 1):
         for c_idx, c in enumerate(s.get("conditions", []), 1):
@@ -99,6 +99,10 @@ def validate_ui_schema(data):
                 if st_json and st_type != "Fx":
                     schema_errors.append(f"[RULE 5 VIOLATION] Set {s_idx + 1} Cond {c_idx + 1} Leg {l_idx + 1} uses strikeJson formula but strikeType is '{st_type}'. Must be 'Fx'!")
 
+                # Rule 28: Leg Metadata Completeness Check (exchange & instrument)
+                if not leg.get("exchange") or not leg.get("instrument"):
+                    schema_errors.append(f"[RULE 28 VIOLATION] Set {s_idx + 1} Cond {c_idx + 1} Leg {l_idx + 1} has null/empty 'exchange' or 'instrument'! Must explicitly specify 'NFO' or 'NSE'.")
+
                 # Leg Quantity Formula Syntax Check
                 qty_str = str(leg.get("qty", ""))
                 if "tt_value" in qty_str and "tt_get_runtime" in qty_str:
@@ -131,12 +135,14 @@ def _check_ast_nodes(node, set_num, cond_num, active_legs, errors, warnings):
                             kw_name = p.get("keyword", {}).get("name", "Unknown")
                             errors.append(f"[CRITICAL UI MODAL ERROR] '{el_name}' in Set {set_num} Cond {cond_num} contains nested keyword '{kw_name}' in parameter #{p_idx+1}! Tradetron UI modal requires literal primitives (e.g., '1', '0.5', '2').")
 
-                # Spot Index Instrument String Check (Rule 17)
+                # Rule 17 & Rule 27: Spot Index Instrument String Check (5-comma slot verification)
                 if el_name == "Instrument Name":
                     for p in params:
                         val = p.get("value", "")
                         if "NIFTY 50" in val and "Current Month" in val:
                             errors.append(f"[RULE 17 VIOLATION] Spot Index Instrument Name in Set {set_num} Cond {cond_num} uses '{val}'. Spot index references must NOT include 'Current Month'!")
+                        if "NFO,NIFTY 50" in val and val.count(",") < 5:
+                            errors.append(f"[RULE 27 VIOLATION] Instrument Name in Set {set_num} Cond {cond_num} uses '{val}' (less than 5 commas). Must use 5 comma slots e.g. 'NFO,NIFTY 50,,,,,'!")
 
                 # Math Operation Order Check (Rule 13)
                 if el_name == "Math Operation":

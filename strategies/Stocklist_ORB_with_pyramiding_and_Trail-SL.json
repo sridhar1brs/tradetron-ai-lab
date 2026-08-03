@@ -56,7 +56,7 @@
           "visible": 1,
           "legs": [
             {
-              "instrument": 0,
+              "instrument": "NSE",
               "list": 222389,
               "optionType": null,
               "expiryType": null,
@@ -86,11 +86,12 @@
               "sLTriggerExprDisplay": null,
               "targetLimit": null,
               "targetTrigger": null,
-              "productType": "MIS",
+              "productType": "CNC",
               "underlyingSymbol": "INDUSINDBK",
               "isOvernightProtectionLeg": "No",
               "updatedAt": "2026-07-30 18:39:49",
-              "createdAt": "2026-07-30 18:35:15"
+              "createdAt": "2026-07-30 18:35:15",
+              "exchange": "NSE"
             }
           ],
           "extra": {
@@ -107,7 +108,7 @@
           "visible": 1,
           "legs": [
             {
-              "instrument": 0,
+              "instrument": "NSE",
               "list": 222389,
               "optionType": null,
               "expiryType": null,
@@ -137,11 +138,12 @@
               "sLTriggerExprDisplay": null,
               "targetLimit": null,
               "targetTrigger": null,
-              "productType": "MIS",
+              "productType": "CNC",
               "underlyingSymbol": "INDUSINDBK",
               "isOvernightProtectionLeg": "No",
               "updatedAt": "2026-07-30 18:39:49",
-              "createdAt": "2026-07-30 18:35:15"
+              "createdAt": "2026-07-30 18:35:15",
+              "exchange": "NSE"
             }
           ],
           "extra": {
@@ -158,7 +160,7 @@
           "visible": 1,
           "legs": [
             {
-              "instrument": 0,
+              "instrument": "NSE",
               "list": 222389,
               "optionType": null,
               "expiryType": null,
@@ -188,11 +190,12 @@
               "sLTriggerExprDisplay": null,
               "targetLimit": null,
               "targetTrigger": null,
-              "productType": "MIS",
+              "productType": "CNC",
               "underlyingSymbol": "INDUSINDBK",
               "isOvernightProtectionLeg": "No",
               "updatedAt": "2026-07-30 18:39:49",
-              "createdAt": "2026-07-30 18:35:15"
+              "createdAt": "2026-07-30 18:35:15",
+              "exchange": "NSE"
             }
           ],
           "extra": {
@@ -228,7 +231,7 @@
           "visible": 1,
           "legs": [
             {
-              "instrument": 0,
+              "instrument": "NSE",
               "list": 222389,
               "optionType": null,
               "expiryType": null,
@@ -258,11 +261,12 @@
               "sLTriggerExprDisplay": null,
               "targetLimit": null,
               "targetTrigger": null,
-              "productType": "MIS",
+              "productType": "CNC",
               "underlyingSymbol": "INDUSINDBK",
               "isOvernightProtectionLeg": "No",
               "updatedAt": "2026-07-30 18:39:49",
-              "createdAt": "2026-07-30 18:35:15"
+              "createdAt": "2026-07-30 18:35:15",
+              "exchange": "NSE"
             }
           ],
           "extra": {
@@ -279,7 +283,7 @@
           "visible": 1,
           "legs": [
             {
-              "instrument": 0,
+              "instrument": "NSE",
               "list": 222389,
               "optionType": null,
               "expiryType": null,
@@ -309,11 +313,12 @@
               "sLTriggerExprDisplay": null,
               "targetLimit": null,
               "targetTrigger": null,
-              "productType": "MIS",
+              "productType": "CNC",
               "underlyingSymbol": "INDUSINDBK",
               "isOvernightProtectionLeg": "No",
               "updatedAt": "2026-07-30 18:39:49",
-              "createdAt": "2026-07-30 18:35:15"
+              "createdAt": "2026-07-30 18:35:15",
+              "exchange": "NSE"
             }
           ],
           "extra": {
@@ -330,7 +335,7 @@
           "visible": 1,
           "legs": [
             {
-              "instrument": 0,
+              "instrument": "NSE",
               "list": 222389,
               "optionType": null,
               "expiryType": null,
@@ -360,11 +365,12 @@
               "sLTriggerExprDisplay": null,
               "targetLimit": null,
               "targetTrigger": null,
-              "productType": "MIS",
+              "productType": "CNC",
               "underlyingSymbol": "INDUSINDBK",
               "isOvernightProtectionLeg": "No",
               "updatedAt": "2026-07-30 18:39:49",
-              "createdAt": "2026-07-30 18:35:15"
+              "createdAt": "2026-07-30 18:35:15",
+              "exchange": "NSE"
             }
           ],
           "extra": {
