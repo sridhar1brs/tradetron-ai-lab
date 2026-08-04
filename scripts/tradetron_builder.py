@@ -15,6 +15,14 @@ EXPIRY_TYPE_MAP = {
     "Far Month":     "tt_far_monthexpiry",
 }
 
+EXPIRY_SPEC_MAP = {
+    "Current Week":  {"macro": "tt_curr_weekexpiry", "kw_name": "Current Week Expiry", "offset": "0"},
+    "Next Week":     {"macro": "tt_curr_weekexpiry", "kw_name": "Current Week Expiry", "offset": "1"},
+    "Current Month": {"macro": "tt_curr_monthexpiry", "kw_name": "Current Month Expiry", "offset": "0"},
+    "Next Month":    {"macro": "tt_curr_monthexpiry", "kw_name": "Current Month Expiry", "offset": "1"},
+    "Far Month":     {"macro": "tt_curr_monthexpiry", "kw_name": "Current Month Expiry", "offset": "2"},
+}
+
 class Keyword:
     def __init__(self, name, *params):
         self.name = name
@@ -98,8 +106,8 @@ class Leg:
         option_type="CE",
         buy_sell="B",
         lots=1,
-        strike="ATM",
-        strike_type="Strike",
+        strike="0",
+        strike_type="ATM",
         strike_json=None,
         strike_display=None,
         expiry_type="Current Month",
@@ -126,13 +134,36 @@ class Leg:
         self.is_overnight_protection = is_overnight_protection
         
     def to_dict(self):
-        # Fix (Issue #8): Strict expiry map — raise on unknown type instead of silently using wrong macro
-        if self.expiry_type not in EXPIRY_TYPE_MAP:
+        if self.expiry_type not in EXPIRY_SPEC_MAP:
             raise ValueError(
                 f"Unsupported expiry_type '{self.expiry_type}'. "
-                f"Valid values: {list(EXPIRY_TYPE_MAP.keys())}"
+                f"Valid values: {list(EXPIRY_SPEC_MAP.keys())}"
             )
-        expiry_func = EXPIRY_TYPE_MAP[self.expiry_type]
+        spec = EXPIRY_SPEC_MAP[self.expiry_type]
+
+        expiry_macro_str = f"( {spec['macro']} ( '{self.instrument_symbol}', '{spec['offset']}' ) )"
+        expiry_display_str = f"( {spec['kw_name']} ( '{self.instrument_symbol}', '{spec['offset']}' ) )"
+        expiry_ast_obj = {
+            "operator": "and",
+            "operands": [
+                {
+                    "type": "rule",
+                    "value": "builder-basic_rule_0",
+                    "elements": [
+                        {
+                            "name": spec["kw_name"],
+                            "kid": generate_kid(),
+                            "params": [
+                                {"type": "value", "value": self.instrument_symbol},
+                                {"type": "value", "value": spec["offset"]}
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+
+        strike_disp_str = self.strike_display if self.strike_display else f"( {self.strike} )"
 
         return {
             # Rule 28: exchange, instrument (DB PK integer), instrumentType are mandatory
@@ -145,17 +176,17 @@ class Leg:
             "buySell": self.buy_sell,
             "productType": self.product_type,
 
-            # Expiry
+            # Expiry — Full AST & Display string generation for Strike Fx binding
             "expiryType": self.expiry_type,
-            "expiry": f"{expiry_func}('{self.instrument_symbol}')",
-            "expiryJson": None,
-            "expiryDisplay": None,
+            "expiry": expiry_macro_str,
+            "expiryJson": json.dumps(expiry_ast_obj),
+            "expiryDisplay": expiry_display_str,
 
-            # Strike
+            # Strike — Full AST & Display string generation
             "strikeType": self.strike_type,
             "strike": self.strike,
             "strikeJson": json.dumps(self.strike_json) if self.strike_json else None,
-            "strikeDisplay": self.strike_display,
+            "strikeDisplay": strike_disp_str,
 
             # Quantity — Rule 30: use tt_lots() macro with literal 'INSTRUMENT', NOT symbol string
             "qty": f"tt_lots({self.lots},'INSTRUMENT','{self.option_type}')",
