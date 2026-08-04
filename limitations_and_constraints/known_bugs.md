@@ -256,5 +256,23 @@ EXPIRY_TYPE_MAP = {
 
 ---
 
+## BUG-015: Strike Fx Formula Latency & Parsing Failures (`25JUN2030 CE 12000`) vs Native ATM Success
+
+**Severity**: 🔴 Critical — Strategy places orders on illiquid 2030 LEAPS contracts (12000 CE)
+
+**Symptom**: Live log shows: `Instrument OPTIDX_NIFTY_25JUN2030_CE_12000 seems illiquid, price is 0, wont take trade`.
+
+**Root Cause**:
+1. `Get Strike` and `Find Strike` formulas evaluate in real-time by querying live broker tick feeds (`LTP`) or option chain caches.
+2. If tick feeds suffer a 1-second latency or parameter string formatting has an exact character mismatch (such as 4 vs 5 commas), `LTP` or `Find Strike` returns `None` / `0`.
+3. When strike evaluates to `0`, Tradetron's order generator falls back to the **minimum available strike (12000)** and **furthest LEAPS expiry (JUN 2030)** in the NFO symbol master.
+4. **Native ATM** (`"strikeType": "ATM"`, `"strike": "tt_ATM('NIFTY 50') + 600"`), by contrast, bypasses AST formula evaluation entirely. Tradetron queries the official Exchange ATM Table directly at execution time.
+
+**Fixed**: Use Native ATM (`Native_ATM_Iron_Fly.json`) for index options.
+
+**See Also**: AGENTS.md Rule 37
+
+---
+
 *Last Updated: 2026-08-03*
 *All bugs above are verified and fixes are implemented in the codebase.*
