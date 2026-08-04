@@ -19,7 +19,7 @@ def get_spot_atm_ast():
                                     {"type": "keyword", "keyword": {
                                         "name": "Instrument Name", "kid": 1002, "params": [
                                             # Rule 27: 5 commas = 6 slots (Exchange, Underlying, Expiry, OptionType, Strike, Empty)
-                                            {"type": "value", "value": "NFO,NIFTY 50,,,,"}
+                                            {"type": "value", "value": "NFO,NIFTY 50,Current Month,,,,"}
                                         ]
                                     }}
                                 ]
@@ -50,7 +50,7 @@ def get_strike_ast(operator, var_name):
                                     {"type": "keyword", "keyword": {
                                         "name": "Instrument Name", "kid": 1002, "params": [
                                             # Rule 27: 5 commas = 6 slots
-                                            {"type": "value", "value": "NFO,NIFTY 50,,,,"}
+                                            {"type": "value", "value": "NFO,NIFTY 50,Current Month,,,,"}
                                         ]
                                     }}
                                 ]

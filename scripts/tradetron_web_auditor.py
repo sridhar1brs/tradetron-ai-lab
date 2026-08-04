@@ -175,10 +175,10 @@ class TradetronWebUIAuditor:
                 matches = re.findall(r'NFO,NIFTY 50[^"\']*', strike_json)
                 for m in matches:
                     comma_count = m.count(",")
-                    if comma_count != 5:
+                    if comma_count not in (5, 6):
                         self.errors.append(
                             f"{leg_id}: Custom strike formula contains 'Instrument Name' with {comma_count} commas ('{m}'). "
-                            f"Tradetron Spot Index LTP requires EXACTLY 5 commas ('NFO,NIFTY 50,,,,,')!"
+                            f"Tradetron Spot Index LTP requires 5 or 6 commas (e.g. 'NFO,NIFTY 50,Current Month,,,,')!"
                         )
 
     def _audit_variables(self, variables):
