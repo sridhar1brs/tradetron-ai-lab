@@ -3,24 +3,23 @@ import json
 import os
 
 strat_desc = """
-<p><strong>Nifty 50 Native ATM Iron Fly Strategy (Pure Native ATM + Hedge Setup)</strong></p>
+<p><strong>Nifty 50 Monthly Iron Fly Strategy with Native ATM & Dynamic Hedge Rollovers</strong></p>
 <p><strong>Strategy Notes:</strong></p>
 <p>---------------</p>
 <p>1. <strong>Entry (Margin-Optimized Split):</strong></p>
 <ul>
-  <li>Time: 3:00 PM (15:00 IST) on trading day after monthly expiry per Rule 36.</li>
-  <li>Long Hedges (S1 E): Buy Call & Put hedges using native ATM + 600 / ATM - 600.</li>
-  <li>Short Straddle (S1 R1): Sell ATM Call & Put using native tt_ATM('NIFTY 50'). Triggers strictly when Long Hedge Traded Instrument Quantity > 0.</li>
+  <li>Time: 09:20 AM IST.</li>
+  <li>Selection: Current Month Expiry ATM Straddle and protective hedges via Native ATM.</li>
+  <li>Hedges: Buy Call & Put hedges 600 points away.</li>
 </ul>
-<p>2. <strong>Adjustments (Hedge Rollovers):</strong></p>
+<p>2. <strong>Adjustments (Rolling Hedges):</strong></p>
 <ul>
-  <li>Set 2 (Call Roll): Triggered when Nifty Spot crosses CE hedge strike. Rolls CE hedge +100 pts.</li>
-  <li>Set 3 (Put Roll): Triggered when Nifty Spot crosses PE hedge strike. Rolls PE hedge -100 pts.</li>
+  <li>When spot crosses either hedge boundary, roll hedge 100 points outward.</li>
 </ul>
-<p>3. <strong>Exit:</strong> Universal Exit at 3:15 PM or Expiry Day.</p>
+<p>3. <strong>Exit:</strong> Universal Exit on expiry or specified hold mode.</p>
 """
 
-strat = Strategy("Native ATM Margin-Optimized Iron Fly", strat_desc)
+strat = Strategy("Nifty Monthly IronFly NativeATM with Hedge Rollover", strat_desc)
 
 # VARIABLES
 strat.add_variable(Variable("HedgeRoll", "100"))
@@ -83,11 +82,11 @@ def get_traded_instrument_offset_ast(operator, var_name, set_no, cond_no, leg_no
 # ====================================================================================
 s1 = SetBlock(1)
 
-# S1 ENTRY (BUY HEDGES FIRST FOR MARGIN OPTIMIZATION)
+# S1 ENTRY (09:20 AM IST Entry)
 c1_entry = Condition(ctype="Entry")
-c1_entry.add_rule(Rule(Keyword("Time", "NSE"), ">=", "1500"))
+c1_entry.add_rule(Rule(Keyword("Time", "NSE"), ">=", "0920"))
 
-# Leg 1: Long CE Hedge via Native ATM Offset (+600)
+# Leg 1: Long CE Hedge via Native ATM Offset (+600) (Current Month Expiry)
 c1_entry.add_leg(Leg(
     "NIFTY 50", "CE", "B", 1,
     strike="tt_ATM('NIFTY 50') + 600",
@@ -95,7 +94,7 @@ c1_entry.add_leg(Leg(
     expiry_type="Current Month"
 ))
 
-# Leg 2: Long PE Hedge via Native ATM Offset (-600)
+# Leg 2: Long PE Hedge via Native ATM Offset (-600) (Current Month Expiry)
 c1_entry.add_leg(Leg(
     "NIFTY 50", "PE", "B", 1,
     strike="tt_ATM('NIFTY 50') - 600",
@@ -106,10 +105,9 @@ s1.add_condition(c1_entry)
 
 # S1 REPAIR ONCE (SHORT STRADDLE LEGS AFTER MARGIN BENEFIT)
 c1_repair = Condition(ctype="Repair Once")
-# Trigger short legs strictly after Long hedge quantity > 0
 c1_repair.add_rule(Rule(Keyword("Traded Instrument", "Entry", "quantity", "NIFTY 50", "1", "1", "1"), ">", "0"))
 
-# Leg 1 (Repair): Short CE ATM via Pure Native ATM
+# Leg 1 (Repair): Short CE ATM via Pure Native ATM (Current Month Expiry)
 c1_repair.add_leg(Leg(
     "NIFTY 50", "CE", "S", 1,
     strike="tt_ATM('NIFTY 50')",
@@ -117,7 +115,7 @@ c1_repair.add_leg(Leg(
     expiry_type="Current Month"
 ))
 
-# Leg 2 (Repair): Short PE ATM via Pure Native ATM
+# Leg 2 (Repair): Short PE ATM via Pure Native ATM (Current Month Expiry)
 c1_repair.add_leg(Leg(
     "NIFTY 50", "PE", "S", 1,
     strike="tt_ATM('NIFTY 50')",
@@ -146,7 +144,7 @@ strat.add_set(s1)
 # ====================================================================================
 s2 = SetBlock(2)
 c2_entry = Condition(ctype="Entry")
-c2_entry.add_rule(Rule(Keyword("LTP", Keyword("Instrument Name", "NFO,NIFTY 50,,,,")), ">", Keyword("Traded Instrument", "Entry", "strike", "NIFTY 50", "1", "1", "1")))
+c2_entry.add_rule(Rule(Keyword("LTP", Keyword("Instrument Name", "NFO,NIFTY 50,Current Month,,,,")), ">", Keyword("Traded Instrument", "Entry", "strike", "NIFTY 50", "1", "1", "1")))
 
 c2_entry.add_leg(Leg("NIFTY 50", "CE", "S", 1, strike="( Traded Instrument )", strike_type="Fx", strike_json=get_traded_instrument_ast(1, 1, 1), expiry_type="Current Month")) 
 c2_entry.add_leg(Leg("NIFTY 50", "CE", "B", 1, strike="( Traded Instrument + Get Runtime(HedgeRoll) )", strike_type="Fx", strike_json=get_traded_instrument_offset_ast("+", "HedgeRoll", 1, 1, 1), expiry_type="Current Month"))
@@ -165,7 +163,7 @@ strat.add_set(s2)
 # ====================================================================================
 s3 = SetBlock(3)
 c3_entry = Condition(ctype="Entry")
-c3_entry.add_rule(Rule(Keyword("LTP", Keyword("Instrument Name", "NFO,NIFTY 50,,,,")), "<", Keyword("Traded Instrument", "Entry", "strike", "NIFTY 50", "1", "1", "2")))
+c3_entry.add_rule(Rule(Keyword("LTP", Keyword("Instrument Name", "NFO,NIFTY 50,Current Month,,,,")), "<", Keyword("Traded Instrument", "Entry", "strike", "NIFTY 50", "1", "1", "2")))
 
 c3_entry.add_leg(Leg("NIFTY 50", "PE", "S", 1, strike="( Traded Instrument )", strike_type="Fx", strike_json=get_traded_instrument_ast(1, 1, 2), expiry_type="Current Month"))
 c3_entry.add_leg(Leg("NIFTY 50", "PE", "B", 1, strike="( Traded Instrument - Get Runtime(HedgeRoll) )", strike_type="Fx", strike_json=get_traded_instrument_offset_ast("-", "HedgeRoll", 1, 1, 2), expiry_type="Current Month"))
@@ -208,5 +206,7 @@ ue_cond.add_rule(g1)
 ue_cond.add_rule(g2)
 strat.set_universal_exit(ue_cond)
 
+# Standardized Naming
+strat.export("Nifty_Monthly_IronFly_NativeATM_with_Hedge_Rollover.json")
 strat.export("Native_ATM_Iron_Fly.json")
-print("Compiled Native ATM Iron Fly strategy to strategies/Native_ATM_Iron_Fly.json")
+print("Compiled Nifty_Monthly_IronFly_NativeATM_with_Hedge_Rollover.json successfully")
