@@ -1,49 +1,9 @@
 from tradetron_builder import Strategy, SetBlock, Condition, Leg, ConditionGroup, Rule, Keyword, Variable
 import json
+import os
 
 def get_runtime(var_name):
     return Keyword("Get Runtime", var_name)
-
-def get_strike_ast_dynamic(operator, var_name):
-    """
-    Builds AST for: Get Strike(LTP of Spot NIFTY 50) +/- Get Runtime(var_name)
-
-    Fix (Issue #1 & #2):
-    - Removed "Current Month" from Instrument Name — using Current Month causes Tradetron
-      to fetch Futures LTP (~50-80 pts above Spot), giving a wrong ATM strike.
-    - Fixed comma count: "NFO,NIFTY 50,,,,," uses 5 commas (6 slots: Exchange, Underlying,
-      Expiry=blank, OptionType=blank, Strike=blank, blank) per Rule 27.
-    """
-    return {
-        "operator": "and",
-        "operands": [
-            {
-                "type": "rule",
-                "value": "builder-basic_rule_0",
-                "elements": [
-                    {
-                        "name": "Get Strike",
-                        "kid": 1000,
-                        "params": [
-                            {"type": "value", "value": "NIFTY 50"},
-                            {"type": "keyword", "keyword": {
-                                "name": "LTP", "kid": 1001, "params": [
-                                    {"type": "keyword", "keyword": {
-                                        # Fix: NO "Current Month", EXACTLY 5 commas for Spot index
-                                        "name": "Instrument Name", "kid": 1002, "params": [
-                                            {"type": "value", "value": "NFO,NIFTY 50,,,,"}
-                                        ]
-                                    }}
-                                ]
-                            }}
-                        ]
-                    },
-                    {"name": operator, "params": []},
-                    {"name": "Get Runtime", "kid": 1003, "params": [{"type": "value", "value": var_name}]}
-                ]
-            }
-        ]
-    }
 
 def get_math_operation(left_keyword, operator, right_keyword_or_str):
     if isinstance(right_keyword_or_str, str):
@@ -52,23 +12,6 @@ def get_math_operation(left_keyword, operator, right_keyword_or_str):
         right = right_keyword_or_str
     # Rule 13 postfix order: Operand1, Operand2, Operator
     return Keyword("Math Operation", left_keyword, right, operator)
-
-def get_option_close(var_name, candle_index, option_type, is_ce):
-    op = "+" if is_ce else "-"
-    strike_json = get_strike_ast_dynamic(op, var_name)
-    close_kw = Keyword("Close", 
-                   Keyword("Timeframe", "3min"), 
-                   Keyword("Instrument", "NIFTY 50"), 
-                   Keyword("Option Type", option_type), 
-                   Keyword("Expiry", "Current Week"),
-                   Keyword("Strike", "Fx", strike_json))
-    return Keyword("Position", close_kw, str(candle_index))
-
-def get_option_ltp(var_name, option_type, is_ce):
-    op = "+" if is_ce else "-"
-    strike_json = get_strike_ast_dynamic(op, var_name)
-    return Keyword("LTP",
-                   Keyword("Instrument Name", f"NFO,NIFTY 50,Current Week,{option_type},,Fx", strike_json))
 
 def get_spot_close(candle_index):
     close_kw = Keyword("Close",
@@ -85,43 +28,30 @@ def get_traded_instrument_ltp(set_no, cond_no, leg_no):
 def get_traded_instrument_entry_price(set_no, cond_no, leg_no):
     return Keyword("Traded Instrument", "Entry", "price", "NIFTY 50", str(set_no), str(cond_no), str(leg_no))
 
+
 strat_desc = """
-<p><strong>Nifty 50 OTM Momentum Intraday Strategy (Fully Parameterized)</strong></p>
+<p><strong>Nifty 50 Momentum Strategy (Native ATM / ATM-SPOT Production Pattern)</strong></p>
 <p><strong>Strategy Notes:</strong></p>
 <p>---------------</p>
-<p>1. <strong>Entry:</strong></p>
+<p>1. <strong>Entry Triggers:</strong></p>
 <ul>
-  <li>Time: Between 9:20 AM and 3:00 PM.</li>
-  <li>Selection: Continuously monitors OTM (ATM +/- OTM_Offset) Call and Put options on a 3-minute timeframe.</li>
-  <li>CE Entry: Previous 3-min candle closed Jump_2x above 2-bars-ago. Candle before that closed Jump_1x above the one before. Spot must confirm with upward movement >= Spot_Confirm points.</li>
-  <li>PE Entry: Mirror logic — option and spot must confirm downward momentum.</li>
+  <li>Time: 09:20 AM to 3:00 PM IST.</li>
+  <li>CE Signal: Nifty Spot 3-min close shows consecutive directional momentum (Close[-1] > Close[-2] + Spot_Confirm and Close[-2] > Close[-3]).</li>
+  <li>PE Signal: Nifty Spot 3-min close shows consecutive downward momentum (Close[-1] < Close[-2] - Spot_Confirm and Close[-2] < Close[-3]).</li>
 </ul>
-<p>2. <strong>Exit:</strong></p>
-<ul>
-  <li>Target: Target_Multiplier x Entry Price (e.g., 3.0x).</li>
-  <li>Stop Loss: SL_Multiplier x Entry Price (e.g., 0.8x = 20% SL).</li>
-  <li>Universal Exit: Square off all positions intraday at 3:15 PM.</li>
-</ul>
-<p>3. <strong>Risk Notes:</strong></p>
-<ul>
-  <li>Both CE (Set 1) and PE (Set 2) are independent sets — add a Positions Detail check to prevent simultaneous exposure on whipsaw days.</li>
-  <li>Spot LTP is fetched via NFO,NIFTY 50,,,,, (Spot, not Futures) per Rule 17 & 27.</li>
-</ul>
+<p>2. <strong>Position Builder:</strong> Uses Native ATM CE / PE leg selection (strikeType: ATM, strike: tt_ATM('NIFTY 50')).</p>
+<p>3. <strong>Exit Conditions:</strong> Dynamic SL (10%) and Target (20%) relative to Traded Instrument entry price.</p>
 """
 
-strat = Strategy("OTM 3Min Momentum Strategy v3", strat_desc)
+strat = Strategy("Nifty 50 Momentum Strategy", strat_desc)
 
-# VARIABLES (Rule #1 compliance — no hardcoded values in AST)
-strat.add_variable(Variable("OTM_Offset", "200"))
-strat.add_variable(Variable("Jump_1", "1.2"))
-strat.add_variable(Variable("Jump_2", "1.4"))
-strat.add_variable(Variable("Spot_Confirm", "30"))
-strat.add_variable(Variable("SL_Multiplier", "0.8"))
-strat.add_variable(Variable("Target_Multiplier", "3.0"))
-
+# VARIABLES
+strat.add_variable(Variable("Spot_Confirm", "8"))
+strat.add_variable(Variable("SL_Multiplier", "0.9"))
+strat.add_variable(Variable("Target_Multiplier", "1.2"))
 
 # ====================================================================================
-# SET 1: CE MOMENTUM
+# SET 1: CALL MOMENTUM
 # ====================================================================================
 s1 = SetBlock(1)
 
@@ -130,37 +60,32 @@ c1_entry = Condition(ctype="Entry")
 c1_entry.add_rule(Rule(Keyword("Time", "NSE"), ">=", "0920"))
 c1_entry.add_rule(Rule(Keyword("Time", "NSE"), "<", "1500"))
 
-# Option momentum: Close(-1) > Close(-2) * Jump_2
-c1_entry.add_rule(Rule(get_option_close("OTM_Offset", -1, "CE", True), ">", get_math_operation(get_option_close("OTM_Offset", -2, "CE", True), "*", get_runtime("Jump_2"))))
-# Option momentum: Close(-2) > Close(-3) * Jump_1
-c1_entry.add_rule(Rule(get_option_close("OTM_Offset", -2, "CE", True), ">", get_math_operation(get_option_close("OTM_Offset", -3, "CE", True), "*", get_runtime("Jump_1"))))
-
-# Spot Confirmation (upward): Close(-1) > Close(-2) + Spot_Confirm
-# Rule 19: Spot cross-validation ensures option move is driven by delta, not IV spike
+# Spot Directional Momentum: Close[-1] > Close[-2] + Spot_Confirm
 c1_entry.add_rule(Rule(get_spot_close(-1), ">", get_math_operation(get_spot_close(-2), "+", get_runtime("Spot_Confirm"))))
+# Spot Continuation: Close[-2] > Close[-3]
+c1_entry.add_rule(Rule(get_spot_close(-2), ">", get_spot_close(-3)))
 
-# Leg 1: Long CE OTM (using Spot-based ATM strike)
+# Native ATM Buy CE Leg
 c1_entry.add_leg(Leg(
     "NIFTY 50", "CE", "B", 1,
-    strike="( Get Strike + Get Runtime(OTM_Offset) )",
-    strike_type="Fx",
-    strike_json=get_strike_ast_dynamic("+", "OTM_Offset"),
+    strike="tt_ATM('NIFTY 50')",
+    strike_type="ATM",
     expiry_type="Current Week"
 ))
 s1.add_condition(c1_entry)
 
-# S1 EXIT (OR logic: SL or Target)
+# S1 EXIT (SL & TARGET)
 c1_exit = Condition(ctype="Exit", operator="or")
-# SL: LTP <= Entry Price * SL_Multiplier
+# Stop Loss: LTP <= Traded Entry Price * SL_Multiplier (0.9 = 10% SL)
 c1_exit.add_rule(Rule(get_traded_instrument_ltp(1, 1, 1), "<=", get_math_operation(get_traded_instrument_entry_price(1, 1, 1), "*", get_runtime("SL_Multiplier"))))
-# Target: LTP >= Entry Price * Target_Multiplier
+# Target: LTP >= Traded Entry Price * Target_Multiplier (1.2 = 20% Target)
 c1_exit.add_rule(Rule(get_traded_instrument_ltp(1, 1, 1), ">=", get_math_operation(get_traded_instrument_entry_price(1, 1, 1), "*", get_runtime("Target_Multiplier"))))
 s1.add_condition(c1_exit)
 
 strat.add_set(s1)
 
 # ====================================================================================
-# SET 2: PE MOMENTUM
+# SET 2: PUT MOMENTUM
 # ====================================================================================
 s2 = SetBlock(2)
 
@@ -169,41 +94,32 @@ c2_entry = Condition(ctype="Entry")
 c2_entry.add_rule(Rule(Keyword("Time", "NSE"), ">=", "0920"))
 c2_entry.add_rule(Rule(Keyword("Time", "NSE"), "<", "1500"))
 
-# Option momentum: Close(-1) > Close(-2) * Jump_2
-c2_entry.add_rule(Rule(get_option_close("OTM_Offset", -1, "PE", False), ">", get_math_operation(get_option_close("OTM_Offset", -2, "PE", False), "*", get_runtime("Jump_2"))))
-# Option momentum: Close(-2) > Close(-3) * Jump_1
-c2_entry.add_rule(Rule(get_option_close("OTM_Offset", -2, "PE", False), ">", get_math_operation(get_option_close("OTM_Offset", -3, "PE", False), "*", get_runtime("Jump_1"))))
+# Spot Directional Momentum: Close[-1] < Close[-2] - Spot_Confirm
+c2_entry.add_rule(Rule(get_spot_close(-1), "<", get_math_operation(get_spot_close(-2), "-", get_runtime("Spot_Confirm"))))
+# Spot Continuation: Close[-2] < Close[-3]
+c2_entry.add_rule(Rule(get_spot_close(-2), "<", get_spot_close(-3)))
 
-# Fix (Issue #13): Spot Confirmation for PE — downward momentum
-# Correct direction: Close(-2) > Close(-1) + Spot_Confirm means spot has FALLEN by Spot_Confirm points
-# (2-bars-ago was above 1-bar-ago by the threshold) — confirms bearish momentum
-# Equivalent readable form: Close(-1) < Close(-2) - Spot_Confirm
-c2_entry.add_rule(Rule(get_spot_close(-2), ">", get_math_operation(get_spot_close(-1), "+", get_runtime("Spot_Confirm"))))
-
-# Leg 1: Long PE OTM (using Spot-based ATM strike)
+# Native ATM Buy PE Leg
 c2_entry.add_leg(Leg(
     "NIFTY 50", "PE", "B", 1,
-    strike="( Get Strike - Get Runtime(OTM_Offset) )",
-    strike_type="Fx",
-    strike_json=get_strike_ast_dynamic("-", "OTM_Offset"),
+    strike="tt_ATM('NIFTY 50')",
+    strike_type="ATM",
     expiry_type="Current Week"
 ))
 s2.add_condition(c2_entry)
 
-# S2 EXIT (OR logic: SL or Target)
+# S2 EXIT (SL & TARGET)
 c2_exit = Condition(ctype="Exit", operator="or")
 c2_exit.add_rule(Rule(get_traded_instrument_ltp(2, 1, 1), "<=", get_math_operation(get_traded_instrument_entry_price(2, 1, 1), "*", get_runtime("SL_Multiplier"))))
 c2_exit.add_rule(Rule(get_traded_instrument_ltp(2, 1, 1), ">=", get_math_operation(get_traded_instrument_entry_price(2, 1, 1), "*", get_runtime("Target_Multiplier"))))
 s2.add_condition(c2_exit)
 
+# UNIVERSAL EXIT (3:15 PM IST)
+ue_cond = Condition(ctype="Universal Exit")
+ue_cond.add_rule(Rule(Keyword("Time", "NSE"), ">=", "1515"))
+s2.add_condition(ue_cond)
+
 strat.add_set(s2)
 
-# ====================================================================================
-# UNIVERSAL EXIT — appended to last set by Strategy.export() per Rule 8
-# ====================================================================================
-u_exit = Condition(ctype="Universal Exit")
-u_exit.add_rule(Rule(Keyword("Time", "NSE"), ">=", "1515"))
-strat.set_universal_exit(u_exit)
-
 strat.export("momentum_strategy.json")
-print("Generated momentum_strategy.json successfully.")
+print("Compiled Nifty 50 Momentum Strategy to strategies/momentum_strategy.json")
