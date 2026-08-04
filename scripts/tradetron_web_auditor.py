@@ -172,7 +172,7 @@ class TradetronWebUIAuditor:
         if strike_json:
             if "NFO,NIFTY 50" in strike_json:
                 # Count commas in Instrument Name parameter string
-                matches = re.findall(r'NFO,NIFTY 50,*,*,*,*', strike_json)
+                matches = re.findall(r'NFO,NIFTY 50[^"\']*', strike_json)
                 for m in matches:
                     comma_count = m.count(",")
                     if comma_count != 5:

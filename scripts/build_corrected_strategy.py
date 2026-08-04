@@ -18,7 +18,7 @@ def get_spot_atm_ast():
                                 "name": "LTP", "kid": 1001, "params": [
                                     {"type": "keyword", "keyword": {
                                         "name": "Instrument Name", "kid": 1002, "params": [
-                                            # Fix (Issue #2 & #3): 5 commas = 6 slots (Spot, no Current Month) per Rule 17 & 27
+                                            # Rule 27: 5 commas = 6 slots (Exchange, Underlying, Expiry, OptionType, Strike, Empty)
                                             {"type": "value", "value": "NFO,NIFTY 50,,,,"}
                                         ]
                                     }}
@@ -49,7 +49,7 @@ def get_strike_ast(operator, var_name):
                                 "name": "LTP", "kid": 1001, "params": [
                                     {"type": "keyword", "keyword": {
                                         "name": "Instrument Name", "kid": 1002, "params": [
-                                            # Fix (Issue #2 & #3): 5 commas = 6 slots (Spot, no Current Month) per Rule 17 & 27
+                                            # Rule 27: 5 commas = 6 slots
                                             {"type": "value", "value": "NFO,NIFTY 50,,,,"}
                                         ]
                                     }}
@@ -173,8 +173,9 @@ s1.add_condition(c1_entry)
 
 # S1 REPAIR ONCE (SELL LEGS AFTER MARGIN BENEFIT)
 c1_repair = Condition(ctype="Repair Once")
-# Trigger short legs only after Long legs are executed successfully (Traded Instrument Qty != 0)
-c1_repair.add_rule(Rule(Keyword("Traded Instrument", "Entry", "quantity", "NIFTY 50", "1", "1", "1"), "!=", "0"))
+# Trigger short legs only after Long legs are executed successfully (Traded Instrument Qty > 0)
+# Note: Using > 0 instead of != 0 prevents premature execution when Traded Instrument returns None during order submission
+c1_repair.add_rule(Rule(Keyword("Traded Instrument", "Entry", "quantity", "NIFTY 50", "1", "1", "1"), ">", "0"))
 # Fix (Issue #8): Short straddle uses Next Month expiry for monthly Iron Fly
 # Leg 1 (Repair): Short CE ATM — Spot-based ATM via Get Strike (Next Month expiry)
 c1_repair.add_leg(Leg("NIFTY 50", "CE", "S", 1, strike="( Get Strike(Spot LTP) )", strike_type="Fx", strike_json=get_spot_atm_ast(), expiry_type="Next Month"))
