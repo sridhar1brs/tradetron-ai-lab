@@ -13,9 +13,9 @@ def get_math_operation(left_keyword, operator, right_keyword_or_str):
     # Rule 13 postfix order: Operand1, Operand2, Operator
     return Keyword("Math Operation", left_keyword, right, operator)
 
-def get_spot_close(candle_index):
+def get_spot_close(candle_index, timeframe="1min"):
     close_kw = Keyword("Close",
-                   Keyword("Timeframe", "3min"),
+                   Keyword("Timeframe", timeframe),
                    Keyword("Instrument", "NIFTY 50"))
     return Keyword("Position", close_kw, str(candle_index))
 
@@ -30,28 +30,28 @@ def get_traded_instrument_entry_price(set_no, cond_no, leg_no):
 
 
 strat_desc = """
-<p><strong>Nifty 50 Momentum Strategy (Native ATM / ATM-SPOT Production Pattern)</strong></p>
+<p><strong>Nifty 50 1-Min Momentum Strategy (Native ATM Pattern)</strong></p>
 <p><strong>Strategy Notes:</strong></p>
 <p>---------------</p>
 <p>1. <strong>Entry Triggers:</strong></p>
 <ul>
   <li>Time: 09:20 AM to 3:00 PM IST.</li>
-  <li>CE Signal: Nifty Spot 3-min close shows consecutive directional momentum (Close[-1] > Close[-2] + Spot_Confirm and Close[-2] > Close[-3]).</li>
-  <li>PE Signal: Nifty Spot 3-min close shows consecutive downward momentum (Close[-1] < Close[-2] - Spot_Confirm and Close[-2] < Close[-3]).</li>
+  <li>CE Signal: Nifty Spot 1-min close shows consecutive directional momentum (Close[-1] > Close[-2] + Spot_Confirm and Close[-2] > Close[-3]).</li>
+  <li>PE Signal: Nifty Spot 1-min close shows consecutive downward momentum (Close[-1] < Close[-2] - Spot_Confirm and Close[-2] < Close[-3]).</li>
 </ul>
 <p>2. <strong>Position Builder:</strong> Uses Native ATM CE / PE leg selection (strikeType: ATM, strike: tt_ATM('NIFTY 50')).</p>
 <p>3. <strong>Exit Conditions:</strong> Dynamic SL (10%) and Target (20%) relative to Traded Instrument entry price.</p>
 """
 
-strat = Strategy("Nifty 50 Momentum Strategy", strat_desc)
+strat = Strategy("Nifty 1Min Momentum Strategy", strat_desc)
 
 # VARIABLES
-strat.add_variable(Variable("Spot_Confirm", "8"))
+strat.add_variable(Variable("Spot_Confirm", "5"))
 strat.add_variable(Variable("SL_Multiplier", "0.9"))
 strat.add_variable(Variable("Target_Multiplier", "1.2"))
 
 # ====================================================================================
-# SET 1: CALL MOMENTUM
+# SET 1: CALL MOMENTUM (1-MIN CANDLES)
 # ====================================================================================
 s1 = SetBlock(1)
 
@@ -61,9 +61,9 @@ c1_entry.add_rule(Rule(Keyword("Time", "NSE"), ">=", "0920"))
 c1_entry.add_rule(Rule(Keyword("Time", "NSE"), "<", "1500"))
 
 # Spot Directional Momentum: Close[-1] > Close[-2] + Spot_Confirm
-c1_entry.add_rule(Rule(get_spot_close(-1), ">", get_math_operation(get_spot_close(-2), "+", get_runtime("Spot_Confirm"))))
+c1_entry.add_rule(Rule(get_spot_close(-1, "1min"), ">", get_math_operation(get_spot_close(-2, "1min"), "+", get_runtime("Spot_Confirm"))))
 # Spot Continuation: Close[-2] > Close[-3]
-c1_entry.add_rule(Rule(get_spot_close(-2), ">", get_spot_close(-3)))
+c1_entry.add_rule(Rule(get_spot_close(-2, "1min"), ">", get_spot_close(-3, "1min")))
 
 # Native ATM Buy CE Leg
 c1_entry.add_leg(Leg(
@@ -76,16 +76,14 @@ s1.add_condition(c1_entry)
 
 # S1 EXIT (SL & TARGET)
 c1_exit = Condition(ctype="Exit", operator="or")
-# Stop Loss: LTP <= Traded Entry Price * SL_Multiplier (0.9 = 10% SL)
 c1_exit.add_rule(Rule(get_traded_instrument_ltp(1, 1, 1), "<=", get_math_operation(get_traded_instrument_entry_price(1, 1, 1), "*", get_runtime("SL_Multiplier"))))
-# Target: LTP >= Traded Entry Price * Target_Multiplier (1.2 = 20% Target)
 c1_exit.add_rule(Rule(get_traded_instrument_ltp(1, 1, 1), ">=", get_math_operation(get_traded_instrument_entry_price(1, 1, 1), "*", get_runtime("Target_Multiplier"))))
 s1.add_condition(c1_exit)
 
 strat.add_set(s1)
 
 # ====================================================================================
-# SET 2: PUT MOMENTUM
+# SET 2: PUT MOMENTUM (1-MIN CANDLES)
 # ====================================================================================
 s2 = SetBlock(2)
 
@@ -95,9 +93,9 @@ c2_entry.add_rule(Rule(Keyword("Time", "NSE"), ">=", "0920"))
 c2_entry.add_rule(Rule(Keyword("Time", "NSE"), "<", "1500"))
 
 # Spot Directional Momentum: Close[-1] < Close[-2] - Spot_Confirm
-c2_entry.add_rule(Rule(get_spot_close(-1), "<", get_math_operation(get_spot_close(-2), "-", get_runtime("Spot_Confirm"))))
+c2_entry.add_rule(Rule(get_spot_close(-1, "1min"), "<", get_math_operation(get_spot_close(-2, "1min"), "-", get_runtime("Spot_Confirm"))))
 # Spot Continuation: Close[-2] < Close[-3]
-c2_entry.add_rule(Rule(get_spot_close(-2), "<", get_spot_close(-3)))
+c2_entry.add_rule(Rule(get_spot_close(-2, "1min"), "<", get_spot_close(-3, "1min")))
 
 # Native ATM Buy PE Leg
 c2_entry.add_leg(Leg(
@@ -121,5 +119,6 @@ s2.add_condition(ue_cond)
 
 strat.add_set(s2)
 
+strat.export("Nifty_1Min_Momentum_Strategy.json")
 strat.export("momentum_strategy.json")
-print("Compiled Nifty 50 Momentum Strategy to strategies/momentum_strategy.json")
+print("Compiled Nifty 1Min Momentum Strategy to strategies/Nifty_1Min_Momentum_Strategy.json")
