@@ -348,6 +348,29 @@ class Strategy:
 
 # ─── High-Level Strategy Generators ──────────────────────────────────────────
 
+def make_structured_description(name, underlying, timeframe, entry_logic, exit_logic, notes=None):
+    """Rule 6 helper: Format a rich, human-readable structured HTML description field."""
+    desc = f"""
+<p><strong>{name}</strong></p>
+<p><strong>Strategy Notes & Trading Intent:</strong></p>
+<p>--------------------------------------------------</p>
+<p>1. <strong>Entry Criteria:</strong></p>
+<ul>
+  <li><strong>Underlying:</strong> {underlying} ({timeframe}).</li>
+  <li><strong>Entry Window:</strong> Between 9:20 AM and 3:00 PM IST.</li>
+  <li><strong>Trigger Condition:</strong> {entry_logic}</li>
+</ul>
+<p>2. <strong>Exit Criteria & Risk Parameters:</strong></p>
+<ul>
+  <li><strong>Target & Stop Loss:</strong> {exit_logic}</li>
+  <li><strong>Universal Exit:</strong> Square off all intraday open positions at 3:15 PM IST.</li>
+</ul>
+"""
+    if notes:
+        desc += f"<p>3. <strong>Additional Mechanics:</strong></p><ul>{notes}</ul>\n"
+    return desc
+
+
 def build_iron_fly(
     symbol="NIFTY 50",
     hedge_gap=600,
@@ -366,14 +389,32 @@ def build_iron_fly(
 
     inst_id = 1855 if "NIFTY" in symbol and "BANK" not in symbol else (1854 if "BANK" in symbol else 0)
     
-    strat = Strategy(
-        name=name,
-        description=f"Enters a 4-leg Ironfly options position on {symbol} index. Protective hedges are placed {hedge_gap} points away, rolling outward by {roll_step} points on hedge crosses. Time entry >= {entry_time}."
-    )
+    desc_html = f"""
+<p><strong>{name}</strong></p>
+<p><strong>Strategy Notes & Trading Intent:</strong></p>
+<p>--------------------------------------------------</p>
+<p>1. <strong>Entry Criteria:</strong></p>
+<ul>
+  <li><strong>Underlying:</strong> {symbol} Index ({expiry_type} Expiry Spreads).</li>
+  <li><strong>Entry Time:</strong> At 3:15 PM IST (15:15 IST).</li>
+  <li><strong>Trigger Condition:</strong> Enters 4-leg Iron Fly position on {symbol} (Sell ATM Call & Put, Buy {hedge_gap}pt OTM Call & Put protective hedges) at 15:15 IST.</li>
+</ul>
+<p>2. <strong>Exit Criteria & Risk Parameters:</strong></p>
+<ul>
+  <li><strong>Universal Exit:</strong> Square off all intraday open positions at 3:15 PM IST.</li>
+</ul>
+<p>3. <strong>Additional Mechanics:</strong></p>
+<ul>
+  <li>Protective hedges placed {hedge_gap} points away, rolling outward by {roll_step} points on hedge boundary crosses.</li>
+</ul>
+"""
+
+    strat = Strategy(name=name, description=desc_html)
 
     strat.add_variable(Variable("HedgeGap", str(hedge_gap)))
     strat.add_variable(Variable("HedgeRoll", str(roll_step)))
     strat.add_variable(Variable("HOLD_TILL_EXPIRY", str(hold_till_expiry)))
+
 
     # Set 1 Entry
     s1 = SetBlock(1)
@@ -425,10 +466,15 @@ def build_momentum(
 
     inst_id = 1855 if "NIFTY" in symbol and "BANK" not in symbol else (1854 if "BANK" in symbol else 0)
 
-    strat = Strategy(
+    desc_html = make_structured_description(
         name=name,
-        description=f"Directional momentum option buying strategy on {symbol}. Enters Buy CE when 1-min Close[-1] > Close[-2] + {spot_confirm} pts and Close[-2] > Close[-3]. Enters Buy PE on bearish breakdown."
+        underlying=f"{symbol} Index",
+        timeframe=f"{timeframe} Candles ({expiry_type})",
+        entry_logic=f"Enters Buy CE when {timeframe} Close[-1] > Close[-2] + {spot_confirm} pts and Close[-2] > Close[-3]. Enters Buy PE on bearish breakdown.",
+        exit_logic=f"Target: {tgt_mult}x entry price. Stop Loss: {sl_mult}x entry price."
     )
+
+    strat = Strategy(name=name, description=desc_html)
 
     strat.add_variable(Variable("Spot_Confirm", str(spot_confirm)))
     strat.add_variable(Variable("SL_Multiplier", str(sl_mult)))

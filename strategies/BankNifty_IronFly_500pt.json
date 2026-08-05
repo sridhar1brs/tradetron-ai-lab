@@ -8,7 +8,7 @@
     "do_not": "Do not add \"*_id\" foreign keys back. Lists referenced by id must be ones you own."
   },
   "name": "BANK NIFTY IronFly 500pt Hedge (Current Week)",
-  "description": "Enters a 4-leg Ironfly options position on BANK NIFTY index. Protective hedges are placed 500 points away, rolling outward by 100 points on hedge crosses. Time entry >= 1515.",
+  "description": "\n<p><strong>BANK NIFTY IronFly 500pt Hedge (Current Week)</strong></p>\n<p><strong>Strategy Notes & Trading Intent:</strong></p>\n<p>--------------------------------------------------</p>\n<p>1. <strong>Entry Criteria:</strong></p>\n<ul>\n  <li><strong>Underlying:</strong> BANK NIFTY Index (Current Week Expiry Spreads).</li>\n  <li><strong>Entry Time:</strong> At 3:15 PM IST (15:15 IST).</li>\n  <li><strong>Trigger Condition:</strong> Enters 4-leg Iron Fly position on BANK NIFTY (Sell ATM Call & Put, Buy 500pt OTM Call & Put protective hedges) at 15:15 IST.</li>\n</ul>\n<p>2. <strong>Exit Criteria & Risk Parameters:</strong></p>\n<ul>\n  <li><strong>Universal Exit:</strong> Square off all intraday open positions at 3:15 PM IST.</li>\n</ul>\n<p>3. <strong>Additional Mechanics:</strong></p>\n<ul>\n  <li>Protective hedges placed 500 points away, rolling outward by 100 points on hedge boundary crosses.</li>\n</ul>\n",
   "tags": [
     {
       "label": "Pairs",
@@ -20,19 +20,19 @@
       "variableName": "HedgeGap",
       "value": "( tt_Number ( '500' )  )",
       "display": "( Number ( '500' )  )",
-      "json": "{\"operator\": \"and\", \"operands\": [{\"type\": \"rule\", \"value\": \"builder-basic_rule_0\", \"elements\": [{\"name\": \"Number\", \"kid\": 9021, \"params\": [{\"type\": \"value\", \"value\": \"500\"}]}]}]}"
+      "json": "{\"operator\": \"and\", \"operands\": [{\"type\": \"rule\", \"value\": \"builder-basic_rule_0\", \"elements\": [{\"name\": \"Number\", \"kid\": 1047, \"params\": [{\"type\": \"value\", \"value\": \"500\"}]}]}]}"
     },
     {
       "variableName": "HedgeRoll",
       "value": "( tt_Number ( '100' )  )",
       "display": "( Number ( '100' )  )",
-      "json": "{\"operator\": \"and\", \"operands\": [{\"type\": \"rule\", \"value\": \"builder-basic_rule_0\", \"elements\": [{\"name\": \"Number\", \"kid\": 8093, \"params\": [{\"type\": \"value\", \"value\": \"100\"}]}]}]}"
+      "json": "{\"operator\": \"and\", \"operands\": [{\"type\": \"rule\", \"value\": \"builder-basic_rule_0\", \"elements\": [{\"name\": \"Number\", \"kid\": 9710, \"params\": [{\"type\": \"value\", \"value\": \"100\"}]}]}]}"
     },
     {
       "variableName": "HOLD_TILL_EXPIRY",
       "value": "( tt_Number ( '1' )  )",
       "display": "( Number ( '1' )  )",
-      "json": "{\"operator\": \"and\", \"operands\": [{\"type\": \"rule\", \"value\": \"builder-basic_rule_0\", \"elements\": [{\"name\": \"Number\", \"kid\": 3895, \"params\": [{\"type\": \"value\", \"value\": \"1\"}]}]}]}"
+      "json": "{\"operator\": \"and\", \"operands\": [{\"type\": \"rule\", \"value\": \"builder-basic_rule_0\", \"elements\": [{\"name\": \"Number\", \"kid\": 6956, \"params\": [{\"type\": \"value\", \"value\": \"1\"}]}]}]}"
     }
   ],
   "sets": [
@@ -43,7 +43,7 @@
         {
           "type": "Entry",
           "conditionValue": null,
-          "conditionJson": "{\"operator\": \"and\", \"operands\": [{\"type\": \"rule\", \"value\": \"builder-basic_rule_0\", \"elements\": [{\"name\": \"Time\", \"kid\": 9955, \"params\": [{\"type\": \"value\", \"value\": \"NSE\"}]}, {\"name\": \">=\", \"params\": []}, {\"name\": \"Number\", \"kid\": 1969, \"params\": [{\"type\": \"value\", \"value\": \"1515\"}]}]}]}",
+          "conditionJson": "{\"operator\": \"and\", \"operands\": [{\"type\": \"rule\", \"value\": \"builder-basic_rule_0\", \"elements\": [{\"name\": \"Time\", \"kid\": 9190, \"params\": [{\"type\": \"value\", \"value\": \"NSE\"}]}, {\"name\": \">=\", \"params\": []}, {\"name\": \"Number\", \"kid\": 8684, \"params\": [{\"type\": \"value\", \"value\": \"1515\"}]}]}]}",
           "conditionDisplay": null,
           "subType": "None",
           "visible": 1,
@@ -59,7 +59,7 @@
               "productType": "NRML",
               "expiryType": "Current Week",
               "expiry": "( tt_curr_weekexpiry ( 'BANK NIFTY', '0' ) )",
-              "expiryJson": "{\"operator\": \"and\", \"operands\": [{\"type\": \"rule\", \"value\": \"builder-basic_rule_0\", \"elements\": [{\"name\": \"Current Week Expiry\", \"kid\": 6976, \"params\": [{\"type\": \"value\", \"value\": \"BANK NIFTY\"}, {\"type\": \"value\", \"value\": \"0\"}]}]}]}",
+              "expiryJson": "{\"operator\": \"and\", \"operands\": [{\"type\": \"rule\", \"value\": \"builder-basic_rule_0\", \"elements\": [{\"name\": \"Current Week Expiry\", \"kid\": 6730, \"params\": [{\"type\": \"value\", \"value\": \"BANK NIFTY\"}, {\"type\": \"value\", \"value\": \"0\"}]}]}]}",
               "expiryDisplay": "( Current Week Expiry ( 'BANK NIFTY', '0' ) )",
               "strikeType": "ATM",
               "strike": "tt_ATM('BANK NIFTY')",
@@ -93,7 +93,7 @@
               "productType": "NRML",
               "expiryType": "Current Week",
               "expiry": "( tt_curr_weekexpiry ( 'BANK NIFTY', '0' ) )",
-              "expiryJson": "{\"operator\": \"and\", \"operands\": [{\"type\": \"rule\", \"value\": \"builder-basic_rule_0\", \"elements\": [{\"name\": \"Current Week Expiry\", \"kid\": 8132, \"params\": [{\"type\": \"value\", \"value\": \"BANK NIFTY\"}, {\"type\": \"value\", \"value\": \"0\"}]}]}]}",
+              "expiryJson": "{\"operator\": \"and\", \"operands\": [{\"type\": \"rule\", \"value\": \"builder-basic_rule_0\", \"elements\": [{\"name\": \"Current Week Expiry\", \"kid\": 7153, \"params\": [{\"type\": \"value\", \"value\": \"BANK NIFTY\"}, {\"type\": \"value\", \"value\": \"0\"}]}]}]}",
               "expiryDisplay": "( Current Week Expiry ( 'BANK NIFTY', '0' ) )",
               "strikeType": "ATM",
               "strike": "tt_ATM('BANK NIFTY')",
@@ -127,7 +127,7 @@
               "productType": "NRML",
               "expiryType": "Current Week",
               "expiry": "( tt_curr_weekexpiry ( 'BANK NIFTY', '0' ) )",
-              "expiryJson": "{\"operator\": \"and\", \"operands\": [{\"type\": \"rule\", \"value\": \"builder-basic_rule_0\", \"elements\": [{\"name\": \"Current Week Expiry\", \"kid\": 1577, \"params\": [{\"type\": \"value\", \"value\": \"BANK NIFTY\"}, {\"type\": \"value\", \"value\": \"0\"}]}]}]}",
+              "expiryJson": "{\"operator\": \"and\", \"operands\": [{\"type\": \"rule\", \"value\": \"builder-basic_rule_0\", \"elements\": [{\"name\": \"Current Week Expiry\", \"kid\": 4951, \"params\": [{\"type\": \"value\", \"value\": \"BANK NIFTY\"}, {\"type\": \"value\", \"value\": \"0\"}]}]}]}",
               "expiryDisplay": "( Current Week Expiry ( 'BANK NIFTY', '0' ) )",
               "strikeType": "Fx",
               "strike": "tt_ATM('BANK NIFTY') + 500",
@@ -161,7 +161,7 @@
               "productType": "NRML",
               "expiryType": "Current Week",
               "expiry": "( tt_curr_weekexpiry ( 'BANK NIFTY', '0' ) )",
-              "expiryJson": "{\"operator\": \"and\", \"operands\": [{\"type\": \"rule\", \"value\": \"builder-basic_rule_0\", \"elements\": [{\"name\": \"Current Week Expiry\", \"kid\": 5344, \"params\": [{\"type\": \"value\", \"value\": \"BANK NIFTY\"}, {\"type\": \"value\", \"value\": \"0\"}]}]}]}",
+              "expiryJson": "{\"operator\": \"and\", \"operands\": [{\"type\": \"rule\", \"value\": \"builder-basic_rule_0\", \"elements\": [{\"name\": \"Current Week Expiry\", \"kid\": 7119, \"params\": [{\"type\": \"value\", \"value\": \"BANK NIFTY\"}, {\"type\": \"value\", \"value\": \"0\"}]}]}]}",
               "expiryDisplay": "( Current Week Expiry ( 'BANK NIFTY', '0' ) )",
               "strikeType": "Fx",
               "strike": "tt_ATM('BANK NIFTY') - 500",
@@ -193,7 +193,7 @@
         {
           "type": "Repair Once",
           "conditionValue": null,
-          "conditionJson": "{\"operator\": \"and\", \"operands\": [{\"type\": \"rule\", \"value\": \"builder-basic_rule_0\", \"elements\": [{\"name\": \"Traded Instrument\", \"kid\": 1364, \"params\": [{\"type\": \"value\", \"value\": \"Entry\"}, {\"type\": \"value\", \"value\": \"quantity\"}, {\"type\": \"value\", \"value\": \"BANK NIFTY\"}, {\"type\": \"value\", \"value\": \"1\"}, {\"type\": \"value\", \"value\": \"1\"}, {\"type\": \"value\", \"value\": \"1\"}]}, {\"name\": \">\", \"params\": []}, {\"name\": \"Number\", \"kid\": 4701, \"params\": [{\"type\": \"value\", \"value\": \"0\"}]}]}]}",
+          "conditionJson": "{\"operator\": \"and\", \"operands\": [{\"type\": \"rule\", \"value\": \"builder-basic_rule_0\", \"elements\": [{\"name\": \"Traded Instrument\", \"kid\": 6852, \"params\": [{\"type\": \"value\", \"value\": \"Entry\"}, {\"type\": \"value\", \"value\": \"quantity\"}, {\"type\": \"value\", \"value\": \"BANK NIFTY\"}, {\"type\": \"value\", \"value\": \"1\"}, {\"type\": \"value\", \"value\": \"1\"}, {\"type\": \"value\", \"value\": \"1\"}]}, {\"name\": \">\", \"params\": []}, {\"name\": \"Number\", \"kid\": 4239, \"params\": [{\"type\": \"value\", \"value\": \"0\"}]}]}]}",
           "conditionDisplay": null,
           "subType": "None",
           "visible": 1,
@@ -206,7 +206,7 @@
         {
           "type": "Universal Exit",
           "conditionValue": null,
-          "conditionJson": "{\"operator\": \"and\", \"operands\": [{\"type\": \"rule\", \"value\": \"builder-basic_rule_0\", \"elements\": [{\"name\": \"Time\", \"kid\": 1132, \"params\": [{\"type\": \"value\", \"value\": \"NSE\"}]}, {\"name\": \">=\", \"params\": []}, {\"name\": \"Number\", \"kid\": 8792, \"params\": [{\"type\": \"value\", \"value\": \"1515\"}]}]}]}",
+          "conditionJson": "{\"operator\": \"and\", \"operands\": [{\"type\": \"rule\", \"value\": \"builder-basic_rule_0\", \"elements\": [{\"name\": \"Time\", \"kid\": 9426, \"params\": [{\"type\": \"value\", \"value\": \"NSE\"}]}, {\"name\": \">=\", \"params\": []}, {\"name\": \"Number\", \"kid\": 3534, \"params\": [{\"type\": \"value\", \"value\": \"1515\"}]}]}]}",
           "conditionDisplay": null,
           "subType": "None",
           "visible": 1,

@@ -8,7 +8,7 @@
     "do_not": "Do not add \"*_id\" foreign keys back. Lists referenced by id must be ones you own."
   },
   "name": "Nifty OTM4 3Min Momentum Strategy",
-  "description": "Nifty 50 OTM4 (4 strikes OTM = +200 pt) 3-minute momentum option buying strategy. Enters Buy CE / Buy PE on 3-min spot candle movement backed by Spot_Confirm (30 pt). Exit Target 3.0x, SL 0.8x.",
+  "description": "\n<p><strong>Nifty 50 OTM4 3-Minute Momentum Intraday Strategy</strong></p>\n<p><strong>Strategy Notes & Trading Intent:</strong></p>\n<p>--------------------------------------------------</p>\n<p>1. <strong>Entry Criteria:</strong></p>\n<ul>\n  <li><strong>Underlying:</strong> NIFTY 50 Index (3-Minute Candles Timeframe).</li>\n  <li><strong>Entry Window:</strong> Between 9:20 AM and 3:00 PM IST.</li>\n  <li><strong>Trigger Condition:</strong> Monitors OTM4 (ATM + 200 pt / OTM_Offset) Call and Put options. Enters Long CE on bullish spot momentum when 3-min Close[-1] > Close[-2] + Spot_Confirm (30 pts) and Close[-2] > Close[-3]. Enters Long PE on bearish breakdown.</li>\n</ul>\n<p>2. <strong>Exit Criteria & Risk Parameters:</strong></p>\n<ul>\n  <li><strong>Target & Stop Loss:</strong> Target: Target_Multiplier (3.0x entry price / +200% gain). Stop Loss: SL_Multiplier (0.8x entry price / -20% SL).</li>\n  <li><strong>Universal Exit:</strong> Square off all intraday open positions at 3:15 PM IST.</li>\n</ul>\n",
   "tags": [
     {
       "label": "Pairs",
