@@ -312,8 +312,10 @@ def audit_strategy(filepath, report_dir=None):
     desc = data.get("description", "")
     if not desc or desc.strip() == "" or desc.strip() == "<p></p>" or desc == "AI Generated Strategy":
         print(f"\n⚠️  [WARNING] Description field is missing or generic!")
+    elif "<ul" not in desc.lower() and "<p" not in desc.lower():
+        print(f"\n⚠️  [RULE 6 WARNING] Description lacks structured HTML formatting (Entry/Exit/Notes sections expected per Rule 6).")
     else:
-        print(f"Description Length: {len(desc)} chars (Present)")
+        print(f"Description Length: {len(desc)} chars (Structured HTML Present)")
         
     variables = data.get("variables", [])
     if variables:
