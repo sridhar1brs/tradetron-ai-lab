@@ -128,8 +128,8 @@ def main():
     by_strat = defaultdict(list)
     for r in reports: by_strat[r.get("strategy_file","?")].append(r)
     print(bold("🏥 PER-STRATEGY HEALTH"))
-    print(f"  {'Strategy':<48}  {'Runs':>5}  {'Latest':>8}  {'Err':>5}  {'Warn':>5}")
-    print("  " + "─" * 78)
+    print(f"  {'Strategy':<42}  {'Runs':>5}  {'Latest':>8}  {'EvalScore':>9}  {'Err':>5}  {'Warn':>5}")
+    print("  " + "─" * 84)
     for strat, runs in sorted(by_strat.items()):
         lt = runs[-1]
         st = clr("PASS", GREEN) if lt.get("status") == "PASSED" else clr("FAIL", RED)
@@ -137,7 +137,10 @@ def main():
         wc = lt.get("warning_count", 0)
         es = clr(str(ec), RED) if ec else clr("0", GREEN)
         ws = clr(str(wc), YELLOW) if wc else dim("0")
-        print(f"  {strat[:46]:<48}  {len(runs):>5}  {st:>16}  {es:>13}  {ws:>13}")
+        score = lt.get("semantic_score", 100)
+        sc_clr = GREEN if score >= 90 else (YELLOW if score >= 75 else RED)
+        score_str = clr(f"{score}%", sc_clr)
+        print(f"  {strat[:40]:<42}  {len(runs):>5}  {st:>16}  {score_str:>18}  {es:>13}  {ws:>13}")
     print()
 
     # ── Rule hit frequency ───────────────────────────────────────────────────

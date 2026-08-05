@@ -65,7 +65,7 @@ def main():
     # ── 2. Known Bad Tests ────────────────────────────────────────────────────
     print(bold("🧪 TEST GROUP 2: Known Bad Strategies (Must Catch Rule Violation)"))
     print("  " + "─" * 60)
-    bad_files = [f for f in sorted(os.listdir(known_bad_dir)) if f.endswith(".json")]
+    bad_files = [f for f in sorted(os.listdir(known_bad_dir)) if f.endswith(".json") if "bad_judge" not in f]
     for fname in bad_files:
         total_tests += 1
         fpath = os.path.join(known_bad_dir, fname)
@@ -87,6 +87,25 @@ def main():
         else:
             print(f"  ❌ FAIL: {fname:<45} {clr(f'MISSED expected {expected_rule}', RED)}")
             print(f"     Actual errors caught: {errors}")
+    print()
+
+    # ── 3. LLM-as-Judge Semantic Tests ─────────────────────────────────────────
+    print(bold("🧪 TEST GROUP 3: LLM-as-Judge Semantic Intent Evals"))
+    print("  " + "─" * 60)
+    from tradetron_judge import SemanticIntentJudge
+    judge_files = [f for f in sorted(os.listdir(known_bad_dir)) if "bad_judge" in f]
+    for fname in judge_files:
+        total_tests += 1
+        fpath = os.path.join(known_bad_dir, fname)
+        judge = SemanticIntentJudge(fpath)
+        eval_res = judge.evaluate_intent_vs_code()
+        
+        if eval_res["judge_status"] == "FAILED" and eval_res["discrepancies"]:
+            passed_tests += 1
+            d_count = len(eval_res["discrepancies"])
+            print(f"  ✅ PASS: {fname:<45} {clr(f'caught semantic drift ({d_count} discrepancies)', GREEN)}")
+        else:
+            print(f"  ❌ FAIL: {fname:<45} {clr('MISSED semantic drift', RED)}")
     print()
 
     # ── Summary ───────────────────────────────────────────────────────────────

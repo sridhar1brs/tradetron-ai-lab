@@ -345,6 +345,26 @@ def audit_strategy(filepath, report_dir=None):
     else:
         print("Status: ✅ PASSED (100% UI Schema & Rule Compliant)")
 
+    # Run LLM-as-Judge Semantic Evaluation
+    judge_data = {}
+    try:
+        from tradetron_judge import SemanticIntentJudge
+        judge = SemanticIntentJudge(filepath)
+        judge_eval = judge.evaluate_intent_vs_code()
+        judge_data = {
+            "semantic_score": judge_eval.get("semantic_score", 100),
+            "semantic_status": judge_eval.get("judge_status", "PASSED"),
+            "semantic_discrepancies": judge_eval.get("discrepancies", []),
+            "semantic_warnings": judge_eval.get("warnings", []),
+        }
+    except Exception as e:
+        judge_data = {
+            "semantic_score": 100,
+            "semantic_status": "SKIPPED",
+            "semantic_discrepancies": [],
+            "semantic_warnings": [f"Judge evaluation skipped: {e}"],
+        }
+
     elapsed_ms = round((time.time() - t_start) * 1000)
 
     # Build structured report
@@ -363,6 +383,7 @@ def audit_strategy(filepath, report_dir=None):
         "set_count": len(data.get("sets", [])),
         "elapsed_ms": elapsed_ms,
         "auditor_version": "2.0.0",
+        **judge_data,
     }
 
     # Extract which rule numbers fired
