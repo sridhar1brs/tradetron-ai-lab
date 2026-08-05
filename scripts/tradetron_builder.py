@@ -387,7 +387,16 @@ def build_iron_fly(
     if output_filename is None:
         output_filename = f"{symbol.replace(' ', '_')}_IronFly_{hedge_gap}pt.json"
 
-    inst_id = 1855 if "NIFTY" in symbol and "BANK" not in symbol else (1854 if "BANK" in symbol else 0)
+    if "NIFTY" in symbol and "BANK" not in symbol and "FIN" not in symbol:
+        inst_id = 1855
+    elif "BANK" in symbol:
+        inst_id = 1854
+    elif "FIN" in symbol:
+        inst_id = 1856
+    elif "SENSEX" in symbol:
+        inst_id = 1857
+    else:
+        inst_id = 0
     
     desc_html = f"""
 <p><strong>{name}</strong></p>
@@ -464,7 +473,16 @@ def build_momentum(
     if output_filename is None:
         output_filename = f"{symbol.replace(' ', '_')}_{timeframe}_Momentum.json"
 
-    inst_id = 1855 if "NIFTY" in symbol and "BANK" not in symbol else (1854 if "BANK" in symbol else 0)
+    if "NIFTY" in symbol and "BANK" not in symbol and "FIN" not in symbol:
+        inst_id = 1855
+    elif "BANK" in symbol:
+        inst_id = 1854
+    elif "FIN" in symbol:
+        inst_id = 1856
+    elif "SENSEX" in symbol:
+        inst_id = 1857
+    else:
+        inst_id = 0
 
     desc_html = make_structured_description(
         name=name,

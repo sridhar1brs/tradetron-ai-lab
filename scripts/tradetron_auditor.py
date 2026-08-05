@@ -115,6 +115,10 @@ def validate_ui_schema(data):
                     schema_errors.append(f"[RULE 31 VIOLATION] Set {s_idx + 1} Cond {c_idx + 1} Leg {l_idx + 1} has 'instrument': {repr(inst_val)}. NIFTY 50 options MUST use integer database ID 1855 so Tradetron UI populates top row dropdowns!")
                 elif underlying_val == "NIFTY BANK" and inst_val != 1854:
                     schema_errors.append(f"[RULE 31 VIOLATION] Set {s_idx + 1} Cond {c_idx + 1} Leg {l_idx + 1} has 'instrument': {repr(inst_val)}. NIFTY BANK options MUST use integer database ID 1854!")
+                elif underlying_val == "FINNIFTY" and inst_val != 1856:
+                    schema_errors.append(f"[RULE 31 VIOLATION] Set {s_idx + 1} Cond {c_idx + 1} Leg {l_idx + 1} has 'instrument': {repr(inst_val)}. FINNIFTY options MUST use integer database ID 1856!")
+                elif underlying_val == "SENSEX" and inst_val != 1857:
+                    schema_errors.append(f"[RULE 31 VIOLATION] Set {s_idx + 1} Cond {c_idx + 1} Leg {l_idx + 1} has 'instrument': {repr(inst_val)}. SENSEX options MUST use integer database ID 1857 so Tradetron UI populates Exchange (BFO) and underlying dropdowns!")
                 # Fix (Issue #12): isalpha() only catches pure-letter strings like "NFO".
                 # It misses "NIFTY 50" (space), "1855" as string, or None.
                 # Correct check: instrument must be an integer DB primary key.

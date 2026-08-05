@@ -68,7 +68,7 @@
           "legs": [
             {
               "exchange": "BFO",
-              "instrument": 0,
+              "instrument": 1857,
               "instrumentType": "OPTIDX",
               "underlyingSymbol": "SENSEX",
               "list": 0,
@@ -135,7 +135,7 @@
           "legs": [
             {
               "exchange": "BFO",
-              "instrument": 0,
+              "instrument": 1857,
               "instrumentType": "OPTIDX",
               "underlyingSymbol": "SENSEX",
               "list": 0,
