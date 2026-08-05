@@ -19,6 +19,9 @@ Performs chronological strategy execution auditing, schema validation, and rule 
 import json
 import argparse
 import sys
+import os
+import time
+from datetime import datetime, timezone
 
 # Macro keywords that require literal primitive inputs in Tradetron UI
 MACRO_KEYWORDS = ["Leg TSL", "Leg Exit", "Leg SL Trail"]
@@ -249,7 +252,24 @@ def _check_ast_nodes(node, set_num, cond_num, active_legs, errors, warnings):
         elif op.get("type") == "group":
             _check_ast_nodes(op, set_num, cond_num, active_legs, errors, warnings)
 
-def audit_strategy(filepath):
+def emit_json_report(report: dict, report_dir: str):
+    """Write structured audit report JSON to report_dir/YYYY-MM-DD/HH-MM-SS-<strategy>.json"""
+    os.makedirs(report_dir, exist_ok=True)
+    today = datetime.now().strftime("%Y-%m-%d")
+    day_dir = os.path.join(report_dir, today)
+    os.makedirs(day_dir, exist_ok=True)
+    ts = datetime.now().strftime("%H-%M-%S")
+    strategy_slug = os.path.splitext(os.path.basename(report["strategy_file"]))[0]
+    fname = f"{ts}-{strategy_slug}.json"
+    fpath = os.path.join(day_dir, fname)
+    with open(fpath, "w") as f:
+        json.dump(report, f, indent=2)
+    print(f"\n📄 Audit report saved → {fpath}")
+    return fpath
+
+
+def audit_strategy(filepath, report_dir=None):
+    t_start = time.time()
     print(f"============================================================")
     print(f" TRADETRON STRATEGY AUDITOR & UI SCHEMA VALIDATOR ")
     print(f" Target File: {filepath}")
@@ -261,7 +281,8 @@ def audit_strategy(filepath):
         print(f"Error loading JSON: {e}")
         return False
 
-    print(f"Strategy Name: {data.get('name', 'Unknown')}")
+    strategy_name = data.get("name", "Unknown")
+    print(f"Strategy Name: {strategy_name}")
     print(f"Capital Required: {data.get('capitalRequired', 0)}")
     
     desc = data.get("description", "")
@@ -281,21 +302,29 @@ def audit_strategy(filepath):
             else:
                 print(f"  {v_name}: {v_val}")
 
+    # Build execution flow map for report
+    execution_flow = []
     print(f"\n--- CHRONOLOGICAL EXECUTION FLOW ---")
     for s_idx, s in enumerate(data.get("sets", [])):
         print(f"Set {s_idx + 1}:")
+        set_flow = {"set": s_idx + 1, "conditions": []}
         for c in s.get("conditions", []):
             ctype = c.get("type", "Unknown")
             cjson = c.get("conditionJson")
+            logic_text = None
             if cjson:
                 try:
                     ast = json.loads(cjson) if isinstance(cjson, str) else cjson
-                    logic = parse_ast_to_text(ast)
-                    print(f"  -> [{ctype.upper()}] Logic: {logic}")
+                    logic_text = parse_ast_to_text(ast)
+                    print(f"  -> [{ctype.upper()}] Logic: {logic_text}")
                 except Exception as e:
-                    print(f"  -> [{ctype.upper()}] Logic: [Error parsing AST: {e}]")
+                    logic_text = f"[Error parsing AST: {e}]"
+                    print(f"  -> [{ctype.upper()}] Logic: {logic_text}")
             else:
+                logic_text = "[None]"
                 print(f"  -> [{ctype.upper()}] Logic: [None]")
+            set_flow["conditions"].append({"type": ctype, "logic": logic_text})
+        execution_flow.append(set_flow)
 
     errors, warnings = validate_ui_schema(data)
 
@@ -307,19 +336,57 @@ def audit_strategy(filepath):
         for w in warnings:
             print(f"  ⚠️  {w}")
             
+    passed = len(errors) == 0
     if errors:
         print("Critical Errors Found:")
         for err in errors:
             print(f"  ❌ {err}")
         print(f"\nStatus: FAILED ({len(errors)} Critical Schema Errors)")
-        return False
     else:
         print("Status: ✅ PASSED (100% UI Schema & Rule Compliant)")
-        return True
+
+    elapsed_ms = round((time.time() - t_start) * 1000)
+
+    # Build structured report
+    report = {
+        "timestamp": datetime.now(timezone.utc).isoformat(),
+        "strategy_file": os.path.basename(filepath),
+        "strategy_name": strategy_name,
+        "capital_required": data.get("capitalRequired", 0),
+        "status": "PASSED" if passed else "FAILED",
+        "critical_error_count": len(errors),
+        "warning_count": len(warnings),
+        "violations": errors,
+        "warnings": warnings,
+        "execution_flow": execution_flow,
+        "variables": [v.get("variableName") for v in variables],
+        "set_count": len(data.get("sets", [])),
+        "elapsed_ms": elapsed_ms,
+        "auditor_version": "2.0.0",
+    }
+
+    # Extract which rule numbers fired
+    rule_numbers = set()
+    for item in errors + warnings:
+        import re
+        matches = re.findall(r"RULE (\d+)", item)
+        rule_numbers.update(int(m) for m in matches)
+    report["rules_fired"] = sorted(rule_numbers)
+
+    if report_dir:
+        emit_json_report(report, report_dir)
+
+    return passed
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Audit a Tradetron Strategy JSON")
     parser.add_argument("filepath", help="Path to the .json strategy file")
+    parser.add_argument(
+        "--json-report",
+        metavar="REPORT_DIR",
+        default=None,
+        help="If set, write a structured JSON audit report to this directory (e.g. audit_reports/)"
+    )
     args = parser.parse_args()
-    success = audit_strategy(args.filepath)
+    success = audit_strategy(args.filepath, report_dir=args.json_report)
     sys.exit(0 if success else 1)
