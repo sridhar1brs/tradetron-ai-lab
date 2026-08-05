@@ -142,7 +142,51 @@ def validate_ui_schema(data):
 
     return schema_errors, schema_warnings
 
+
+# ─── Rule 42: Recursive OHLC Instrument Keyword Context Validator ───────────
+# Walks ALL nested keyword params in an element to detect bare Instrument()
+# used inside Close() / Open() / High() / Low() — which silently returns None
+# in Tradetron's condition engine. Correct pattern is Symbol(Instrument Name())
+OHLC_KEYWORDS = {"Close", "CLOSE", "Open", "OPEN", "High", "HIGH", "Low", "LOW"}
+
+def _check_ohlc_instrument_keyword(node, set_num, cond_num, errors, _inside_ohlc=False):
+    """Recursively scan all keyword params. If we find bare Instrument() inside an OHLC keyword, flag it."""
+    if not isinstance(node, dict):
+        return
+    name = node.get("name", "")
+    params = node.get("params", [])
+
+    # If this node IS an OHLC keyword, its params must use Symbol(Instrument Name), not bare Instrument
+    if name in OHLC_KEYWORDS:
+        for p in params:
+            if p.get("type") == "keyword":
+                inner = p.get("keyword", p)  # handle both {type:keyword, keyword:{...}} and direct kw
+                inner_name = inner.get("name", "")
+                if inner_name == "Instrument":
+                    errors.append(
+                        f"[RULE 42 VIOLATION] '{name}' in Set {set_num} Cond {cond_num} uses bare "
+                        f"'Instrument' keyword (resolves to None in condition engine). "
+                        f"Replace with Symbol(Instrument Name('NSE,NIFTY 50,,,,,'), '1min', 'All')."
+                    )
+                elif inner_name == "Timeframe":
+                    # Old-style Close(Timeframe, Instrument) pattern — also broken
+                    errors.append(
+                        f"[RULE 42 VIOLATION] '{name}' in Set {set_num} Cond {cond_num} uses old-style "
+                        f"Close(Timeframe(), Instrument()) pattern. Replace with "
+                        f"Close(Symbol(Instrument Name('NSE,NIFTY 50,,,,,'), '1min', 'All'))."
+                    )
+                # Recurse into inner keyword
+                _check_ohlc_instrument_keyword(inner, set_num, cond_num, errors, _inside_ohlc=True)
+        return  # Don't double-recurse below — already checked params above
+
+    # For all other nodes: recurse into keyword params to find nested OHLC usages
+    for p in params:
+        if p.get("type") == "keyword":
+            inner = p.get("keyword", p)
+            _check_ohlc_instrument_keyword(inner, set_num, cond_num, errors, _inside_ohlc)
+
 def _check_ast_nodes(node, set_num, cond_num, active_legs, errors, warnings):
+
     if not isinstance(node, dict):
         return
 
@@ -154,8 +198,6 @@ def _check_ast_nodes(node, set_num, cond_num, active_legs, errors, warnings):
         _check_ast_nodes(node.get("children", {}), set_num, cond_num, active_legs, errors, warnings)
         return
 
-    # Handle root-level nodes (no "type", have "operator" + "operands")
-    # and children dict (same structure). Both cases: iterate operands.
     operands = node.get("operands", [])
     for op in operands:
         if op.get("type") == "rule":
@@ -164,14 +206,12 @@ def _check_ast_nodes(node, set_num, cond_num, active_legs, errors, warnings):
                 el_name = el.get("name", "")
                 params = el.get("params", [])
                 
-                # Macro Keyword Primitive Parameter Check (Leg TSL, Leg Exit, Leg SL Trail)
                 if el_name in MACRO_KEYWORDS:
                     for p_idx, p in enumerate(params):
                         if isinstance(p, dict) and p.get("type") == "keyword":
                             kw_name = p.get("keyword", {}).get("name", "Unknown")
                             errors.append(f"[CRITICAL UI MODAL ERROR] '{el_name}' in Set {set_num} Cond {cond_num} contains nested keyword '{kw_name}' in parameter #{p_idx+1}! Tradetron UI modal requires literal primitives (e.g., '1', '0.5', '2').")
 
-                # Rule 17 & Rule 27: Spot Index Instrument String Check (5-comma slot verification)
                 if el_name == "Instrument Name":
                     for p in params:
                         val = p.get("value", "")
@@ -180,21 +220,18 @@ def _check_ast_nodes(node, set_num, cond_num, active_legs, errors, warnings):
                         if "NFO,NIFTY 50" in val and val.count(",") < 5:
                             errors.append(f"[RULE 27 VIOLATION] Instrument Name in Set {set_num} Cond {cond_num} uses '{val}' (less than 5 commas). Must use 5 comma slots e.g. 'NFO,NIFTY 50,,,,,'!")
 
-                # Math Operation Order Check (Rule 13)
                 if el_name == "Math Operation":
                     if len(params) == 3:
                         op_symbol = params[2].get("value", "")
                         if op_symbol not in ["*", "+", "-", "/"]:
                             warnings.append(f"[RULE 13 WARNING] Math Operation in Set {set_num} Cond {cond_num} operator symbol '{op_symbol}' is not at index 3 (Postfix array order expected).")
 
-                # Rule 24: Positions Detail Case-Sensitivity Validator
                 if el_name == "Positions Detail":
                     if len(params) >= 4:
                         field_val = params[3].get("value", "")
                         if field_val == "Quantity" or field_val == "PRICE":
                             errors.append(f"[RULE 24 VIOLATION] Positions Detail in Set {set_num} Cond {cond_num} uses '{field_val}'. Field parameter is strictly case-sensitive and must be lowercase ('quantity', 'price')!")
 
-                # Rule 25: Traded Instrument Coordinate Integrity Validator
                 if el_name in ["Traded Instrument", "Traded Instrument Name"]:
                     if len(params) >= 6:
                         try:
@@ -205,6 +242,9 @@ def _check_ast_nodes(node, set_num, cond_num, active_legs, errors, warnings):
                                 warnings.append(f"[RULE 25 WARNING] {el_name} in Set {set_num} Cond {cond_num} references target coordinate ({t_set}, {t_cond}, {t_leg}) which does not match an active leg!")
                         except Exception:
                             pass
+                
+                # Rule 42: Recursive OHLC Instrument Keyword Context Validator
+                _check_ohlc_instrument_keyword(el, set_num, cond_num, errors)
                             
         elif op.get("type") == "group":
             _check_ast_nodes(op, set_num, cond_num, active_legs, errors, warnings)
