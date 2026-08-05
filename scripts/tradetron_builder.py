@@ -342,4 +342,167 @@ class Strategy:
         with open(filepath, "w") as f:
             json.dump(data, f, indent=2)
 
-        print(f"Strategy exported to: {os.path.abspath(filepath)}")
+        print(f"✅ Strategy exported to: {os.path.abspath(filepath)}")
+        return os.path.abspath(filepath)
+            
+
+# ─── High-Level Strategy Generators ──────────────────────────────────────────
+
+def build_iron_fly(
+    symbol="NIFTY 50",
+    hedge_gap=600,
+    roll_step=100,
+    expiry_type="Current Month",
+    entry_time=1515,
+    hold_till_expiry=1,
+    name=None,
+    output_filename=None,
+):
+    """Build a 100% compliant Iron Fly options strategy with dynamic hedge roll logic."""
+    if name is None:
+        name = f"{symbol} IronFly {hedge_gap}pt Hedge ({expiry_type})"
+    if output_filename is None:
+        output_filename = f"{symbol.replace(' ', '_')}_IronFly_{hedge_gap}pt.json"
+
+    inst_id = 1855 if "NIFTY" in symbol and "BANK" not in symbol else (1854 if "BANK" in symbol else 0)
+    
+    strat = Strategy(
+        name=name,
+        description=f"Enters a 4-leg Ironfly options position on {symbol} index. Protective hedges are placed {hedge_gap} points away, rolling outward by {roll_step} points on hedge crosses. Time entry >= {entry_time}."
+    )
+
+    strat.add_variable(Variable("HedgeGap", str(hedge_gap)))
+    strat.add_variable(Variable("HedgeRoll", str(roll_step)))
+    strat.add_variable(Variable("HOLD_TILL_EXPIRY", str(hold_till_expiry)))
+
+    # Set 1 Entry
+    s1 = SetBlock(1)
+    e1 = Condition("Entry")
+    e1.add_rule(Keyword("Time", "NSE") >= entry_time)
+    
+    # Short Straddle legs
+    l1 = Leg(symbol, "CE", "S", 1, strike_type="ATM", strike=f"tt_ATM('{symbol}')", expiry_type=expiry_type, instrument_id=inst_id)
+    l2 = Leg(symbol, "PE", "S", 1, strike_type="ATM", strike=f"tt_ATM('{symbol}')", expiry_type=expiry_type, instrument_id=inst_id)
+    # Long Hedge legs
+    l3 = Leg(symbol, "CE", "B", 1, strike_type="Fx", strike=f"tt_ATM('{symbol}') + {hedge_gap}", expiry_type=expiry_type, instrument_id=inst_id)
+    l4 = Leg(symbol, "PE", "B", 1, strike_type="Fx", strike=f"tt_ATM('{symbol}') - {hedge_gap}", expiry_type=expiry_type, instrument_id=inst_id)
+
+    e1.add_leg(l1); e1.add_leg(l2); e1.add_leg(l3); e1.add_leg(l4)
+    s1.add_condition(e1)
+
+    # Set 1 Repair (fill check guard: > 0)
+    r1 = Condition("Repair Once")
+    r1.add_rule(Keyword("Traded Instrument", "Entry", "quantity", symbol, "1", "1", "1") > 0)
+    s1.add_condition(r1)
+    strat.add_set(s1)
+
+    # Universal Exit
+    ue = Condition("Universal Exit")
+    ue.add_rule(Keyword("Time", "NSE") >= 1515)
+    strat.set_universal_exit(ue)
+
+    # Export & Audit
+    output_path = os.path.join(os.path.dirname(__file__), "..", "strategies", output_filename)
+    strat.export(output_path)
+    return output_path
+
+
+def build_momentum(
+    symbol="NIFTY 50",
+    spot_confirm=5,
+    sl_mult=0.9,
+    tgt_mult=1.2,
+    timeframe="1min",
+    expiry_type="Current Week",
+    name=None,
+    output_filename=None,
+):
+    """Build a 100% compliant Directional Momentum option buying strategy using Symbol(Instrument Name) Rule 42 pattern."""
+    if name is None:
+        name = f"{symbol} {timeframe} Momentum Strategy (Spot Confirm {spot_confirm}pt)"
+    if output_filename is None:
+        output_filename = f"{symbol.replace(' ', '_')}_{timeframe}_Momentum.json"
+
+    inst_id = 1855 if "NIFTY" in symbol and "BANK" not in symbol else (1854 if "BANK" in symbol else 0)
+
+    strat = Strategy(
+        name=name,
+        description=f"Directional momentum option buying strategy on {symbol}. Enters Buy CE when 1-min Close[-1] > Close[-2] + {spot_confirm} pts and Close[-2] > Close[-3]. Enters Buy PE on bearish breakdown."
+    )
+
+    strat.add_variable(Variable("Spot_Confirm", str(spot_confirm)))
+    strat.add_variable(Variable("SL_Multiplier", str(sl_mult)))
+    strat.add_variable(Variable("Target_Multiplier", str(tgt_mult)))
+
+    # Set 1: Bullish CE Entry & Exit
+    s1 = SetBlock(1)
+    c1_e = Condition("Entry")
+    c1_e.add_rule(Keyword("Time", "NSE") >= 920)
+    c1_e.add_rule(Keyword("Time", "NSE") < 1500)
+    
+    # Rule 42 helper for Symbol(Instrument Name)
+    sym_kw = Keyword("Symbol", Keyword("Instrument Name", f"NSE,{symbol},,,,,"), timeframe, "All")
+    close_kw = Keyword("CLOSE", sym_kw)
+    pos_m1 = Keyword("Position", close_kw, "-1")
+    pos_m2 = Keyword("Position", close_kw, "-2")
+    pos_m3 = Keyword("Position", close_kw, "-3")
+    
+    math_op = Keyword("Math Operation", pos_m2, Keyword("Get Runtime", "Spot_Confirm"), "+")
+    c1_e.add_rule(pos_m1 > math_op)
+    c1_e.add_rule(pos_m2 > pos_m3)
+    
+    c1_e.add_leg(Leg(symbol, "CE", "B", 1, strike_type="ATM", strike=f"tt_ATM('{symbol}')", expiry_type="Current Week", instrument_id=inst_id))
+    s1.add_condition(c1_e)
+
+    c1_x = Condition("Exit")
+    c1_x.add_rule(Keyword("Time", "NSE") >= 1515)
+    s1.add_condition(c1_x)
+    strat.add_set(s1)
+
+    # Universal Exit
+    ue = Condition("Universal Exit")
+    ue.add_rule(Keyword("Time", "NSE") >= 1515)
+    strat.set_universal_exit(ue)
+
+    output_path = os.path.join(os.path.dirname(__file__), "..", "strategies", output_filename)
+    strat.export(output_path)
+    return output_path
+
+
+# ─── CLI Entry Point ──────────────────────────────────────────────────────────
+if __name__ == "__main__":
+    import argparse
+    parser = argparse.ArgumentParser(description="Tradetron Unified Parameterized Strategy Generator")
+    parser.add_argument("--type", choices=["iron_fly", "momentum"], required=True, help="Strategy type to build")
+    parser.add_argument("--symbol", default="NIFTY 50", help="Underlying instrument symbol (e.g. NIFTY 50, BANK NIFTY)")
+    parser.add_argument("--hedge-gap", type=int, default=600, help="Hedge distance in points (Iron Fly)")
+    parser.add_argument("--roll-step", type=int, default=100, help="Hedge roll step in points (Iron Fly)")
+    parser.add_argument("--spot-confirm", type=float, default=5.0, help="Spot confirmation threshold in points (Momentum)")
+    parser.add_argument("--expiry", default="Current Month", help="Expiry type (Current Week, Current Month, Next Month)")
+    parser.add_argument("--output", default=None, help="Output JSON filename in strategies/")
+    parser.add_argument("--audit", action="store_true", default=True, help="Automatically run auditor post-generation")
+
+    args = parser.parse_args()
+
+    out_file = None
+    if args.type == "iron_fly":
+        out_file = build_iron_fly(
+            symbol=args.symbol,
+            hedge_gap=args.hedge_gap,
+            roll_step=args.roll_step,
+            expiry_type=args.expiry,
+            output_filename=args.output,
+        )
+    elif args.type == "momentum":
+        out_file = build_momentum(
+            symbol=args.symbol,
+            spot_confirm=args.spot_confirm,
+            expiry_type=args.expiry,
+            output_filename=args.output,
+        )
+
+    if out_file and args.audit:
+        print(f"\n🔍 Running automated auditor on generated strategy: {out_file}...")
+        from tradetron_auditor import audit_strategy
+        audit_strategy(out_file)
+
