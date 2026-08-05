@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tradetron AI Lab — Intelligent Algorithmic Trading Architecture</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg-dark: #090d16;
+      --bg-card: rgba(17, 24, 39, 0.7);
+      --border-card: rgba(255, 255, 255, 0.08);
+      --accent-cyan: #00f2fe;
+      --accent-blue: #4facfe;
+      --accent-purple: #a855f7;
+      --accent-pink: #ec4899;
+      --text-main: #f3f4f6;
+      --text-muted: #9ca3af;
+      --text-dim: #6b7280;
+      --success: #10b981;
+      --warning: #f59e0b;
+      --danger: #ef4444;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+      background-image: 
+        radial-gradient(circle at 15% 15%, rgba(79, 172, 254, 0.12) 0%, transparent 45%),
+        radial-gradient(circle at 85% 65%, rgba(168, 85, 247, 0.12) 0%, transparent 45%);
+      background-attachment: fixed;
+    }
+
+    h1, h2, h3, h4, .font-heading {
+      font-family: 'Outfit', sans-serif;
+    }
+
+    code, pre, .font-mono {
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* Header & Navigation */
+    header {
+      padding: 2rem 0;
+      border-bottom: 1px solid var(--border-card);
+      backdrop-filter: blur(12px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(9, 13, 22, 0.85);
+    }
+
+    .nav-wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 1.5rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .badge-tag {
+      background: rgba(0, 242, 254, 0.1);
+      color: var(--accent-cyan);
+      border: 1px solid rgba(0, 242, 254, 0.3);
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 5rem 0 3rem;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 3.5rem;
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 1.25rem;
+      background: linear-gradient(135deg, #ffffff 0%, #94a3b8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero p {
+      font-size: 1.25rem;
+      color: var(--text-muted);
+      max-width: 800px;
+      margin: 0 auto 2.5rem;
+    }
+
+    /* Metric Cards Grid */
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 4rem;
+    }
+
+    .metric-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-card);
+      backdrop-filter: blur(16px);
+      padding: 1.75rem;
+      border-radius: 1.25rem;
+      transition: transform 0.3s ease, border-color 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .metric-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(0, 242, 254, 0.4);
+    }
+
+    .metric-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent-cyan), var(--accent-purple));
+    }
+
+    .metric-value {
+      font-size: 2.5rem;
+      font-weight: 800;
+      font-family: 'Outfit', sans-serif;
+      margin-bottom: 0.25rem;
+      background: linear-gradient(135deg, #fff, var(--accent-cyan));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .metric-label {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* Section Styling */
+    .section-title {
+      font-size: 2.25rem;
+      font-weight: 800;
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .section-subtitle {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      margin-bottom: 2.5rem;
+    }
+
+    /* Pipeline Workflow Display */
+    .workflow-container {
+      background: var(--bg-card);
+      border: 1px solid var(--border-card);
+      border-radius: 1.5rem;
+      padding: 2.5rem;
+      margin-bottom: 4rem;
+      backdrop-filter: blur(16px);
+    }
+
+    .pipeline-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.25rem;
+      margin-bottom: 2.5rem;
+      position: relative;
+    }
+
+    .step-box {
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid var(--border-card);
+      padding: 1.5rem;
+      border-radius: 1rem;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+
+    .step-box:hover {
+      background: rgba(15, 23, 42, 0.9);
+      border-color: var(--accent-cyan);
+      transform: translateY(-2px);
+    }
+
+    .step-number {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
+      color: #090d16;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.875rem;
+      margin-bottom: 1rem;
+    }
+
+    .step-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: #fff;
+    }
+
+    .step-desc {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .step-file {
+      margin-top: 0.75rem;
+      font-size: 0.75rem;
+      color: var(--accent-cyan);
+      background: rgba(0, 242, 254, 0.08);
+      padding: 0.25rem 0.5rem;
+      border-radius: 0.375rem;
+      display: inline-block;
+    }
+
+    /* Media Visual Gallery */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+      gap: 2rem;
+      margin-bottom: 4rem;
+    }
+
+    .gallery-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-card);
+      border-radius: 1.5rem;
+      overflow: hidden;
+      backdrop-filter: blur(16px);
+      transition: transform 0.3s ease;
+    }
+
+    .gallery-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(168, 85, 247, 0.4);
+    }
+
+    .gallery-img {
+      width: 100%;
+      height: 360px;
+      object-fit: cover;
+      border-bottom: 1px solid var(--border-card);
+    }
+
+    .gallery-info {
+      padding: 1.75rem;
+    }
+
+    .gallery-title {
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .gallery-text {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    /* Rulebook Matrix */
+    .rulebook-section {
+      background: var(--bg-card);
+      border: 1px solid var(--border-card);
+      border-radius: 1.5rem;
+      padding: 2.5rem;
+      margin-bottom: 4rem;
+      backdrop-filter: blur(16px);
+    }
+
+    .rule-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1.5rem;
+      text-align: left;
+    }
+
+    .rule-table th {
+      padding: 1rem 1.25rem;
+      background: rgba(15, 23, 42, 0.8);
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border-bottom: 1px solid var(--border-card);
+    }
+
+    .rule-table td {
+      padding: 1.25rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      font-size: 0.95rem;
+    }
+
+    .rule-table tr:hover {
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .rule-id {
+      font-weight: 700;
+      color: var(--accent-cyan);
+    }
+
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.25rem 0.65rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
+    .status-pass {
+      background: rgba(16, 185, 129, 0.12);
+      color: var(--success);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+    }
+
+    /* CLI Snippet Panel */
+    .cli-panel {
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid var(--border-card);
+      border-radius: 1rem;
+      padding: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .cli-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+      color: var(--text-dim);
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .cli-code {
+      color: var(--accent-cyan);
+      font-size: 0.9rem;
+      line-height: 1.6;
+      white-space: pre-wrap;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border-card);
+      padding: 3rem 0;
+      text-align: center;
+      color: var(--text-dim);
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 2.25rem; }
+      .gallery-grid { grid-template-columns: 1fr; }
+      .pipeline-steps { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="container nav-wrapper">
+      <div class="logo">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+          <polyline points="2 17 12 22 22 17"></polyline>
+          <polyline points="2 12 12 17 22 12"></polyline>
+        </svg>
+        Tradetron AI Lab
+      </div>
+      <div class="badge-tag">43 Guardrails Active</div>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <h1>Intelligent Algorithmic Trading Architecture</h1>
+      <p>A closed-loop AI strategy engineering framework with AST rule auditing, LLM-as-Judge semantic evals, multi-timeframe backtest simulation, and terminal observability.</p>
+    </section>
+
+    <!-- Metrics Grid -->
+    <section class="metrics-grid">
+      <div class="metric-card">
+        <div class="metric-value">43</div>
+        <div class="metric-label">Enforced Rulebook Guardrails</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-value">100%</div>
+        <div class="metric-label">Regression Suite Pass Rate (6/6)</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-value">13</div>
+        <div class="metric-label">Production Strategy JSONs</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-value">~15ms</div>
+        <div class="metric-label">Average Audit Latency</div>
+      </div>
+    </section>
+
+    <!-- Visual Architecture Diagram Section -->
+    <section>
+      <div class="section-title">
+        <span>⚡</span> Pipeline Architecture & Workflow
+      </div>
+      <div class="section-subtitle">A 5-stage automated pipeline converting strategy intent into audited, production-ready Tradetron JSON files.</div>
+
+      <div class="workflow-container">
+        <div class="pipeline-steps">
+          
+          <div class="step-box">
+            <div class="step-number">1</div>
+            <div class="step-title">Parameterized Builder</div>
+            <div class="step-desc">Generates strategy AST structures dynamically based on underlying parameters, strikes, and hedge gaps.</div>
+            <div class="step-file">tradetron_builder.py</div>
+          </div>
+
+          <div class="step-box">
+            <div class="step-number">2</div>
+            <div class="step-title">AST Auditor</div>
+            <div class="step-desc">Validates 43 schema rules including spot 5-comma slots, integer PKs, and Rule 42 Symbol(Instrument Name) nesting.</div>
+            <div class="step-file">tradetron_auditor.py</div>
+          </div>
+
+          <div class="step-box">
+            <div class="step-number">3</div>
+            <div class="step-title">LLM-as-Judge</div>
+            <div class="step-desc">Evaluates semantic alignment between declared strategy description intent and encoded AST logic.</div>
+            <div class="step-file">tradetron_judge.py</div>
+          </div>
+
+          <div class="step-box">
+            <div class="step-number">4</div>
+            <div class="step-title">Backtest Simulator</div>
+            <div class="step-desc">Simulates execution over 45,000+ intraday 1-minute candles for stock & index datasets.</div>
+            <div class="step-file">tradetron_simulator.py</div>
+          </div>
+
+          <div class="step-box">
+            <div class="step-number">5</div>
+            <div class="step-title">Observability Dashboard</div>
+            <div class="step-desc">Renders terminal pass/fail trends, per-strategy health matrix, and bug hotspot frequencies.</div>
+            <div class="step-file">audit_dashboard.py</div>
+          </div>
+
+        </div>
+
+        <div class="cli-panel">
+          <div class="cli-header">
+            <span>CLI Quick Command</span>
+            <span>Terminal</span>
+          </div>
+          <div class="cli-code">python3 Tradetron-AI-Lab/scripts/tradetron_builder.py --type iron_fly --symbol "BANK NIFTY" --hedge-gap 500 --expiry "Current Week" --output "BankNifty_IronFly_500pt.json"</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Visual Media Gallery -->
+    <section>
+      <div class="section-title">
+        <span>📸</span> System Visualizations
+      </div>
+      <div class="section-subtitle">Visual media mockups of the architecture pipeline and live observability interface.</div>
+
+      <div class="gallery-grid">
+        
+        <div class="gallery-card">
+          <img src="/Users/srbalakrishnan/.gemini/antigravity-ide/brain/b41250cb-bb3b-43c5-b96c-2e7dc51007af/architecture_pipeline_diagram_1785941584463.png" alt="Architecture Pipeline Diagram" class="gallery-img">
+          <div class="gallery-info">
+            <div class="gallery-title">5-Stage AI Strategy Pipeline</div>
+            <div class="gallery-text">Visual representation of the end-to-end dataflow from parameterized CLI inputs to AST validation, LLM semantic evaluation, and dashboard reporting.</div>
+          </div>
+        </div>
+
+        <div class="gallery-card">
+          <img src="/Users/srbalakrishnan/.gemini/antigravity-ide/brain/b41250cb-bb3b-43c5-b96c-2e7dc51007af/observability_dashboard_preview_1785941603634.png" alt="Observability Dashboard Mockup" class="gallery-img">
+          <div class="gallery-info">
+            <div class="gallery-title">Observability & Health Dashboard</div>
+            <div class="gallery-text">Live metrics tracking pass/fail ratios, bug hotspot rule violations, semantic scores, and execution latency across all production strategies.</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Highlighted Rulebook Matrix -->
+    <section class="rulebook-section">
+      <div class="section-title">
+        <span>🛡️</span> Key Tradetron Rulebook Highlights
+      </div>
+      <div class="section-subtitle">Core engine invariants enforced by tradetron_auditor.py to eliminate silent live trading failures.</div>
+
+      <table class="rule-table">
+        <thead>
+          <tr>
+            <th>Rule ID</th>
+            <th>Title & Topic</th>
+            <th>Engine Enforcement & Rationale</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="rule-id">Rule 42</td>
+            <td>OHLC Keyword Nesting</td>
+            <td><code>Close()</code> in conditions MUST use <code>Symbol(Instrument Name('NSE,NIFTY 50,,,,,'))</code> — bare <code>Instrument()</code> resolves to <code>None</code>.</td>
+            <td><span class="status-badge status-pass">✓ Enforced</span></td>
+          </tr>
+          <tr>
+            <td class="rule-id">Rule 30</td>
+            <td>Qty Macro Formatting</td>
+            <td><code>qtyType: "Lots"</code> MUST use <code>tt_lots(1,'INSTRUMENT','CE')</code> — plain strings cause greyed-out Fx state with "Clear Fx".</td>
+            <td><span class="status-badge status-pass">✓ Enforced</span></td>
+          </tr>
+          <tr>
+            <td class="rule-id">Rule 31</td>
+            <td>Database Primary Key</td>
+            <td>Positions legs MUST use integer DB keys (<code>1855</code> for NIFTY 50, <code>1854</code> for BANK NIFTY). Strings cause blank dropdowns.</td>
+            <td><span class="status-badge status-pass">✓ Enforced</span></td>
+          </tr>
+          <tr>
+            <td class="rule-id">Rule 27</td>
+            <td>Spot LTP Comma Format</td>
+            <td><code>Instrument Name</code> parameters MUST contain 5 comma slots (<code>NFO,NIFTY 50,,,,,</code>). 4 commas break backend string parsing.</td>
+            <td><span class="status-badge status-pass">✓ Enforced</span></td>
+          </tr>
+          <tr>
+            <td class="rule-id">Rule 13</td>
+            <td>Math Operation Order</td>
+            <td>Condition logic requires postfix parameter order: <code>[Operand 1, Operand 2, Operator]</code>. Operator cannot be in middle.</td>
+            <td><span class="status-badge status-pass">✓ Enforced</span></td>
+          </tr>
+          <tr>
+            <td class="rule-id">Rule 43</td>
+            <td>Simulator vs Auditor Gate</td>
+            <td>Simulator evaluates intended Python logic; Auditor is the mandatory AST structural gate before Tradetron upload.</td>
+            <td><span class="status-badge status-pass">✓ Enforced</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      Tradetron AI Lab &copy; 2026 — Advanced Algorithmic Trading Engineering Framework
+    </div>
+  </footer>
+
+</body>
+</html>
