@@ -27,7 +27,8 @@ def bold(t):   return f"{BOLD}{t}{RESET}"
 EXPECTED_RULE_MAP = {
     "bad_rule_42_bare_instrument.json": "RULE 42",
     "bad_rule_30_no_qty_macro.json": "RULE 30",
-    "bad_rule_31_string_instrument.json": "RULE 31"
+    "bad_rule_31_string_instrument.json": "RULE 31",
+    "bad_rule_44_no_type_key.json": "RULE 44"
 }
 
 def main():

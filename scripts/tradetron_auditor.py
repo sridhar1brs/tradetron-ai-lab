@@ -188,7 +188,28 @@ def _check_ohlc_instrument_keyword(node, set_num, cond_num, errors, _inside_ohlc
             inner = p.get("keyword", p)
             _check_ohlc_instrument_keyword(inner, set_num, cond_num, errors, _inside_ohlc)
 
+# ─── Rule 44: AST Parameter Object 'type' Integrity Validator ────────────────
+def _check_param_type_integrity(node, set_num, cond_num, errors):
+    """Recursively verify every object in params has a valid 'type' key ('keyword' or 'value').
+    Unwrapped keyword dicts cause Tradetron import failure with 'Unknown param type: None'."""
+    if not isinstance(node, dict):
+        return
+    params = node.get("params", [])
+    for i, p in enumerate(params):
+        if isinstance(p, dict):
+            p_type = p.get("type")
+            if p_type is None or p_type not in ["keyword", "value"]:
+                kw_name = p.get("name", "Unknown")
+                errors.append(
+                    f"[RULE 44 VIOLATION] '{node.get('name', 'Element')}' in Set {set_num} Cond {cond_num} "
+                    f"param #{i+1} ('{kw_name}') is missing 'type': 'keyword' wrapper! "
+                    f"Causes Tradetron import error 'Unknown param type: None'."
+                )
+            if p_type == "keyword":
+                _check_param_type_integrity(p.get("keyword", {}), set_num, cond_num, errors)
+
 def _check_ast_nodes(node, set_num, cond_num, active_legs, errors, warnings):
+
 
     if not isinstance(node, dict):
         return
@@ -248,6 +269,9 @@ def _check_ast_nodes(node, set_num, cond_num, active_legs, errors, warnings):
                 
                 # Rule 42: Recursive OHLC Instrument Keyword Context Validator
                 _check_ohlc_instrument_keyword(el, set_num, cond_num, errors)
+
+                # Rule 44: AST Parameter Object 'type' Integrity Validator
+                _check_param_type_integrity(el, set_num, cond_num, errors)
                             
         elif op.get("type") == "group":
             _check_ast_nodes(op, set_num, cond_num, active_legs, errors, warnings)
