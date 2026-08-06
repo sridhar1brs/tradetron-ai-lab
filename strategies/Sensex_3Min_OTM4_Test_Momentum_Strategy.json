@@ -1,0 +1,237 @@
+{
+  "_format": "tt-strategy/v2",
+  "_readme": {
+    "about": "Tradetron strategy export. Edit and re-import via the ASB Import button.",
+    "logic": "To change a condition's logic, edit its \"conditionJson\" (the AST). The \"conditionValue\"/\"conditionDisplay\" text is regenerated from it on import.",
+    "legs": "For a leg field that has a \"*Json\" (e.g. \"strikeJson\"), edit the JSON \u2014 its text form is regenerated on import. Fields with no \"*Json\" (e.g. \"qty\") are plain text: edit them directly.",
+    "structure": "Add/remove/duplicate legs, conditions or sets by editing the arrays.",
+    "do_not": "Do not add \"*_id\" foreign keys back. Lists referenced by id must be ones you own."
+  },
+  "name": "Sensex 3Min OTM4 Test Momentum Strategy",
+  "description": "\n<p><strong>Sensex 3Min OTM4 Test Momentum Strategy (Relaxed Testing Rules)</strong></p>\n<p><strong>Strategy Notes & Trading Intent:</strong></p>\n<p>--------------------------------------------------</p>\n<p>1. <strong>Entry Criteria:</strong></p>\n<ul>\n  <li><strong>Underlying:</strong> SENSEX Index (BSE) (3m Candles (Current Week Expiry)).</li>\n  <li><strong>Entry Window:</strong> Between 9:20 AM and 3:00 PM IST.</li>\n  <li><strong>Trigger Condition:</strong> Enters Long CE on BSE when 3-min Close[-1] > Close[-2] + Spot_Confirm (3.0 pt). Enters Long PE when Close[-1] < Close[-2] - Spot_Confirm (3.0 pt). Single bar trigger designed for immediate verification of trade execution.</li>\n</ul>\n<p>2. <strong>Exit Criteria & Risk Parameters:</strong></p>\n<ul>\n  <li><strong>Target & Stop Loss:</strong> Target 2.0x (+100%), Stop Loss 0.8x (-20%), Universal Exit 3:15 PM IST.</li>\n  <li><strong>Universal Exit:</strong> Square off all intraday open positions at 3:15 PM IST.</li>\n</ul>\n<p>3. <strong>Additional Mechanics:</strong></p><ul><li>Relaxed threshold (3.0 pt single bar on BSE) ensures rapid condition evaluation in live testing.</li></ul>\n",
+  "tags": [
+    {
+      "label": "Pairs",
+      "value": 44
+    }
+  ],
+  "variables": [
+    {
+      "variableName": "OTM_Offset",
+      "value": "( tt_Number ( '400' )  )",
+      "display": "( Number ( '400' )  )",
+      "json": "{\"operator\": \"and\", \"operands\": [{\"type\": \"rule\", \"value\": \"builder-basic_rule_0\", \"elements\": [{\"name\": \"Number\", \"kid\": 5002, \"params\": [{\"type\": \"value\", \"value\": \"400\"}]}]}]}"
+    },
+    {
+      "variableName": "Spot_Confirm",
+      "value": "( tt_Number ( '3.0' )  )",
+      "display": "( Number ( '3.0' )  )",
+      "json": "{\"operator\": \"and\", \"operands\": [{\"type\": \"rule\", \"value\": \"builder-basic_rule_0\", \"elements\": [{\"name\": \"Number\", \"kid\": 5610, \"params\": [{\"type\": \"value\", \"value\": \"3.0\"}]}]}]}"
+    },
+    {
+      "variableName": "SL_Multiplier",
+      "value": "( tt_Number ( '0.8' )  )",
+      "display": "( Number ( '0.8' )  )",
+      "json": "{\"operator\": \"and\", \"operands\": [{\"type\": \"rule\", \"value\": \"builder-basic_rule_0\", \"elements\": [{\"name\": \"Number\", \"kid\": 5067, \"params\": [{\"type\": \"value\", \"value\": \"0.8\"}]}]}]}"
+    },
+    {
+      "variableName": "Target_Multiplier",
+      "value": "( tt_Number ( '2.0' )  )",
+      "display": "( Number ( '2.0' )  )",
+      "json": "{\"operator\": \"and\", \"operands\": [{\"type\": \"rule\", \"value\": \"builder-basic_rule_0\", \"elements\": [{\"name\": \"Number\", \"kid\": 7424, \"params\": [{\"type\": \"value\", \"value\": \"2.0\"}]}]}]}"
+    }
+  ],
+  "sets": [
+    {
+      "list": 0,
+      "name": null,
+      "conditions": [
+        {
+          "type": "Entry",
+          "conditionValue": null,
+          "conditionJson": "{\"operator\": \"and\", \"operands\": [{\"type\": \"rule\", \"value\": \"builder-basic_rule_0\", \"elements\": [{\"name\": \"Time\", \"kid\": 5833, \"params\": [{\"type\": \"value\", \"value\": \"BSE\"}]}, {\"name\": \">=\", \"params\": []}, {\"name\": \"Number\", \"kid\": 9843, \"params\": [{\"type\": \"value\", \"value\": \"920\"}]}]}, {\"type\": \"rule\", \"value\": \"builder-basic_rule_1\", \"elements\": [{\"name\": \"Time\", \"kid\": 7680, \"params\": [{\"type\": \"value\", \"value\": \"BSE\"}]}, {\"name\": \"<\", \"params\": []}, {\"name\": \"Number\", \"kid\": 8712, \"params\": [{\"type\": \"value\", \"value\": \"1520\"}]}]}, {\"type\": \"rule\", \"value\": \"builder-basic_rule_2\", \"elements\": [{\"name\": \"Position\", \"kid\": 5830, \"params\": [{\"type\": \"keyword\", \"keyword\": {\"name\": \"CLOSE\", \"kid\": 9471, \"params\": [{\"type\": \"keyword\", \"keyword\": {\"name\": \"Symbol\", \"kid\": 3393, \"params\": [{\"type\": \"keyword\", \"keyword\": {\"name\": \"Instrument Name\", \"kid\": 4070, \"params\": [{\"type\": \"value\", \"value\": \"BFO,SENSEX,Current Month,,,,\"}]}}, {\"type\": \"value\", \"value\": \"3m\"}, {\"type\": \"value\", \"value\": \"All\"}]}}]}}, {\"type\": \"value\", \"value\": \"-1\"}]}, {\"name\": \">\", \"params\": []}, {\"name\": \"Math Operation\", \"kid\": 4374, \"params\": [{\"type\": \"keyword\", \"keyword\": {\"name\": \"Position\", \"kid\": 5968, \"params\": [{\"type\": \"keyword\", \"keyword\": {\"name\": \"CLOSE\", \"kid\": 9471, \"params\": [{\"type\": \"keyword\", \"keyword\": {\"name\": \"Symbol\", \"kid\": 3393, \"params\": [{\"type\": \"keyword\", \"keyword\": {\"name\": \"Instrument Name\", \"kid\": 4070, \"params\": [{\"type\": \"value\", \"value\": \"BFO,SENSEX,Current Month,,,,\"}]}}, {\"type\": \"value\", \"value\": \"3m\"}, {\"type\": \"value\", \"value\": \"All\"}]}}]}}, {\"type\": \"value\", \"value\": \"-2\"}]}}, {\"type\": \"keyword\", \"keyword\": {\"name\": \"Get Runtime\", \"kid\": 6612, \"params\": [{\"type\": \"value\", \"value\": \"Spot_Confirm\"}]}}, {\"type\": \"value\", \"value\": \"+\"}]}]}]}",
+          "conditionDisplay": null,
+          "subType": "None",
+          "visible": 1,
+          "legs": [
+            {
+              "exchange": "BFO",
+              "instrument": 1857,
+              "instrumentType": "OPTIDX",
+              "underlyingSymbol": "SENSEX",
+              "list": 0,
+              "optionType": "CE",
+              "buySell": "B",
+              "productType": "NRML",
+              "expiryType": "Current Week",
+              "expiry": "( tt_curr_weekexpiry ( 'SENSEX', '0' ) )",
+              "expiryJson": "{\"operator\": \"and\", \"operands\": [{\"type\": \"rule\", \"value\": \"builder-basic_rule_0\", \"elements\": [{\"name\": \"Current Week Expiry\", \"kid\": 1919, \"params\": [{\"type\": \"value\", \"value\": \"SENSEX\"}, {\"type\": \"value\", \"value\": \"0\"}]}]}]}",
+              "expiryDisplay": "( Current Week Expiry ( 'SENSEX', '0' ) )",
+              "strikeType": "Fx",
+              "strike": "tt_ATM('SENSEX') + tt_get_runtime('OTM_Offset')",
+              "strikeJson": null,
+              "strikeDisplay": "( tt_ATM('SENSEX') + tt_get_runtime('OTM_Offset') )",
+              "qty": "tt_lots(1,'INSTRUMENT','CE')",
+              "qtyType": "Lots",
+              "qtyDisplay": "1",
+              "qtyJson": null,
+              "qtyExprDisplay": null,
+              "limitPrice": null,
+              "limitPriceJson": null,
+              "targetLimit": null,
+              "targetTrigger": null,
+              "sLLimit": null,
+              "sLTrigger": null,
+              "sLTriggerJson": null,
+              "entryTrigger": null,
+              "entryLimit": null,
+              "isOvernightProtectionLeg": "No",
+              "tmp": 0
+            }
+          ],
+          "extra": {
+            "name": null,
+            "variables": []
+          }
+        },
+        {
+          "type": "Exit",
+          "conditionValue": null,
+          "conditionJson": "{\"operator\": \"and\", \"operands\": [{\"type\": \"rule\", \"value\": \"builder-basic_rule_0\", \"elements\": [{\"name\": \"LTP\", \"kid\": 9759, \"params\": [{\"type\": \"keyword\", \"keyword\": {\"name\": \"Traded Instrument\", \"kid\": 7245, \"params\": [{\"type\": \"value\", \"value\": \"Entry\"}, {\"type\": \"value\", \"value\": \"1\"}, {\"type\": \"value\", \"value\": \"1\"}, {\"type\": \"value\", \"value\": \"1\"}, {\"type\": \"value\", \"value\": \"1\"}]}}]}, {\"name\": \">=\", \"params\": []}, {\"name\": \"Math Operation\", \"kid\": 2814, \"params\": [{\"type\": \"keyword\", \"keyword\": {\"name\": \"Traded Instrument\", \"kid\": 1644, \"params\": [{\"type\": \"value\", \"value\": \"Entry\"}, {\"type\": \"value\", \"value\": \"entry_price\"}, {\"type\": \"value\", \"value\": \"1\"}, {\"type\": \"value\", \"value\": \"1\"}, {\"type\": \"value\", \"value\": \"1\"}]}}, {\"type\": \"keyword\", \"keyword\": {\"name\": \"Get Runtime\", \"kid\": 2659, \"params\": [{\"type\": \"value\", \"value\": \"Target_Multiplier\"}]}}, {\"type\": \"value\", \"value\": \"*\"}]}]}, {\"type\": \"rule\", \"value\": \"builder-basic_rule_1\", \"elements\": [{\"name\": \"LTP\", \"kid\": 6980, \"params\": [{\"type\": \"keyword\", \"keyword\": {\"name\": \"Traded Instrument\", \"kid\": 3821, \"params\": [{\"type\": \"value\", \"value\": \"Entry\"}, {\"type\": \"value\", \"value\": \"1\"}, {\"type\": \"value\", \"value\": \"1\"}, {\"type\": \"value\", \"value\": \"1\"}, {\"type\": \"value\", \"value\": \"1\"}]}}]}, {\"name\": \"<=\", \"params\": []}, {\"name\": \"Math Operation\", \"kid\": 2513, \"params\": [{\"type\": \"keyword\", \"keyword\": {\"name\": \"Traded Instrument\", \"kid\": 5610, \"params\": [{\"type\": \"value\", \"value\": \"Entry\"}, {\"type\": \"value\", \"value\": \"entry_price\"}, {\"type\": \"value\", \"value\": \"1\"}, {\"type\": \"value\", \"value\": \"1\"}, {\"type\": \"value\", \"value\": \"1\"}]}}, {\"type\": \"keyword\", \"keyword\": {\"name\": \"Get Runtime\", \"kid\": 3858, \"params\": [{\"type\": \"value\", \"value\": \"SL_Multiplier\"}]}}, {\"type\": \"value\", \"value\": \"*\"}]}]}]}",
+          "conditionDisplay": null,
+          "subType": "None",
+          "visible": 1,
+          "legs": [],
+          "extra": {
+            "name": null,
+            "variables": []
+          }
+        }
+      ]
+    },
+    {
+      "list": 0,
+      "name": null,
+      "conditions": [
+        {
+          "type": "Entry",
+          "conditionValue": null,
+          "conditionJson": "{\"operator\": \"and\", \"operands\": [{\"type\": \"rule\", \"value\": \"builder-basic_rule_0\", \"elements\": [{\"name\": \"Time\", \"kid\": 7482, \"params\": [{\"type\": \"value\", \"value\": \"BSE\"}]}, {\"name\": \">=\", \"params\": []}, {\"name\": \"Number\", \"kid\": 3934, \"params\": [{\"type\": \"value\", \"value\": \"920\"}]}]}, {\"type\": \"rule\", \"value\": \"builder-basic_rule_1\", \"elements\": [{\"name\": \"Time\", \"kid\": 4928, \"params\": [{\"type\": \"value\", \"value\": \"BSE\"}]}, {\"name\": \"<\", \"params\": []}, {\"name\": \"Number\", \"kid\": 2185, \"params\": [{\"type\": \"value\", \"value\": \"1520\"}]}]}, {\"type\": \"rule\", \"value\": \"builder-basic_rule_2\", \"elements\": [{\"name\": \"Position\", \"kid\": 5830, \"params\": [{\"type\": \"keyword\", \"keyword\": {\"name\": \"CLOSE\", \"kid\": 9471, \"params\": [{\"type\": \"keyword\", \"keyword\": {\"name\": \"Symbol\", \"kid\": 3393, \"params\": [{\"type\": \"keyword\", \"keyword\": {\"name\": \"Instrument Name\", \"kid\": 4070, \"params\": [{\"type\": \"value\", \"value\": \"BFO,SENSEX,Current Month,,,,\"}]}}, {\"type\": \"value\", \"value\": \"3m\"}, {\"type\": \"value\", \"value\": \"All\"}]}}]}}, {\"type\": \"value\", \"value\": \"-1\"}]}, {\"name\": \"<\", \"params\": []}, {\"name\": \"Math Operation\", \"kid\": 2913, \"params\": [{\"type\": \"keyword\", \"keyword\": {\"name\": \"Position\", \"kid\": 5968, \"params\": [{\"type\": \"keyword\", \"keyword\": {\"name\": \"CLOSE\", \"kid\": 9471, \"params\": [{\"type\": \"keyword\", \"keyword\": {\"name\": \"Symbol\", \"kid\": 3393, \"params\": [{\"type\": \"keyword\", \"keyword\": {\"name\": \"Instrument Name\", \"kid\": 4070, \"params\": [{\"type\": \"value\", \"value\": \"BFO,SENSEX,Current Month,,,,\"}]}}, {\"type\": \"value\", \"value\": \"3m\"}, {\"type\": \"value\", \"value\": \"All\"}]}}]}}, {\"type\": \"value\", \"value\": \"-2\"}]}}, {\"type\": \"keyword\", \"keyword\": {\"name\": \"Get Runtime\", \"kid\": 5030, \"params\": [{\"type\": \"value\", \"value\": \"Spot_Confirm\"}]}}, {\"type\": \"value\", \"value\": \"-\"}]}]}]}",
+          "conditionDisplay": null,
+          "subType": "None",
+          "visible": 1,
+          "legs": [
+            {
+              "exchange": "BFO",
+              "instrument": 1857,
+              "instrumentType": "OPTIDX",
+              "underlyingSymbol": "SENSEX",
+              "list": 0,
+              "optionType": "PE",
+              "buySell": "B",
+              "productType": "NRML",
+              "expiryType": "Current Week",
+              "expiry": "( tt_curr_weekexpiry ( 'SENSEX', '0' ) )",
+              "expiryJson": "{\"operator\": \"and\", \"operands\": [{\"type\": \"rule\", \"value\": \"builder-basic_rule_0\", \"elements\": [{\"name\": \"Current Week Expiry\", \"kid\": 2364, \"params\": [{\"type\": \"value\", \"value\": \"SENSEX\"}, {\"type\": \"value\", \"value\": \"0\"}]}]}]}",
+              "expiryDisplay": "( Current Week Expiry ( 'SENSEX', '0' ) )",
+              "strikeType": "Fx",
+              "strike": "tt_ATM('SENSEX') - tt_get_runtime('OTM_Offset')",
+              "strikeJson": null,
+              "strikeDisplay": "( tt_ATM('SENSEX') - tt_get_runtime('OTM_Offset') )",
+              "qty": "tt_lots(1,'INSTRUMENT','PE')",
+              "qtyType": "Lots",
+              "qtyDisplay": "1",
+              "qtyJson": null,
+              "qtyExprDisplay": null,
+              "limitPrice": null,
+              "limitPriceJson": null,
+              "targetLimit": null,
+              "targetTrigger": null,
+              "sLLimit": null,
+              "sLTrigger": null,
+              "sLTriggerJson": null,
+              "entryTrigger": null,
+              "entryLimit": null,
+              "isOvernightProtectionLeg": "No",
+              "tmp": 0
+            }
+          ],
+          "extra": {
+            "name": null,
+            "variables": []
+          }
+        },
+        {
+          "type": "Exit",
+          "conditionValue": null,
+          "conditionJson": "{\"operator\": \"and\", \"operands\": [{\"type\": \"rule\", \"value\": \"builder-basic_rule_0\", \"elements\": [{\"name\": \"LTP\", \"kid\": 6639, \"params\": [{\"type\": \"keyword\", \"keyword\": {\"name\": \"Traded Instrument\", \"kid\": 6640, \"params\": [{\"type\": \"value\", \"value\": \"Entry\"}, {\"type\": \"value\", \"value\": \"1\"}, {\"type\": \"value\", \"value\": \"2\"}, {\"type\": \"value\", \"value\": \"1\"}, {\"type\": \"value\", \"value\": \"1\"}]}}]}, {\"name\": \">=\", \"params\": []}, {\"name\": \"Math Operation\", \"kid\": 1077, \"params\": [{\"type\": \"keyword\", \"keyword\": {\"name\": \"Traded Instrument\", \"kid\": 9746, \"params\": [{\"type\": \"value\", \"value\": \"Entry\"}, {\"type\": \"value\", \"value\": \"entry_price\"}, {\"type\": \"value\", \"value\": \"1\"}, {\"type\": \"value\", \"value\": \"2\"}, {\"type\": \"value\", \"value\": \"1\"}]}}, {\"type\": \"keyword\", \"keyword\": {\"name\": \"Get Runtime\", \"kid\": 8547, \"params\": [{\"type\": \"value\", \"value\": \"Target_Multiplier\"}]}}, {\"type\": \"value\", \"value\": \"*\"}]}]}, {\"type\": \"rule\", \"value\": \"builder-basic_rule_1\", \"elements\": [{\"name\": \"LTP\", \"kid\": 6527, \"params\": [{\"type\": \"keyword\", \"keyword\": {\"name\": \"Traded Instrument\", \"kid\": 9653, \"params\": [{\"type\": \"value\", \"value\": \"Entry\"}, {\"type\": \"value\", \"value\": \"1\"}, {\"type\": \"value\", \"value\": \"2\"}, {\"type\": \"value\", \"value\": \"1\"}, {\"type\": \"value\", \"value\": \"1\"}]}}]}, {\"name\": \"<=\", \"params\": []}, {\"name\": \"Math Operation\", \"kid\": 1115, \"params\": [{\"type\": \"keyword\", \"keyword\": {\"name\": \"Traded Instrument\", \"kid\": 3384, \"params\": [{\"type\": \"value\", \"value\": \"Entry\"}, {\"type\": \"value\", \"value\": \"entry_price\"}, {\"type\": \"value\", \"value\": \"1\"}, {\"type\": \"value\", \"value\": \"2\"}, {\"type\": \"value\", \"value\": \"1\"}]}}, {\"type\": \"keyword\", \"keyword\": {\"name\": \"Get Runtime\", \"kid\": 3293, \"params\": [{\"type\": \"value\", \"value\": \"SL_Multiplier\"}]}}, {\"type\": \"value\", \"value\": \"*\"}]}]}]}",
+          "conditionDisplay": null,
+          "subType": "None",
+          "visible": 1,
+          "legs": [],
+          "extra": {
+            "name": null,
+            "variables": []
+          }
+        },
+        {
+          "type": "Universal Exit",
+          "conditionValue": null,
+          "conditionJson": "{\"operator\": \"and\", \"operands\": [{\"type\": \"rule\", \"value\": \"builder-basic_rule_0\", \"elements\": [{\"name\": \"Time\", \"kid\": 3122, \"params\": [{\"type\": \"value\", \"value\": \"BSE\"}]}, {\"name\": \">=\", \"params\": []}, {\"name\": \"Number\", \"kid\": 9485, \"params\": [{\"type\": \"value\", \"value\": \"1525\"}]}]}]}",
+          "conditionDisplay": null,
+          "subType": "None",
+          "visible": 1,
+          "legs": [],
+          "extra": {
+            "name": null,
+            "variables": []
+          }
+        }
+      ]
+    }
+  ],
+  "currency": "INR",
+  "priceExecution": "Market Price",
+  "tranchSize": 100,
+  "tslToCostAtProfit": 0,
+  "tslProfitIncrease": 0,
+  "tslSlIncrease": 0,
+  "runFrequency": "Continuous",
+  "firstTradeAfterOpen": 1,
+  "lastTradeBeforeClose": 60,
+  "rolloverExpiryPeriod": "Dont Rollover",
+  "capitalRequired": 30000,
+  "priceRevisionAttempts": 3,
+  "tranchWaitSecs": 1,
+  "exitShortsFirst": 0,
+  "priceRevisionTimeout": 0,
+  "reactivateEvery": 360,
+  "finalAction": "MARKET",
+  "exitAtMarket": 0,
+  "runEvery": 1,
+  "rolloverExpiryTime": "1500",
+  "priceTicksMultiple": "10",
+  "pythonCode": null,
+  "isPublic": 0,
+  "minMultiple": 1,
+  "maxMultiple": 100,
+  "freePeriod": null,
+  "fixedFee": "0.00",
+  "fixedFeePeriod": "1",
+  "variableFee": "0.00",
+  "hurdleRate": 0,
+  "recreatePositionsInNewFollowers": "No",
+  "allowDuplication": 0,
+  "confirmationPerSubscriber": 0,
+  "hideSubscribers": "No",
+  "strategyPublicLinkAccess": "Yes",
+  "strategyPublicLink": null,
+  "displayPositionsToNonSubscribers": 0,
+  "highWatermark": "Yes",
+  "showLiveAutoDeployment": 0,
+  "feeShare": null,
+  "isApproved": 0,
+  "feeFrequency": "Month",
+  "backtestLinkSubscribers": null,
+  "backtestLinkNonsubscribers": null
+}
