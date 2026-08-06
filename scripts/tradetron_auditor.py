@@ -212,6 +212,27 @@ def _check_param_type_integrity(node, set_num, cond_num, errors):
             if p_type == "keyword":
                 _check_param_type_integrity(p.get("keyword", {}), set_num, cond_num, errors)
 
+# ─── Rule 46: Timeframe String Enum Integrity Validator ──────────────────────
+VALID_TIMEFRAME_ENUMS = {"1m", "2m", "3m", "4m", "5m", "10m", "15m", "30m", "1h", "2h", "4h", "day", "week", "month"}
+
+def _check_timeframe_enum_integrity(node, set_num, cond_num, errors):
+    """Rule 46: Verify Symbol keyword timeframe string parameter uses Tradetron's shorthand enum ('1m', '3m', '5m'), NOT '1min' or '3min'."""
+    if not isinstance(node, dict):
+        return
+    if node.get("name") == "Symbol":
+        params = node.get("params", [])
+        if len(params) >= 2:
+            tf_param = params[1]
+            tf_val = tf_param.get("value", "")
+            if "min" in tf_val:
+                errors.append(
+                    f"[RULE 46 VIOLATION] 'Symbol' in Set {set_num} Cond {cond_num} uses timeframe '{tf_val}'. "
+                    f"Tradetron engine requires shorthand enum string e.g. '1m', '3m', '5m' (NOT '1min', '3min')!"
+                )
+    for p in node.get("params", []):
+        if p.get("type") == "keyword":
+            _check_timeframe_enum_integrity(p.get("keyword", {}), set_num, cond_num, errors)
+
 def _check_ast_nodes(node, set_num, cond_num, active_legs, errors, warnings):
 
 
@@ -276,6 +297,9 @@ def _check_ast_nodes(node, set_num, cond_num, active_legs, errors, warnings):
 
                 # Rule 44: AST Parameter Object 'type' Integrity Validator
                 _check_param_type_integrity(el, set_num, cond_num, errors)
+
+                # Rule 46: Timeframe String Enum Integrity Validator
+                _check_timeframe_enum_integrity(el, set_num, cond_num, errors)
                             
         elif op.get("type") == "group":
             _check_ast_nodes(op, set_num, cond_num, active_legs, errors, warnings)

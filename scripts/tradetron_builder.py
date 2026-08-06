@@ -484,6 +484,17 @@ def build_momentum(
     else:
         inst_id = 0
 
+    # Convert timeframe to Tradetron shorthand enum ('1m', '3m', '5m') per Rule 46
+    tf_enum = timeframe.replace("min", "m")
+
+    # Instrument Name format per Tradetron OCR specification (keywords/position.json)
+    if "SENSEX" in symbol:
+        inst_name_str = "BFO,SENSEX,Current Month,,,,"
+        exch = "BSE"
+    else:
+        inst_name_str = f"NFO,{symbol},Current Month,,,,"
+        exch = "NSE"
+
     desc_html = make_structured_description(
         name=name,
         underlying=f"{symbol} Index",
@@ -501,11 +512,11 @@ def build_momentum(
     # Set 1: Bullish CE Entry & Exit
     s1 = SetBlock(1)
     c1_e = Condition("Entry")
-    c1_e.add_rule(Keyword("Time", "NSE") >= 920)
-    c1_e.add_rule(Keyword("Time", "NSE") < 1500)
+    c1_e.add_rule(Keyword("Time", exch) >= 920)
+    c1_e.add_rule(Keyword("Time", exch) < 1500)
     
-    # Rule 42 helper for Symbol(Instrument Name)
-    sym_kw = Keyword("Symbol", Keyword("Instrument Name", f"NSE,{symbol},,,,,"), timeframe, "All")
+    # Rule 42 & Rule 46 helper for Symbol(Instrument Name)
+    sym_kw = Keyword("Symbol", Keyword("Instrument Name", inst_name_str), tf_enum, "All")
     close_kw = Keyword("CLOSE", sym_kw)
     pos_m1 = Keyword("Position", close_kw, "-1")
     pos_m2 = Keyword("Position", close_kw, "-2")
