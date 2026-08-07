@@ -147,6 +147,19 @@ def validate_ui_schema(data):
                 if "qtyExprDisplay" not in leg:
                     schema_warnings.append(f"[RULE 30 WARNING] Set {s_idx + 1} Cond {c_idx + 1} Leg {l_idx + 1} missing 'qtyExprDisplay' key. Add it as null to prevent UI rendering fallback to Fx state.")
 
+                # Rule 11: strikeJson root node operator check
+                strike_json_raw = leg.get("strikeJson")
+                if strike_json_raw:
+                    try:
+                        s_obj = json.loads(strike_json_raw) if isinstance(strike_json_raw, str) else strike_json_raw
+                        if isinstance(s_obj, dict) and s_obj.get("operator") is None and "operands" not in s_obj:
+                            schema_errors.append(
+                                f"[RULE 11 VIOLATION] Set {s_idx + 1} Cond {c_idx + 1} Leg {l_idx + 1} strikeJson '{s_obj.get('name')}' is missing root operator wrapper. "
+                                f"Must be wrapped in {{'operator': 'and', 'operands': [{{'type': 'rule', 'elements': [...]}}]}} to prevent Tradetron 'Invalid root operator: None' import error."
+                            )
+                    except Exception:
+                        pass
+
     return schema_errors, schema_warnings
 
 
