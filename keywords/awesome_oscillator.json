@@ -7,12 +7,22 @@
     ],
     "parameters": [
         {
-            "name": "Extract parameters manually or update script parser",
-            "type": "Any",
-            "description": "Details pending"
+            "name": "Symbol",
+            "type": "Keyword",
+            "description": "Nested Symbol(...) keyword identifying instrument + timeframe."
+        },
+        {
+            "name": "Fast Period",
+            "type": "Integer",
+            "description": "e.g. 34."
+        },
+        {
+            "name": "Slow Period",
+            "type": "Integer",
+            "description": "e.g. 5."
         }
     ],
     "return_type": "Any",
     "raw_scraped_text": "Awesome Oscillator\nThis keyword returns the value of the Awesome Oscillator of the selected Instrument. This keyword is to be used under the position keyword\nYou can fetch the value of the \nAwesome Oscillator\n on any candle of an instrument, like in the above example, you can fetch the \nChoppiness Index of previous (-1) day candle of Nifty 50 spot",
-    "visual_logic_extracted": "Image [img-1632226821.png] Text:\nPosition\n\u201cAwesome Oscillator ( Symbol ( Instrument Name ( NFO,NIFTY 50.,,.,), day, All), 34,5), -1"
+    "visual_logic_extracted": "Image [img-1632226821.png] Text:\nPosition\n“Awesome Oscillator ( Symbol ( Instrument Name ( NFO,NIFTY 50.,,.,), day, All), 34,5), -1"
 }

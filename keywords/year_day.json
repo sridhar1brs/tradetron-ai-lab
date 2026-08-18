@@ -7,12 +7,19 @@
     ],
     "parameters": [
         {
-            "name": "Extract parameters manually or update script parser",
-            "type": "Any",
-            "description": "Details pending"
+            "name": "Exchange",
+            "type": "Enum",
+            "description": "Exchange whose clock/calendar to read.",
+            "options": [
+                "NSE",
+                "BSE",
+                "NFO",
+                "MCX",
+                "CDS"
+            ]
         }
     ],
     "return_type": "Any",
-    "raw_scraped_text": "Year Day\nYear day returns the c\nurrent day number from the beginning of the year as an integer\n\u00a0\nThe above condition will be satisfied if today is the 205th day of the year",
+    "raw_scraped_text": "Year Day\nYear day returns the c\nurrent day number from the beginning of the year as an integer\n \nThe above condition will be satisfied if today is the 205th day of the year",
     "visual_logic_extracted": "Image [img-1631796936.png] Text:\nYear Day == Number\nNSE 205"
 }

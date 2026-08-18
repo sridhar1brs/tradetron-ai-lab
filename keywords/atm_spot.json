@@ -9,12 +9,17 @@
     ],
     "parameters": [
         {
-            "name": "Extract parameters manually or update script parser",
-            "type": "Any",
-            "description": "Details pending"
+            "name": "Underlying",
+            "type": "String",
+            "description": "Underlying symbol, e.g. 'NIFTY 50'."
+        },
+        {
+            "name": "Strike Offset",
+            "type": "Integer",
+            "description": "0 = ATM strike, positive/negative N = N strikes away. Calculated from the Spot index price (not Futures)."
         }
     ],
     "return_type": "Any",
-    "raw_scraped_text": "ATM SPOT\nATM spot keyword returns the ATM strike of the instrument based on the spot value of the instrument.\u00a0\nATM keyword is generally used in Strike FX in Position Builder\nIn the above image, Suppose Nifty spot is 17480, ATM strike will return 17500.\nIn the above image, +2 indicates 2 strikes away from ATM, suppose ATM is 17500, ATM,+2 will return 17600\nThis keyword can also be used in the Instrument Name keyword to fetch an instrument based on the spot-based ATM value of the same",
-    "visual_logic_extracted": "Image [img-1693990152.png] Text:\nATM SPOT\nNIFTY 50, 0\n\nImage [img-1693990188.png] Text:\nATM SPOT\nNIFTY 50, 2\n\nImage [img-1693990291.png] Text:\nKeyword Paramters\n\nInstrument\n\n[NFO x \u201c| | NFO-NIFTY 50 x 7] | Curent. \u00ab *) | CE *| | Choose 4]\n\n+ nth Expiry\n\nLd 27000 00\n28000.00\n29000.00\n3000.00\nATM\n\n| Ok || Cancel |\n\nPaste %"
+    "raw_scraped_text": "ATM SPOT\nATM spot keyword returns the ATM strike of the instrument based on the spot value of the instrument. \nATM keyword is generally used in Strike FX in Position Builder\nIn the above image, Suppose Nifty spot is 17480, ATM strike will return 17500.\nIn the above image, +2 indicates 2 strikes away from ATM, suppose ATM is 17500, ATM,+2 will return 17600\nThis keyword can also be used in the Instrument Name keyword to fetch an instrument based on the spot-based ATM value of the same",
+    "visual_logic_extracted": "Image [img-1693990152.png] Text:\nATM SPOT\nNIFTY 50, 0\n\nImage [img-1693990188.png] Text:\nATM SPOT\nNIFTY 50, 2\n\nImage [img-1693990291.png] Text:\nKeyword Paramters\n\nInstrument\n\n[NFO x “| | NFO-NIFTY 50 x 7] | Curent. « *) | CE *| | Choose 4]\n\n+ nth Expiry\n\nLd 27000 00\n28000.00\n29000.00\n3000.00\nATM\n\n| Ok || Cancel |\n\nPaste %"
 }

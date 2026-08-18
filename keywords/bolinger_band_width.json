@@ -7,9 +7,19 @@
     ],
     "parameters": [
         {
-            "name": "Extract parameters manually or update script parser",
-            "type": "Any",
-            "description": "Details pending"
+            "name": "Series",
+            "type": "Keyword",
+            "description": "Nested series keyword to operate on, e.g. CLOSE(...), OPEN(...), HIGH(...)."
+        },
+        {
+            "name": "Period",
+            "type": "Integer",
+            "description": "e.g. 20."
+        },
+        {
+            "name": "Std Dev",
+            "type": "Number",
+            "description": "Standard-deviation multiplier, e.g. 2."
         }
     ],
     "return_type": "Any",

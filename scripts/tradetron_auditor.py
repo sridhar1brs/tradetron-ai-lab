@@ -157,6 +157,21 @@ def validate_ui_schema(data):
                                 f"[RULE 11 VIOLATION] Set {s_idx + 1} Cond {c_idx + 1} Leg {l_idx + 1} strikeJson '{s_obj.get('name')}' is missing root operator wrapper. "
                                 f"Must be wrapped in {{'operator': 'and', 'operands': [{{'type': 'rule', 'elements': [...]}}]}} to prevent Tradetron 'Invalid root operator: None' import error."
                             )
+                        else:
+                            # Gap fix: strikeJson previously only got the Rule 11 shallow check above.
+                            # Run the same recursive AST checks (Rules 17, 27, 42, 44, 46) used on
+                            # conditionJson, since strike/ATM formulas are where BUG-001/002/015 occur.
+                            _check_ast_nodes(s_obj, s_idx + 1, f"{c_idx + 1} Leg {l_idx + 1} strikeJson", active_legs, schema_errors, schema_warnings)
+                    except Exception:
+                        pass
+
+                # Same recursive checks for expiryJson (Rule 17/27 apply equally to expiry formulas)
+                expiry_json_raw = leg.get("expiryJson")
+                if expiry_json_raw:
+                    try:
+                        e_obj = json.loads(expiry_json_raw) if isinstance(expiry_json_raw, str) else expiry_json_raw
+                        if isinstance(e_obj, dict):
+                            _check_ast_nodes(e_obj, s_idx + 1, f"{c_idx + 1} Leg {l_idx + 1} expiryJson", active_legs, schema_errors, schema_warnings)
                     except Exception:
                         pass
 
@@ -246,6 +261,31 @@ def _check_timeframe_enum_integrity(node, set_num, cond_num, errors):
         if p.get("type") == "keyword":
             _check_timeframe_enum_integrity(p.get("keyword", {}), set_num, cond_num, errors)
 
+# ─── Rules 17 & 27: Recursive Instrument Name Validator ──────────────────────
+# Fix (Gap): The previous check only inspected top-level rule elements named
+# "Instrument Name". In practice it is almost always nested (e.g. Symbol(Instrument
+# Name(...)), LTP(Instrument Name(...)), Get Strike(..., LTP(Instrument Name(...))))
+# so the shallow check never fired on real strategies. This walks every nested
+# keyword param to find "Instrument Name" at any depth.
+# Rule 17 (Current Month → Futures price instead of Spot) only applies when the
+# Instrument Name feeds directly into "LTP" for price/strike resolution (BUG-001).
+# Using "Current Month" as the candle basis for Symbol(...)-based indicator
+# conditions is a deliberate, valid strategy choice (trade off Futures candles)
+# and must NOT be flagged. Rule 27 (comma count) applies regardless of context.
+def _check_instrument_name_recursive(node, set_num, cond_num, errors, parent_name=None):
+    if not isinstance(node, dict):
+        return
+    if node.get("name") == "Instrument Name":
+        for p in node.get("params", []):
+            val = p.get("value", "") if isinstance(p, dict) else ""
+            if parent_name == "LTP" and "NIFTY 50" in val and "Current Month" in val:
+                errors.append(f"[RULE 17 VIOLATION] Spot Index Instrument Name in Set {set_num} Cond {cond_num} uses '{val}' inside LTP(). Spot index price/strike references must NOT include 'Current Month'!")
+            if ("NFO,NIFTY 50" in val or "BFO,SENSEX" in val) and val.count(",") < 5:
+                errors.append(f"[RULE 27 VIOLATION] Instrument Name in Set {set_num} Cond {cond_num} uses '{val}' (less than 5 commas). Must use 5 comma slots e.g. 'NFO,NIFTY 50,,,,,'!")
+    for p in node.get("params", []):
+        if isinstance(p, dict) and p.get("type") == "keyword":
+            _check_instrument_name_recursive(p.get("keyword", {}), set_num, cond_num, errors, parent_name=node.get("name"))
+
 def _check_ast_nodes(node, set_num, cond_num, active_legs, errors, warnings):
 
 
@@ -307,6 +347,9 @@ def _check_ast_nodes(node, set_num, cond_num, active_legs, errors, warnings):
                 
                 # Rule 42: Recursive OHLC Instrument Keyword Context Validator
                 _check_ohlc_instrument_keyword(el, set_num, cond_num, errors)
+
+                # Rules 17 & 27: Recursive Instrument Name Validator (any nesting depth)
+                _check_instrument_name_recursive(el, set_num, cond_num, errors)
 
                 # Rule 44: AST Parameter Object 'type' Integrity Validator
                 _check_param_type_integrity(el, set_num, cond_num, errors)

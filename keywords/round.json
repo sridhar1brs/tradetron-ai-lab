@@ -7,12 +7,17 @@
     ],
     "parameters": [
         {
-            "name": "Extract parameters manually or update script parser",
-            "type": "Any",
-            "description": "Details pending"
+            "name": "Value",
+            "type": "Keyword",
+            "description": "Nested keyword returning the value to round (e.g. LTP(...), Find Strike(...), ATM SPOT(...), Math Operation(...))."
+        },
+        {
+            "name": "Base",
+            "type": "Integer",
+            "description": "Round to the nearest multiple of this value, e.g. '50' or '100'."
         }
     ],
     "return_type": "Any",
-    "raw_scraped_text": "Round\nThis keyword will round off the values to the base you select.\u00a0\nIn the above example, we have rounded off the spot value to Nifty 50 to the nearest 50 rupees.",
+    "raw_scraped_text": "Round\nThis keyword will round off the values to the base you select. \nIn the above example, we have rounded off the spot value to Nifty 50 to the nearest 50 rupees.",
     "visual_logic_extracted": "Image [img-1632140830.png] Text:\n6\n\nRound\nLTP ( Instrument Name ( NFO,NIFTY 50,,,,, )) , 50"
 }

@@ -7,9 +7,28 @@
     ],
     "parameters": [
         {
-            "name": "Extract parameters manually or update script parser",
-            "type": "Any",
-            "description": "Details pending"
+            "name": "Series",
+            "type": "Keyword",
+            "description": "Nested series keyword to operate on, e.g. CLOSE(...), OPEN(...), HIGH(...)."
+        },
+        {
+            "name": "Fast Period",
+            "type": "Integer",
+            "description": "e.g. 20."
+        },
+        {
+            "name": "Slow Period",
+            "type": "Integer",
+            "description": "e.g. 20."
+        },
+        {
+            "name": "MA Type",
+            "type": "Enum",
+            "description": "Moving-average type used internally.",
+            "options": [
+                "EMA",
+                "SMA"
+            ]
         }
     ],
     "return_type": "Any",

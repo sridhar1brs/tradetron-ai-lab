@@ -7,12 +7,26 @@
     ],
     "parameters": [
         {
-            "name": "Extract parameters manually or update script parser",
-            "type": "Any",
-            "description": "Details pending"
+            "name": "Underlying",
+            "type": "String",
+            "description": "Underlying symbol."
+        },
+        {
+            "name": "Expiry",
+            "type": "String",
+            "description": "Expiry selector, e.g. 'current month'."
+        },
+        {
+            "name": "Option Type",
+            "type": "Enum",
+            "description": "Option side to scan.",
+            "options": [
+                "CE",
+                "PE"
+            ]
         }
     ],
     "return_type": "Any",
-    "raw_scraped_text": "Max OI Instrument\nThis keyword will return the instrument with the maximum open interest at that instant. You can input the underlying instrument, expiry and option type. Your request will be processed and a response will be fetched. At the moment it is only available for indices.\u00a0\nThe above image shows how to fetch the instrument with max OI for Nifty Bank, current month put options.",
+    "raw_scraped_text": "Max OI Instrument\nThis keyword will return the instrument with the maximum open interest at that instant. You can input the underlying instrument, expiry and option type. Your request will be processed and a response will be fetched. At the moment it is only available for indices. \nThe above image shows how to fetch the instrument with max OI for Nifty Bank, current month put options.",
     "visual_logic_extracted": "Image [img-1631870764.png] Text:\nMax OI Instrument\nBANKNIFTY, current month, PE"
 }

@@ -8,12 +8,22 @@
     ],
     "parameters": [
         {
-            "name": "Extract parameters manually or update script parser",
-            "type": "Any",
-            "description": "Details pending"
+            "name": "Series",
+            "type": "Keyword",
+            "description": "Nested series keyword to operate on, e.g. CLOSE(...), OPEN(...), HIGH(...)."
+        },
+        {
+            "name": "Period",
+            "type": "Integer",
+            "description": "e.g. 20."
+        },
+        {
+            "name": "Std Dev",
+            "type": "Number",
+            "description": "Standard-deviation multiplier, e.g. 2."
         }
     ],
     "return_type": "Any",
-    "raw_scraped_text": "BBPercentage\nBollinger Band Percent (BB %B) quantifies a symbol's price relative to the upper and lower Bollinger Band.\n\u00a0\nit has 2 input parameters :",
-    "visual_logic_extracted": "Image [img-1643634417.png] Text:\n\u00b0\n\nPosition\nBBPercentage ( CLOSE ( Symbol ( Instrument Name ( NFO,NIFTY 50,,,,, ), day, All) ), 20,2), -1\n\nImage [img-1643634447.png] Text:\nKeyword Paramters\n\nSeries\n\nCLOSE x\n\nPeriod\n\n|20 |\nStd\n\n2 |\n\nOk\n\nCancel"
+    "raw_scraped_text": "BBPercentage\nBollinger Band Percent (BB %B) quantifies a symbol's price relative to the upper and lower Bollinger Band.\n \nit has 2 input parameters :",
+    "visual_logic_extracted": "Image [img-1643634417.png] Text:\n°\n\nPosition\nBBPercentage ( CLOSE ( Symbol ( Instrument Name ( NFO,NIFTY 50,,,,, ), day, All) ), 20,2), -1\n\nImage [img-1643634447.png] Text:\nKeyword Paramters\n\nSeries\n\nCLOSE x\n\nPeriod\n\n|20 |\nStd\n\n2 |\n\nOk\n\nCancel"
 }

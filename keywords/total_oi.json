@@ -7,9 +7,23 @@
     ],
     "parameters": [
         {
-            "name": "Extract parameters manually or update script parser",
-            "type": "Any",
-            "description": "Details pending"
+            "name": "Underlying",
+            "type": "String",
+            "description": "Underlying symbol."
+        },
+        {
+            "name": "Expiry",
+            "type": "String",
+            "description": "Expiry selector, e.g. 'current month'."
+        },
+        {
+            "name": "Option Type",
+            "type": "Enum",
+            "description": "Option side to scan.",
+            "options": [
+                "CE",
+                "PE"
+            ]
         }
     ],
     "return_type": "Any",

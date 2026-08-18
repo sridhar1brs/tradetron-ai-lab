@@ -7,12 +7,19 @@
     ],
     "parameters": [
         {
-            "name": "Extract parameters manually or update script parser",
-            "type": "Any",
-            "description": "Details pending"
+            "name": "Exchange",
+            "type": "Enum",
+            "description": "Exchange whose clock/calendar to read.",
+            "options": [
+                "NSE",
+                "BSE",
+                "NFO",
+                "MCX",
+                "CDS"
+            ]
         }
     ],
     "return_type": "Any",
-    "raw_scraped_text": "Minute\nT\nhis keyword \nReturns current minutes as an integer \u00a0\n\u00a0\nThe above example is checking whether the current minute is greater than 30, suppose time is 11:45, condition will be true\nPlease note, the range is 1 - 59",
+    "raw_scraped_text": "Minute\nT\nhis keyword \nReturns current minutes as an integer  \n \nThe above example is checking whether the current minute is greater than 30, suppose time is 11:45, condition will be true\nPlease note, the range is 1 - 59",
     "visual_logic_extracted": "Image [img-1631796552.png] Text:\nMinute >= Number\nNSE 30"
 }

@@ -8,12 +8,17 @@
     ],
     "parameters": [
         {
-            "name": "Extract parameters manually or update script parser",
-            "type": "Any",
-            "description": "Details pending"
+            "name": "Underlying",
+            "type": "String",
+            "description": "MCX underlying, e.g. 'Crudeoil'."
+        },
+        {
+            "name": "Offset",
+            "type": "Integer",
+            "description": "0 = current month futures expiry, 1 = next, etc."
         }
     ],
     "return_type": "Any",
-    "raw_scraped_text": "MCX Fut Expiry\nThis keyword returns the monthly futures expiry date of the instrument as a string in the format \nYYYY-MM-DD\n\u00a0\nThis keyword can be used in condition builder as well as in expiry FX of the position builder\nThe above example can be used in condition builder to check if the current day is the monthly expiry of the MCX instrument\nThe above condition can be used in the expiry FX of the position builder to trade next month expiry",
+    "raw_scraped_text": "MCX Fut Expiry\nThis keyword returns the monthly futures expiry date of the instrument as a string in the format \nYYYY-MM-DD\n \nThis keyword can be used in condition builder as well as in expiry FX of the position builder\nThe above example can be used in condition builder to check if the current day is the monthly expiry of the MCX instrument\nThe above condition can be used in the expiry FX of the position builder to trade next month expiry",
     "visual_logic_extracted": "Image [img-1632231581.png] Text:\no-_ 98\nToday == MCX Fut Expiry\nMCX Crudeoil, 0\n\nImage [img-1632232030.png] Text:\nMCX Fut Expiry\nCrudeoil, 1"
 }

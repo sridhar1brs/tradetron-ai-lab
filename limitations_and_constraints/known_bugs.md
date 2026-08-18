@@ -22,7 +22,8 @@ This document records every confirmed Tradetron engine quirk discovered through 
 {"type": "value", "value": "NFO,NIFTY 50,,,,,"}
 ```
 
-**Detection**: Auditor Rule 17 checks for `"Current Month"` in Spot Index references.
+**Detection**: Auditor Rule 17 checks for `"Current Month"` in Spot Index references
+(now also checked inside leg `strikeJson`/`expiryJson`, not just `conditionJson`).
 
 **See Also**: AGENTS.md Rule 17
 

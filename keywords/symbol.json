@@ -1,18 +1,47 @@
 {
     "name": "Symbol",
-    "description": "This keyword is used in order\u00a0to fetch the data for a particular time frame based on the selected instrument(Instrument name, traded instrument name, futures).",
-    "how_to_use_markdown": "This keyword is used in order \u00a0to fetch the data for a particular time frame based on the selected instrument(Instrument name, traded instrument name, futures).\n\nGenerally, symbol will be used inside the other keywords to select the instrument of choice.\n\nThe symbol keyword will be a default keyword under most keywords. It will be available by default wherever instrument needs to be selected.\n\n![Example](./images/img-1631878055.png)\n\nIn the above condition, symbol keyword is used to select the timeframe and the instrument name.",
+    "description": "This keyword is used in order to fetch the data for a particular time frame based on the selected instrument(Instrument name, traded instrument name, futures).",
+    "how_to_use_markdown": "This keyword is used in order  to fetch the data for a particular time frame based on the selected instrument(Instrument name, traded instrument name, futures).\n\nGenerally, symbol will be used inside the other keywords to select the instrument of choice.\n\nThe symbol keyword will be a default keyword under most keywords. It will be available by default wherever instrument needs to be selected.\n\n![Example](./images/img-1631878055.png)\n\nIn the above condition, symbol keyword is used to select the timeframe and the instrument name.",
     "example_image_urls": [
         "./images/img-1631878055.png"
     ],
     "parameters": [
         {
-            "name": "Extract parameters manually or update script parser",
-            "type": "Any",
-            "description": "Details pending"
+            "name": "Instrument",
+            "type": "Keyword",
+            "description": "Nested Instrument Name(...) / Futures(...) / Traded Instrument Name(...) keyword identifying the instrument."
+        },
+        {
+            "name": "Timeframe",
+            "type": "Enum",
+            "description": "Candle timeframe. MUST use Tradetron's shorthand enum (Rule 46) — never '1min'/'3min'.",
+            "options": [
+                "1m",
+                "2m",
+                "3m",
+                "4m",
+                "5m",
+                "10m",
+                "15m",
+                "30m",
+                "1h",
+                "2h",
+                "4h",
+                "day",
+                "week",
+                "month"
+            ]
+        },
+        {
+            "name": "Session",
+            "type": "Enum",
+            "description": "Which trading session's candles to use.",
+            "options": [
+                "All"
+            ]
         }
     ],
     "return_type": "Any",
-    "raw_scraped_text": "Symbol\nThis keyword is used in order\n\u00a0to fetch the data for a particular time frame based on the selected instrument(Instrument name, traded instrument name, futures).\nGenerally, symbol will be used inside the other keywords to select the instrument of choice.\nThe symbol keyword will be a default keyword under most keywords. It will be available by default wherever instrument needs to be selected.\nIn the above condition, symbol keyword is used to select the timeframe and the instrument name.",
+    "raw_scraped_text": "Symbol\nThis keyword is used in order\n to fetch the data for a particular time frame based on the selected instrument(Instrument name, traded instrument name, futures).\nGenerally, symbol will be used inside the other keywords to select the instrument of choice.\nThe symbol keyword will be a default keyword under most keywords. It will be available by default wherever instrument needs to be selected.\nIn the above condition, symbol keyword is used to select the timeframe and the instrument name.",
     "visual_logic_extracted": "Image [img-1631878055.png] Text:\nPosition\n(CLOSE (Symbol Instrument Name (NFONIFTY 80,..). day Al)), 4"
 }

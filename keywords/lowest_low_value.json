@@ -7,12 +7,17 @@
     ],
     "parameters": [
         {
-            "name": "Extract parameters manually or update script parser",
-            "type": "Any",
-            "description": "Details pending"
+            "name": "Series",
+            "type": "Keyword",
+            "description": "Nested series keyword to operate on, e.g. CLOSE(...), OPEN(...), HIGH(...)."
+        },
+        {
+            "name": "Period",
+            "type": "Integer",
+            "description": "e.g. 100 — number of previous candles to scan for the lowest value."
         }
     ],
     "return_type": "Any",
-    "raw_scraped_text": "Lowest Low Value\nThis keyword returns the Lowest Low value of all the values in the series of the selected Instrument. This keyword is to be used under the position keyword\nYou can fetch the \nLowest Low\n on any series, like close in the above example, you can also plot EMA of RSI, OPEN etc.\u00a0\nIt is important to note that the lowest low value here will not include the low of the current candle (0). It will look at the minimum value of the last hundred day candles from the previous candle (-1).",
+    "raw_scraped_text": "Lowest Low Value\nThis keyword returns the Lowest Low value of all the values in the series of the selected Instrument. This keyword is to be used under the position keyword\nYou can fetch the \nLowest Low\n on any series, like close in the above example, you can also plot EMA of RSI, OPEN etc. \nIt is important to note that the lowest low value here will not include the low of the current candle (0). It will look at the minimum value of the last hundred day candles from the previous candle (-1).",
     "visual_logic_extracted": "Image [img-1632387151.png] Text:\nPosition\nLowest Low Value ( CLOSE ( Symbol ( Instrument Name ( NFO,NIFTY 50,,,,, ), day, All) ), 100), -1"
 }

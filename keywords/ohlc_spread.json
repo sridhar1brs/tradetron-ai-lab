@@ -8,12 +8,29 @@
     ],
     "parameters": [
         {
-            "name": "Extract parameters manually or update script parser",
-            "type": "Any",
-            "description": "Details pending"
+            "name": "Instrument A",
+            "type": "Keyword",
+            "description": "First nested Instrument Name(...) keyword."
+        },
+        {
+            "name": "Instrument B",
+            "type": "Keyword",
+            "description": "Second nested Instrument Name(...) keyword."
+        },
+        {
+            "name": "Timeframe",
+            "type": "Enum",
+            "description": "Candle timeframe shorthand (Rule 46).",
+            "options": [
+                "1m",
+                "3m",
+                "5m",
+                "15m",
+                "day"
+            ]
         }
     ],
     "return_type": "Any",
-    "raw_scraped_text": "OHLC Spread\nThis keyword can be used for all series based technical indicator's. It will fetch the value of a particular candle in series for two independent instruments and find the difference of the same values. You can thus check the difference in premium of two strikes. This difference could be either positive or negative.\nThis keyword is nested within most series or technical indicators. In order to OHLC spread, you need to select position keyword and then select the series/indictor for which you need to find the spread between the two instruments. Post that click on the indicator to select keyword 'OHLC Spread'.\u00a0\n\u00a0\nAs shown in the above example, you can find the previous 5 minute open of the current week ATM CE and PE for the weekly option for Nifty Bank and find the difference in the same values.",
+    "raw_scraped_text": "OHLC Spread\nThis keyword can be used for all series based technical indicator's. It will fetch the value of a particular candle in series for two independent instruments and find the difference of the same values. You can thus check the difference in premium of two strikes. This difference could be either positive or negative.\nThis keyword is nested within most series or technical indicators. In order to OHLC spread, you need to select position keyword and then select the series/indictor for which you need to find the spread between the two instruments. Post that click on the indicator to select keyword 'OHLC Spread'. \n \nAs shown in the above example, you can find the previous 5 minute open of the current week ATM CE and PE for the weekly option for Nifty Bank and find the difference in the same values.",
     "visual_logic_extracted": "Image [img-1632482982.png] Text:\nS\n\n- Position\n(OPEN ( Symbol (Instrument Name () day All)\n\n_*)\n\nKeyword Paramters\n\nOhle\n\nSymbol x\n\nOHLC Spread\n\nOHLC Sum\nRenko\nRenko - closed candle\n\nRenko dynamic bricks\n\n[ok | | Cancel |\n\nImage [img-1632140575.png] Text:\nChoose\n\nPosition\nOPEN ( OHLC Spread ( Instrument Name ( NFO,NIFTY BANK,Current Week,CE,ATM,0,0 ) , Instrument Name ( NFO,NIFTY\nBANK,Current Week,PE,ATM,0,0 ) ,5m)), -1"
 }

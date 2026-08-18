@@ -8,12 +8,12 @@
     ],
     "parameters": [
         {
-            "name": "Extract parameters manually or update script parser",
-            "type": "Any",
-            "description": "Details pending"
+            "name": "Underlying",
+            "type": "String",
+            "description": "Underlying symbol. Sums (open quantity × theta) across all open positions for that underlying."
         }
     ],
     "return_type": "Any",
-    "raw_scraped_text": "Net Theta\nThis keyword returns the Net Theta of open positions in selected underlying for strategy.\u00a0\nEg. Net Theta('NIFTY 50') as float",
+    "raw_scraped_text": "Net Theta\nThis keyword returns the Net Theta of open positions in selected underlying for strategy. \nEg. Net Theta('NIFTY 50') as float",
     "visual_logic_extracted": "Image [img-1631791769.png] Text:\nNet Theta\nNIFTY 50\n\nImage [img-1631791822.png] Text:\nNet Theta = >) xy, where x = Theta and y = open quantity"
 }

@@ -7,12 +7,17 @@
     ],
     "parameters": [
         {
-            "name": "Extract parameters manually or update script parser",
-            "type": "Any",
-            "description": "Details pending"
+            "name": "Series",
+            "type": "Keyword",
+            "description": "Nested series keyword to operate on, e.g. CLOSE(...), OPEN(...), HIGH(...)."
+        },
+        {
+            "name": "Period",
+            "type": "Integer",
+            "description": "Number of previous values to average, e.g. 20."
         }
     ],
     "return_type": "Any",
     "raw_scraped_text": "Mean\nThis keyword will return the rolling mean of the series selected of the particular instrument.\nThis keyword has 2 inputs, one is to select the series, other is to select the period which is the no. of previous values to consider or the sample\nThe above condition will return the mean of the NIFTY 50 close series, considering the sample data of the past 20 three minute candles",
-    "visual_logic_extracted": "Image [img-1719320626.png] Text:\n9\u00b0\n\nMean\nCLOSE ( Symbol ( Instrument Name ( NFO,NIFTY 50,,,,,), 3m, All) ), 20"
+    "visual_logic_extracted": "Image [img-1719320626.png] Text:\n9°\n\nMean\nCLOSE ( Symbol ( Instrument Name ( NFO,NIFTY 50,,,,,), 3m, All) ), 20"
 }

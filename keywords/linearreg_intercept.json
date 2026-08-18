@@ -7,12 +7,17 @@
     ],
     "parameters": [
         {
-            "name": "Extract parameters manually or update script parser",
-            "type": "Any",
-            "description": "Details pending"
+            "name": "Series",
+            "type": "Keyword",
+            "description": "Nested series keyword to operate on, e.g. CLOSE(...), OPEN(...), HIGH(...)."
+        },
+        {
+            "name": "Period",
+            "type": "Integer",
+            "description": "e.g. 14."
         }
     ],
     "return_type": "Any",
-    "raw_scraped_text": "LINEARREG_INTERCEPT\nThis keyword returns the Linear Regression Intercept of any period of any series of the selected Instrument. This keyword is to be used under the position keyword.\u00a0\nThis keyword has been used as a part of TA lib. You can find more details on the same from the link shared below:\nhttps://www.ta-lib.org/function.html\nYou can fetch the \nLinear Regression Intercept\n on any series, like close in the above example, you can also plot EMA of RSI, OPEN etc",
+    "raw_scraped_text": "LINEARREG_INTERCEPT\nThis keyword returns the Linear Regression Intercept of any period of any series of the selected Instrument. This keyword is to be used under the position keyword. \nThis keyword has been used as a part of TA lib. You can find more details on the same from the link shared below:\nhttps://www.ta-lib.org/function.html\nYou can fetch the \nLinear Regression Intercept\n on any series, like close in the above example, you can also plot EMA of RSI, OPEN etc",
     "visual_logic_extracted": "Image [img-1632393943.png] Text:\nPosition\nLINEARREG_INTERCEPT ( CLOSE ( Symbol ( Instrument Name ( NFO,NIFTY 50,,,,,), 5m, All)), 14), -1"
 }

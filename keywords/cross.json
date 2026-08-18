@@ -7,12 +7,17 @@
     ],
     "parameters": [
         {
-            "name": "Extract parameters manually or update script parser",
-            "type": "Any",
-            "description": "Details pending"
+            "name": "Series A",
+            "type": "Keyword",
+            "description": "Nested series keyword — the line checked for crossing above Series B."
+        },
+        {
+            "name": "Series B",
+            "type": "Keyword",
+            "description": "Nested series keyword being crossed."
         }
     ],
     "return_type": "Any",
-    "raw_scraped_text": "Cross\nCross keyword is used to find if there has been a crossover in the previous candles. Cross keyword is to be used under position keyword.\nCross takes 2 input series\nIf a crossover is taken place it returns \nTrue\n, if not, it returns \nFalse\n\u00a0\nIn the above example ,we are checking if close price has given a crossover above EMA 20 in previous daily candle. If it has crossover, keyword will return true and strategy will execute",
+    "raw_scraped_text": "Cross\nCross keyword is used to find if there has been a crossover in the previous candles. Cross keyword is to be used under position keyword.\nCross takes 2 input series\nIf a crossover is taken place it returns \nTrue\n, if not, it returns \nFalse\n \nIn the above example ,we are checking if close price has given a crossover above EMA 20 in previous daily candle. If it has crossover, keyword will return true and strategy will execute",
     "visual_logic_extracted": "Image [img-1632312909.png] Text:\n+\n\nPosition\nCross ( CLOSE ( Symbol ( Instrument Name ( NSE,ACC,,,,, ), day, All) ), EMA ( CLOSE ( Symbol ( Instrument Name ( NSE,ACC,,,,, ), day, All) ),20)),-1"
 }

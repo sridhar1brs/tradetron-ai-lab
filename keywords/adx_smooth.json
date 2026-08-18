@@ -1,18 +1,28 @@
 {
     "name": "ADX Smooth",
     "description": "This keyword returns the value of the smooth Average Directional Index of the selected Instrument. This keyword is to be used under the position keyword",
-    "how_to_use_markdown": "This keyword returns the value of the smooth Average Directional Index of the selected Instrument. This keyword is to be used under the position keyword\n\n![Example](./images/img-1632226345.png)\n\nYou can fetch the  smooth Average Directional Index  on any candle of an instrument, like in the above example, you can fetch the  smooth Average Directional Index \u00a0of previous (-1) day candle of Nifty 50 spot",
+    "how_to_use_markdown": "This keyword returns the value of the smooth Average Directional Index of the selected Instrument. This keyword is to be used under the position keyword\n\n![Example](./images/img-1632226345.png)\n\nYou can fetch the  smooth Average Directional Index  on any candle of an instrument, like in the above example, you can fetch the  smooth Average Directional Index  of previous (-1) day candle of Nifty 50 spot",
     "example_image_urls": [
         "./images/img-1632226345.png"
     ],
     "parameters": [
         {
-            "name": "Extract parameters manually or update script parser",
-            "type": "Any",
-            "description": "Details pending"
+            "name": "Symbol",
+            "type": "Keyword",
+            "description": "Nested Symbol(...) keyword identifying instrument + timeframe."
+        },
+        {
+            "name": "Period",
+            "type": "Integer",
+            "description": "ADX period, e.g. 15."
+        },
+        {
+            "name": "Smoothing Period",
+            "type": "Integer",
+            "description": "e.g. 15."
         }
     ],
     "return_type": "Any",
-    "raw_scraped_text": "ADX Smooth\nThis keyword returns the value of the smooth Average Directional Index of the selected Instrument. This keyword is to be used under the position keyword\nYou can fetch the \nsmooth Average Directional Index\n on any candle of an instrument, like in the above example, you can fetch the \nsmooth Average Directional Index\n\u00a0of previous (-1) day candle of Nifty 50 spot",
-    "visual_logic_extracted": "Image [img-1632226345.png] Text:\nPosition\n\u2018ADX Smooth ( Symbol (Instrument Name ( NFO,NIFTY 50,,..,), day, All), 15,15), -1"
+    "raw_scraped_text": "ADX Smooth\nThis keyword returns the value of the smooth Average Directional Index of the selected Instrument. This keyword is to be used under the position keyword\nYou can fetch the \nsmooth Average Directional Index\n on any candle of an instrument, like in the above example, you can fetch the \nsmooth Average Directional Index\n of previous (-1) day candle of Nifty 50 spot",
+    "visual_logic_extracted": "Image [img-1632226345.png] Text:\nPosition\n‘ADX Smooth ( Symbol (Instrument Name ( NFO,NIFTY 50,,..,), day, All), 15,15), -1"
 }

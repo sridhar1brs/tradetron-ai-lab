@@ -7,12 +7,12 @@
     ],
     "parameters": [
         {
-            "name": "Extract parameters manually or update script parser",
-            "type": "Any",
-            "description": "Details pending"
+            "name": "Symbol",
+            "type": "Keyword",
+            "description": "Nested Symbol(...) / Renko(...) / Heikin Ashi(...) keyword. Must not be a bare Instrument() (Rule 42)."
         }
     ],
     "return_type": "Any",
     "raw_scraped_text": "OPEN\nThis keyword returns the Open value of the selected Instrument. This keyword is to be used under the position keyword\nThe above keyword will return previous day Open price of ABFRL",
-    "visual_logic_extracted": "Image [img-1632219543.png] Text:\n\u2014 o\nPosition\n\nOPEN ( Symbol ( Instrument Name ( NFO,ABFRL,,,,, ), day, All) ), -1"
+    "visual_logic_extracted": "Image [img-1632219543.png] Text:\n— o\nPosition\n\nOPEN ( Symbol ( Instrument Name ( NFO,ABFRL,,,,, ), day, All) ), -1"
 }

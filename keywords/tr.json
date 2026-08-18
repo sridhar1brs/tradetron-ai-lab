@@ -7,12 +7,12 @@
     ],
     "parameters": [
         {
-            "name": "Extract parameters manually or update script parser",
-            "type": "Any",
-            "description": "Details pending"
+            "name": "Symbol",
+            "type": "Keyword",
+            "description": "Nested Symbol(...) keyword identifying instrument + timeframe."
         }
     ],
     "return_type": "Any",
-    "raw_scraped_text": "TR\nThis keyword returns the True Range(TR) value of the selected Instrument for the selected timeframe. This keyword is to be used under the position keyword\n\u00a0\nThe above keyword will return the previous day TR value of ABFRL\nRead here to know more about TR -\nhttps://www.macroption.com/true-range/",
+    "raw_scraped_text": "TR\nThis keyword returns the True Range(TR) value of the selected Instrument for the selected timeframe. This keyword is to be used under the position keyword\n \nThe above keyword will return the previous day TR value of ABFRL\nRead here to know more about TR -\nhttps://www.macroption.com/true-range/",
     "visual_logic_extracted": "Image [img-1632224512.png] Text:\nPosition\nTR ( Symbol ( Instrument Name ( NSE,ABFRL,,,,, ), day, All) ) , -1"
 }

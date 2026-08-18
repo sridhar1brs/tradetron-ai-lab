@@ -7,9 +7,19 @@
     ],
     "parameters": [
         {
-            "name": "Extract parameters manually or update script parser",
-            "type": "Any",
-            "description": "Details pending"
+            "name": "Symbol",
+            "type": "Keyword",
+            "description": "Nested Symbol(...) keyword identifying instrument + timeframe."
+        },
+        {
+            "name": "Acceleration",
+            "type": "Number",
+            "description": "Acceleration factor, e.g. 0.02."
+        },
+        {
+            "name": "Max Acceleration",
+            "type": "Number",
+            "description": "Maximum acceleration factor, e.g. 0.2."
         }
     ],
     "return_type": "Any",

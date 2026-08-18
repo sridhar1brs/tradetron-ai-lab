@@ -7,9 +7,14 @@
     ],
     "parameters": [
         {
-            "name": "Extract parameters manually or update script parser",
-            "type": "Any",
-            "description": "Details pending"
+            "name": "Value 1",
+            "type": "Keyword|Number",
+            "description": "First value to compare."
+        },
+        {
+            "name": "Value 2",
+            "type": "Keyword|Number",
+            "description": "Second value to compare. Returns the smaller of the two."
         }
     ],
     "return_type": "Any",

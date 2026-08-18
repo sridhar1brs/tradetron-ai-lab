@@ -7,9 +7,14 @@
     ],
     "parameters": [
         {
-            "name": "Extract parameters manually or update script parser",
-            "type": "Any",
-            "description": "Details pending"
+            "name": "Series",
+            "type": "Keyword",
+            "description": "Nested series keyword to operate on, e.g. CLOSE(...)."
+        },
+        {
+            "name": "Period",
+            "type": "Integer",
+            "description": "Lookback period, e.g. 20. Output ranges 0-1."
         }
     ],
     "return_type": "Any",

@@ -7,12 +7,12 @@
     ],
     "parameters": [
         {
-            "name": "Extract parameters manually or update script parser",
-            "type": "Any",
-            "description": "Details pending"
+            "name": "Instrument",
+            "type": "Keyword",
+            "description": "Nested Instrument Name(...) keyword. Returns % change of LTP vs previous day's close."
         }
     ],
     "return_type": "Any",
-    "raw_scraped_text": "Change%\nThis keyword gives you the difference between the Last Traded Price of an instrument and the previous day's close price of that instrument in percentage.\u00a0\nHere, 2 implies 2%, -2 implies -2% and so on\nNote- No need to add % sign at end of the number",
+    "raw_scraped_text": "Change%\nThis keyword gives you the difference between the Last Traded Price of an instrument and the previous day's close price of that instrument in percentage. \nHere, 2 implies 2%, -2 implies -2% and so on\nNote- No need to add % sign at end of the number",
     "visual_logic_extracted": "Image [img-1631706643.png] Text:\nChange% >= Number\nInstrument Name ( NSE,ITC,,,,, ) 2"
 }

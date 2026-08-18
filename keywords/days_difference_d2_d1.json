@@ -7,12 +7,17 @@
     ],
     "parameters": [
         {
-            "name": "Extract parameters manually or update script parser",
-            "type": "Any",
-            "description": "Details pending"
+            "name": "D2",
+            "type": "Keyword",
+            "description": "Later date-returning keyword (e.g. Current Month Expiry(...))."
+        },
+        {
+            "name": "D1",
+            "type": "Keyword",
+            "description": "Earlier date-returning keyword (e.g. Today(...)). Returns D2 − D1 in whole days; D2 should be the later date."
         }
     ],
     "return_type": "Any",
-    "raw_scraped_text": "Days Difference (D2-D1)\nThis keyword is used to calculate the difference between days and the output is an integer\nDays Difference has 2 inputs. Please note that keywords that return DD-MM-YYYY formats can only be used as inputs.\nIn this keyword, D1 is subtracted from D2, so always D2 should be the bigger one\u00a0\nIn the above condition, we are checking if the difference between the Current month expiry and today is greater than 15 days.\n\u00a0\nIt considers all calendar days including holidays and non-trading days. You can find more detail on this keyword in the video link shared below:\nhttps://www.youtube.com/watch?v=lF8aHcaGmCA",
+    "raw_scraped_text": "Days Difference (D2-D1)\nThis keyword is used to calculate the difference between days and the output is an integer\nDays Difference has 2 inputs. Please note that keywords that return DD-MM-YYYY formats can only be used as inputs.\nIn this keyword, D1 is subtracted from D2, so always D2 should be the bigger one \nIn the above condition, we are checking if the difference between the Current month expiry and today is greater than 15 days.\n \nIt considers all calendar days including holidays and non-trading days. You can find more detail on this keyword in the video link shared below:\nhttps://www.youtube.com/watch?v=lF8aHcaGmCA",
     "visual_logic_extracted": "Image [img-1632310364.png] Text:\nDays Difference (D2-D1) >= Number\nToday ( NSE ) , Current Month Expiry ( NIFTY 50, 0 ) 15"
 }

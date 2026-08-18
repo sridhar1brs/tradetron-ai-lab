@@ -7,12 +7,27 @@
     ],
     "parameters": [
         {
-            "name": "Extract parameters manually or update script parser",
-            "type": "Any",
-            "description": "Details pending"
+            "name": "Symbol",
+            "type": "Keyword",
+            "description": "Nested Symbol(...) keyword identifying instrument + timeframe."
+        },
+        {
+            "name": "K Period",
+            "type": "Integer",
+            "description": "e.g. 5."
+        },
+        {
+            "name": "K Smoothing",
+            "type": "Integer",
+            "description": "e.g. 3."
+        },
+        {
+            "name": "D Smoothing",
+            "type": "Integer",
+            "description": "e.g. 3."
         }
     ],
     "return_type": "Any",
     "raw_scraped_text": "StochD\nThis keyword returns the Stochastic Oscillator value of the D line. This keyword like all technical indicators are to be used under the Position keyword\nThe above condition is checking if Previous day(-1) \nStochastic Oscillator value of the D line is greater than Previous day(-1) \nStochastic Oscillator value of the K line\nA stochastic oscillator is a popular technical indicator for generating overbought and oversold signals.\nRead more about Stock K and D here -\nhttps://www.investopedia.com/terms/s/stochasticoscillator.asp",
-    "visual_logic_extracted": "Image [img-1632137531.png] Text:\nChoose v\n\n6.98 \u00b0\n\nPosition > Position\n\u2018StochK ( Symbol ( Instrument Name ( NFO,NIFTY 5\u00a2 ), day, All) 5,3), -1 \u2018StochD ( Symbol ( Instrument Name ( NFO,NIFTY 50,\n\nday, All), 5,3,3),-1"
+    "visual_logic_extracted": "Image [img-1632137531.png] Text:\nChoose v\n\n6.98 °\n\nPosition > Position\n‘StochK ( Symbol ( Instrument Name ( NFO,NIFTY 5¢ ), day, All) 5,3), -1 ‘StochD ( Symbol ( Instrument Name ( NFO,NIFTY 50,\n\nday, All), 5,3,3),-1"
 }

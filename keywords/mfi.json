@@ -7,12 +7,17 @@
     ],
     "parameters": [
         {
-            "name": "Extract parameters manually or update script parser",
-            "type": "Any",
-            "description": "Details pending"
+            "name": "OHLCV",
+            "type": "Keyword",
+            "description": "Nested ohlcv(Instrument Name(...), timeframe, session) keyword."
+        },
+        {
+            "name": "Period",
+            "type": "Integer",
+            "description": "Lookback period, e.g. 15."
         }
     ],
     "return_type": "Any",
-    "raw_scraped_text": "MFI\nThis keyword returns the \nMoney Flow Index\n value of the instrument. This keyword like all technical indicators are to be used under the Position keyword\nThe above condition is checking if the Previous day(-1) MFI value is greater than 80 for Nifty 50 futures.\u00a0\nThe Money Flow Index (MFI) is a technical oscillator that uses price and volume data for identifying overbought or oversold signals in an asset.\nRead more about \nMoney Flow Index (MFI)\n here -\nhttps://www.investopedia.com/terms/m/mfi.asp",
+    "raw_scraped_text": "MFI\nThis keyword returns the \nMoney Flow Index\n value of the instrument. This keyword like all technical indicators are to be used under the Position keyword\nThe above condition is checking if the Previous day(-1) MFI value is greater than 80 for Nifty 50 futures. \nThe Money Flow Index (MFI) is a technical oscillator that uses price and volume data for identifying overbought or oversold signals in an asset.\nRead more about \nMoney Flow Index (MFI)\n here -\nhttps://www.investopedia.com/terms/m/mfi.asp",
     "visual_logic_extracted": "Image [img-1632143286.png] Text:\nChoose\n\n+\nPosition Number\nMFI ( ohlcv ( Instrument Name ( NFO,NIFTY 50,Current Month,,,, ), day, All) , 15), -1 80"
 }

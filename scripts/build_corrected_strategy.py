@@ -18,8 +18,9 @@ def get_spot_atm_ast():
                                 "name": "LTP", "kid": 1001, "params": [
                                     {"type": "keyword", "keyword": {
                                         "name": "Instrument Name", "kid": 1002, "params": [
-                                            # Rule 27 & 39: Slot 3 requires 'Current Month'
-                                            {"type": "value", "value": "NFO,NIFTY 50,Current Month,,,,"}
+                                            # Rule 17/27: Spot LTP must NOT include 'Current Month'
+                                            # (that resolves to the Futures price, ~30-80pt off Spot) and must use 5 comma slots.
+                                            {"type": "value", "value": "NFO,NIFTY 50,,,,,"}
                                         ]
                                     }}
                                 ]
@@ -49,7 +50,8 @@ def get_strike_ast(operator, var_name):
                                 "name": "LTP", "kid": 1001, "params": [
                                     {"type": "keyword", "keyword": {
                                         "name": "Instrument Name", "kid": 1002, "params": [
-                                            {"type": "value", "value": "NFO,NIFTY 50,Current Month,,,,"}
+                                            # Rule 17/27: Spot LTP must NOT include 'Current Month'
+                                            {"type": "value", "value": "NFO,NIFTY 50,,,,,"}
                                         ]
                                     }}
                                 ]

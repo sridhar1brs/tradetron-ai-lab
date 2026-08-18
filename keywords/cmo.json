@@ -7,12 +7,17 @@
     ],
     "parameters": [
         {
-            "name": "Extract parameters manually or update script parser",
-            "type": "Any",
-            "description": "Details pending"
+            "name": "Series",
+            "type": "Keyword",
+            "description": "Nested series keyword to operate on, e.g. CLOSE(...), OPEN(...), HIGH(...)."
+        },
+        {
+            "name": "Period",
+            "type": "Integer",
+            "description": "e.g. 20."
         }
     ],
     "return_type": "Any",
     "raw_scraped_text": "CMO\nThis keyword returns the \nChande momentum oscillator\n of any period of any series of the selected Instrument. This keyword is to be used under the position keyword\nYou can plot \nChande momentum oscillator\n on any series, like close in the above example, you can also plot \nCMO\n of RSI, OPEN etc",
-    "visual_logic_extracted": "Image [img-1632227587.png] Text:\nPosition\n\u2018CMO ( CLOSE ( Symbol ( Instrument Name ( NFO,NIFTY 50.,,., ), day, All) ), 20), -1"
+    "visual_logic_extracted": "Image [img-1632227587.png] Text:\nPosition\n‘CMO ( CLOSE ( Symbol ( Instrument Name ( NFO,NIFTY 50.,,., ), day, All) ), 20), -1"
 }

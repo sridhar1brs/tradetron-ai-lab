@@ -7,9 +7,14 @@
     ],
     "parameters": [
         {
-            "name": "Extract parameters manually or update script parser",
-            "type": "Any",
-            "description": "Details pending"
+            "name": "Symbol",
+            "type": "Keyword",
+            "description": "Nested Symbol(...) keyword identifying instrument + timeframe."
+        },
+        {
+            "name": "Period",
+            "type": "Integer",
+            "description": "e.g. 15."
         }
     ],
     "return_type": "Any",
