@@ -184,7 +184,8 @@ def build_dynamic_iron_fly():
 
     c2_r1 = Condition('Repair Once')
     c2_r1.add_rule(Rule(Keyword('Traded Instrument', 'Entry', 'quantity', symbol, '1', '1', '1'), '>', 0))
-    c2_r1.add_rule(Rule(Keyword('Net Quantity', Keyword('Traded Instrument', 'Entry', '1', '2', '2')), '!=', 0))
+    # Net Quantity must wrap Traded Instrument Name, never bare Traded Instrument (per Tradetron QNA #883)
+    c2_r1.add_rule(Rule(Keyword('Net Quantity', Keyword('Traded Instrument Name', 'Entry', 'instrument', symbol, '1', '2', '2')), '!=', 0))
     s2.add_condition(c2_r1)
 
     s.add_set(s2)
@@ -205,7 +206,8 @@ def build_dynamic_iron_fly():
 
     c3_r1 = Condition('Repair Once')
     c3_r1.add_rule(Rule(Keyword('Traded Instrument', 'Entry', 'quantity', symbol, '1', '1', '2'), '>', 0))
-    c3_r1.add_rule(Rule(Keyword('Net Quantity', Keyword('Traded Instrument', 'Entry', '1', '3', '2')), '!=', 0))
+    # Net Quantity must wrap Traded Instrument Name, never bare Traded Instrument (per Tradetron QNA #883)
+    c3_r1.add_rule(Rule(Keyword('Net Quantity', Keyword('Traded Instrument Name', 'Entry', 'instrument', symbol, '1', '3', '2')), '!=', 0))
     s3.add_condition(c3_r1)
 
     s.add_set(s3)

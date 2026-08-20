@@ -143,6 +143,17 @@ auditor (within `conditionJson` only — see Known Gaps).
 4h, day, week, month`. Never `"1min"`, `"3min"`, etc. — the engine requires the shorthand
 form. Enforced by the auditor (within `conditionJson` only — see Known Gaps).
 
+## Rule 47 — `Net Quantity` Must Wrap `Traded Instrument Name`, Never `Traded Instrument`
+`Net Quantity(...)` needs an *instrument reference* as its argument, not a numeric field
+value. `Traded Instrument` returns a field (price/quantity/strike/pnl/time); `Traded
+Instrument Name` returns the instrument itself. Confirmed via Tradetron's own official
+explainer thread: ["Traded Instrument", "Traded Instrument Name" and "Net Quantity"
+Keywords: Different Examples of its Uses](https://qna.tradetron.tech/t/traded-instrument-traded-instrument-name-and-net-quantity-keywords-different-examples-of-its-uses/883)
+(Nelson, Tradetron Team) — every worked example nests `Traded Instrument Name` under
+`Net Quantity`. Using bare `Traded Instrument` there was a real, previously-undetected bug
+found in 3 production Iron Fly strategies, their builder scripts, and the
+`tests/known_good/good_iron_fly.json` fixture (all fixed). Enforced by the auditor.
+
 ---
 
 ## Other Mandatory Practices (from `limitations_and_constraints/best_practices.md`)

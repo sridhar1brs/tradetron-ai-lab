@@ -328,6 +328,11 @@ def _check_ast_nodes(node, set_num, cond_num, active_legs, errors, warnings):
                         if op_symbol not in ["*", "+", "-", "/"]:
                             warnings.append(f"[RULE 13 WARNING] Math Operation in Set {set_num} Cond {cond_num} operator symbol '{op_symbol}' is not at index 3 (Postfix array order expected).")
 
+                if el_name == "Net Quantity":
+                    for p in params:
+                        if p.get("type") == "keyword" and p.get("keyword", {}).get("name") == "Traded Instrument":
+                            errors.append(f"[RULE 47 VIOLATION] Net Quantity in Set {set_num} Cond {cond_num} wraps 'Traded Instrument'. Must wrap 'Traded Instrument Name' instead — per Tradetron's official docs (qna.tradetron.tech/t/883), 'Traded Instrument' returns a numeric field value, not an instrument reference.")
+
                 if el_name == "Positions Detail":
                     if len(params) >= 4:
                         field_val = params[3].get("value", "")

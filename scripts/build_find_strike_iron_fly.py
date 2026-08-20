@@ -228,13 +228,13 @@ s1.add_condition(c1_repair)
 # --- CLEAN UP BLOCKS for Set 4 Trigger ---
 c1_cleanup_ce = Condition(ctype="Repair Once")
 c1_cleanup_ce.add_rule(Rule(Keyword("Traded Instrument", "Entry", "quantity", "NIFTY 50", "1", "4", "1"), ">", "0"))
-c1_cleanup_ce.add_rule(Rule(Keyword("Net Quantity", Keyword("Traded Instrument", "Entry", "quantity", "NIFTY 50", "1", "1", "1")), "!=", "0"))
+c1_cleanup_ce.add_rule(Rule(Keyword("Net Quantity", Keyword("Traded Instrument Name", "Entry", "instrument", "NIFTY 50", "1", "1", "1")), "!=", "0"))
 c1_cleanup_ce.add_leg(Leg(buy_sell="S", option_type="CE", strike_type="Fx", strike_json=get_traded_instrument_ast(1, 1, 1), expiry_type="Current Month"))
 s1.add_condition(c1_cleanup_ce)
 
 c1_cleanup_pe = Condition(ctype="Repair Once")
 c1_cleanup_pe.add_rule(Rule(Keyword("Traded Instrument", "Entry", "quantity", "NIFTY 50", "1", "4", "1"), ">", "0"))
-c1_cleanup_pe.add_rule(Rule(Keyword("Net Quantity", Keyword("Traded Instrument", "Entry", "quantity", "NIFTY 50", "1", "1", "2")), "!=", "0"))
+c1_cleanup_pe.add_rule(Rule(Keyword("Net Quantity", Keyword("Traded Instrument Name", "Entry", "instrument", "NIFTY 50", "1", "1", "2")), "!=", "0"))
 c1_cleanup_pe.add_leg(Leg(buy_sell="S", option_type="PE", strike_type="Fx", strike_json=get_traded_instrument_ast(1, 1, 2), expiry_type="Current Month"))
 s1.add_condition(c1_cleanup_pe)
 
@@ -245,7 +245,7 @@ strat.add_set(s1)
 # ====================================================================================
 s2 = SetBlock(2)
 c2_entry = Condition(ctype="Entry")
-c2_entry.add_rule(Rule(Keyword("LTP", Keyword("Instrument Name", "NFO,NIFTY 50,Current Month,,,,")), ">", Keyword("Traded Instrument", "Entry", "strike", "NIFTY 50", "1", "1", "1")))
+c2_entry.add_rule(Rule(Keyword("LTP", Keyword("Instrument Name", "NFO,NIFTY 50,,,,,")), ">", Keyword("Traded Instrument", "Entry", "strike", "NIFTY 50", "1", "1", "1")))
 
 c2_entry.add_leg(Leg("NIFTY 50", "CE", "S", 1, strike="( Traded Instrument )", strike_type="Fx", strike_json=get_traded_instrument_ast(1, 1, 1), expiry_type="Current Month")) 
 c2_entry.add_leg(Leg("NIFTY 50", "CE", "B", 1, strike="( Traded Instrument + Get Runtime(HedgeRoll) )", strike_type="Fx", strike_json=get_traded_instrument_offset_ast("+", "HedgeRoll", 1, 1, 1), expiry_type="Current Month"))
@@ -253,7 +253,7 @@ s2.add_condition(c2_entry)
 
 c2_cleanup = Condition(ctype="Repair Once")
 c2_cleanup.add_rule(Rule(Keyword("Traded Instrument", "Entry", "quantity", "NIFTY 50", "1", "4", "1"), ">", "0"))
-c2_cleanup.add_rule(Rule(Keyword("Net Quantity", Keyword("Traded Instrument", "Entry", "quantity", "NIFTY 50", "1", "2", "2")), "!=", "0"))
+c2_cleanup.add_rule(Rule(Keyword("Net Quantity", Keyword("Traded Instrument Name", "Entry", "instrument", "NIFTY 50", "1", "2", "2")), "!=", "0"))
 c2_cleanup.add_leg(Leg(buy_sell="S", option_type="CE", strike_type="Fx", strike_json=get_traded_instrument_ast(1, 2, 2), expiry_type="Current Month"))
 s2.add_condition(c2_cleanup)
 
@@ -264,7 +264,7 @@ strat.add_set(s2)
 # ====================================================================================
 s3 = SetBlock(3)
 c3_entry = Condition(ctype="Entry")
-c3_entry.add_rule(Rule(Keyword("LTP", Keyword("Instrument Name", "NFO,NIFTY 50,Current Month,,,,")), "<", Keyword("Traded Instrument", "Entry", "strike", "NIFTY 50", "1", "1", "2")))
+c3_entry.add_rule(Rule(Keyword("LTP", Keyword("Instrument Name", "NFO,NIFTY 50,,,,,")), "<", Keyword("Traded Instrument", "Entry", "strike", "NIFTY 50", "1", "1", "2")))
 
 c3_entry.add_leg(Leg("NIFTY 50", "PE", "S", 1, strike="( Traded Instrument )", strike_type="Fx", strike_json=get_traded_instrument_ast(1, 1, 2), expiry_type="Current Month"))
 c3_entry.add_leg(Leg("NIFTY 50", "PE", "B", 1, strike="( Traded Instrument - Get Runtime(HedgeRoll) )", strike_type="Fx", strike_json=get_traded_instrument_offset_ast("-", "HedgeRoll", 1, 1, 2), expiry_type="Current Month"))
@@ -272,7 +272,7 @@ s3.add_condition(c3_entry)
 
 c3_cleanup = Condition(ctype="Repair Once")
 c3_cleanup.add_rule(Rule(Keyword("Traded Instrument", "Entry", "quantity", "NIFTY 50", "1", "4", "1"), ">", "0"))
-c3_cleanup.add_rule(Rule(Keyword("Net Quantity", Keyword("Traded Instrument", "Entry", "quantity", "NIFTY 50", "1", "3", "2")), "!=", "0"))
+c3_cleanup.add_rule(Rule(Keyword("Net Quantity", Keyword("Traded Instrument Name", "Entry", "instrument", "NIFTY 50", "1", "3", "2")), "!=", "0"))
 c3_cleanup.add_leg(Leg(buy_sell="S", option_type="PE", strike_type="Fx", strike_json=get_traded_instrument_ast(1, 3, 2), expiry_type="Current Month"))
 s3.add_condition(c3_cleanup)
 

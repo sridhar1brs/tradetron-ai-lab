@@ -20,19 +20,19 @@
       "variableName": "HedgeGap",
       "value": "( tt_Number ( '700' )  )",
       "display": "( Number ( '700' )  )",
-      "json": "{\"operator\": \"and\", \"operands\": [{\"type\": \"rule\", \"value\": \"builder-basic_rule_0\", \"elements\": [{\"name\": \"Number\", \"kid\": 2529, \"params\": [{\"type\": \"value\", \"value\": \"700\"}]}]}]}"
+      "json": "{\"operator\": \"and\", \"operands\": [{\"type\": \"rule\", \"value\": \"builder-basic_rule_0\", \"elements\": [{\"name\": \"Number\", \"kid\": 1207, \"params\": [{\"type\": \"value\", \"value\": \"700\"}]}]}]}"
     },
     {
       "variableName": "Roll_Step",
       "value": "( tt_Number ( '100' )  )",
       "display": "( Number ( '100' )  )",
-      "json": "{\"operator\": \"and\", \"operands\": [{\"type\": \"rule\", \"value\": \"builder-basic_rule_0\", \"elements\": [{\"name\": \"Number\", \"kid\": 9425, \"params\": [{\"type\": \"value\", \"value\": \"100\"}]}]}]}"
+      "json": "{\"operator\": \"and\", \"operands\": [{\"type\": \"rule\", \"value\": \"builder-basic_rule_0\", \"elements\": [{\"name\": \"Number\", \"kid\": 2945, \"params\": [{\"type\": \"value\", \"value\": \"100\"}]}]}]}"
     },
     {
       "variableName": "HOLD_TILL_EXPIRY",
       "value": "( tt_Number ( '1' )  )",
       "display": "( Number ( '1' )  )",
-      "json": "{\"operator\": \"and\", \"operands\": [{\"type\": \"rule\", \"value\": \"builder-basic_rule_0\", \"elements\": [{\"name\": \"Number\", \"kid\": 1188, \"params\": [{\"type\": \"value\", \"value\": \"1\"}]}]}]}"
+      "json": "{\"operator\": \"and\", \"operands\": [{\"type\": \"rule\", \"value\": \"builder-basic_rule_0\", \"elements\": [{\"name\": \"Number\", \"kid\": 6307, \"params\": [{\"type\": \"value\", \"value\": \"1\"}]}]}]}"
     }
   ],
   "sets": [
@@ -43,7 +43,7 @@
         {
           "type": "Entry",
           "conditionValue": null,
-          "conditionJson": "{\"operator\": \"and\", \"operands\": [{\"type\": \"rule\", \"value\": \"builder-basic_rule_0\", \"elements\": [{\"name\": \"Time\", \"kid\": 1863, \"params\": [{\"type\": \"value\", \"value\": \"NSE\"}]}, {\"name\": \">=\", \"params\": []}, {\"name\": \"Number\", \"kid\": 6999, \"params\": [{\"type\": \"value\", \"value\": \"920\"}]}]}, {\"type\": \"rule\", \"value\": \"builder-basic_rule_1\", \"elements\": [{\"name\": \"Time\", \"kid\": 4077, \"params\": [{\"type\": \"value\", \"value\": \"NSE\"}]}, {\"name\": \"<\", \"params\": []}, {\"name\": \"Number\", \"kid\": 4753, \"params\": [{\"type\": \"value\", \"value\": \"1515\"}]}]}]}",
+          "conditionJson": "{\"operator\": \"and\", \"operands\": [{\"type\": \"rule\", \"value\": \"builder-basic_rule_0\", \"elements\": [{\"name\": \"Time\", \"kid\": 9024, \"params\": [{\"type\": \"value\", \"value\": \"NSE\"}]}, {\"name\": \">=\", \"params\": []}, {\"name\": \"Number\", \"kid\": 9762, \"params\": [{\"type\": \"value\", \"value\": \"920\"}]}]}, {\"type\": \"rule\", \"value\": \"builder-basic_rule_1\", \"elements\": [{\"name\": \"Time\", \"kid\": 6030, \"params\": [{\"type\": \"value\", \"value\": \"NSE\"}]}, {\"name\": \"<\", \"params\": []}, {\"name\": \"Number\", \"kid\": 8944, \"params\": [{\"type\": \"value\", \"value\": \"1515\"}]}]}]}",
           "conditionDisplay": null,
           "subType": "None",
           "visible": 1,
@@ -59,7 +59,7 @@
               "productType": "NRML",
               "expiryType": "Current Month",
               "expiry": "( tt_curr_monthexpiry ( 'NIFTY 50', '0' ) )",
-              "expiryJson": "{\"operator\": \"and\", \"operands\": [{\"type\": \"rule\", \"value\": \"builder-basic_rule_0\", \"elements\": [{\"name\": \"Current Month Expiry\", \"kid\": 9168, \"params\": [{\"type\": \"value\", \"value\": \"NIFTY 50\"}, {\"type\": \"value\", \"value\": \"0\"}]}]}]}",
+              "expiryJson": "{\"operator\": \"and\", \"operands\": [{\"type\": \"rule\", \"value\": \"builder-basic_rule_0\", \"elements\": [{\"name\": \"Current Month Expiry\", \"kid\": 1821, \"params\": [{\"type\": \"value\", \"value\": \"NIFTY 50\"}, {\"type\": \"value\", \"value\": \"0\"}]}]}]}",
               "expiryDisplay": "( Current Month Expiry ( 'NIFTY 50', '0' ) )",
               "strikeType": "Fx",
               "strike": "( Get Strike + Get Runtime(HedgeGap) )",
@@ -93,7 +93,7 @@
               "productType": "NRML",
               "expiryType": "Current Month",
               "expiry": "( tt_curr_monthexpiry ( 'NIFTY 50', '0' ) )",
-              "expiryJson": "{\"operator\": \"and\", \"operands\": [{\"type\": \"rule\", \"value\": \"builder-basic_rule_0\", \"elements\": [{\"name\": \"Current Month Expiry\", \"kid\": 5882, \"params\": [{\"type\": \"value\", \"value\": \"NIFTY 50\"}, {\"type\": \"value\", \"value\": \"0\"}]}]}]}",
+              "expiryJson": "{\"operator\": \"and\", \"operands\": [{\"type\": \"rule\", \"value\": \"builder-basic_rule_0\", \"elements\": [{\"name\": \"Current Month Expiry\", \"kid\": 2365, \"params\": [{\"type\": \"value\", \"value\": \"NIFTY 50\"}, {\"type\": \"value\", \"value\": \"0\"}]}]}]}",
               "expiryDisplay": "( Current Month Expiry ( 'NIFTY 50', '0' ) )",
               "strikeType": "Fx",
               "strike": "( Get Strike - Get Runtime(HedgeGap) )",
@@ -125,7 +125,7 @@
         {
           "type": "Repair Once",
           "conditionValue": null,
-          "conditionJson": "{\"operator\": \"and\", \"operands\": [{\"type\": \"rule\", \"value\": \"builder-basic_rule_0\", \"elements\": [{\"name\": \"Traded Instrument\", \"kid\": 8331, \"params\": [{\"type\": \"value\", \"value\": \"Entry\"}, {\"type\": \"value\", \"value\": \"quantity\"}, {\"type\": \"value\", \"value\": \"NIFTY 50\"}, {\"type\": \"value\", \"value\": \"1\"}, {\"type\": \"value\", \"value\": \"1\"}, {\"type\": \"value\", \"value\": \"1\"}]}, {\"name\": \">\", \"params\": []}, {\"name\": \"Number\", \"kid\": 2241, \"params\": [{\"type\": \"value\", \"value\": \"0\"}]}]}]}",
+          "conditionJson": "{\"operator\": \"and\", \"operands\": [{\"type\": \"rule\", \"value\": \"builder-basic_rule_0\", \"elements\": [{\"name\": \"Traded Instrument\", \"kid\": 8013, \"params\": [{\"type\": \"value\", \"value\": \"Entry\"}, {\"type\": \"value\", \"value\": \"quantity\"}, {\"type\": \"value\", \"value\": \"NIFTY 50\"}, {\"type\": \"value\", \"value\": \"1\"}, {\"type\": \"value\", \"value\": \"1\"}, {\"type\": \"value\", \"value\": \"1\"}]}, {\"name\": \">\", \"params\": []}, {\"name\": \"Number\", \"kid\": 4476, \"params\": [{\"type\": \"value\", \"value\": \"0\"}]}]}]}",
           "conditionDisplay": null,
           "subType": "None",
           "visible": 1,
@@ -141,7 +141,7 @@
               "productType": "NRML",
               "expiryType": "Current Month",
               "expiry": "( tt_curr_monthexpiry ( 'NIFTY 50', '0' ) )",
-              "expiryJson": "{\"operator\": \"and\", \"operands\": [{\"type\": \"rule\", \"value\": \"builder-basic_rule_0\", \"elements\": [{\"name\": \"Current Month Expiry\", \"kid\": 7367, \"params\": [{\"type\": \"value\", \"value\": \"NIFTY 50\"}, {\"type\": \"value\", \"value\": \"0\"}]}]}]}",
+              "expiryJson": "{\"operator\": \"and\", \"operands\": [{\"type\": \"rule\", \"value\": \"builder-basic_rule_0\", \"elements\": [{\"name\": \"Current Month Expiry\", \"kid\": 3815, \"params\": [{\"type\": \"value\", \"value\": \"NIFTY 50\"}, {\"type\": \"value\", \"value\": \"0\"}]}]}]}",
               "expiryDisplay": "( Current Month Expiry ( 'NIFTY 50', '0' ) )",
               "strikeType": "Fx",
               "strike": "( Get Strike(Spot LTP) )",
@@ -175,7 +175,7 @@
               "productType": "NRML",
               "expiryType": "Current Month",
               "expiry": "( tt_curr_monthexpiry ( 'NIFTY 50', '0' ) )",
-              "expiryJson": "{\"operator\": \"and\", \"operands\": [{\"type\": \"rule\", \"value\": \"builder-basic_rule_0\", \"elements\": [{\"name\": \"Current Month Expiry\", \"kid\": 5216, \"params\": [{\"type\": \"value\", \"value\": \"NIFTY 50\"}, {\"type\": \"value\", \"value\": \"0\"}]}]}]}",
+              "expiryJson": "{\"operator\": \"and\", \"operands\": [{\"type\": \"rule\", \"value\": \"builder-basic_rule_0\", \"elements\": [{\"name\": \"Current Month Expiry\", \"kid\": 6861, \"params\": [{\"type\": \"value\", \"value\": \"NIFTY 50\"}, {\"type\": \"value\", \"value\": \"0\"}]}]}]}",
               "expiryDisplay": "( Current Month Expiry ( 'NIFTY 50', '0' ) )",
               "strikeType": "Fx",
               "strike": "( Get Strike(Spot LTP) )",
@@ -213,7 +213,7 @@
         {
           "type": "Entry",
           "conditionValue": null,
-          "conditionJson": "{\"operator\": \"and\", \"operands\": [{\"type\": \"rule\", \"value\": \"builder-basic_rule_0\", \"elements\": [{\"name\": \"LTP\", \"kid\": 1402, \"params\": [{\"type\": \"keyword\", \"keyword\": {\"name\": \"Instrument Name\", \"kid\": 6563, \"params\": [{\"type\": \"value\", \"value\": \"NFO,NIFTY 50,,,,,\"}]}}]}, {\"name\": \">=\", \"params\": []}, {\"name\": \"Traded Instrument\", \"kid\": 6577, \"params\": [{\"type\": \"value\", \"value\": \"Entry\"}, {\"type\": \"value\", \"value\": \"strike\"}, {\"type\": \"value\", \"value\": \"NIFTY 50\"}, {\"type\": \"value\", \"value\": \"1\"}, {\"type\": \"value\", \"value\": \"1\"}, {\"type\": \"value\", \"value\": \"1\"}]}]}]}",
+          "conditionJson": "{\"operator\": \"and\", \"operands\": [{\"type\": \"rule\", \"value\": \"builder-basic_rule_0\", \"elements\": [{\"name\": \"LTP\", \"kid\": 9338, \"params\": [{\"type\": \"keyword\", \"keyword\": {\"name\": \"Instrument Name\", \"kid\": 7063, \"params\": [{\"type\": \"value\", \"value\": \"NFO,NIFTY 50,,,,,\"}]}}]}, {\"name\": \">=\", \"params\": []}, {\"name\": \"Traded Instrument\", \"kid\": 4884, \"params\": [{\"type\": \"value\", \"value\": \"Entry\"}, {\"type\": \"value\", \"value\": \"strike\"}, {\"type\": \"value\", \"value\": \"NIFTY 50\"}, {\"type\": \"value\", \"value\": \"1\"}, {\"type\": \"value\", \"value\": \"1\"}, {\"type\": \"value\", \"value\": \"1\"}]}]}]}",
           "conditionDisplay": null,
           "subType": "None",
           "visible": 1,
@@ -229,7 +229,7 @@
               "productType": "NRML",
               "expiryType": "Current Month",
               "expiry": "( tt_curr_monthexpiry ( 'NIFTY 50', '0' ) )",
-              "expiryJson": "{\"operator\": \"and\", \"operands\": [{\"type\": \"rule\", \"value\": \"builder-basic_rule_0\", \"elements\": [{\"name\": \"Current Month Expiry\", \"kid\": 5953, \"params\": [{\"type\": \"value\", \"value\": \"NIFTY 50\"}, {\"type\": \"value\", \"value\": \"0\"}]}]}]}",
+              "expiryJson": "{\"operator\": \"and\", \"operands\": [{\"type\": \"rule\", \"value\": \"builder-basic_rule_0\", \"elements\": [{\"name\": \"Current Month Expiry\", \"kid\": 8929, \"params\": [{\"type\": \"value\", \"value\": \"NIFTY 50\"}, {\"type\": \"value\", \"value\": \"0\"}]}]}]}",
               "expiryDisplay": "( Current Month Expiry ( 'NIFTY 50', '0' ) )",
               "strikeType": "Fx",
               "strike": "( Traded Instrument )",
@@ -263,7 +263,7 @@
               "productType": "NRML",
               "expiryType": "Current Month",
               "expiry": "( tt_curr_monthexpiry ( 'NIFTY 50', '0' ) )",
-              "expiryJson": "{\"operator\": \"and\", \"operands\": [{\"type\": \"rule\", \"value\": \"builder-basic_rule_0\", \"elements\": [{\"name\": \"Current Month Expiry\", \"kid\": 9190, \"params\": [{\"type\": \"value\", \"value\": \"NIFTY 50\"}, {\"type\": \"value\", \"value\": \"0\"}]}]}]}",
+              "expiryJson": "{\"operator\": \"and\", \"operands\": [{\"type\": \"rule\", \"value\": \"builder-basic_rule_0\", \"elements\": [{\"name\": \"Current Month Expiry\", \"kid\": 7732, \"params\": [{\"type\": \"value\", \"value\": \"NIFTY 50\"}, {\"type\": \"value\", \"value\": \"0\"}]}]}]}",
               "expiryDisplay": "( Current Month Expiry ( 'NIFTY 50', '0' ) )",
               "strikeType": "Fx",
               "strike": "( Traded Instrument - Get Runtime(Roll_Step) )",
@@ -295,7 +295,7 @@
         {
           "type": "Repair Once",
           "conditionValue": null,
-          "conditionJson": "{\"operator\": \"and\", \"operands\": [{\"type\": \"rule\", \"value\": \"builder-basic_rule_0\", \"elements\": [{\"name\": \"Traded Instrument\", \"kid\": 5036, \"params\": [{\"type\": \"value\", \"value\": \"Entry\"}, {\"type\": \"value\", \"value\": \"quantity\"}, {\"type\": \"value\", \"value\": \"NIFTY 50\"}, {\"type\": \"value\", \"value\": \"1\"}, {\"type\": \"value\", \"value\": \"1\"}, {\"type\": \"value\", \"value\": \"1\"}]}, {\"name\": \">\", \"params\": []}, {\"name\": \"Number\", \"kid\": 1731, \"params\": [{\"type\": \"value\", \"value\": \"0\"}]}]}, {\"type\": \"rule\", \"value\": \"builder-basic_rule_1\", \"elements\": [{\"name\": \"Net Quantity\", \"kid\": 6318, \"params\": [{\"type\": \"keyword\", \"keyword\": {\"name\": \"Traded Instrument\", \"kid\": 1123, \"params\": [{\"type\": \"value\", \"value\": \"Entry\"}, {\"type\": \"value\", \"value\": \"1\"}, {\"type\": \"value\", \"value\": \"2\"}, {\"type\": \"value\", \"value\": \"2\"}]}}]}, {\"name\": \"!=\", \"params\": []}, {\"name\": \"Number\", \"kid\": 2091, \"params\": [{\"type\": \"value\", \"value\": \"0\"}]}]}]}",
+          "conditionJson": "{\"operator\": \"and\", \"operands\": [{\"type\": \"rule\", \"value\": \"builder-basic_rule_0\", \"elements\": [{\"name\": \"Traded Instrument\", \"kid\": 1116, \"params\": [{\"type\": \"value\", \"value\": \"Entry\"}, {\"type\": \"value\", \"value\": \"quantity\"}, {\"type\": \"value\", \"value\": \"NIFTY 50\"}, {\"type\": \"value\", \"value\": \"1\"}, {\"type\": \"value\", \"value\": \"1\"}, {\"type\": \"value\", \"value\": \"1\"}]}, {\"name\": \">\", \"params\": []}, {\"name\": \"Number\", \"kid\": 2968, \"params\": [{\"type\": \"value\", \"value\": \"0\"}]}]}, {\"type\": \"rule\", \"value\": \"builder-basic_rule_1\", \"elements\": [{\"name\": \"Net Quantity\", \"kid\": 3771, \"params\": [{\"type\": \"keyword\", \"keyword\": {\"name\": \"Traded Instrument Name\", \"kid\": 3529, \"params\": [{\"type\": \"value\", \"value\": \"Entry\"}, {\"type\": \"value\", \"value\": \"instrument\"}, {\"type\": \"value\", \"value\": \"NIFTY 50\"}, {\"type\": \"value\", \"value\": \"1\"}, {\"type\": \"value\", \"value\": \"2\"}, {\"type\": \"value\", \"value\": \"2\"}]}}]}, {\"name\": \"!=\", \"params\": []}, {\"name\": \"Number\", \"kid\": 7813, \"params\": [{\"type\": \"value\", \"value\": \"0\"}]}]}]}",
           "conditionDisplay": null,
           "subType": "None",
           "visible": 1,
@@ -314,7 +314,7 @@
         {
           "type": "Entry",
           "conditionValue": null,
-          "conditionJson": "{\"operator\": \"and\", \"operands\": [{\"type\": \"rule\", \"value\": \"builder-basic_rule_0\", \"elements\": [{\"name\": \"LTP\", \"kid\": 1402, \"params\": [{\"type\": \"keyword\", \"keyword\": {\"name\": \"Instrument Name\", \"kid\": 6563, \"params\": [{\"type\": \"value\", \"value\": \"NFO,NIFTY 50,,,,,\"}]}}]}, {\"name\": \"<=\", \"params\": []}, {\"name\": \"Traded Instrument\", \"kid\": 5729, \"params\": [{\"type\": \"value\", \"value\": \"Entry\"}, {\"type\": \"value\", \"value\": \"strike\"}, {\"type\": \"value\", \"value\": \"NIFTY 50\"}, {\"type\": \"value\", \"value\": \"1\"}, {\"type\": \"value\", \"value\": \"1\"}, {\"type\": \"value\", \"value\": \"2\"}]}]}]}",
+          "conditionJson": "{\"operator\": \"and\", \"operands\": [{\"type\": \"rule\", \"value\": \"builder-basic_rule_0\", \"elements\": [{\"name\": \"LTP\", \"kid\": 9338, \"params\": [{\"type\": \"keyword\", \"keyword\": {\"name\": \"Instrument Name\", \"kid\": 7063, \"params\": [{\"type\": \"value\", \"value\": \"NFO,NIFTY 50,,,,,\"}]}}]}, {\"name\": \"<=\", \"params\": []}, {\"name\": \"Traded Instrument\", \"kid\": 5368, \"params\": [{\"type\": \"value\", \"value\": \"Entry\"}, {\"type\": \"value\", \"value\": \"strike\"}, {\"type\": \"value\", \"value\": \"NIFTY 50\"}, {\"type\": \"value\", \"value\": \"1\"}, {\"type\": \"value\", \"value\": \"1\"}, {\"type\": \"value\", \"value\": \"2\"}]}]}]}",
           "conditionDisplay": null,
           "subType": "None",
           "visible": 1,
@@ -330,7 +330,7 @@
               "productType": "NRML",
               "expiryType": "Current Month",
               "expiry": "( tt_curr_monthexpiry ( 'NIFTY 50', '0' ) )",
-              "expiryJson": "{\"operator\": \"and\", \"operands\": [{\"type\": \"rule\", \"value\": \"builder-basic_rule_0\", \"elements\": [{\"name\": \"Current Month Expiry\", \"kid\": 4200, \"params\": [{\"type\": \"value\", \"value\": \"NIFTY 50\"}, {\"type\": \"value\", \"value\": \"0\"}]}]}]}",
+              "expiryJson": "{\"operator\": \"and\", \"operands\": [{\"type\": \"rule\", \"value\": \"builder-basic_rule_0\", \"elements\": [{\"name\": \"Current Month Expiry\", \"kid\": 9917, \"params\": [{\"type\": \"value\", \"value\": \"NIFTY 50\"}, {\"type\": \"value\", \"value\": \"0\"}]}]}]}",
               "expiryDisplay": "( Current Month Expiry ( 'NIFTY 50', '0' ) )",
               "strikeType": "Fx",
               "strike": "( Traded Instrument )",
@@ -364,7 +364,7 @@
               "productType": "NRML",
               "expiryType": "Current Month",
               "expiry": "( tt_curr_monthexpiry ( 'NIFTY 50', '0' ) )",
-              "expiryJson": "{\"operator\": \"and\", \"operands\": [{\"type\": \"rule\", \"value\": \"builder-basic_rule_0\", \"elements\": [{\"name\": \"Current Month Expiry\", \"kid\": 8462, \"params\": [{\"type\": \"value\", \"value\": \"NIFTY 50\"}, {\"type\": \"value\", \"value\": \"0\"}]}]}]}",
+              "expiryJson": "{\"operator\": \"and\", \"operands\": [{\"type\": \"rule\", \"value\": \"builder-basic_rule_0\", \"elements\": [{\"name\": \"Current Month Expiry\", \"kid\": 4783, \"params\": [{\"type\": \"value\", \"value\": \"NIFTY 50\"}, {\"type\": \"value\", \"value\": \"0\"}]}]}]}",
               "expiryDisplay": "( Current Month Expiry ( 'NIFTY 50', '0' ) )",
               "strikeType": "Fx",
               "strike": "( Traded Instrument + Get Runtime(Roll_Step) )",
@@ -396,7 +396,7 @@
         {
           "type": "Repair Once",
           "conditionValue": null,
-          "conditionJson": "{\"operator\": \"and\", \"operands\": [{\"type\": \"rule\", \"value\": \"builder-basic_rule_0\", \"elements\": [{\"name\": \"Traded Instrument\", \"kid\": 7128, \"params\": [{\"type\": \"value\", \"value\": \"Entry\"}, {\"type\": \"value\", \"value\": \"quantity\"}, {\"type\": \"value\", \"value\": \"NIFTY 50\"}, {\"type\": \"value\", \"value\": \"1\"}, {\"type\": \"value\", \"value\": \"1\"}, {\"type\": \"value\", \"value\": \"2\"}]}, {\"name\": \">\", \"params\": []}, {\"name\": \"Number\", \"kid\": 6975, \"params\": [{\"type\": \"value\", \"value\": \"0\"}]}]}, {\"type\": \"rule\", \"value\": \"builder-basic_rule_1\", \"elements\": [{\"name\": \"Net Quantity\", \"kid\": 9784, \"params\": [{\"type\": \"keyword\", \"keyword\": {\"name\": \"Traded Instrument\", \"kid\": 2161, \"params\": [{\"type\": \"value\", \"value\": \"Entry\"}, {\"type\": \"value\", \"value\": \"1\"}, {\"type\": \"value\", \"value\": \"3\"}, {\"type\": \"value\", \"value\": \"2\"}]}}]}, {\"name\": \"!=\", \"params\": []}, {\"name\": \"Number\", \"kid\": 5993, \"params\": [{\"type\": \"value\", \"value\": \"0\"}]}]}]}",
+          "conditionJson": "{\"operator\": \"and\", \"operands\": [{\"type\": \"rule\", \"value\": \"builder-basic_rule_0\", \"elements\": [{\"name\": \"Traded Instrument\", \"kid\": 4552, \"params\": [{\"type\": \"value\", \"value\": \"Entry\"}, {\"type\": \"value\", \"value\": \"quantity\"}, {\"type\": \"value\", \"value\": \"NIFTY 50\"}, {\"type\": \"value\", \"value\": \"1\"}, {\"type\": \"value\", \"value\": \"1\"}, {\"type\": \"value\", \"value\": \"2\"}]}, {\"name\": \">\", \"params\": []}, {\"name\": \"Number\", \"kid\": 2217, \"params\": [{\"type\": \"value\", \"value\": \"0\"}]}]}, {\"type\": \"rule\", \"value\": \"builder-basic_rule_1\", \"elements\": [{\"name\": \"Net Quantity\", \"kid\": 9098, \"params\": [{\"type\": \"keyword\", \"keyword\": {\"name\": \"Traded Instrument Name\", \"kid\": 2207, \"params\": [{\"type\": \"value\", \"value\": \"Entry\"}, {\"type\": \"value\", \"value\": \"instrument\"}, {\"type\": \"value\", \"value\": \"NIFTY 50\"}, {\"type\": \"value\", \"value\": \"1\"}, {\"type\": \"value\", \"value\": \"3\"}, {\"type\": \"value\", \"value\": \"2\"}]}}]}, {\"name\": \"!=\", \"params\": []}, {\"name\": \"Number\", \"kid\": 7692, \"params\": [{\"type\": \"value\", \"value\": \"0\"}]}]}]}",
           "conditionDisplay": null,
           "subType": "None",
           "visible": 1,
@@ -415,7 +415,7 @@
         {
           "type": "Entry",
           "conditionValue": null,
-          "conditionJson": "{\"operator\": \"and\", \"operands\": [{\"type\": \"rule\", \"value\": \"builder-basic_rule_0\", \"elements\": [{\"name\": \"Get Runtime\", \"kid\": 5383, \"params\": [{\"type\": \"value\", \"value\": \"HOLD_TILL_EXPIRY\"}]}, {\"name\": \">=\", \"params\": []}, {\"name\": \"Number\", \"kid\": 9803, \"params\": [{\"type\": \"value\", \"value\": \"1\"}]}]}, {\"type\": \"rule\", \"value\": \"builder-basic_rule_1\", \"elements\": [{\"name\": \"Days to Expiry\", \"kid\": 2723, \"params\": [{\"type\": \"value\", \"value\": \"NIFTY 50\"}]}, {\"name\": \"<\", \"params\": []}, {\"name\": \"Number\", \"kid\": 8286, \"params\": [{\"type\": \"value\", \"value\": \"7\"}]}]}]}",
+          "conditionJson": "{\"operator\": \"and\", \"operands\": [{\"type\": \"rule\", \"value\": \"builder-basic_rule_0\", \"elements\": [{\"name\": \"Get Runtime\", \"kid\": 2312, \"params\": [{\"type\": \"value\", \"value\": \"HOLD_TILL_EXPIRY\"}]}, {\"name\": \">=\", \"params\": []}, {\"name\": \"Number\", \"kid\": 3724, \"params\": [{\"type\": \"value\", \"value\": \"1\"}]}]}, {\"type\": \"rule\", \"value\": \"builder-basic_rule_1\", \"elements\": [{\"name\": \"Days to Expiry\", \"kid\": 3246, \"params\": [{\"type\": \"value\", \"value\": \"NIFTY 50\"}]}, {\"name\": \"<\", \"params\": []}, {\"name\": \"Number\", \"kid\": 7923, \"params\": [{\"type\": \"value\", \"value\": \"7\"}]}]}]}",
           "conditionDisplay": null,
           "subType": "None",
           "visible": 1,
@@ -428,7 +428,7 @@
         {
           "type": "Universal Exit",
           "conditionValue": null,
-          "conditionJson": "{\"operator\": \"or\", \"operands\": [{\"type\": \"group\", \"value\": \"builder-basic_group_0\", \"children\": {\"operator\": \"and\", \"operands\": [{\"type\": \"rule\", \"value\": \"builder-basic_rule_0\", \"elements\": [{\"name\": \"Get Runtime\", \"kid\": 3661, \"params\": [{\"type\": \"value\", \"value\": \"HOLD_TILL_EXPIRY\"}]}, {\"name\": \"==\", \"params\": []}, {\"name\": \"Number\", \"kid\": 1842, \"params\": [{\"type\": \"value\", \"value\": \"0\"}]}]}, {\"type\": \"rule\", \"value\": \"builder-basic_rule_1\", \"elements\": [{\"name\": \"Days to Expiry\", \"kid\": 8734, \"params\": [{\"type\": \"value\", \"value\": \"NIFTY 50\"}]}, {\"name\": \"<\", \"params\": []}, {\"name\": \"Number\", \"kid\": 2111, \"params\": [{\"type\": \"value\", \"value\": \"7\"}]}]}]}}, {\"type\": \"group\", \"value\": \"builder-basic_group_1\", \"children\": {\"operator\": \"and\", \"operands\": [{\"type\": \"rule\", \"value\": \"builder-basic_rule_0\", \"elements\": [{\"name\": \"Get Runtime\", \"kid\": 2211, \"params\": [{\"type\": \"value\", \"value\": \"HOLD_TILL_EXPIRY\"}]}, {\"name\": \"==\", \"params\": []}, {\"name\": \"Number\", \"kid\": 1162, \"params\": [{\"type\": \"value\", \"value\": \"1\"}]}]}, {\"type\": \"rule\", \"value\": \"builder-basic_rule_1\", \"elements\": [{\"name\": \"Days to Expiry\", \"kid\": 4248, \"params\": [{\"type\": \"value\", \"value\": \"NIFTY 50\"}]}, {\"name\": \"==\", \"params\": []}, {\"name\": \"Number\", \"kid\": 5901, \"params\": [{\"type\": \"value\", \"value\": \"0\"}]}]}]}}]}",
+          "conditionJson": "{\"operator\": \"or\", \"operands\": [{\"type\": \"group\", \"value\": \"builder-basic_group_0\", \"children\": {\"operator\": \"and\", \"operands\": [{\"type\": \"rule\", \"value\": \"builder-basic_rule_0\", \"elements\": [{\"name\": \"Get Runtime\", \"kid\": 1732, \"params\": [{\"type\": \"value\", \"value\": \"HOLD_TILL_EXPIRY\"}]}, {\"name\": \"==\", \"params\": []}, {\"name\": \"Number\", \"kid\": 8900, \"params\": [{\"type\": \"value\", \"value\": \"0\"}]}]}, {\"type\": \"rule\", \"value\": \"builder-basic_rule_1\", \"elements\": [{\"name\": \"Days to Expiry\", \"kid\": 3156, \"params\": [{\"type\": \"value\", \"value\": \"NIFTY 50\"}]}, {\"name\": \"<\", \"params\": []}, {\"name\": \"Number\", \"kid\": 7583, \"params\": [{\"type\": \"value\", \"value\": \"7\"}]}]}]}}, {\"type\": \"group\", \"value\": \"builder-basic_group_1\", \"children\": {\"operator\": \"and\", \"operands\": [{\"type\": \"rule\", \"value\": \"builder-basic_rule_0\", \"elements\": [{\"name\": \"Get Runtime\", \"kid\": 8734, \"params\": [{\"type\": \"value\", \"value\": \"HOLD_TILL_EXPIRY\"}]}, {\"name\": \"==\", \"params\": []}, {\"name\": \"Number\", \"kid\": 8414, \"params\": [{\"type\": \"value\", \"value\": \"1\"}]}]}, {\"type\": \"rule\", \"value\": \"builder-basic_rule_1\", \"elements\": [{\"name\": \"Days to Expiry\", \"kid\": 9680, \"params\": [{\"type\": \"value\", \"value\": \"NIFTY 50\"}]}, {\"name\": \"==\", \"params\": []}, {\"name\": \"Number\", \"kid\": 1757, \"params\": [{\"type\": \"value\", \"value\": \"0\"}]}]}]}}]}",
           "conditionDisplay": null,
           "subType": "None",
           "visible": 1,
