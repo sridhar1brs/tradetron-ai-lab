@@ -1,0 +1,26 @@
+name: Validate Tradetron Strategies
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Run auditor regression suite (known_good/known_bad fixtures)
+        run: python3 tests/run_tests.py
+
+      - name: Validate all production strategies
+        run: python3 scripts/tradetron_validator.py
+
+      - name: Lint builder scripts for keyword drift
+        run: python3 scripts/check_keyword_drift.py

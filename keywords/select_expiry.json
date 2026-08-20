@@ -1,0 +1,10 @@
+{
+    "name": "Select Expiry",
+    "description": "Helper keyword used inside Find Strike(...) to specify which expiry bucket and offset to search within.",
+    "parameters": [
+        {"name": "Expiry Type", "type": "Enum", "description": "Granularity of expiry to select.", "options": ["week", "month"]},
+        {"name": "Offset", "type": "Integer", "description": "0 = current expiry of that type, 1 = next, etc."}
+    ],
+    "return_type": "Any",
+    "note": "No official Tradetron docs/OCR capture existed for this keyword in the source scrape; schema derived from its real usage as the 2nd param of Find Strike(...) across strategies/examples (e.g. Select Expiry('week', 0))."
+}

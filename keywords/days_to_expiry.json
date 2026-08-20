@@ -1,0 +1,9 @@
+{
+    "name": "Days to Expiry",
+    "description": "Returns the number of calendar days remaining until the given instrument's expiry.",
+    "parameters": [
+        {"name": "Underlying", "type": "String", "description": "Underlying symbol, e.g. 'NIFTY 50'. Used in condition builder, e.g. Days to Expiry(NIFTY 50) < Number(7)."}
+    ],
+    "return_type": "Number",
+    "note": "No official Tradetron docs/OCR capture existed for this keyword in the source scrape; schema derived from its real usage in tests/known_good/good_iron_fly.json ('Days to Expiry(NIFTY 50) < Number(7)')."
+}

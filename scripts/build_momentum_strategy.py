@@ -13,10 +13,13 @@ def get_math_operation(left_keyword, operator, right_keyword_or_str):
     # Rule 13 postfix order: Operand1, Operand2, Operator
     return Keyword("Math Operation", left_keyword, right, operator)
 
-def get_spot_close(candle_index, timeframe="1min"):
+def get_spot_close(candle_index, timeframe="1m"):
+    # Rule 42: must nest Symbol(Instrument Name(...)), never bare Timeframe()/Instrument()
     close_kw = Keyword("Close",
-                   Keyword("Timeframe", timeframe),
-                   Keyword("Instrument", "NIFTY 50"))
+                   Keyword("Symbol",
+                       Keyword("Instrument Name", "NFO,NIFTY 50,,,,,"),
+                       timeframe,
+                       "All"))
     return Keyword("Position", close_kw, str(candle_index))
 
 def get_traded_instrument(set_no, cond_no, leg_no):
@@ -61,9 +64,9 @@ c1_entry.add_rule(Rule(Keyword("Time", "NSE"), ">=", "0920"))
 c1_entry.add_rule(Rule(Keyword("Time", "NSE"), "<", "1500"))
 
 # Spot Directional Momentum: Close[-1] > Close[-2] + Spot_Confirm
-c1_entry.add_rule(Rule(get_spot_close(-1, "1min"), ">", get_math_operation(get_spot_close(-2, "1min"), "+", get_runtime("Spot_Confirm"))))
+c1_entry.add_rule(Rule(get_spot_close(-1, "1m"), ">", get_math_operation(get_spot_close(-2, "1m"), "+", get_runtime("Spot_Confirm"))))
 # Spot Continuation: Close[-2] > Close[-3]
-c1_entry.add_rule(Rule(get_spot_close(-2, "1min"), ">", get_spot_close(-3, "1min")))
+c1_entry.add_rule(Rule(get_spot_close(-2, "1m"), ">", get_spot_close(-3, "1m")))
 
 # Native ATM Buy CE Leg
 c1_entry.add_leg(Leg(
@@ -93,9 +96,9 @@ c2_entry.add_rule(Rule(Keyword("Time", "NSE"), ">=", "0920"))
 c2_entry.add_rule(Rule(Keyword("Time", "NSE"), "<", "1500"))
 
 # Spot Directional Momentum: Close[-1] < Close[-2] - Spot_Confirm
-c2_entry.add_rule(Rule(get_spot_close(-1, "1min"), "<", get_math_operation(get_spot_close(-2, "1min"), "-", get_runtime("Spot_Confirm"))))
+c2_entry.add_rule(Rule(get_spot_close(-1, "1m"), "<", get_math_operation(get_spot_close(-2, "1m"), "-", get_runtime("Spot_Confirm"))))
 # Spot Continuation: Close[-2] < Close[-3]
-c2_entry.add_rule(Rule(get_spot_close(-2, "1min"), "<", get_spot_close(-3, "1min")))
+c2_entry.add_rule(Rule(get_spot_close(-2, "1m"), "<", get_spot_close(-3, "1m")))
 
 # Native ATM Buy PE Leg
 c2_entry.add_leg(Leg(
