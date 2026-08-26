@@ -275,5 +275,50 @@ EXPIRY_TYPE_MAP = {
 
 ---
 
-*Last Updated: 2026-08-03*
+## BUG-016: PE-Side Hedge Rollover `Repair Once` References Wrong Coordinate `(1,3,2)` → Old Hedge Never Closes on Rollover
+
+**Severity**: 🔴 Critical — Orphaned hedge leg survives across expiry, positions don't fully square off
+
+**Symptom**: Live/paper strategy logs show extra open legs at the next month's expiry (e.g. a
+full second Iron Fly forming in the rolled-to contract) even though `Universal Exit`'s
+`Days to Expiry == 0` logic looks correct. Reported live: "Nifty Monthly IronFly ... did not
+exit at the expiry" — Aug-expiry legs settled at 0 qty via exchange expiry instead of being
+proactively closed, while unrelated Sep-expiry legs remained open.
+
+**Root Cause**: In the PE-side hedge-rollover `Repair Once` condition (Set index 2, the block
+that closes the old far PE hedge and opens a new one 100pts further out when spot breaches the
+boundary), both the guard's `Net Quantity(Traded Instrument Name(...))` check and the leg's
+`strikeJson` referenced coordinate `(Set=1, Cond=3, Leg=2)`. That coordinate points at a
+`Repair Once` condition (the initial CE-hedge-close block in Set 0) that only has **one** leg
+— `Leg=2` doesn't exist there. The correct target — confirmed by the parallel, correctly-wired
+CE-side rollover block — is `(1, 2, 2)`, the ATM-straddle-sell condition's second leg, used as
+the "has the straddle actually filled" sentinel on both sides.
+
+**Impact**: Because the coordinate resolves to a non-existent leg, the strike/quantity lookup
+returns null/0, so the "close the old hedge" repair silently fails to identify the correct
+contract to exit. The stale hedge leg is left open and, since all legs use
+`"expiryType": "Current Month"`, rolls forward untouched into the next expiry cycle instead of
+being closed — compounding with each rollover and leaving mismatched/orphaned legs that are
+still open (or forced to exchange-settle) at expiry, contradicting the "hold till expiry, then
+flatten" design intent.
+
+**Fixed**: Changed the coordinate from `(1, 3, 2)` to `(1, 2, 2)` in both the guard and the
+leg `strikeJson` of the PE-rollover `Repair Once` condition. Confirmed present and fixed in:
+`Nifty_Monthly_IronFly_GetStrike_with_Hedge_Rollover.json`,
+`Nifty_Monthly_IronFly_FindStrike_with_Hedge_Rollover.json`,
+`Nifty_Monthly_IronFly_Dynamic_Hedge_Inward_Rollover.json`, `Corrected_Iron_Fly.json`,
+`Find_Strike_Iron_Fly.json`.
+
+**Detection**: Auditor Rule 25 caught the leg-level `strikeJson` instance directly; the guard's
+identical bad coordinate (nested inside `Net Quantity(Traded Instrument Name(...))`) was
+**not** flagged — Rule 25 only inspects top-level rule `elements`, not keywords nested inside
+another keyword's `params`. This is the same class of gap previously fixed for Rules 17/27
+(see Known Gaps note above) but has not yet been generalized to Rule 25. Any future coordinate
+validation work should also recurse into `Net Quantity` / similar wrapper keywords.
+
+**See Also**: AGENTS.md Rule 25.
+
+---
+
+*Last Updated: 2026-08-26*
 *All bugs above are verified and fixes are implemented in the codebase.*
